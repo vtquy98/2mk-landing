@@ -74,7 +74,11 @@ export default async function () {
       $body.find('h1').each((_, h) => { h.tagName = 'h2'; $(h).addClass('s2m-h1'); });
       $body.find('style').each((_, s) => { $(s).text($(s).text().replace(/\bh1\b/g, '.s2m-h1')); });
     }
-    const body = resolveLinks(richText($, $body)).replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (_, a, j, b) => a + absoluteAssets(j) + b);
+    // Turndown collapses whitespace in every text node: a script's line breaks (and so its // comments) must survive.
+    const scripts = [];
+    $body.find('script').each((_, el) => { scripts.push($(el).html()); $(el).text(`S2M_SCRIPT_${scripts.length - 1}`); });
+    const md = richText($, $body).replace(/S2M_SCRIPT_(\d+)/g, (_, i) => scripts[i].replace(/\n\s*\n/g, '\n'));
+    const body = resolveLinks(md).replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (_, a, j, b) => a + absoluteAssets(j) + b);
 
     const seo = extractSeo($);
     seo.jsonLd = seo.jsonLd?.map(absoluteAssets);
