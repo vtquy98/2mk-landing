@@ -1,7 +1,7 @@
 ---
 title: "Que faire si je ne trouve pas d’acheteur pour mes parts de SCPI ?"
 category: "SCPI"
-order: 54
+order: 50
 page: false
 seo: {"title":"Que faire si je ne trouve pas d’acheteur pour mes parts de SCPI ?"}
 ---

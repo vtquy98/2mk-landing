@@ -61,6 +61,13 @@ checks that all 544 live pages are built.
 - [ ] Integration: full build, link check, URL parity (every live 200 path exists in `dist/`), visual pass
 - [ ] Cut-over (see below)
 
+## Open (owner: Quy)
+
+- Google Apps Script must handle the new lead types `newsletter`, `contact`, `qrcode`, `questionnaire` (fields:
+  `firstName`, `lastName`, `email`, `phone`, `message`, `gender`, `company`, `q1`…`q5`). Until then those forms post
+  but the script may ignore them.
+- More hidden `/faqs/<slug>` pages may exist (only 12 found): a Webflow CMS export would list them.
+
 ## Cut-over checklist
 
 1. `node scripts/webflow-import/crawl.mjs --refresh && node scripts/webflow-import/run.mjs`, review the diff, merge.
@@ -80,10 +87,15 @@ checks that all 544 live pages are built.
 - Hub lists drop cards that pointed to pages now redirected (e.g. 22 on /scpi-essentiel, 5 on /simulateurs).
 - Hidden pages (`/faqs/<slug>`, `/information-pages/…`, `/scpi-listing/*`) had an empty body on Webflow; they now
   show their content (question + answer, title + summary, listing card).
-- The Webflow wildcard `/scpi-listing/* → /repertoire` is not kept (it would hide the 3 live listing pages):
-  unknown listing URLs now answer 404.
+- `/scpi-listing/<unknown>` → 301 `/repertoire` is done by `worker/index.js` (runs only when no file matches), so
+  the live listing pages keep working.
+- 12 duplicate `/seo` pages (same title and content, e.g. `compagnie-aestiam`) are merged into the page kept with a
+  301 (`MERGED_PAGES` in `scripts/webflow-import/lib.mjs`).
+- The 2 legal pages get their own title/description (they shared one); 5 questions listed twice on `/faqs` (and
+  in its FAQPage JSON-LD) are listed once; `/questionnaire` (placeholder content) is `noindex` and out of the sitemap;
+  `/information-pages/documents-requis-scpi` lists the 3 required documents (copy taken from the site).
+- Forms: messages in French; e-mail required on `/contact`; `/qrcode` sends `company` in its own field.
 - Home ads carousel: build-time snapshot + refresh from `api.2ndmarket.fr` in the browser (production origin only).
-- The 3 Elysées SCPI show "HSBC REIM (France)" as management company (empty on Webflow; taken from /seo pages).
 - 4 pages keep the JavaScript error they already have on live (content bugs):
   `/actualites/defiscalisation-2026-checklist-simulateur`, `/guide-scpi/facturation-electronique`,
   `/guide-scpi/scpi-sans-frais-souscription`, `/landing-pages/simulateur-rendement-scpi-2026-estimez-votre-net`.

@@ -1,7 +1,7 @@
 ---
 title: "Quels sont les principaux points de vigilance pour le vendeur ?"
 category: "Viager"
-order: 75
+order: 70
 page: false
 seo: {"title":"Quels sont les principaux points de vigilance pour le vendeur ?"}
 ---

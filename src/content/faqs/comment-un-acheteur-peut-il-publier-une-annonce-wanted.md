@@ -1,7 +1,7 @@
 ---
 title: "Comment un acheteur peut-il publier une annonce Wanted ?"
 category: "SCPI"
-order: 63
+order: 59
 page: false
 seo: {"title":"Comment un acheteur peut-il publier une annonce Wanted ?"}
 ---

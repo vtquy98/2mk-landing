@@ -1,13 +1,15 @@
-// Static site (dist/) on Cloudflare Workers static assets. No Worker code yet (add "main" when forms/API are needed).
+// Static site (dist/) on Cloudflare Workers static assets; worker/index.js only handles URLs that match no file.
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "2mk-landing",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-23",
-  // workers.dev URL + per-PR preview URLs (pr-<number>-2mk-landing.<account>.workers.dev)
+  // workers.dev URL + per-PR preview URLs (pr-<number>-2mk-landing.vtquy98.workers.dev)
   "workers_dev": true,
   "preview_urls": true,
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "404-page"
   },
   "observability": { "enabled": true }

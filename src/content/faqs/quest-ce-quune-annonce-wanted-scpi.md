@@ -1,7 +1,7 @@
 ---
 title: "Qu’est-ce qu’une annonce Wanted SCPI ?"
 category: "SCPI"
-order: 44
+order: 40
 page: false
 seo: {"title":"Qu’est-ce qu’une annonce Wanted SCPI ?"}
 ---

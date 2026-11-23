@@ -1,7 +1,7 @@
 ---
 title: "Quel est le délai moyen pour vendre des parts SCPI ?"
 category: "SCPI"
-order: 60
+order: 56
 page: false
 seo: {"title":"Quel est le délai moyen pour vendre des parts SCPI ?"}
 ---

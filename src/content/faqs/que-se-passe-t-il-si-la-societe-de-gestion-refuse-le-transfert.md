@@ -1,7 +1,7 @@
 ---
 title: "Que se passe-t-il si la société de gestion refuse le transfert ?"
 category: "SCPI"
-order: 46
+order: 42
 page: false
 seo: {"title":"Que se passe-t-il si la société de gestion refuse le transfert ?"}
 ---

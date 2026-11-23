@@ -1,7 +1,7 @@
 ---
 title: "Est-il possible de vendre un bien en viager libre si l’on occupe encore le logement ?"
 category: "Viager"
-order: 68
+order: 63
 page: false
 seo: {"title":"Est-il possible de vendre un bien en viager libre si l’on occupe encore le logement ?"}
 ---

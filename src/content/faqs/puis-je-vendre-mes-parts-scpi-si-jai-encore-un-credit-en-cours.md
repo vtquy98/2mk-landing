@@ -1,7 +1,7 @@
 ---
 title: "Puis-je vendre mes parts SCPI si j’ai encore un crédit en cours ?"
 category: "SCPI"
-order: 37
+order: 33
 page: false
 seo: {"title":"Puis-je vendre mes parts SCPI si j’ai encore un crédit en cours ?"}
 ---

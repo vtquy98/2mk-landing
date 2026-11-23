@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi 2nd Market n'est ni CIF ni CGP ?"
 category: "SCPI"
-order: 27
+order: 23
 page: false
 seo: {"title":"Pourquoi 2nd Market n'est ni CIF ni CGP ?"}
 ---

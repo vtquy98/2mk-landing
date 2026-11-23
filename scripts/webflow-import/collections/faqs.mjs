@@ -28,11 +28,14 @@ export default async function () {
   const details = new Map(pagesIn('/faqs/').map(path => { const $ = loadPage(path); return [norm(detailQuestion($)), { path, $ }]; }));
   const $ = loadPage('/faqs');
   const used = new Set();
+  const seen = new Set(); // 5 questions were listed twice on Webflow's /faqs: the first one is kept
   let order = 0;
   for (const tab of $('.tab-menu .tab-link').toArray()) {
     const category = text($, tab);
     $(`.w-tab-pane[data-w-tab="${$(tab).attr('data-w-tab')}"] .faqs_item`).each((_, el) => {
       const question = text($, $(el).find('.faq_question'));
+      if (seen.has(norm(question))) return;
+      seen.add(norm(question));
       const $answer = $(el).find('.faq_answer').clone();
       $answer.find('style, script').remove(); // a dead #s2m-faq-nantissement stylesheet (its selector matched nothing live)
       $answer.find('.w-embed').each((_, e) => { $(e).replaceWith($(e).contents()); });
@@ -41,7 +44,7 @@ export default async function () {
       const detail = details.get(norm(question));
       details.delete(norm(question));
       let slug = detail ? detail.path.split('/').pop() : slugify(question);
-      while (used.has(slug)) slug += '-2'; // a few questions are listed twice on /faqs
+      while (used.has(slug)) slug += '-2';
       used.add(slug);
       const seo = detail ? extractSeo(detail.$) : { title: question };
       if (detail) seo.jsonLd = withAnswer(seo.jsonLd ?? [], text($, $answer));

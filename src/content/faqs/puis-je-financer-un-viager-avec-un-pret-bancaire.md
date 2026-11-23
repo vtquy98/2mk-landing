@@ -1,7 +1,7 @@
 ---
 title: "Puis-je financer un viager avec un prêt bancaire ?"
 category: "Viager"
-order: 77
+order: 72
 page: false
 seo: {"title":"Puis-je financer un viager avec un prêt bancaire ?"}
 ---

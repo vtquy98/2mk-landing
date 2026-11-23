@@ -31,8 +31,22 @@ export function lastmod(path) {
   return lastmods.get(path);
 }
 
+/**
+ * Live Webflow pages merged into another one during the migration (duplicates with the same title and content):
+ * not imported, served as a 301 to the page kept.
+ */
+export const MERGED_PAGES = {
+  ...Object.fromEntries(
+    ['aestiam', 'alderan', 'altarea', 'altixia-reim', 'amundi-immobilier', 'arkea-reim', 'atream', 'foncieres-et-territoires', 'novaxia-investissement']
+      .map(s => [`/seo/compagnie-${s}`, `/seo/${s}`]),
+  ),
+  '/seo/epsicap-reim-ead4a': '/seo/epsicap-reim',
+  '/seo/kyaneos-am-35c15': '/seo/kyaneos-am',
+  '/seo/hsbc-reim-france': '/seo/hsbc-reim-france-ebf6e',
+};
+
 /** Paths (from the sitemap) under a prefix that answer 200, e.g. pagesIn('/actualites/'). */
-export const pagesIn = prefix => statuses().filter(s => s[1] === 200 && s[0].startsWith(prefix)).map(s => s[0]);
+export const pagesIn = prefix => statuses().filter(s => s[1] === 200 && s[0].startsWith(prefix) && !MERGED_PAGES[s[0]]).map(s => s[0]);
 
 // ---------- assets: every Webflow CDN file is downloaded into public/assets/ ----------
 

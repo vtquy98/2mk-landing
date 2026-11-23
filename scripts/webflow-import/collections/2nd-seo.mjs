@@ -10,9 +10,6 @@ import { assetPath, extractSeo, lastmod, loadPage, pagesIn, richText, ROOT, stat
 const PLACEHOLDER = '/plugins/Basic/assets/placeholder';
 const REPERTOIRE_PAGE_2 = 'https://2ndmarket.fr/repertoire?c673cdbb_page=2';
 
-// The Elysées SCPI have no management company bound in Webflow; the /seo/ pages list them under HSBC REIM (France).
-const MANAGER_FIX = { name: 'HSBC REIM (France)', page: 'hsbc-reim-france-ebf6e' };
-const MANAGER_FIXES = { 'elysees-grand-large': MANAGER_FIX, 'elysees-pierre': MANAGER_FIX, 'elysees-residence-5': MANAGER_FIX };
 
 const num = s => (s && !Number.isNaN(Number(s)) ? Number(s) : undefined);
 const seoSlug = href => href?.match(/^\/seo\/([^/?#]+)$/)?.[1];
@@ -42,7 +39,6 @@ export default async function () {
     const stats = $('.home-about-items').toArray().map(e => text($, $(e).find('h3')) || undefined);
     const raw = $('.seo-table-wrapper .table-row.is-last .table-content').toArray().map(e => text($, e));
     const website = $('.seo-content-heading > a.hide').attr('href');
-    const fix = MANAGER_FIXES[slug];
 
     writeEntry('2nd-seo', slug, {
       title: text($, $('h1')),
@@ -51,8 +47,8 @@ export default async function () {
       imageAlt: image ? $logo.attr('alt') : undefined,
       ...(image ? await imageSize(image) : {}),
       category: 'SCPI',
-      manager: fix?.name ?? (text($, $('.company-link')) || undefined),
-      managerPage: fix?.page ?? seoSlug($('.company-link').attr('href')),
+      manager: text($, $('.company-link')) || undefined,
+      managerPage: seoSlug($('.company-link').attr('href')),
       distributionRateText: stats[0],
       sharePriceText: stats[1],
       annualIncomeText: stats[2],

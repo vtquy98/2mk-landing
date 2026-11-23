@@ -1,7 +1,7 @@
 ---
 title: "La rente viagère peut-elle être payée en une seule fois ?"
 category: "Viager"
-order: 65
+order: 61
 page: false
 seo: {"title":"La rente viagère peut-elle être payée en une seule fois ?"}
 ---

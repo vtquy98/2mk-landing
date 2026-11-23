@@ -1,7 +1,7 @@
 ---
 title: "Peut-on vendre un bien en viager avec plusieurs vendeurs (par exemple un couple) ?"
 category: "Viager"
-order: 70
+order: 65
 page: false
 seo: {"title":"Peut-on vendre un bien en viager avec plusieurs vendeurs (par exemple un couple) ?"}
 ---

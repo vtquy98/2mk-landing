@@ -1,7 +1,7 @@
 ---
 title: "Quel est le rôle du notaire dans la vente de parts de SCPI ?"
 category: "SCPI"
-order: 62
+order: 58
 page: false
 seo: {"title":"Quel est le rôle du notaire dans la vente de parts de SCPI ?"}
 ---

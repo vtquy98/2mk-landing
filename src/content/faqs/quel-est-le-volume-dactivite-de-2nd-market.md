@@ -1,7 +1,7 @@
 ---
 title: "Quel est le volume d'activité de 2nd Market ?"
 category: "SCPI"
-order: 16
+order: 12
 page: false
 seo: {"title":"Quel est le volume d'activité de 2nd Market ?"}
 ---

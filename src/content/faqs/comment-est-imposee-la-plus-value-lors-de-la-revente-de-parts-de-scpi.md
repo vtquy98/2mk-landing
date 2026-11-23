@@ -1,7 +1,7 @@
 ---
 title: "Comment est imposée la plus-value lors de la revente de parts de SCPI ?"
 category: "SCPI"
-order: 30
+order: 26
 page: false
 seo: {"title":"Comment est imposée la plus-value lors de la revente de parts de SCPI ?"}
 ---

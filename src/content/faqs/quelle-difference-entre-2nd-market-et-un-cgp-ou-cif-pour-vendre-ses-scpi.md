@@ -1,7 +1,7 @@
 ---
 title: "Quelle différence entre 2nd Market et un CGP ou CIF pour vendre ses SCPI ?"
 category: "SCPI"
-order: 26
+order: 22
 page: false
 seo: {"title":"Quelle différence entre 2nd Market et un CGP ou CIF pour vendre ses SCPI ?"}
 ---

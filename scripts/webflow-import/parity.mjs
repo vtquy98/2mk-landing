@@ -6,14 +6,14 @@
 //   - every root-relative link in dist/ resolves to a page, an asset or a redirect
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, statuses } from './lib.mjs';
+import { MERGED_PAGES, ROOT, statuses } from './lib.mjs';
 
 const DIST = join(ROOT, 'dist');
 const isPage = p => p === '/' ? existsSync(join(DIST, 'index.html')) : existsSync(join(DIST, `${p}.html`)) || existsSync(join(DIST, p, 'index.html'));
 const isFile = p => existsSync(join(DIST, decodeURIComponent(p)));
 const all = statuses();
-const pages = all.filter(s => s[1] === 200).map(s => s[0]);
-const redirects = new Map(all.filter(s => s[1] === 301).map(s => [s[0], s[2]]));
+const pages = all.filter(s => s[1] === 200 && !MERGED_PAGES[s[0]]).map(s => s[0]);
+const redirects = new Map([...all.filter(s => s[1] === 301).map(s => [s[0], s[2]]), ...Object.entries(MERGED_PAGES)]);
 const problems = [];
 
 for (const p of pages) if (!isPage(p)) problems.push(`missing page: ${p}`);

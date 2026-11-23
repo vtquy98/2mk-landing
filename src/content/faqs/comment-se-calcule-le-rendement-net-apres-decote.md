@@ -1,7 +1,7 @@
 ---
 title: "Comment se calcule le rendement net après décote ?"
 category: "SCPI"
-order: 22
+order: 18
 page: false
 seo: {"title":"Comment se calcule le rendement net après décote ?"}
 ---

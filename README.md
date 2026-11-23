@@ -13,9 +13,9 @@ npm run check            # types + content schema
 Deploy: `.github/workflows/deploy.yml` builds, then deploys to Cloudflare (Workers static assets,
 `wrangler.jsonc`): push to `main` = production, every pull request = preview URL posted as a PR comment.
 Repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-Cloudflare account TODO, Worker `2mk-landing`:
-production https://2mk-landing.<account>.workers.dev (until the custom domain),
-previews `https://pr-<number>-2mk-landing.<account>.workers.dev`.
+Cloudflare Worker `2mk-landing` (account subdomain `vtquy98`):
+production https://2mk-landing.vtquy98.workers.dev (until the custom domain),
+previews `https://pr-<number>-2mk-landing.vtquy98.workers.dev`.
 
 ## Structure
 

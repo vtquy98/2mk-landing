@@ -1,7 +1,7 @@
 ---
 title: "Les héritiers du vendeur conservent-ils des droits sur le bien ?"
 category: "Viager"
-order: 73
+order: 68
 page: false
 seo: {"title":"Les héritiers du vendeur conservent-ils des droits sur le bien ?"}
 ---

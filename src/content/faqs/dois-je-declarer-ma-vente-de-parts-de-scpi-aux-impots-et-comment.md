@@ -1,7 +1,7 @@
 ---
 title: "Dois-je déclarer ma vente de parts de SCPI aux impôts et comment ?"
 category: "SCPI"
-order: 55
+order: 51
 page: false
 seo: {"title":"Dois-je déclarer ma vente de parts de SCPI aux impôts et comment ?"}
 ---

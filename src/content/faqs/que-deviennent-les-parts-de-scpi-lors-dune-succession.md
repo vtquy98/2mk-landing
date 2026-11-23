@@ -1,7 +1,7 @@
 ---
 title: "Que deviennent les parts de SCPI lors d'une succession ?"
 category: "SCPI"
-order: 53
+order: 49
 page: false
 seo: {"title":"Que deviennent les parts de SCPI lors d'une succession ?"}
 ---

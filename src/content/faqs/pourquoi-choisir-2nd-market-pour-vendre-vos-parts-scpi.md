@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi choisir 2nd Market pour vendre vos parts SCPI ?"
 category: "SCPI"
-order: 58
+order: 54
 page: false
 seo: {"title":"Pourquoi choisir 2nd Market pour vendre vos parts SCPI ?"}
 ---

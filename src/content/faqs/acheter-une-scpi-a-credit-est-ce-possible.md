@@ -1,7 +1,7 @@
 ---
 title: "Acheter une SCPI à crédit, est-ce possible ?"
 category: "SCPI"
-order: 25
+order: 21
 page: false
 seo: {"title":"Acheter une SCPI à crédit, est-ce possible ?"}
 ---

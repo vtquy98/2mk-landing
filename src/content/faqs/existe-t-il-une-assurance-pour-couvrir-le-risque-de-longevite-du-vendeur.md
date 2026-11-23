@@ -1,7 +1,7 @@
 ---
 title: "Existe-t-il une assurance pour couvrir le risque de longévité du vendeur ?"
 category: "Viager"
-order: 76
+order: 71
 page: false
 seo: {"title":"Existe-t-il une assurance pour couvrir le risque de longévité du vendeur ?"}
 ---

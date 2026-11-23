@@ -3,6 +3,7 @@
 // Fields go in the slot (Field / RadioGroup); every named field is sent under its `name`, with `email` required.
 // Spam: a honeypot field and a minimum fill time; bots get the /merci page but nothing is sent.
 import Button from '../ui/Button.astro';
+import { t } from '../../i18n/config';
 
 interface Props {
   leadAction: 'contact' | 'questionnaire' | 'qrcode';
@@ -19,9 +20,9 @@ const { leadAction, label, submit, wideSubmit = false } = Astro.props;
     <label>Ne pas remplir <input name="website" tabindex="-1" autocomplete="off" /></label>
   </div>
   <div class:list={['actions', { 'actions--wide': wideSubmit }]}>
-    <Button type="submit" data-wait="Please wait...">{submit}</Button>
+    <Button type="submit" data-wait={t().forms.wait}>{submit}</Button>
   </div>
-  <p class="error" role="alert" hidden>Oops! Something went wrong while submitting the form.</p>
+  <p class="error" role="alert" hidden>{t().forms.error}</p>
 </form>
 
 <script>

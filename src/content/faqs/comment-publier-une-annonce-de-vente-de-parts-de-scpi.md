@@ -1,7 +1,7 @@
 ---
 title: "Comment publier une annonce de vente de parts de SCPI ?"
 category: "SCPI"
-order: 64
+order: 60
 page: false
 seo: {"title":"Comment publier une annonce de vente de parts de SCPI ?"}
 ---

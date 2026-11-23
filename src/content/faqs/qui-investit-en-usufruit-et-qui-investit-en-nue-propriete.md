@@ -1,7 +1,7 @@
 ---
 title: "Qui investit en usufruit et qui investit en nue-propriété ?"
 category: "Démembrement"
-order: 85
+order: 80
 page: false
 seo: {"title":"Qui investit en usufruit et qui investit en nue-propriété ?"}
 ---

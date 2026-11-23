@@ -15,7 +15,7 @@ Product claims: 2nd Market is a matchmaking platform (ni CGP, ni CIF, ni sociét
 3. One PR = one topic. No unrequested refactors, renames or "while I'm here" changes.
 4. Done and `npm run check && npm run build` pass: commit (`feat: …`, `fix: …`, `copy: …`, `blog: …`), push the branch,
    `gh pr create` filling `.github/pull_request_template.md` (what changed, Rule 5 items).
-5. CI comments a preview URL on the PR (`https://pr-<number>-2mk-landing.<account>.workers.dev`); share it.
+5. CI comments a preview URL on the PR (`https://pr-<number>-2mk-landing.vtquy98.workers.dev`); share it.
 6. Quy reviews and merges; merging deploys to production.
 
 ## Rule 2 — One source of truth

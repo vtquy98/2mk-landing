@@ -1,7 +1,7 @@
 ---
 title: "Quels sont les frais d’un démembrement SCPI ?"
 category: "Démembrement"
-order: 87
+order: 82
 page: false
 seo: {"title":"Quels sont les frais d’un démembrement SCPI ?"}
 ---

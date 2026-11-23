@@ -1,7 +1,7 @@
 ---
 title: "Que faire si ma SCPI baisse de prix ?"
 category: "SCPI"
-order: 21
+order: 17
 page: false
 seo: {"title":"Que faire si ma SCPI baisse de prix ?"}
 ---

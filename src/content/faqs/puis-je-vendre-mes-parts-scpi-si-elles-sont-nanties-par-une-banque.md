@@ -1,7 +1,7 @@
 ---
 title: "Puis-je vendre mes parts SCPI si elles sont nanties par une banque ?"
 category: "SCPI"
-order: 35
+order: 31
 page: false
 seo: {"title":"Puis-je vendre mes parts SCPI si elles sont nanties par une banque ?"}
 ---

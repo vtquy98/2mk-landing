@@ -1,7 +1,7 @@
 ---
 title: "Comment sortir d'une SCPI ?"
 category: "SCPI"
-order: 24
+order: 20
 page: false
 seo: {"title":"Comment sortir d'une SCPI ?"}
 ---

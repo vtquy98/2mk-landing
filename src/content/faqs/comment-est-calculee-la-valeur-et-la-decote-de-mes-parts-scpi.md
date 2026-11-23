@@ -1,7 +1,7 @@
 ---
 title: "Comment est calculée la valeur et la décote de mes parts SCPI ?"
 category: "SCPI"
-order: 51
+order: 47
 page: false
 seo: {"title":"Comment est calculée la valeur et la décote de mes parts SCPI ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Quelle durée choisir pour un démembrement SCPI ?"
 category: "Démembrement"
-order: 88
+order: 83
 page: false
 seo: {"title":"Quelle durée choisir pour un démembrement SCPI ?"}
 ---

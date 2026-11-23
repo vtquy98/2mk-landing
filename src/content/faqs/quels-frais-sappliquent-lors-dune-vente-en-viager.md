@@ -1,7 +1,7 @@
 ---
 title: "Quels frais s’appliquent lors d’une vente en viager ?"
 category: "Viager"
-order: 74
+order: 69
 page: false
 seo: {"title":"Quels frais s’appliquent lors d’une vente en viager ?"}
 ---

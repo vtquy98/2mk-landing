@@ -1,7 +1,7 @@
 ---
 title: "Y a-t-il un risque d'arnaque sur le marché secondaire des SCPI ?"
 category: "SCPI"
-order: 15
+order: 11
 page: false
 seo: {"title":"Y a-t-il un risque d'arnaque sur le marché secondaire des SCPI ?"}
 ---

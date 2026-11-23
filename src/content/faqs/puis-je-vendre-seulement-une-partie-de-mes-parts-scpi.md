@@ -1,7 +1,7 @@
 ---
 title: "Puis-je vendre seulement une partie de mes parts SCPI ?"
 category: "SCPI"
-order: 48
+order: 44
 page: false
 seo: {"title":"Puis-je vendre seulement une partie de mes parts SCPI ?"}
 ---

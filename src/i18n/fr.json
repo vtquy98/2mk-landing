@@ -90,5 +90,9 @@
     "home": "Retour à la page d'accueil",
     "listings": "Voir nos annonces SCPI",
     "imageAlt": "Symbole 2nd Market"
+  },
+  "forms": {
+    "wait": "Envoi en cours…",
+    "error": "Une erreur est survenue lors de l’envoi du formulaire. Merci de réessayer."
   }
 }

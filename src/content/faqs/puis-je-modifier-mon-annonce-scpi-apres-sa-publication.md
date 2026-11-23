@@ -1,7 +1,7 @@
 ---
 title: "Puis-je modifier mon annonce SCPI après sa publication ?"
 category: "SCPI"
-order: 59
+order: 55
 page: false
 seo: {"title":"Puis-je modifier mon annonce SCPI après sa publication ?"}
 ---

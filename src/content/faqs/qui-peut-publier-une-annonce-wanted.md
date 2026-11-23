@@ -1,7 +1,7 @@
 ---
 title: "Qui peut publier une annonce Wanted ?"
 category: "SCPI"
-order: 43
+order: 39
 page: false
 seo: {"title":"Qui peut publier une annonce Wanted ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Comment est calculée la valeur du bien en viager ?"
 category: "Viager"
-order: 67
+order: 62
 page: false
 seo: {"title":"Comment est calculée la valeur du bien en viager ?"}
 ---

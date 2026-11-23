@@ -1,7 +1,7 @@
 ---
 title: "Peut-on acheter à plusieurs ?"
 category: "SCPI"
-order: 45
+order: 41
 page: false
 seo: {"title":"Peut-on acheter à plusieurs ?"}
 ---

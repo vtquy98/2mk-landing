@@ -1,7 +1,7 @@
 ---
 title: "Le revenu distribué par part change-t-il selon le canal d’achat ?"
 category: "SCPI"
-order: 39
+order: 35
 page: false
 seo: {"title":"Le revenu distribué par part change-t-il selon le canal d’achat ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Qui paie les charges et travaux en viager ?"
 category: "Viager"
-order: 78
+order: 73
 page: false
 seo: {"title":"Qui paie les charges et travaux en viager ?"}
 ---

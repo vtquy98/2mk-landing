@@ -1,7 +1,7 @@
 ---
 title: "Quels sont les frais sur 2nd Market ?"
 category: "SCPI"
-order: 61
+order: 57
 page: false
 seo: {"title":"Quels sont les frais sur 2nd Market ?"}
 ---

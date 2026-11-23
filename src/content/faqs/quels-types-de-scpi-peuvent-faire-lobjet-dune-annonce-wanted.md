@@ -1,7 +1,7 @@
 ---
 title: "Quels types de SCPI peuvent faire l’objet d’une annonce Wanted ?"
 category: "SCPI"
-order: 42
+order: 38
 page: false
 seo: {"title":"Quels types de SCPI peuvent faire l’objet d’une annonce Wanted ?"}
 ---

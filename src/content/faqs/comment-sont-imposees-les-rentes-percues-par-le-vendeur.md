@@ -1,7 +1,7 @@
 ---
 title: "Comment sont imposées les rentes perçues par le vendeur ?"
 category: "Viager"
-order: 72
+order: 67
 page: false
 seo: {"title":"Comment sont imposées les rentes perçues par le vendeur ?"}
 ---

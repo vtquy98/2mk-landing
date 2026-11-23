@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi passer par un notaire ?"
 category: "SCPI"
-order: 52
+order: 48
 page: false
 seo: {"title":"Pourquoi passer par un notaire ?"}
 ---

@@ -2,8 +2,6 @@
 title: "Elysées Pierre"
 excerpt: "Elysées Pierre (HSBC REIM (France)), capital variable : prix 549 € au 03/08/2026, TD 2025 de 5,00 %. Cession de gré à gré par acte notarié — 2nd Market."
 category: "SCPI"
-manager: "HSBC REIM (France)"
-managerPage: "hsbc-reim-france-ebf6e"
 distributionRateText: "5,00 %"
 sharePriceText: "549 €"
 annualIncomeText: "33,00 €"

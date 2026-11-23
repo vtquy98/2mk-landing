@@ -1,7 +1,7 @@
 ---
 title: "Quels documents fournir pour vendre mes parts SCPI ?"
 category: "SCPI"
-order: 57
+order: 53
 page: false
 seo: {"title":"Quels documents fournir pour vendre mes parts SCPI ?"}
 ---

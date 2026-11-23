@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi investir dans un viager"
 category: "Viager"
-order: 82
+order: 77
 page: false
 seo: {"title":"Pourquoi investir dans un viager"}
 ---

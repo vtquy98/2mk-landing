@@ -1,7 +1,7 @@
 ---
 title: "Quels sont les risques d’un démembrement SCPI ?"
 category: "Démembrement"
-order: 86
+order: 81
 page: false
 seo: {"title":"Quels sont les risques d’un démembrement SCPI ?"}
 ---

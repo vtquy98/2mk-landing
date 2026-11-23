@@ -1,7 +1,7 @@
 ---
 title: "Qu'est-ce qu'un Viager en 2025?"
 category: "Viager"
-order: 84
+order: 79
 page: false
 seo: {"title":"Qu'est-ce qu'un Viager en 2025?"}
 ---

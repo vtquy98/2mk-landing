@@ -1,7 +1,7 @@
 ---
 title: "Comment acheter des parts SCPI sur 2nd Market ?"
 category: "SCPI"
-order: 20
+order: 16
 page: false
 seo: {"title":"Comment acheter des parts SCPI sur 2nd Market ?"}
 ---

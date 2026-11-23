@@ -1,7 +1,7 @@
 ---
 title: "2nd Market est-elle indépendante ?"
 category: "SCPI"
-order: 50
+order: 46
 page: false
 seo: {"title":"2nd Market est-elle indépendante ?"}
 ---

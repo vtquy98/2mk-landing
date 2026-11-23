@@ -1,7 +1,7 @@
 ---
 title: "Comment déterminer le prix de vente idéal pour mes parts de SCPI ?"
 category: "SCPI"
-order: 56
+order: 52
 page: false
 seo: {"title":"Comment déterminer le prix de vente idéal pour mes parts de SCPI ?"}
 ---

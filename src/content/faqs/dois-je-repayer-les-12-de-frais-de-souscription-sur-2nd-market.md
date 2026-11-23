@@ -1,7 +1,7 @@
 ---
 title: "Dois-je repayer les 12 % de frais de souscription sur 2nd Market ?"
 category: "SCPI"
-order: 41
+order: 37
 page: false
 seo: {"title":"Dois-je repayer les 12 % de frais de souscription sur 2nd Market ?"}
 ---

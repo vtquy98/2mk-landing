@@ -1,7 +1,7 @@
 ---
 title: "2nd Market touche-t-elle des rétrocommissions des sociétés de gestion ?"
 category: "SCPI"
-order: 28
+order: 24
 page: false
 seo: {"title":"2nd Market touche-t-elle des rétrocommissions des sociétés de gestion ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Quelles sont les protections juridiques de l'acquéreur et du vendeur en viager ?"
 category: "Viager"
-order: 83
+order: 78
 page: false
 seo: {"title":"Quelles sont les protections juridiques de l'acquéreur et du vendeur en viager ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Pourquoi parle-t-on de “décote” sur le marché secondaire ?"
 category: "SCPI"
-order: 40
+order: 36
 page: false
 seo: {"title":"Pourquoi parle-t-on de “décote” sur le marché secondaire ?"}
 ---

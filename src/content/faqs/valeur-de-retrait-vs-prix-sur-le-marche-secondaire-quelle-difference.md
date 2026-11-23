@@ -1,7 +1,7 @@
 ---
 title: "Valeur de retrait vs prix sur le marché secondaire : quelle différence ?"
 category: "SCPI"
-order: 23
+order: 19
 page: false
 seo: {"title":"Valeur de retrait vs prix sur le marché secondaire : quelle différence ?"}
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Comment fonctionne le démembrement SCPI ?"
 category: "Démembrement"
-order: 90
+order: 85
 page: false
 seo: {"title":"Comment fonctionne le démembrement SCPI ?"}
 ---

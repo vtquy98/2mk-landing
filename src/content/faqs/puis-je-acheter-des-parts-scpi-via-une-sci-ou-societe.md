@@ -1,7 +1,7 @@
 ---
 title: "Puis-je acheter des parts SCPI via une SCI ou société ?"
 category: "SCPI"
-order: 19
+order: 15
 page: false
 seo: {"title":"Puis-je acheter des parts SCPI via une SCI ou société ?"}
 ---

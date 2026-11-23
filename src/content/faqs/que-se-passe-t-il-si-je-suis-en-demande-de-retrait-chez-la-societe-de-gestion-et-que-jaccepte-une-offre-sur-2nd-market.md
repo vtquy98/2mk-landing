@@ -1,7 +1,7 @@
 ---
 title: "Que se passe-t-il si je suis en demande de retrait chez la société de gestion et que j’accepte une offre sur 2nd Market ?"
 category: "SCPI"
-order: 36
+order: 32
 page: false
 seo: {"title":"Que se passe-t-il si je suis en demande de retrait chez la société de gestion et que j’accepte une offre sur 2nd Market ?"}
 ---

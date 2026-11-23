@@ -13,6 +13,27 @@ function fixJsonLd(j, path) {
   } catch { return j; }
 }
 
+// Webflow served no body for these pages. The documents checklist below is written from the site's own copy (home
+// "Documents requis" block and the guide /guide-scpi/comment-ca-marche), so the page delivers what its head promises.
+const BODIES = {
+  'documents-requis-scpi': `Trois documents suffisent pour acheter ou vendre des parts de SCPI sur 2nd Market.
+
+## Pièce d'identité
+
+Pour créer votre compte, acheteur comme vendeur : une adresse e-mail et une pièce d'identité recto verso
+(PDF, JPG ou PNG, 5 Mo max).
+
+## Preuve de propriété
+
+Pour vendre : un relevé de parts de moins de six mois, déposé avec votre annonce.
+
+## Justificatif de domicile
+
+Pour l'acte de cession signé chez le notaire : un justificatif de domicile de moins de trois mois.
+
+Le parcours complet, étape par étape : [acheter ou vendre des parts de SCPI entre particuliers](/guide-scpi/comment-ca-marche).`,
+};
+
 export default async function () {
   let n = 0;
   for (const path of pagesIn('/information-pages/')) {
@@ -25,7 +46,7 @@ export default async function () {
       excerpt: seo.description,
       seo,
       lastmod: lastmod(path),
-    });
+    }, BODIES[path.split('/').pop()]);
     n++;
   }
   return n;

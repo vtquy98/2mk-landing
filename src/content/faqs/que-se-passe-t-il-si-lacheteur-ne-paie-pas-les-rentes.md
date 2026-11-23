@@ -1,7 +1,7 @@
 ---
 title: "Que se passe-t-il si l’acheteur ne paie pas les rentes ?"
 category: "Viager"
-order: 71
+order: 66
 page: false
 seo: {"title":"Que se passe-t-il si l’acheteur ne paie pas les rentes ?"}
 ---

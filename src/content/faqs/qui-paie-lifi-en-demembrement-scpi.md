@@ -1,7 +1,7 @@
 ---
 title: "Qui paie l’IFI en démembrement SCPI ?"
 category: "Démembrement"
-order: 89
+order: 84
 page: false
 seo: {"title":"Qui paie l’IFI en démembrement SCPI ?"}
 ---

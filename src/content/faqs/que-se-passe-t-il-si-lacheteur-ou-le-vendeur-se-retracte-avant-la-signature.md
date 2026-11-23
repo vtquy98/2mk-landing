@@ -1,7 +1,7 @@
 ---
 title: "Que se passe-t-il si l’acheteur ou le vendeur se rétracte avant la signature ?"
 category: "SCPI"
-order: 49
+order: 45
 page: false
 seo: {"title":"Que se passe-t-il si l’acheteur ou le vendeur se rétracte avant la signature ?"}
 ---

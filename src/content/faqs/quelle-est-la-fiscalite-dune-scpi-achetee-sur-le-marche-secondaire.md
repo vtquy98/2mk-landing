@@ -1,7 +1,7 @@
 ---
 title: "Quelle est la fiscalité d'une SCPI achetée sur le marché secondaire ?"
 category: "SCPI"
-order: 18
+order: 14
 page: false
 seo: {"title":"Quelle est la fiscalité d'une SCPI achetée sur le marché secondaire ?"}
 ---
