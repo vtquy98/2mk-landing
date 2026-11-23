@@ -1,3 +1,28 @@
 ---
-// TODO(shell): round floating CTA to the SCPI listings, visible ≤ 991px.
+// Round floating CTA to the SCPI listings, shown on tablet and mobile only (≤ 991px).
+import { PRODUCT, t } from '../i18n/config';
+import ArrowIcon from './ui/ArrowIcon.astro';
 ---
+
+<a class="floating" href={`${PRODUCT.app}/scpi`} aria-label={t().floating.label}><ArrowIcon size="lg" /></a>
+
+<style>
+  .floating {
+    position: fixed;
+    right: var(--size-1-25);
+    bottom: var(--size-1-25);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-4-5);
+    height: var(--size-4-5);
+    border-radius: var(--radius-round);
+    background: var(--primary);
+    color: var(--white);
+    transition: background-color 0.4s;
+  }
+  .floating:hover { background: var(--primary-hover); }
+  @media (max-width: 991px) { .floating { display: flex; } }
+  @media (max-width: 479px) { .floating { width: var(--size-6); height: var(--size-6); } }
+</style>

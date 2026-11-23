@@ -29,11 +29,20 @@ export function leadContext(placement: string) {
   };
 }
 
-/** Posts a lead. Apps Script doesn't answer CORS preflights, so the body is sent as text/plain. */
+/**
+ * Posts a lead. Apps Script doesn't answer CORS preflights, so the body is sent as text/plain.
+ * The script answers 200 even when it rejects a lead, with `{ "status": "error" }` in the body.
+ */
 export async function sendLead(lead: Lead): Promise<boolean> {
   try {
     const r = await fetch(LEAD_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead) });
-    return r.ok;
+    if (!r.ok) return false;
+    const body = await r.text();
+    try {
+      return JSON.parse(body)?.status !== 'error';
+    } catch {
+      return true; // not JSON: accepted
+    }
   } catch {
     return false;
   }

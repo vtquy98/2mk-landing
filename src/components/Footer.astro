@@ -1,4 +1,327 @@
 ---
-// TODO(shell): fixed "reveal" footer (brand, links, contact, newsletter form, partners, socials, big wordmark).
+// Site footer. On large screens it is "revealed": it sticks to the bottom of the viewport under the page
+// (BaseLayout's .page-body sits above it with rounded bottom corners), pure CSS.
+import { PRODUCT, t } from '../i18n/config';
+import { pagePath } from '../lib/routes';
+import { PRIVACY_URL } from '../scripts/lead';
+import FinanceInnovation from './shell/icons/finance-innovation.svg';
+import Docusign from './shell/icons/docusign.svg';
+import Stripe from './shell/icons/stripe.svg';
+import Linkedin from './shell/icons/linkedin.svg';
+import Facebook from './shell/icons/facebook.svg';
+import Youtube from './shell/icons/youtube.svg';
+import Check from './shell/icons/check-circle.svg';
+
+const d = t().footer;
+const path = pagePath(Astro.url);
+const current = (href: string) => (href === path ? 'page' : undefined);
+const newTab = { target: '_blank', rel: 'noopener' };
+
+const legal = [
+  { href: PRIVACY_URL, label: d.privacy },
+  { href: '/legal/conditions-generales-dutilisation', label: d.terms },
+];
+const links = [
+  { href: `${PRODUCT.app}/scpi`, label: d.listings },
+  { href: '/repertoire', label: d.directory },
+  { href: `${PRODUCT.app}/taxe-fonciere`, label: d.tax, newTab: true },
+  { href: '/actualites-conseils', label: d.news },
+  { href: '/faqs', label: d.faqs },
+  { href: '/guides-scpi-viager-demembrement', label: d.guides },
+  { href: '/simulateurs', label: d.simulators },
+  { href: '/scpi-essentiel', label: d.essentials },
+];
+const partners = [
+  { href: 'https://finance-innovation.org/', label: 'Finance Innovation', Logo: FinanceInnovation },
+  { label: 'Docusign', Logo: Docusign },
+  { href: 'https://stripe.com/', label: 'Stripe', Logo: Stripe },
+];
+const socials = [
+  { href: 'https://www.linkedin.com/company/2nd-market-revente-scpi/', label: 'LinkedIn', Icon: Linkedin },
+  { href: 'https://www.facebook.com/profile.php?id=61576911579063', label: 'Facebook', Icon: Facebook },
+  { href: 'https://www.youtube.com/channel/UCX4g_ay_2RxJG2Ox7BhlI-w', label: 'YouTube', Icon: Youtube },
+];
+const year = new Date().getFullYear();
 ---
-<footer class="footer"></footer>
+
+<footer class="site-footer">
+  <div class="top gutter">
+    <div class="grid container">
+      <div class="brand">
+        <a href="/" class="brand__logo">
+          <img src="/assets/67444941f250833924d5f69c_logo-white.svg" alt={d.home} width="276" height="81" loading="lazy" decoding="async" />
+        </a>
+        <p class="brand__text">{d.tagline}</p>
+        <ul class="legal" role="list" aria-label={d.legal}>
+          {legal.map(l => <li><a class="link" href={l.href} aria-current={current(l.href)}>{l.label}</a></li>)}
+        </ul>
+      </div>
+
+      <nav class="col" aria-labelledby="footer-brand">
+        <p class="label" id="footer-brand">{d.brand}</p>
+        <ul class="links" role="list">
+          {
+            links.map(l => (
+              <li>
+                <a class="link" href={l.href} aria-current={current(l.href)} {...(l.newTab ? newTab : {})}>{l.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="col">
+        <p class="label">{d.contact}</p>
+        <a class="link" href="/contact" aria-current={current('/contact')}>{d.contactUs}</a>
+        <dl class="contact">
+          <div class="item">
+            <dt class="label">{d.location}</dt>
+            <dd class="place">
+              <img
+                src="/assets/67a9b740c0676b19b0ab711c_normandy-flag.avif"
+                srcset="/assets/67a9b740c0676b19b0ab711c_normandy-flag-p-500.avif 500w, /assets/67a9b740c0676b19b0ab711c_normandy-flag.avif 1200w"
+                sizes="48px"
+                alt={d.flag}
+                width="1200"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+              {d.place}
+            </dd>
+          </div>
+          <div class="item">
+            <dt class="label">{d.email}</dt>
+            <dd><a class="link" href={`mailto:${PRODUCT.email}`}>{PRODUCT.email}</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="col">
+        <div class="item item--newsletter">
+          <p class="label" id="newsletter-label">{d.newsletter}</p>
+          <form class="newsletter" data-newsletter aria-labelledby="newsletter-label">
+            <label class="visually-hidden" for="newsletter-email">{d.emailLabel}</label>
+            <input class="newsletter__input" id="newsletter-email" type="email" name="email" placeholder={d.emailPlaceholder} autocomplete="email" maxlength="254" required />
+            <div class="visually-hidden" aria-hidden="true">
+              <input type="text" name="website" tabindex="-1" autocomplete="off" aria-label={d.honeypot} />
+            </div>
+            <button class="newsletter__submit" type="submit" data-sending={d.sending}>{d.subscribe}</button>
+          </form>
+          <div class="newsletter__done" role="status" hidden>
+            <Check aria-hidden="true" />
+            <p>{d.success}</p>
+          </div>
+          <p class="newsletter__error" role="alert" hidden>{d.error}</p>
+        </div>
+
+        <div class="item">
+          <p class="label">{d.partners}</p>
+          <ul class="partners" role="list">
+            {
+              partners.map(({ href, label, Logo }) => (
+                <li>
+                  {href ? (
+                    <a class="partner" href={href} {...newTab}><Logo role="img" aria-label={label} /></a>
+                  ) : (
+                    <span class="partner"><Logo role="img" aria-label={label} /></span>
+                  )}
+                </li>
+              ))
+            }
+            <li>
+              <a class="partner partner--img" href="https://www.frenchtechcaen.com/" {...newTab}>
+                <img src="/assets/68639031bc21e5df0f780d5b_logo-4.avif" alt="Normandy French Tech" width="852" height="214" loading="lazy" decoding="async" />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <p class="label">{d.follow}</p>
+          <ul class="socials" role="list">
+            {
+              socials.map(({ href, label, Icon }) => (
+                <li>
+                  <a class="social" href={href} aria-label={label} {...newTab}><Icon aria-hidden="true" /></a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom container">
+    <a href="/" class="wordmark">
+      <img src="/assets/674444aa63efd99dd750cd27_2nd.svg" alt={d.wordmark} width="1336" height="210" loading="lazy" decoding="async" />
+    </a>
+    <p class="copyright">{year} {d.rights}</p>
+  </div>
+</footer>
+
+<script>
+  import { sendLead, leadContext } from '../scripts/lead';
+
+  const MIN_FILL_MS = 2500; // a human needs more than this to type an email
+  const form = document.querySelector<HTMLFormElement>('[data-newsletter]');
+  if (form) {
+    const done = form.nextElementSibling as HTMLElement;
+    const error = done.nextElementSibling as HTMLElement;
+    const button = form.querySelector<HTMLButtonElement>('button')!;
+    const label = button.textContent;
+    const shownAt = Date.now();
+    const succeed = () => { form.hidden = true; done.hidden = false; };
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      error.hidden = true;
+      const data = new FormData(form);
+      // Bots: fake success, send nothing.
+      if (data.get('website') || Date.now() - shownAt < MIN_FILL_MS) return succeed();
+      button.disabled = true;
+      button.textContent = button.dataset.sending ?? label;
+      const ok = await sendLead({
+        leadAction: 'newsletter',
+        email: String(data.get('email')).trim().toLowerCase(),
+        source: 'footer-newsletter',
+        metadata: leadContext('footer'),
+      });
+      button.disabled = false;
+      button.textContent = label;
+      if (ok) succeed();
+      else error.hidden = false;
+    });
+  }
+</script>
+
+<style>
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--size-4);
+    padding-block: var(--size-6) var(--size-2);
+    background: var(--color-bg-medium);
+    color: var(--color-text-light);
+  }
+  /* The reveal: the footer waits at the bottom of the viewport under the page, which scrolls away above it.
+     Only when the whole footer fits in the viewport, otherwise its top could never be reached. */
+  @media (min-width: 992px) and (min-height: 50rem) {
+    .site-footer { position: sticky; bottom: 0; z-index: 1; min-height: 100vh; gap: 0; }
+    /* Keyboard: while a footer control has focus the footer is back in the flow, so the browser scrolls to it. */
+    .site-footer:focus-within { position: relative; }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0.5rem, 1fr) 1fr 1fr 1fr;
+    gap: var(--size-2);
+  }
+  ul, dl, dd { margin: 0; padding: 0; list-style: none; }
+  p { margin: 0; }
+
+  .brand { display: flex; flex-direction: column; gap: var(--size-1); }
+  .brand__logo { display: block; width: 80%; }
+  .brand__logo img { width: auto; max-width: 100%; height: auto; }
+  .brand__text { opacity: 0.8; }
+  .legal { display: flex; gap: var(--size-0-5); }
+
+  .col, .links, .item { display: flex; flex-direction: column; }
+  .col { gap: var(--size-0-75); }
+  .links { gap: var(--size-0-75); }
+  .item { gap: var(--size-0-25); }
+  .contact { display: contents; }
+  .item--newsletter { margin-bottom: var(--size-1-5); }
+  .label { opacity: 0.4; }
+  .link {
+    display: inline-block;
+    color: var(--color-text-light);
+    transition: color 0.4s, transform 0.4s;
+  }
+  .link:hover, .link[aria-current='page'] { color: var(--primary-on-dark, #ff7256); }
+  .link:hover { transform: translateX(2px); }
+  .place { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0-5); }
+  .place img { width: var(--size-3); height: auto; aspect-ratio: 3 / 2; border-radius: var(--size-0-5); }
+
+  .newsletter { display: flex; flex-direction: column; gap: var(--size-0-5); padding-top: var(--size-1); }
+  .newsletter__input {
+    min-height: var(--size-3);
+    padding: var(--size-0-5) var(--size-1);
+    border: 1px solid var(--neutral-lightest);
+    border-radius: var(--radius-small);
+    background: var(--white);
+    color: var(--color-text);
+    line-height: var(--lh-1-4);
+  }
+  .newsletter__input::placeholder { color: var(--color-text-subtle); }
+  .newsletter__input:focus { border-color: var(--neutral-strong); outline: none; }
+  .newsletter__input:focus-visible { outline: 0.125rem solid var(--focus); outline-offset: 0.125rem; }
+  .newsletter__submit {
+    padding: var(--size-0-75) var(--size-1-25) var(--size-0-75) var(--size-1);
+    border: 0;
+    border-radius: var(--radius-round);
+    background: var(--primary);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: background-color 0.4s;
+  }
+  .newsletter__submit:hover { background: var(--primary-hover); }
+  .newsletter__submit:disabled { opacity: 0.7; cursor: wait; }
+  .newsletter__done {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-0-5);
+    margin-top: var(--size-1);
+    padding: var(--size-1);
+    border-radius: var(--radius-small);
+    background: var(--success-light, #d5ffe4);
+    color: var(--success-strong, #06413a);
+    font-weight: var(--weight-regular);
+  }
+  .newsletter[hidden], .newsletter__done[hidden], .newsletter__error[hidden] { display: none; }
+  .newsletter__done :global(svg) { width: 1.5rem; height: 1.5rem; color: var(--success, #15c182); }
+  .newsletter__error { margin-top: var(--size-0-5); padding: 0.875rem 1rem; border-radius: var(--radius-small); background: var(--primary-lightest); color: var(--primary-strong); }
+
+  .partners { display: flex; flex-wrap: wrap; gap: var(--size-0-5); padding-top: var(--size-0-5); }
+  .partner { display: block; color: var(--secondary-lightest); transition: transform 0.4s, color 0.4s; }
+  .partner :global(svg) { display: block; width: auto; height: 1.75rem; }
+  a.partner:hover { color: var(--primary-on-dark, #ff7256); transform: translateX(var(--size-0-25)); }
+  .partner--img { padding-inline: var(--size-0-25); border: 0.5px solid var(--color-bg); border-radius: 6px; }
+  .partner--img img { display: block; width: auto; height: 1.75rem; }
+
+  .socials { display: flex; gap: var(--size-1); padding-top: var(--size-0-5); }
+  .social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-2-5);
+    height: var(--size-2-5);
+    border: 1px solid color-mix(in srgb, var(--secondary-lightest) 10%, transparent);
+    border-radius: var(--radius-small);
+    background: color-mix(in srgb, var(--white) 10%, transparent);
+    color: var(--color-text-light);
+    transition: transform 0.4s, color 0.4s, border-color 0.4s;
+  }
+  .social:hover { border-color: var(--primary-on-dark, #ff7256); color: var(--primary-on-dark, #ff7256); transform: translateX(var(--size-0-25)); }
+  .social :global(svg) { width: 1.5rem; height: 1.5rem; }
+
+  .bottom { display: flex; flex-direction: column; align-items: center; gap: var(--size-2); padding-inline: var(--size-1); }
+  .wordmark { display: block; width: 100%; overflow: clip; }
+  .wordmark img { width: 100%; height: auto; }
+  .copyright { text-align: center; }
+
+  @media (max-width: 991px) {
+    .site-footer { padding-top: var(--size-4); }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .brand { grid-column: span 2; }
+    .bottom { gap: var(--size-1); }
+  }
+  @media (max-width: 479px) {
+    .grid { grid-template-columns: 1fr; }
+    .brand { grid-column: auto; }
+    .legal { flex-direction: column; align-items: center; gap: var(--size-0-25); }
+    .bottom { align-items: flex-start; }
+  }
+</style>
