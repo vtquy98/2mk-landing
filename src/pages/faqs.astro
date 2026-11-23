@@ -4,6 +4,7 @@
 // Without JavaScript every category is shown one after the other; the script turns them into tabs.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
 import seo from '../data/seo/faqs.json';
 import faqs from '../data/faqs.json';
 
@@ -17,36 +18,34 @@ const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
 <BaseLayout seo={seo}>
   <HubHeader title="Nos réponses à vos questions sur l'investissement immobilier" crumb="FAQs" />
 
-  <section class="gutter">
-    <div class="container section--small">
-      <div class="faqs" data-tabs>
-        <div class="tabs" role="tablist" aria-label="Catégories" hidden>
-          {
-            categories.map((c, i) => (
-              <button type="button" class="tab" role="tab" id={`${c.id}-tab`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
-                {c.name}
-              </button>
-            ))
-          }
-        </div>
+  <HubSection>
+    <div class="faqs" data-tabs>
+      <div class="tabs" role="tablist" aria-label="Catégories" hidden>
         {
-          categories.map(c => (
-            <div class="panel" id={c.id} role="tabpanel" aria-labelledby={`${c.id}-tab`}>
-              {c.items.map(f => (
-                <details class="item">
-                  <summary>
-                    <h2 class="question">{f.question}</h2>
-                    <img class="caret" src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
-                  </summary>
-                  <div class="answer" set:html={f.answer} />
-                </details>
-              ))}
-            </div>
+          categories.map((c, i) => (
+            <button type="button" class="tab" role="tab" id={`${c.id}-tab`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+              {c.name}
+            </button>
           ))
         }
       </div>
+      {
+        categories.map(c => (
+          <div class="panel" id={c.id} role="tabpanel" aria-labelledby={`${c.id}-tab`}>
+            {c.items.map(f => (
+              <details class="item">
+                <summary>
+                  <h2 class="question">{f.question}</h2>
+                  <img class="caret" src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
+                </summary>
+                <div class="answer" set:html={f.answer} />
+              </details>
+            ))}
+          </div>
+        ))
+      }
     </div>
-  </section>
+  </HubSection>
 </BaseLayout>
 
 <script>
@@ -103,7 +102,7 @@ const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
   }
   .tab:hover { background: color-mix(in srgb, var(--white) 50%, transparent); }
   .tab[aria-selected='true'] { border-color: var(--color-bg-dark); background: var(--white); }
-  .panel { display: flex; flex-direction: column; gap: var(--size-0-25); width: 100%; }
+  .panel { width: 100%; padding-top: var(--size-2); }
   .panel[hidden] { display: none; }
 
   .item { margin-bottom: var(--size-0-5); padding: var(--size-0-5) var(--size-1); border-radius: var(--radius-main); background: var(--white); }
@@ -119,12 +118,13 @@ const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
   .answer { margin-right: var(--size-1); padding: 0 0 var(--size-1) var(--size-0-5); }
   .answer :global(> :last-child) { margin-bottom: 0; }
   .answer :global(table) { border-collapse: collapse; margin-bottom: var(--size-0-5); }
-  .answer :global(:is(th, td)) { padding: var(--size-0-25) var(--size-0-75) var(--size-0-25) 0; text-align: left; vertical-align: top; }
+  .answer :global(:is(th, td)) { padding: 0 var(--size-1) 0 0; text-align: left; vertical-align: top; }
 
   @media (max-width: 991px) {
     .faqs { width: 100%; }
   }
   @media (max-width: 767px) {
+    .panel { padding-top: var(--size-1-5); }
     .answer { margin-right: 0; }
   }
   @media (max-width: 479px) {

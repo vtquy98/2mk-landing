@@ -3,6 +3,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
 import PostList from '../components/hub/PostList.astro';
 import seo from '../data/seo/scpi-essentiel.json';
 
@@ -11,9 +12,7 @@ const posts = (await getCollection('landing-pages')).sort((a, b) => (b.data.date
 
 <BaseLayout seo={seo}>
   <HubHeader title="l'Essentiel immobilier" crumb="l' Essentiel" />
-  <section class="gutter">
-    <div class="container section--small">
-      <PostList entries={posts} variant="link" />
-    </div>
-  </section>
+  <HubSection>
+    <PostList entries={posts} variant="link" />
+  </HubSection>
 </BaseLayout>
