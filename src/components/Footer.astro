@@ -240,7 +240,7 @@ const year = new Date().getFullYear();
     color: var(--color-text-light);
     transition: color 0.4s, transform 0.4s;
   }
-  .link:hover, .link[aria-current='page'] { color: var(--primary-on-dark, #ff7256); }
+  .link:hover, .link[aria-current='page'] { color: var(--primary-on-dark); }
   .link:hover { transform: translateX(2px); }
   .place { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0-5); }
   .place img { width: var(--size-3); height: auto; aspect-ratio: 3 / 2; border-radius: var(--size-0-5); }
@@ -276,18 +276,18 @@ const year = new Date().getFullYear();
     margin-top: var(--size-1);
     padding: var(--size-1);
     border-radius: var(--radius-small);
-    background: var(--success-light, #d5ffe4);
-    color: var(--success-strong, #06413a);
+    background: var(--success-light);
+    color: var(--success-strong);
     font-weight: var(--weight-regular);
   }
   .newsletter[hidden], .newsletter__done[hidden], .newsletter__error[hidden] { display: none; }
-  .newsletter__done :global(svg) { width: 1.5rem; height: 1.5rem; color: var(--success, #15c182); }
+  .newsletter__done :global(svg) { width: 1.5rem; height: 1.5rem; color: var(--success); }
   .newsletter__error { margin-top: var(--size-0-5); padding: 0.875rem 1rem; border-radius: var(--radius-small); background: var(--primary-lightest); color: var(--primary-strong); }
 
   .partners { display: flex; flex-wrap: wrap; gap: var(--size-0-5); padding-top: var(--size-0-5); }
   .partner { display: block; color: var(--secondary-lightest); transition: transform 0.4s, color 0.4s; }
   .partner :global(svg) { display: block; width: auto; height: 1.75rem; }
-  a.partner:hover { color: var(--primary-on-dark, #ff7256); transform: translateX(var(--size-0-25)); }
+  a.partner:hover { color: var(--primary-on-dark); transform: translateX(var(--size-0-25)); }
   .partner--img { padding-inline: var(--size-0-25); border: 0.5px solid var(--color-bg); border-radius: 6px; }
   .partner--img img { display: block; width: auto; height: 1.75rem; }
 
@@ -304,7 +304,7 @@ const year = new Date().getFullYear();
     color: var(--color-text-light);
     transition: transform 0.4s, color 0.4s, border-color 0.4s;
   }
-  .social:hover { border-color: var(--primary-on-dark, #ff7256); color: var(--primary-on-dark, #ff7256); transform: translateX(var(--size-0-25)); }
+  .social:hover { border-color: var(--primary-on-dark); color: var(--primary-on-dark); transform: translateX(var(--size-0-25)); }
   .social :global(svg) { width: 1.5rem; height: 1.5rem; }
 
   .bottom { display: flex; flex-direction: column; align-items: center; gap: var(--size-2); padding-inline: var(--size-1); }

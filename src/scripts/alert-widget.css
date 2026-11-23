@@ -1,6 +1,6 @@
 /* Email alert widget (alert-widget.ts). Plain CSS: the markup is created at runtime inside article content. */
 .email-alert {
-  --alert-accent: var(--sky, #5bb5d5);
+  --alert-accent: var(--sky);
   max-width: 70rem;
   margin: 1.6rem 0;
   padding: 1.3rem;
