@@ -1,0 +1,103 @@
+---
+// Shown while the app is being deployed (no nav, no footer).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/maintenance.json';
+---
+
+<BaseLayout seo={seo} nav={false} footer={false} floatingButton={false}>
+  <div class="page gutter">
+    <div class="visual">
+      <img src="/assets/6809c2d390b5d3dba26cdf31_404.avif" alt="Symbole 2nd Market" width="1366" height="1106" fetchpriority="high" decoding="async" />
+      <!-- Wrench swinging (was a Lottie "tool hover-oscillate" animation). -->
+      <svg class="wrench" viewBox="0 0 430 430" aria-hidden="true">
+        <defs>
+          <mask id="wrench-hole"><rect width="430" height="430" fill="#fff" /><circle cx="315" cy="323" r="15" /></mask>
+        </defs>
+        <g mask="url(#wrench-hole)"><path
+          transform="translate(213.7 219.3) rotate(-44.3)"
+          d="M-77,-114.8 C-77,-85.2 -60.3,-59.6 -35.9,-46.7 L-35.9,148 C-35.9,167.3 -20.3,183 -1,183 L1,183 C20.3,183 35.9,167.3 35.9,148 L35.9,-46.7 C60.3,-59.6 77,-85.2 77,-114.8 C77,-142.9 61.9,-167.4 39.5,-180.9 C39.3,-181 38.2,-181.5 37.2,-181.1 C35.7,-180.1 35.9,-178.9 35.9,-178.9 L35.9,-126.1 C35.9,-117.6 29,-110.7 20.5,-110.7 L-20.5,-110.7 C-29,-110.7 -35.9,-117.6 -35.9,-126.1 L-36,-177.5 C-36,-177.5 -35.7,-179 -37.1,-180.1 C-38.3,-181.2 -40,-180.7 -40.2,-180.5 C-62.5,-167.4 -77,-142.6 -77,-114.8z"
+        /></g>
+      </svg>
+    </div>
+    <div class="content">
+      <p class="eyebrow">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M17.665 17.999H3V15.333H17.665V17.999ZM8.5 13.8516H5.2002V6.15234H8.5V13.8516ZM15.0996 13.8516H11.7998V6.15234H15.0996V13.8516ZM17.665 4.66602H3V2H17.665V4.66602Z" /></svg>
+        Mise à jour en cours
+      </p>
+      <h1 class="h2">2nd Market évolue</h1>
+      <p class="text-medium lede">Notre plateforme est temporairement indisponible le temps de finaliser le déploiement de la version 2.0.</p>
+      <p class="note text-muted">Nous serons de retour très prochainement avec une expérience améliorée pour acheter et vendre des parts de SCPI et des viagers de gré à gré, sous validation notariale.</p>
+    </div>
+    <Button href="/">Retour à la page d'accueil</Button>
+    <div class="contact">
+      <p class="divider">Une question urgente ?</p>
+      <a href={`mailto:${PRODUCT.email}`}>{PRODUCT.email}</a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/2nd-market-revente-scpi/" target="_blank" rel="noopener" aria-label="2nd Market sur LinkedIn">
+          <svg viewBox="0 0 24 25" aria-hidden="true"><path d="M7.38424 20.6592V9.79024H3.77477V20.6592H7.38462H7.38424ZM5.58026 8.30652C6.83869 8.30652 7.62215 7.47191 7.62215 6.42889C7.59859 5.3621 6.83869 4.55078 5.60419 4.55078C4.36884 4.55078 3.56201 5.3621 3.56201 6.42879C3.56201 7.47182 4.34519 8.30643 5.55661 8.30643H5.57997L5.58026 8.30652ZM9.38213 20.6592H12.9913V14.5901C12.9913 14.2657 13.0149 13.9405 13.1102 13.7088C13.371 13.0595 13.9649 12.3873 14.9623 12.3873C16.268 12.3873 16.7907 13.384 16.7907 14.8452V20.6592H20.3997V14.4273C20.3997 11.0889 18.6193 9.53543 16.2446 9.53543C14.2977 9.53543 13.4426 10.6246 12.9676 11.3664H12.9916V9.79062H9.38232C9.42943 10.8103 9.38204 20.6596 9.38204 20.6596L9.38213 20.6592Z" /></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61576911579063" target="_blank" rel="noopener" aria-label="2nd Market sur Facebook">
+          <svg viewBox="0 0 24 25" aria-hidden="true"><path d="M14.3408 3.94141C15.1644 3.95147 15.9866 4.02169 16.7998 4.15137V6.81152H15.4033C14.0511 6.81153 13.6279 7.64671 13.6279 8.50098V10.5312H16.6572L16.165 13.6562H13.6279V21.2129H10.2207V13.6562H7.45703V10.5312H10.2207V8.14941C10.2207 5.44035 11.8481 3.94157 14.3408 3.94141Z" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--size-2);
+    max-width: 64rem;
+    min-height: 100svh;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .visual { position: relative; width: 12rem; margin-left: 4rem; }
+  .visual img { display: block; width: 100%; height: auto; }
+  .wrench { position: absolute; inset: -6% 0 auto auto; width: 8rem; height: 8rem; fill: var(--neutral-light); opacity: 0.55; animation: swing 2.4s ease-in-out infinite; transform-origin: 50% 50%; }
+  @keyframes swing { 0%, 100% { rotate: -6deg; } 50% { rotate: 10deg; } }
+
+  .content { display: flex; flex-direction: column; align-items: center; gap: var(--size-0-75); max-width: 48rem; }
+  .content p { margin: 0; }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--size-0-5);
+    padding: var(--size-0-25) var(--size-0-75) var(--size-0-25) var(--size-0-5);
+    border: 1px solid var(--secondary-light);
+    border-radius: var(--radius-round);
+    background: var(--secondary-lightest);
+    color: var(--secondary);
+    font-weight: var(--weight-medium);
+  }
+  .eyebrow svg { width: var(--size-1-5); height: var(--size-1-5); fill: currentColor; }
+  .lede { max-width: 35rem; text-wrap: pretty; }
+  .note { max-width: 35rem; padding: var(--size-2); border-radius: var(--radius-main); background: var(--white); text-wrap: pretty; }
+
+  .contact { display: flex; flex-direction: column; align-items: center; gap: var(--size-0-75); width: 100%; }
+  .divider { display: flex; align-items: center; gap: var(--size-1); width: 100%; margin: 0; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 0.5px; background: linear-gradient(90deg, transparent, var(--color-text)); }
+  .divider::after { background: linear-gradient(90deg, var(--color-text), transparent); }
+  .socials { display: flex; gap: var(--size-1); }
+  .socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--size-2-5);
+    height: var(--size-2-5);
+    border: 1px solid var(--color-text);
+    border-radius: var(--radius-small);
+    color: var(--color-text);
+    transition: translate 0.4s, color 0.4s, border-color 0.4s;
+  }
+  .socials a:hover { translate: 0.25rem 0; color: var(--primary); border-color: var(--primary); }
+  .socials svg { width: var(--size-1-5); height: var(--size-1-5); fill: currentColor; }
+
+  @media (max-width: 479px) { .eyebrow { font-size: 0.875rem; } }
+</style>
