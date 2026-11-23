@@ -1,0 +1,84 @@
+---
+// Grid of article cards (shared card contract: title, excerpt, image, imageAlt, category; URL /<collection>/<id>).
+// `variant="category"`: category pill + "Lire la suite" button (actualités lists);
+// `variant="link"`: smaller title, 3-line summary, "Lire la suite →" link (guides lists).
+import type { CollectionEntry } from 'astro:content';
+
+type Entry = CollectionEntry<'actualites'> | CollectionEntry<'landing-pages'> | CollectionEntry<'guide-scpi'>;
+interface Props {
+  entries: Entry[];
+  variant?: 'category' | 'link';
+  headingLevel?: 'h2' | 'h3';
+}
+const { entries, variant = 'category', headingLevel: Heading = 'h2' } = Astro.props;
+---
+
+<ul class:list={['posts', `posts--${variant}`]} role="list">
+  {
+    entries.map(({ collection, id, data }) => (
+      <li>
+        <a class="card" href={`/${collection}/${id}`}>
+          {data.image && (
+            <span class="media">
+              <img src={data.image} alt={data.imageAlt ?? ''} width="640" height="360" loading="lazy" decoding="async" />
+            </span>
+          )}
+          <span class="body">
+            <span class="text">
+              <Heading class="title">{data.title}</Heading>
+              {data.excerpt && <span class:list={['summary', variant === 'link' ? 'clamp-3' : 'clamp-2']}>{data.excerpt}</span>}
+            </span>
+            {variant === 'category' ? (
+              <span class="foot">
+                {data.category && <span class="tag">{data.category}</span>}
+                <span class="more">Lire la suite</span>
+              </span>
+            ) : (
+              <span class="foot">
+                <span class="more-link">
+                  Lire la suite
+                  <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true">
+                    <path d="M20.82 12.69l-6.75 6.75a.75.75 0 0 1-1.06-1.06l5.47-5.47H3.79a.75.75 0 0 1 0-1.5h14.69l-5.47-5.47a.75.75 0 0 1 1.06-1.06l6.75 6.75a.75.75 0 0 1 0 1.06Z" fill="currentColor" />
+                  </svg>
+                </span>
+              </span>
+            )}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: 0; list-style: none; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--size-0-25);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    color: var(--color-text);
+    box-shadow: 0 20px 50px color-mix(in srgb, var(--neutral-strong) 3%, transparent);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .card:hover { transform: translateY(-0.25rem); box-shadow: 0 20px 60px 5px color-mix(in srgb, var(--neutral-strong) 10%, transparent); }
+  .media { display: block; overflow: clip; border-radius: var(--radius-medium); }
+  .media img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .body { display: flex; flex: 1; flex-direction: column; justify-content: space-between; gap: var(--size-2); padding: var(--size-0-5) var(--size-1) var(--size-1); }
+  .text { display: flex; flex-direction: column; align-items: flex-start; }
+  .title { margin-block: var(--size-0-5); font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); }
+  .summary { color: var(--color-bg-medium); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--size-0-5); }
+  .tag { padding: var(--size-0-25) var(--size-0-75); border-radius: var(--radius-round); background: var(--secondary-lightest); color: var(--secondary); font-weight: var(--weight-regular); }
+  .more { padding: var(--size-0-5) var(--size-1-25); border: 1px solid var(--primary); border-radius: var(--radius-round); color: var(--primary); }
+  .more-link { display: flex; align-items: center; gap: var(--size-0-5); padding-block: var(--size-0-25); color: var(--primary); line-height: var(--lh-1); }
+  .more-link svg { width: 1.5rem; height: 1.5rem; }
+
+  .posts--link .title { font-size: var(--text-main-size); }
+
+  @media (max-width: 479px) {
+    .posts { grid-template-columns: 1fr; }
+  }
+</style>

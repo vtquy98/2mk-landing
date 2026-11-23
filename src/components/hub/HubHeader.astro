@@ -1,0 +1,61 @@
+---
+// Dark rounded page header of the hub pages (/faqs, /demembrement, /viager-guides, /scpi-essentiel):
+// breadcrumb "Accueil > <crumb>" and the page's H1, with the faint "2nd Market" watermark at the bottom.
+interface Props {
+  title: string; // the H1
+  crumb: string; // last breadcrumb item
+}
+const { title, crumb } = Astro.props;
+---
+
+<header class="hub-header">
+  <div class="gutter">
+    <div class="container inner">
+      <nav aria-label="Fil d'Ariane">
+        <ol class="crumbs">
+          <li><a href="/">Accueil</a></li>
+          <li aria-current="page">{crumb}</li>
+        </ol>
+      </nav>
+      <h1 class="h1 title">{title}</h1>
+    </div>
+  </div>
+  <img class="pattern" src="/assets/67443b2e9369c2292c34f558_2nd-Market.svg" alt="" width="799" height="125" loading="lazy" decoding="async" />
+</header>
+
+<style>
+  .hub-header {
+    position: relative;
+    margin-inline: var(--size-0-5);
+    overflow: clip;
+    border-radius: var(--radius-large);
+    background: var(--color-bg-medium);
+    color: var(--color-text-light);
+    text-align: center;
+  }
+  .inner { position: relative; z-index: 1; padding-block: var(--section-small); }
+  .crumbs { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 0; padding: 0; list-style: none; }
+  .crumbs a { color: var(--color-text-light); transition: color 0.3s; }
+  .crumbs a:hover { color: var(--primary); }
+  /* Chevron between items (Webflow's 16px "›" icon). */
+  .crumbs li + li::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-inline: var(--size-0-25);
+    vertical-align: -0.125rem;
+    background: currentColor;
+    mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6 3L11 8L6 13" fill="none" stroke="black" stroke-width="1.5"/></svg>') center / contain no-repeat;
+  }
+  .crumbs li[aria-current] { color: color-mix(in srgb, var(--white) 60%, transparent); }
+  .crumbs li[aria-current]::before { background: var(--color-text-light); }
+  .title { margin-top: var(--size-1-5); color: var(--color-text-light); text-wrap: balance; }
+  .pattern { position: absolute; inset: auto 0 -20%; width: 80%; height: auto; margin-inline: auto; opacity: 0.5; pointer-events: none; }
+  @media (max-width: 767px) {
+    .title { margin-top: var(--size-1-25); }
+  }
+  @media (max-width: 479px) {
+    .inner { padding-block: var(--size-1) var(--size-1-5); }
+  }
+</style>
