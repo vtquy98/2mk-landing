@@ -55,8 +55,8 @@ const { title, excerpt, image, imageAlt, imageWidth, imageHeight, imageSrcset, c
     transition: transform 0.4s, box-shadow 0.4s;
   }
   .card:hover { transform: translateY(-0.25rem); box-shadow: var(--shadow-xlarge); }
-  .media { aspect-ratio: 16 / 9; border-radius: var(--radius-medium); overflow: clip; background: var(--neutral-lightest); }
-  .media img { width: 100%; height: 100%; }
+  .media { border-radius: var(--radius-medium); overflow: clip; }
+  .media img { width: 100%; height: auto; aspect-ratio: 16 / 9; }
   .content { display: flex; flex: 1; flex-direction: column; justify-content: space-between; gap: var(--size-2); padding: var(--size-0-5) var(--size-1) var(--size-1); }
   .title { margin-block: var(--size-0-25) var(--size-0-5); font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); }
   .excerpt { margin: 0; color: var(--neutral-large); }

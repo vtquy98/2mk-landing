@@ -67,6 +67,13 @@ export default async function () {
     $body.find('script').filter((_, s) => TM_DECODER.test($(s).html())).remove();
     $body.find('.w-script').removeClass('w-script');
     $body.find('[data-rt-embed-type]').removeAttr('data-rt-embed-type');
+    // One <h1> per page (the template's): an embed's own h1 becomes an h2 that keeps the embed's h1 styles.
+    // Embed CSS written against Webflow's rich-text wrapper now targets the template's `.rich-text` article.
+    $body.find('style').each((_, s) => { if ($(s).text().includes('.w-richtext')) $(s).text($(s).text().replaceAll('.w-richtext', '.rich-text')); });
+    if ($body.find('h1').length) {
+      $body.find('h1').each((_, h) => { h.tagName = 'h2'; $(h).addClass('s2m-h1'); });
+      $body.find('style').each((_, s) => { $(s).text($(s).text().replace(/\bh1\b/g, '.s2m-h1')); });
+    }
     const body = resolveLinks(richText($, $body)).replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (_, a, j, b) => a + absoluteAssets(j) + b);
 
     const seo = extractSeo($);
@@ -78,7 +85,7 @@ export default async function () {
       rank: card.rank,
       body,
       data: {
-        title: text($, 'h1'),
+        title: text($, 'h1.blog-post-heading'),
         excerpt: card.excerpt,
         image,
         imageAlt: image && ($img.attr('alt') ?? '').trim(),

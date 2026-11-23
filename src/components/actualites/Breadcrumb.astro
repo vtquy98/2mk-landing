@@ -26,8 +26,8 @@ const { items, tone = 'dark' } = Astro.props;
 
 <style>
   ol { display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; list-style: none; }
-  li { display: flex; align-items: center; min-width: 0; white-space: nowrap; }
-  li:last-child { flex: 0 1 auto; }
+  li { display: flex; flex: none; align-items: center; white-space: nowrap; }
+  li:last-child { flex: 0 1 auto; min-width: 0; }
   svg { flex: none; width: var(--size-1); height: var(--size-1); margin-inline: var(--size-0-25); fill: none; stroke: currentColor; stroke-width: 1.5; }
   a { color: var(--color-text); transition: color 0.3s; }
   a:hover { color: var(--primary); }

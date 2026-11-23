@@ -23,7 +23,7 @@ const { Content } = await render(entry);
       <div class="heading">
         <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Actualités', href: '/actualites-conseils' }, { label: title }]} />
         {category && <div class="reveal"><CategoryTag label={category} /></div>}
-        <div class="reveal"><h1>{title}</h1></div>
+        <div class="reveal"><h1 class="h1">{title}</h1></div>
       </div>
       {
         image && (
@@ -45,7 +45,7 @@ const { Content } = await render(entry);
 
   <div class="gutter">
     <div class="container section--small">
-      <article class="body">
+      <article class="body rich-text">
         <Content />
       </article>
     </div>
@@ -55,7 +55,7 @@ const { Content } = await render(entry);
     related.length > 0 && (
       <section class="gutter" aria-labelledby="related-title">
         <div class="container section--small">
-          <h2 id="related-title" class="related-title">Découvrez également</h2>
+          <h2 id="related-title" class="h2 related-title">Découvrez également</h2>
           <ArticleGrid entries={related} />
         </div>
       </section>
@@ -64,6 +64,8 @@ const { Content } = await render(entry);
 </BaseLayout>
 
 <style>
+  /* Webflow's container-large.padding-section-small on small phones */
+  @media (max-width: 479px) { .section--small { padding-block: var(--size-1) var(--size-1-5); } }
   .header { display: flex; flex-direction: column; align-items: center; gap: var(--size-4); }
   .heading { display: flex; flex-direction: column; align-items: center; gap: var(--size-1-5); width: 100%; text-align: center; }
   .heading :global(.breadcrumb) { width: 100%; }
@@ -71,32 +73,38 @@ const { Content } = await render(entry);
   .reveal { padding-bottom: var(--size-0-125); overflow: clip; }
   .reveal > :global(*) { animation: rise 0.8s var(--ease-out) both; }
   @keyframes rise { from { transform: translateY(100%); opacity: 0; } }
-  h1 { width: 90%; margin-inline: auto; font-size: var(--size-4); }
-  .cover { width: 90%; aspect-ratio: 16 / 9; border-radius: var(--radius-main); }
-  .related-title { margin-block: var(--size-0-5) var(--size-2-5); font-size: var(--size-3); text-align: center; }
+  h1 { width: 90%; margin-inline: auto; }
+  .cover { width: 90%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--radius-main); }
+  .related-title { margin-block: var(--size-0-5) var(--size-2-5); text-align: center; }
   @media (max-width: 991px) { .header { gap: var(--size-1-5); } }
 
-  /* Article body: Markdown + the content team's embeds (which carry their own scoped CSS). Same base as Webflow's rich text. */
+  /*
+   * Article body: Markdown + the content team's embeds, which carry their own scoped CSS written against Webflow's
+   * base rules. Those base rules are reproduced with Webflow's specificity (element rules in :where(), rich-text
+   * rules as one class + element) so every embed's own CSS still wins exactly where it did on Webflow.
+   */
   .body { width: 70%; margin-inline: auto; }
   @media (max-width: 767px) { .body { width: 100%; } }
-  .body > :global(:not(div):first-child),
-  .body > :global(div:first-child > :first-child) { margin-top: 0 !important; }
-  .body > :global(:last-child),
-  .body :global(ol li:last-child),
-  .body :global(ul li:last-child) { margin-bottom: 0 !important; }
-  .body :global(:is(ol, ul)) { overflow: hidden; }
-  .body :global(figure) { margin: 0 0 10px; }
-  .body :global(figcaption) { margin-top: 5px; text-align: center; }
-  .body :global(table) { border-collapse: collapse; border-spacing: 0; }
-  .body :global(:is(td, th)) { padding: 0; }
-  .body :global(:is(button, input, select, textarea)) { margin: 0; }
-  .body :global(input) { line-height: normal; }
-  .body :global(:is(input[type='checkbox'], input[type='radio'])) { padding: 0; }
-  .body :global(:is(button, [type='button'], [type='reset'])) { border: 0; cursor: pointer; }
-  .body :global(fieldset) { margin: 0; padding: 0; border: 0; }
-  .body :global(legend) { padding: 0; border: 0; }
-  .body :global(sub), .body :global(sup) { position: relative; font-size: 75%; line-height: 0; vertical-align: baseline; }
-  .body :global(sup) { top: -0.5em; }
-  .body :global(sub) { bottom: -0.25em; }
-  .body :global(iframe) { max-width: 100%; }
+  :global(.rich-text > :not(div):first-child),
+  :global(.rich-text > div:first-child > :first-child) { margin-top: 0 !important; }
+  :global(.rich-text > :last-child),
+  :global(.rich-text ol li:last-child),
+  :global(.rich-text ul li:last-child) { margin-bottom: 0 !important; }
+  :global(.rich-text :is(ol, ul)) { overflow: hidden; }
+  :global(.rich-text figure) { position: relative; max-width: 60%; }
+  :global(.rich-text figure img) { width: 100%; }
+  :global(:where(.rich-text) figure) { margin: 0 0 10px; }
+  :global(:where(.rich-text) figcaption) { margin-top: 5px; text-align: center; }
+  :global(:where(.rich-text) table) { border-collapse: collapse; border-spacing: 0; }
+  :global(:where(.rich-text) :is(td, th)) { padding: 0; }
+  :global(:where(.rich-text) :is(button, input, select, textarea)) { margin: 0; }
+  :global(:where(.rich-text) input) { line-height: normal; }
+  :global(:where(.rich-text) :is(input[type='checkbox'], input[type='radio'])) { padding: 0; }
+  :global(:where(.rich-text) :is(button, [type='button'], [type='reset'])) { border: 0; cursor: pointer; }
+  :global(:where(.rich-text) fieldset) { margin: 0; padding: 0; border: 0; }
+  :global(:where(.rich-text) legend) { padding: 0; border: 0; }
+  :global(:where(.rich-text) :is(sub, sup)) { position: relative; font-size: 75%; line-height: 0; vertical-align: baseline; }
+  :global(:where(.rich-text) sup) { top: -0.5em; }
+  :global(:where(.rich-text) sub) { bottom: -0.25em; }
+  :global(:where(.rich-text) iframe) { max-width: 100%; }
 </style>

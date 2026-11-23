@@ -92,20 +92,16 @@ const themes = [
     <div class="gutter">
       <div class="container section--small hero-content">
         <Breadcrumb tone="light" items={[{ label: 'Accueil', href: '/' }, { label: 'Actualités' }]} />
-        <div class="reveal"><h1>Actualités SCPI et marché secondaire</h1></div>
+        <div class="reveal"><h1 class="h1">Actualités SCPI et marché secondaire</h1></div>
       </div>
     </div>
-    <img class="pattern" src="/assets/67443b2e9369c2292c34f558_2nd-Market.svg" alt="" width="799" height="125" loading="lazy" decoding="async" />
   </header>
 
   <div class="gutter">
     <div class="container section--small">
       <div class="intro">
         <div class="lead">
-          <p>
-            <strong>Les actualités 2nd Market suivent le marché des SCPI à partir des données publiées : statistiques ASPIM / IEIF, bulletins trimestriels des sociétés de gestion, textes fiscaux.</strong>
-            Chaque analyse cite sa source.
-          </p>
+          <p><strong>Les actualités 2nd Market suivent le marché des SCPI à partir des données publiées : statistiques ASPIM / IEIF, bulletins trimestriels des sociétés de gestion, textes fiscaux.</strong> Chaque analyse cite sa source.</p>
           <p>Trois familles d'articles : les chiffres du marché (collecte, parts en attente, classements), les notes de revente SCPI par SCPI, et la fiscalité de l'année en cours. S'y ajoute la revue de presse.</p>
           <p>Au 30 septembre 2026, les parts de SCPI en attente de retrait représentent 2 Md€, soit 2,6 % d'une capitalisation de 80 Md€ (2,2 % au 30 juin). La collecte nette du 3e trimestre 2026 atteint 922 M€.</p>
           <p>2nd Market met en relation vendeurs et acheteurs de parts de SCPI de gré à gré, avec une cession signée devant notaire. 2nd Market n'est ni conseiller en gestion de patrimoine, ni CIF, ni société de gestion.</p>
@@ -189,13 +185,14 @@ const themes = [
 </script>
 
 <style>
-  .hero { position: relative; margin-inline: var(--size-0-5); border-radius: var(--radius-large); background: var(--neutral-large); overflow: clip; }
-  .hero-content { position: relative; z-index: 1; text-align: center; }
+  /* Webflow's container-large.padding-section-small on small phones */
+  @media (max-width: 479px) { .section--small { padding-block: var(--size-1) var(--size-1-5); } }
+  .hero { margin-inline: var(--size-0-5); border-radius: var(--radius-large); background: var(--neutral-large); overflow: clip; }
+  .hero-content { text-align: center; }
   .reveal { padding-top: var(--size-1-5); padding-bottom: var(--size-0-125); overflow: clip; }
   .reveal h1 { animation: rise 0.8s var(--ease-out) both; }
   @keyframes rise { from { transform: translateY(100%); opacity: 0; } }
-  h1 { color: var(--color-text-light); font-size: var(--size-4); text-wrap: balance; }
-  .pattern { position: absolute; inset: auto 0 -20%; width: 80%; margin-inline: auto; opacity: 0.5; }
+  h1 { color: var(--color-text-light); text-wrap: balance; }
   @media (max-width: 767px) { .reveal { padding-top: var(--size-1-25); } }
 
   /* Intro + "Lire par thème" (was a custom embed on Webflow). */
