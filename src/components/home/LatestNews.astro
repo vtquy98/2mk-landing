@@ -1,13 +1,15 @@
 ---
 // Latest articles of the "actualites" collection (most recent `date` first), as cards. Renders nothing when empty.
 import './reveal.css';
+import Eyebrow from './Eyebrow.astro';
 import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
+  eyebrow?: string; // pill above the title
   count?: number;
 }
-const { title, count = 3 } = Astro.props;
+const { title, eyebrow, count = 3 } = Astro.props;
 const posts = (await getCollection('actualites'))
   .filter(p => p.data.date)
   .sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime())
@@ -18,6 +20,7 @@ const posts = (await getCollection('actualites'))
   posts.length > 0 && (
     <section class="news gutter">
       <div class="container section">
+        {eyebrow && <div class="news__eyebrow reveal"><Eyebrow>{eyebrow}</Eyebrow></div>}
         <h2 class="h2 news__title reveal">{title}</h2>
         <ul class="news__grid" role="list">
           {posts.map(p => (
@@ -49,6 +52,7 @@ const posts = (await getCollection('actualites'))
 
 <style>
   .news__title { margin: 0; text-align: center; }
+  .news__eyebrow { display: flex; justify-content: center; margin-bottom: var(--size-1); }
   .news__grid { display: grid; list-style: none; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: var(--size-2) 0 0; }
   .news__card {
     display: flex;

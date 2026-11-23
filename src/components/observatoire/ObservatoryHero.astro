@@ -1,0 +1,71 @@
+---
+// Observatoire hero: background picture, "Données au …" badge, H1, two CTAs, three key figures between thin dividers.
+import Button from '../ui/Button.astro';
+import Eyebrow from '../home/Eyebrow.astro';
+import { PRODUCT } from '../../i18n/config';
+
+interface Props {
+  date: string; // "19 novembre 2026"
+  stats: { label: string; value: string; note: string }[];
+}
+const { date, stats } = Astro.props;
+---
+
+<header class="ohero gutter">
+  <img class="ohero__bg" src="/assets/6a452392a234a9ec54b892be_background.avif" alt="" width="2136" height="1325" fetchpriority="high" decoding="async" />
+  <div class="container ohero__inner">
+    <div class="ohero__content">
+      <Eyebrow tone="glass" class="ohero__badge">
+        <span slot="icon" class="ohero__dot" aria-hidden="true"></span>
+        Données au {date}
+      </Eyebrow>
+      <h1 class="h1 ohero__title">L'observatoire du marché secondaire des SCPI.</h1>
+      <p class="text-medium ohero__lead">Les parts de SCPI proposées à la cession de gré à gré sur 2nd Market, SCPI par SCPI, et ce que recherchent les acheteurs. Mis à jour chaque mois.</p>
+      <div class="ohero__actions">
+        <Button href={`${PRODUCT.app}/scpi`}>Parcourir les annonces</Button>
+        <Button href={`${PRODUCT.app}/create`} variant="blur">Vendre mes parts</Button>
+      </div>
+    </div>
+    <dl class="ohero__stats">
+      {
+        stats.map(s => (
+          <div class="ohero__stat">
+            <dt>{s.label}</dt>
+            <dd class="h2 ohero__value">{s.value}</dd>
+            <dd class="text-small ohero__note">{s.note}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</header>
+
+<style>
+  .ohero { position: relative; min-height: calc(100vh - 4.5rem); margin-inline: var(--size-0-25); overflow: clip; border-radius: var(--radius-medium); color: var(--color-text-light); }
+  .ohero__bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ohero__inner { position: relative; display: flex; flex-direction: column; gap: var(--size-4); justify-content: space-between; min-height: inherit; padding-block: var(--size-4); }
+  .ohero__content { display: flex; flex-direction: column; gap: var(--size-1-5); align-items: center; text-align: center; }
+  .ohero :global(.ohero__badge) { box-shadow: var(--shadow-large); font-size: 0.875rem; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); }
+  .ohero__dot { width: 8px; height: 8px; border-radius: var(--radius-round); background: #43ed80; /* "positive" green: no token yet */ }
+  .ohero__title { max-width: 48rem; text-wrap: balance; }
+  .ohero__lead { max-width: 41rem; margin: 0; opacity: 0.7; }
+  .ohero__actions { display: flex; flex-wrap: wrap; gap: var(--size-0-5); justify-content: center; }
+  .ohero__stats { display: flex; gap: var(--size-0-5); justify-content: center; margin: 0; }
+  .ohero__stat { display: flex; flex-direction: column; gap: var(--size-0-25); align-items: center; padding: var(--size-1-5); text-align: center; }
+  .ohero__stat + .ohero__stat { border-left: 0.5px solid; border-image: linear-gradient(transparent, color-mix(in srgb, var(--white) 50%, transparent) 50%, transparent) 1; }
+  .ohero__stat dt { text-transform: uppercase; text-wrap: balance; }
+  .ohero__stat dd { margin: 0; }
+  .ohero__stat .ohero__value { margin-block: var(--size-0-5); }
+  .ohero__note { color: var(--color-text-subtle); text-wrap: balance; }
+  @media (max-width: 991px) {
+    .ohero__inner { gap: var(--size-3-5); }
+  }
+  @media (max-width: 767px) {
+    .ohero__inner { padding-top: var(--size-6); }
+    .ohero__stat { gap: var(--size-1-5); padding: var(--size-1); }
+  }
+  @media (max-width: 479px) {
+    .ohero { min-height: 0; }
+    .ohero__stat { gap: var(--size-0-5); padding: var(--size-0-5); }
+  }
+</style>

@@ -1,0 +1,121 @@
+---
+// "Revendez en 4 étapes": blurred background video, 4 step cards that stack while scrolling (sticky), and the card
+// of documents usually asked for by the notary. Shared by /home-new and /viager.
+import Eyebrow from './Eyebrow.astro';
+import { PRODUCT } from '../../i18n/config';
+import './reveal.css';
+
+const steps = [
+  `<a href="${PRODUCT.app}">Créez votre compte</a> gratuitement (pièce d'identité requise)`,
+  'Parcourez les annonces ou publiez une annonce Wanted',
+  'Faites une offre et négociez directement avec le vendeur',
+  'Le notaire sécurise la transaction et le transfert des parts',
+];
+const documents = [
+  { icon: '6a0551ca9e4b3387de67f65c_how-icon-4', label: "Pièce d'identité en cours de validité" },
+  { icon: '6a0551cafbb269843fd9bbf6_how-icon-2', label: 'Justificatif de domicile récent (< 3 mois)' },
+  { icon: '6a0551caeffd9563ee4e5476_how-icon-3', label: 'Preuve de propriété des parts (pour les vendeurs)' },
+  { icon: '6a0551ca5b21d90f24ba17b3_how-icon-1', label: 'RIB (pour la réception des fonds)' },
+];
+const video = '/assets/6a0e7287fd084f011fa30c41_simulator-bg';
+---
+
+<section class="how gutter" aria-labelledby="how-heading">
+  <div class="how__bg" aria-hidden="true">
+    <video class="how__video" autoplay muted loop playsinline preload="metadata" poster={`${video}_poster.0000000.jpg`}>
+      <source src={`${video}_webm.webm`} type="video/webm" />
+      <source src={`${video}_mp4.mp4`} type="video/mp4" />
+    </video>
+  </div>
+  <div class="container container--medium section how__inner">
+    <div class="how__heading reveal">
+      <Eyebrow tone="glass">SCPI — Marché secondaire actif</Eyebrow>
+      <h2 id="how-heading" class="h2 how__title">Revendez en 4 étapes</h2>
+    </div>
+    <div class="how__content">
+      <ol class="how__steps" role="list">
+        {
+          steps.map((html, i) => (
+            <li class="how__step">
+              <span class="h3 how__number" aria-hidden="true">{i + 1}</span>
+              <h3 class="h5 how__label" set:html={html} />
+            </li>
+          ))
+        }
+      </ol>
+      <div class="how__aside">
+        <div class="how__docs">
+          <div class="how__docs-head">
+            <p class="text-medium how__docs-title">Documents habituellement demandés</p>
+            <p class="text-small how__docs-note">Le notaire peut demander des pièces complémentaires selon votre situation et la SCPI concernée.</p>
+          </div>
+          <ul class="how__docs-list" role="list">
+            {
+              documents.map(d => (
+                <li class="how__doc">
+                  <img src={`/assets/${d.icon}.avif`} alt="" width="240" height="240" loading="lazy" decoding="async" />
+                  <span>{d.label}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import './reveal';
+  // Background video: no motion for people who asked for less.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll<HTMLVideoElement>('.how__video').forEach(v => v.pause());
+</script>
+
+<style>
+  .how { position: relative; margin: var(--size-0-5); overflow: clip; border-radius: var(--radius-main); }
+  .how__bg { position: absolute; inset: 0; }
+  .how__bg::after { content: ''; position: absolute; inset: 0; background: color-mix(in srgb, black 60%, transparent); backdrop-filter: blur(12px); }
+  .how__video { width: 100%; height: 100%; object-fit: cover; }
+  .how__inner { position: relative; display: flex; flex-direction: column; gap: var(--size-2-5); }
+  .how__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: center; color: var(--color-text-light); text-align: center; }
+  .how__title { max-width: 48rem; margin: 0; }
+  .how__content { display: flex; gap: var(--size-1); }
+  .how__steps { display: flex; flex: 1; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+  .how__step {
+    position: sticky;
+    top: 20%;
+    display: flex;
+    align-items: center;
+    height: var(--size-10);
+    margin-bottom: var(--size-1);
+    padding: var(--size-0-5);
+    overflow: hidden;
+    border-radius: var(--radius-main);
+    background: var(--white);
+  }
+  .how__step:last-child { margin-bottom: 0; }
+  .how__number { display: flex; flex: 0 0 27%; align-items: center; justify-content: center; align-self: stretch; padding: var(--size-1); border-radius: var(--radius-medium); background: var(--neutral-bg); font-weight: var(--weight-medium); }
+  .how__label { flex: 1; margin: 0; padding: var(--size-1-5); font-size: var(--size-1-5); font-weight: var(--weight-regular); text-wrap: pretty; }
+  .how__label :global(a) { color: var(--primary); font-style: italic; }
+  .how__aside { position: relative; flex: none; align-self: stretch; width: 40%; }
+  .how__docs { position: sticky; top: 20%; padding: var(--size-0-5); border-radius: var(--radius-main); background: color-mix(in srgb, var(--neutral-lightest) 30%, transparent); backdrop-filter: blur(4px); }
+  .how__docs-head { display: flex; flex-direction: column; gap: var(--size-0-5); padding: var(--size-1) var(--size-1-5); color: var(--color-text-light); }
+  .how__docs-title { margin: 0; font-weight: var(--weight-regular); }
+  .how__docs-note { margin: 0; font-style: italic; font-weight: var(--weight-regular); text-wrap: pretty; }
+  .how__docs-list { display: flex; flex-direction: column; gap: var(--size-0-5); margin: 0; padding: 0; border-radius: var(--radius-medium); background: var(--white); list-style: none; }
+  .how__doc { display: flex; gap: var(--size-1); align-items: center; padding: var(--size-0-75) var(--size-1-5); }
+  .how__doc img { flex: none; width: var(--size-4); height: var(--size-4); }
+  @media (max-width: 991px) {
+    .how__step, .how__docs { top: 15%; }
+    .how__doc { padding: var(--size-1); }
+    .how__docs-head { padding: var(--size-1); }
+  }
+  @media (max-width: 767px) {
+    .how__content { flex-direction: column; }
+    .how__step { height: auto; min-height: 8rem; }
+    .how__number { flex-basis: 5.5rem; }
+    .how__label { padding: var(--size-1); font-size: var(--size-1-25); }
+    .how__aside { width: 100%; }
+    .how__docs { position: static; }
+  }
+</style>

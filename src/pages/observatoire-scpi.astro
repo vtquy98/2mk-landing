@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ObservatoryHero from '../components/observatoire/ObservatoryHero.astro';
+import Leaderboard from '../components/observatoire/Leaderboard.astro';
+import Method from '../components/observatoire/Method.astro';
+import Benefits from '../components/home/Benefits.astro';
+import FeatureCards from '../components/home/FeatureCards.astro';
+import FaqSplit from '../components/home/FaqSplit.astro';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/observatoire-scpi.json';
+
+// Monthly snapshot of the marketplace (was hand-published in Webflow). Update every figure below together.
+const date = '19 novembre 2026';
+const logos = {
+  euryale: { logo: '/assets/6a4fa9a09e5cdc8b6338175b_SCPI-Pierval-Sante-CC-81-Euryale-20logo-20scpi.avif', logoAlt: 'Logo Pierval Santé (Euryale)', logoWidth: 256, logoHeight: 68 },
+  praemia: { logo: '/assets/6a4fa60542c64bf1dc16d952_Praemia-REIM-France-20scpi-20logo.avif', logoAlt: 'Logo Praemia REIM France', logoWidth: 256, logoHeight: 67 },
+  perial: { logo: '/assets/6a4fa9e5232b6540fb946884_perial-scpi-logo-1.svg', logoAlt: 'Logo Perial Asset Management', logoWidth: 104, logoHeight: 71 },
+  amundi: { logo: '/assets/6a4faaa5ab9180154be7781d_amundi.avif', logoAlt: 'Logo Amundi', logoWidth: 296, logoHeight: 140 },
+  sofidy: { logo: '/assets/6afe89dcd7ce79e868fc0d09_logo-sdg-sofidy.png', logoAlt: 'Logo Sofidy', logoWidth: 320, logoHeight: 142 },
+  bnp: { logo: '/assets/6afe89df6cc848e2ea2d903d_logo-sdg-bnp-paribas-reim.png', logoAlt: 'Logo BNP Paribas REIM', logoWidth: 324, logoHeight: 84 },
+  laFrancaise: { logo: '/assets/6afe89e25af129c8ef0b8dde_logo-sdg-la-francaise-rem.jpeg', logoAlt: 'Logo La Française Real Estate Managers', logoWidth: 267, logoHeight: 96 },
+  fiducial: { logo: '/assets/6afe89e56fa33f084679667e_logo-sdg-fiducial-gerance.png', logoAlt: 'Logo Fiducial Gérance', logoWidth: 986, logoHeight: 122 },
+  novaxia: { logo: '/assets/6afebf4d34f332c79d0023d0_novaxia-logo.png', logoAlt: 'Logo Novaxia', logoWidth: 342, logoHeight: 96 },
+};
+---
+
+<BaseLayout seo={seo} floatingButton>
+  <ObservatoryHero
+    date={date}
+    stats={[
+      { label: 'SCPI proposées', value: '50', note: 'Avec au moins une annonce active' },
+      { label: 'Parts proposées', value: '142 387', note: 'Cumul des annonces de cession' },
+      { label: 'Montant des annonces', value: '30 M€', note: 'Prix demandés par les vendeurs' },
+    ]}
+  />
+  <Leaderboard
+    summary={`Au ${date}, <strong>559 annonces de cession</strong> actives portent sur <strong>142 387 parts de 50 SCPI</strong>, pour un montant de <strong>29,41 M€</strong> aux prix demandés par les vendeurs. En parallèle, 66 demandes d'achat portent sur 18 925 parts de 30 SCPI. Ce sont des prix demandés, pas des prix de transaction.`}
+    top={[
+      { name: 'Pierval Santé', parts: '32 836', height: 100, ...logos.euryale },
+      { name: 'Primovie', parts: '23 167', height: 55, ...logos.praemia },
+      { name: 'Perial O2', parts: '13 672', height: 49, ...logos.perial },
+      { name: 'Edissimmo', parts: '7 647', height: 35, ...logos.amundi },
+      { name: 'Primopierre', parts: '7 599', height: 30, ...logos.praemia },
+    ]}
+    diversity="Les cinq SCPI les plus représentées concentrent 59,6 % des parts proposées à la vente sur 2nd Market. Les 40,4 % restants se répartissent entre 45 autres SCPI, dont des véhicules plus récents comme Novaxia NEO, ActivImmo et Cristal Life."
+    newcomers={[
+      { name: 'Novaxia NEO', parts: '3 043', right: 'Pleine propriété et nue-propriété' },
+      { name: 'ActivImmo', parts: '467', right: 'Pleine propriété et nue-propriété' },
+      { name: 'Cristal Life', parts: '37', right: 'Nue-propriété' },
+    ]}
+    offers={[
+      { name: 'Pierval Santé', parts: '32 836 · dont 907 en nue-propriété', right: '5 585 083 €', ...logos.euryale },
+      { name: 'Primovie', parts: '23 167 · dont 528 en nue-propriété', right: '7 125 676 €', ...logos.praemia },
+      { name: 'Perial O2', parts: '13 672 · dont 37 en nue-propriété', right: '1 636 294 €', ...logos.perial },
+      { name: 'Edissimmo', parts: '7 647', right: '959 980 €', ...logos.amundi },
+      { name: 'Primopierre', parts: '7 599', right: '554 535 €', ...logos.praemia },
+      { name: 'Efimmo 1', parts: '5 809', right: '949 854 €', ...logos.sofidy },
+      { name: 'Rivoli Avenir Patrimoine', parts: '4 987', right: '932 628 €', ...logos.amundi },
+      { name: 'Accimmo Pierre', parts: '3 901 · dont 660 en nue-propriété et 108 en usufruit', right: '423 684 €', ...logos.bnp },
+      { name: 'Épargne Foncière', parts: '3 165', right: '1 524 006 €', ...logos.laFrancaise },
+      { name: 'Ficommerce Proximité', parts: '3 046', right: '191 898 €', ...logos.fiducial },
+      { name: 'Novaxia NEO', parts: '3 043 · dont 695 en nue-propriété', right: '476 180 €', ...logos.novaxia },
+    ]}
+    offersTotal="50 SCPI proposées à la vente sur 2nd Market."
+    wanted={{
+      title: "Annonces d'achat (Wanted) : top 5 des SCPI recherchées",
+      text: `Au ${date}, les annonces d'achat (Wanted) portent sur 18 925 parts de 30 SCPI. 9 320 de ces parts sont recherchées en démembrement, dont 8 820 en usufruit.`,
+      rows: [
+        { name: 'Corum Eurion', parts: '4 045', right: 'Usufruit' },
+        { name: 'Corum XL', parts: '3 500', right: 'Usufruit' },
+        { name: 'Primovie', parts: '1 593', right: 'Pleine propriété' },
+        { name: 'Primopierre', parts: '1 515', right: 'Pleine propriété' },
+        { name: 'Ufifrance Immobilier', parts: '1 500', right: 'Pleine propriété' },
+      ],
+    }}
+  />
+  <Benefits
+    title="Une cession sécurisée, de bout en bout."
+    description="Le marché secondaire de gré à gré, encadré juridiquement et opéré dans un cadre conforme."
+    items={[
+      { image: '/assets/6a452b23e078167f2edcfbe5_number.avif', title: 'Tout est vérifié par le notaire', text: "Avant la signature, le notaire contrôle l'identité du vendeur et de l'acheteur, la propriété des parts et l'origine des fonds." },
+      { image: '/assets/6a452b23e1fb473fb2696544_number-1.avif', title: "L'argent reste chez le notaire", text: "L'acheteur verse le prix sur le compte séquestre du notaire. 2nd Market ne détient aucun fonds." },
+      { image: '/assets/6a452b23930b4680cf160a9f_number-2.avif', title: 'Les parts changent de main', text: "Le notaire informe la société de gestion, qui inscrit l'acheteur comme nouvel associé. Le vendeur reçoit alors son argent." },
+    ]}
+  />
+  <FeatureCards
+    title="Acheteur ou vendeur, le marché est à vous."
+    cards={[
+      {
+        title: 'Des SCPI historiques, mais pas seulement',
+        badge: 'Vous achetez',
+        image: '6a4f70b3895090ffde5db54c_seller',
+        variants: [500, 800, 1080, 1600],
+        alt: "Façade d'immeuble de bureaux",
+        html: "<p>Parmi les annonces figurent notamment Novaxia NEO, Immorente ou encore Épargne Pierre. L'offre couvre aussi bien la pleine propriété que des parts démembrées.</p><p>Les acheteurs peuvent ainsi négocier directement avec les vendeurs le prix et la quantité de parts qu'ils souhaitent acquérir. Sur certaines SCPI, les prix proposés sont sensiblement inférieurs aux prix de souscription.</p><p>Ce marché permet également d'acheter des parts de SCPI qui ne sont plus ouvertes à la souscription, à condition de trouver un vendeur.</p>",
+        links: [{ label: 'Parcourir les annonces →', href: `${PRODUCT.app}/scpi`, external: true }],
+      },
+      {
+        title: "66 annonces d'achat recherchent un vendeur",
+        badge: 'Vous vendez',
+        image: '6a4f70b34ff97d85dd275a0e_buyer',
+        variants: [500, 800, 1080, 1600],
+        alt: 'Immeuble haussmannien à Paris',
+        html: "<p>Des acheteurs publient leur recherche sur 2nd Market : 18 925 parts demandées sur 30 SCPI, dont Corum Eurion, Corum XL, Primovie et Primopierre.</p><p>Vous détenez de l'usufruit ? 8 820 parts sont recherchées en usufruit, pour 124 parts proposées à la vente.</p><p>Déposez votre annonce gratuitement et fixez votre prix.</p>",
+        links: [{ label: 'Déposer une annonce →', href: `${PRODUCT.app}/create`, external: true }],
+      },
+    ]}
+  />
+  <Method date={date} />
+  <FaqSplit list="/observatoire-scpi" />
+</BaseLayout>

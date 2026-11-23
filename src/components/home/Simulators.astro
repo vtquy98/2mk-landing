@@ -1,0 +1,85 @@
+---
+// "Simulateurs gratuits": three simulator cards (image, title, text, link) on a warm gradient, link to /simulateurs.
+import Button from '../ui/Button.astro';
+import Eyebrow from './Eyebrow.astro';
+import ArrowRight from './icons/arrow-right.svg';
+import './reveal.css';
+
+const items = [
+  { title: 'Simulateur de frais SCPI', text: 'Estimez votre net vendeur après commission et frais de notaire.', href: '/simulateurs/frais-scpi', image: '6a0d52f771743ad8fff71e97_Simulator-1', alt: 'Calculatrice affichant SCPI, simulateurs SCPI' },
+  { title: 'Simulateur de rendement avec décote', text: "Calculez le rendement effectif d'une SCPI achetée décotée.", href: '/simulateurs/decote-scpi', image: '6a0d52f7862d5a33ef854f1c_Simulator-3', alt: 'Calculatrice affichant le symbole pourcentage, simulateurs de rendement' },
+  { title: 'Simulateurs Viager', text: "Bouquet, rente mensuelle, droit d'usage et d'habitation.", href: '/simulateurs/simulateur-viager-2026-bouquet-rente-gratuit', image: '6a0d52f7970586c56100d393_Simulator-2', alt: 'Calculatrice affichant Viager, simulateurs viager' },
+];
+---
+
+<section class="simulators gutter" aria-labelledby="simulators-heading">
+  <img class="simulators__bg" src="/assets/6a0e79ca167aeb2da787fae9_simulator-bg.avif" alt="" width="2160" height="1605" loading="lazy" decoding="async" />
+  <div class="container section simulators__inner">
+    <div class="simulators__heading reveal">
+      <Eyebrow>SCPI — Marché secondaire actif</Eyebrow>
+      <h2 id="simulators-heading" class="h2 simulators__title">Simulateurs gratuits: estimez votre opération en 30 secondes</h2>
+      <p class="simulators__description">Calculs transparents, sans inscription préalable. Les résultats sont indicatifs et ne remplacent pas un calcul personnalisé réalisé avec votre notaire ou votre CGP.</p>
+    </div>
+    <ul class="simulators__list" role="list">
+      {
+        items.map(s => (
+          <li>
+            <a class="simulator" href={s.href}>
+              <img class="simulator__img" src={`/assets/${s.image}.avif`} srcset={`/assets/${s.image}-p-500.avif 500w, /assets/${s.image}.avif 800w`} sizes="(max-width: 767px) 35vw, 17rem" alt={s.alt} width="800" height="534" loading="lazy" decoding="async" />
+              <div class="simulator__body">
+                <div>
+                  <h3 class="h5 simulator__title">{s.title}</h3>
+                  <p class="simulator__text">{s.text}</p>
+                </div>
+                <span class="simulator__more">Accéder au simulateur <ArrowRight aria-hidden="true" /></span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="simulators__action"><Button href="/simulateurs">Tous les simulateurs</Button></div>
+  </div>
+</section>
+
+<script>
+  import './reveal';
+</script>
+
+<style>
+  .simulators { position: relative; margin-inline: var(--size-0-25); overflow: clip; border-radius: var(--radius-medium); }
+  .simulators__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
+  .simulators__inner { position: relative; display: flex; flex-direction: column; gap: var(--size-2); align-items: center; }
+  .simulators__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: center; text-align: center; }
+  .simulators__title, .simulators__description { max-width: 48rem; margin: 0; }
+  .simulators__title { text-wrap: wrap; }
+  .simulators__list { display: grid; gap: var(--size-1); width: min(100%, 48rem); margin: 0; padding: 0; list-style: none; }
+  .simulator {
+    display: flex;
+    padding: var(--size-0-5);
+    border: 0.5px solid color-mix(in srgb, var(--white) 15%, transparent);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+    color: var(--color-text);
+    transition: transform 0.5s;
+  }
+  .simulator:hover { transform: translateY(-0.25rem) scale(0.98); }
+  .simulator__img { flex: none; width: 35%; height: auto; aspect-ratio: 3 / 2; border-radius: var(--radius-medium); }
+  .simulator__body { display: flex; flex-direction: column; gap: var(--size-1-25); justify-content: space-between; align-items: flex-start; padding: var(--size-1-25) var(--size-1-25) var(--size-1-25) var(--size-2-5); }
+  .simulator__title { margin: 0 0 var(--size-0-25); font-size: var(--size-1-5); font-weight: var(--weight-medium); }
+  .simulator__text { margin: 0; opacity: 0.8; }
+  .simulator__more { display: inline-flex; gap: var(--size-0-5); align-items: center; color: var(--primary); }
+  .simulator__more :global(svg) { width: var(--size-1); height: var(--size-1); }
+  @media (max-width: 991px) {
+    .simulators__inner { gap: var(--size-3-5); }
+  }
+  @media (max-width: 767px) {
+    .simulator__body { padding: var(--size-1); }
+    .simulator__title { font-size: var(--size-1-25); }
+  }
+  @media (max-width: 479px) {
+    .simulator { flex-direction: column; }
+    .simulator__img { width: 100%; }
+  }
+</style>

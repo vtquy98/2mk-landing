@@ -2,14 +2,16 @@
 // "SCPI disponibles sur le marché secondaire": links to /2nd-seo pages (name + management company), in the order
 // recorded from the live home page (src/data/home/scpi-order.json). Renders nothing while the collection is empty.
 import './reveal.css';
+import Eyebrow from './Eyebrow.astro';
 import { getCollection } from 'astro:content';
 import order from '../../data/home/scpi-order.json';
 
 interface Props {
   title: string;
+  eyebrow?: string; // pill above the title
   headingClass?: string;
 }
-const { title, headingClass = 'h5' } = Astro.props;
+const { title, eyebrow, headingClass = 'h5' } = Astro.props;
 // `manager` / `managerPage` are added to the 2nd-seo schema by its importer.
 type Scpi = { title: string; manager?: string; managerPage?: { id: string } };
 const byId = new Map((await getCollection('2nd-seo')).map(e => [e.id, e.data as Scpi]));
@@ -20,6 +22,7 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
   items.length > 0 && (
     <section class="directory gutter">
       <div class="container section">
+        {eyebrow && <div class="directory__eyebrow reveal"><Eyebrow>{eyebrow}</Eyebrow></div>}
         <h2 class:list={[headingClass, 'directory__title reveal']}>{title}</h2>
         <ul class="directory__grid" role="list">
           {items.map(s => (
@@ -37,6 +40,7 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
 
 <style>
   .directory__title { margin: 0; text-align: center; }
+  .directory__eyebrow { display: flex; justify-content: center; margin-bottom: var(--size-1); }
   .directory__grid { display: grid; list-style: none; grid-template-columns: repeat(6, 1fr); gap: var(--size-2) var(--size-1); place-items: start; margin: 0; padding: var(--size-2) 0 0; }
   .directory__item { display: flex; flex-direction: column; gap: var(--size-0-25); }
   .directory__name { color: var(--color-text); text-decoration: underline; transition: color 0.3s; }

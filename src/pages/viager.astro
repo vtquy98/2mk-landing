@@ -6,6 +6,8 @@ import Button from '../components/ui/Button.astro';
 import Hero from '../components/home/Hero.astro';
 import ListingSection from '../components/home/ListingSection.astro';
 import About from '../components/home/About.astro';
+import HowSection from '../components/home/HowSection.astro';
+import FeatureCards from '../components/home/FeatureCards.astro';
 import Links from '../components/home/Links.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 import Faqs from '../components/home/Faqs.astro';
@@ -32,6 +34,8 @@ const listings = (await getCollection('scpi-listing', e => e.data.source === 'we
   <About>
     2,44 milliards d'euros de parts SCPI sont en file d'attente de retrait au 31/03/2026 (ASPIM). <br />2nd Market permet aux vendeurs et acheteurs de se rencontrer, négocier librement et finaliser la transaction avec un notaire.<br />L'argent est versé directement sur le compte séquestre du notaire — jamais chez 2nd Market.<br />1 000+ utilisateurs inscrits. Mentionné dans Le Figaro, Mieux Vivre Votre Argent et Le Particulier.<br /><a href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</a>
   </About>
+  <HowSection />
+  <FeatureCards show={['scpi', 'viager']} />
   <Links
     title="SCPI et viager : 2 marchés, une plateforme"
     cards={[

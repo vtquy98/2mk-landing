@@ -1,0 +1,78 @@
+---
+// FAQ in two columns: sticky heading + link to /faqs on the left, accordion (native <details>) on the right.
+// Items come from src/data/home/faqs.json (same data as Faqs.astro).
+import Button from '../ui/Button.astro';
+import Eyebrow from './Eyebrow.astro';
+import faqs from '../../data/home/faqs.json';
+import './reveal.css';
+
+interface Props {
+  list: keyof typeof faqs;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+}
+const {
+  list,
+  eyebrow = 'SCPI — Marché secondaire actif',
+  title = 'Questions fréquentes',
+  description = 'Les questions les plus posées par les vendeurs, acheteurs et conseillers sur le marché secondaire SCPI et viager.',
+} = Astro.props;
+---
+
+<section class="faq gutter" aria-labelledby="faq-heading">
+  <div class="container container--medium section faq__inner">
+    <div class="faq__aside">
+      <div class="faq__heading reveal">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h2 id="faq-heading" class="h2 faq__title">{title}</h2>
+        <p class="faq__description">{description}</p>
+        <div class="faq__action"><Button href="/faqs">Voir plus de questions</Button></div>
+      </div>
+    </div>
+    <div class="faq__list">
+      {
+        faqs[list].map(item => (
+          <details class="faq__item">
+            <summary class="faq__question">
+              <h3 class="text-medium">{item.question}</h3>
+              <img src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
+            </summary>
+            <div class="faq__answer" set:html={item.answer} />
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import './reveal';
+</script>
+
+<style>
+  .faq__inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-4); }
+  .faq__heading { position: sticky; top: 20%; display: flex; flex-direction: column; gap: var(--size-1); align-items: flex-start; }
+  .faq__title { margin: 0; }
+  .faq__description { margin: 0; text-wrap: pretty; }
+  .faq__action { padding-top: var(--size-1); }
+  .faq__list { display: flex; flex-direction: column; gap: var(--size-0-25); }
+  .faq__item { margin-bottom: var(--size-0-5); padding: var(--size-0-5) var(--size-1); border-radius: 2rem; background: var(--white); box-shadow: var(--shadow-xxlarge); }
+  .faq__question { display: flex; gap: var(--size-1); align-items: center; justify-content: space-between; padding: var(--size-1) var(--size-1) var(--size-1) var(--size-0-5); cursor: pointer; list-style: none; }
+  .faq__question::-webkit-details-marker { display: none; }
+  .faq__question h3 { font-weight: var(--weight-medium); }
+  .faq__question img { flex: none; width: var(--size-1-5); height: var(--size-1-5); transition: transform 0.3s var(--ease-out); }
+  .faq__item[open] .faq__question img { transform: rotate(180deg); }
+  .faq__answer { margin-right: var(--size-1); padding: 0 0 var(--size-1) var(--size-0-5); }
+  .faq__answer :global(p:last-child), .faq__answer :global(ol:last-child), .faq__answer :global(ul:last-child) { margin-bottom: 0; }
+  .faq__answer :global(a) { text-decoration: underline; }
+  @media (max-width: 991px) {
+    .faq__inner { grid-template-columns: 1fr; }
+    .faq__heading { position: static; align-items: center; }
+    .faq__action { width: 100%; }
+  }
+  @media (max-width: 767px) {
+    .faq__answer { margin-right: 0; }
+    .faq__action { padding-top: 0.75rem; }
+  }
+</style>
