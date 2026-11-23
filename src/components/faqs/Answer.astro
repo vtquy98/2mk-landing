@@ -1,0 +1,18 @@
+---
+// Rich text of a FAQ answer (collection "faqs"), on /faqs and on /faqs/<slug>.
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'faqs'>;
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<div class="answer"><Content /></div>
+
+<style>
+  .answer > :global(:last-child) { margin-bottom: 0; }
+  .answer :global(table) { border-collapse: collapse; margin-bottom: var(--size-0-5); }
+  .answer :global(:is(th, td)) { padding: 0 var(--size-1) 0 0; text-align: left; vertical-align: top; }
+</style>

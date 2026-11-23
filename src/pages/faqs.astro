@@ -1,17 +1,19 @@
 ---
 // /faqs: questions grouped by category in tabs (SCPI / Viager / Démembrement), each answer in a <details>.
-// Data: src/data/faqs.json (Webflow CMS "faqs"); the FAQPage JSON-LD is in src/data/seo/faqs.json.
+// Data: collection "faqs" (entries with a category, in `order`); the FAQPage JSON-LD is in src/data/seo/faqs.json.
 // Without JavaScript every category is shown one after the other; the script turns them into tabs.
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/hub/HubHeader.astro';
 import HubSection from '../components/hub/HubSection.astro';
+import Answer from '../components/faqs/Answer.astro';
 import seo from '../data/seo/faqs.json';
-import faqs from '../data/faqs.json';
 
-const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
+const faqs = (await getCollection('faqs', e => !!e.data.category)).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const categories = [...new Set(faqs.map(f => f.data.category))].map((name, i) => ({
   id: `faq-${i + 1}`,
   name,
-  items: faqs.filter(f => f.category === name),
+  items: faqs.filter(f => f.data.category === name),
 }));
 ---
 
@@ -35,10 +37,10 @@ const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
             {c.items.map(f => (
               <details class="item">
                 <summary>
-                  <h2 class="question">{f.question}</h2>
+                  <h2 class="question">{f.data.title}</h2>
                   <img class="caret" src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
                 </summary>
-                <div class="answer" set:html={f.answer} />
+                <div class="answer"><Answer entry={f} /></div>
               </details>
             ))}
           </div>
@@ -116,9 +118,6 @@ const categories = [...new Set(faqs.map(f => f.category))].map((name, i) => ({
   .caret { flex: none; width: var(--size-1-5); height: var(--size-1-5); transition: transform 0.4s var(--ease-out); }
   .item[open] .caret { transform: rotate(180deg); }
   .answer { margin-right: var(--size-1); padding: 0 0 var(--size-1) var(--size-0-5); }
-  .answer :global(> :last-child) { margin-bottom: 0; }
-  .answer :global(table) { border-collapse: collapse; margin-bottom: var(--size-0-5); }
-  .answer :global(:is(th, td)) { padding: 0 var(--size-1) 0 0; text-align: left; vertical-align: top; }
 
   @media (max-width: 991px) {
     .faqs { width: 100%; }
