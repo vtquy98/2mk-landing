@@ -22,7 +22,10 @@ code, then switch Webflow off. Branch: `feat/webflow-migration`.
 
 ## Inventory (crawl of 2026-11-23)
 
-693 sitemap URLs = 529 pages (200) + 164 redirects (301); 13 more 301s and 4 hidden pages found through links.
+693 sitemap URLs = 529 pages (200) + 164 redirects (301). Also live but not in the sitemap: 3 `/scpi-listing/*`,
+`/404`, 12 `/faqs/<slug>`, `/information-pages/documents-requis-scpi` (found through links, Webflow's manifest and
+the Wayback Machine). Redirects: the 652 rules of Webflow's `manifest.json`. `scripts/webflow-import/parity.mjs`
+checks that all 544 live pages are built.
 
 | Template | Pages | Route / collection | Owner |
 | --- | --- | --- | --- |
@@ -54,7 +57,7 @@ code, then switch Webflow off. Branch: `feat/webflow-migration`.
 
 - [x] Crawl, inventory, redirects, 691 assets self-hosted, SEO data of static pages
 - [x] Tokens, base styles, BaseLayout, analytics, Button, sitemap/robots/llms.txt
-- [ ] Shell · [ ] Home · [ ] Static A · [ ] Static B · [ ] Actualités · [ ] Guides · [ ] SCPI · [ ] Simulateurs
+- [x] Shell · [x] Home · [x] Static A · [x] Static B · [x] Actualités · [x] Guides · [x] SCPI · [x] Simulateurs · [x] hidden pages (12 /faqs/<slug>, 1 /information-pages)
 - [ ] Integration: full build, link check, URL parity (every live 200 path exists in `dist/`), visual pass
 - [ ] Cut-over (see below)
 
@@ -70,3 +73,17 @@ code, then switch Webflow off. Branch: `feat/webflow-migration`.
 - The second (mobile) nav of the Webflow page was never displayed (hidden by its own CSS): not rebuilt.
 - Analytics no longer fire on previews (`*.workers.dev`, localhost); previews are `noindex`.
 - `<html lang>` is `fr` in the HTML (Webflow served `en` and fixed it with JavaScript).
+- Webflow runtime hacks moved to build time: `tm*` class decoding, legacy app routes, simulator "rehydrate" (37 KB).
+- Live bugs fixed: content hidden forever by never-firing animations, lazy images with height 0, horizontal scroll on
+  mobile (2nd-seo, landing pages), `href="#"` partner links, raw numbers like `827.9999999999999`, links that were
+  404 on live (`/scpi`, `/politique-confidentialite`), duplicate `<h1>`s, JSON-LD pointing to `/repertoire/<slug>`.
+- Hub lists drop cards that pointed to pages now redirected (e.g. 22 on /scpi-essentiel, 5 on /simulateurs).
+- Hidden pages (`/faqs/<slug>`, `/information-pages/…`, `/scpi-listing/*`) had an empty body on Webflow; they now
+  show their content (question + answer, title + summary, listing card).
+- The Webflow wildcard `/scpi-listing/* → /repertoire` is not kept (it would hide the 3 live listing pages):
+  unknown listing URLs now answer 404.
+- Home ads carousel: build-time snapshot + refresh from `api.2ndmarket.fr` in the browser (production origin only).
+- The 3 Elysées SCPI show "HSBC REIM (France)" as management company (empty on Webflow; taken from /seo pages).
+- 4 pages keep the JavaScript error they already have on live (content bugs):
+  `/actualites/defiscalisation-2026-checklist-simulateur`, `/guide-scpi/facturation-electronique`,
+  `/guide-scpi/scpi-sans-frais-souscription`, `/landing-pages/simulateur-rendement-scpi-2026-estimez-votre-net`.

@@ -1,6 +1,6 @@
 ---
 name: write-blog-post
-description: Write, translate or update a blog post on the 2ndmarket site (any of the site's languages). Use whenever someone asks to write an article, blog post, guide, translate a post, or publish content on the site.
+description: Write or update an article (actualité) on the 2nd Market site (French). Use whenever someone asks to write an article, blog post, guide, translate a post, or publish content on the site.
 ---
 
 # Write a blog post
@@ -11,49 +11,49 @@ never show them YAML or code unless they ask.
 ## 1. Brief (ask only what you can't infer)
 
 - Topic, and the reader's question the post answers.
-- Language(s): **always ask** which language(s) the post is written in, and wait for the answer.
-  Languages are the `locales` of `src/i18n/config.ts`; never pick languages yourself.
+- Language: the site is French (`fr`); write in French unless the person asks otherwise.
 - Optional: target keyword, links/sources they want cited.
 
-Check what already exists so you don't duplicate a post and can link related ones:
+Check what already exists so you don't duplicate an article and can link related ones:
 
 ```sh
-grep -h '^title:' src/content/blog/<lang>/*.md
+grep -h '^title:' src/content/actualites/*.md src/content/guide-scpi/*.md
 ```
 
-If an existing post covers the topic, propose updating it instead (keep its slug, set `updated:`). An update is
-made in every language version of the post (all files with the same `translationKey`).
+If an existing article covers the topic, propose updating it instead (keep its slug and `date`).
 
 ## 2. File
 
-`src/content/blog/<lang>/<slug>.md` → `/blog/<slug>` (en) or `/<lang>/blog/<slug>`.
+`src/content/actualites/<slug>.md` → `/actualites/<slug>`. The hub `/actualites-conseils`, the home news, related
+articles and the sitemap pick it up.
 
-Slug: lowercase, hyphens, no accents, 3–6 words, contains the main keyword, in the post's language.
-Never rename the slug of a published post.
+Slug: lowercase, hyphens, no accents, 3–6 words, contains the main keyword, in French.
+Never rename the slug of a published article (if you must, add the old URL to `public/_redirects`).
 
 ## 3. Frontmatter
 
+Copy the frontmatter of a recent article (e.g. `src/content/actualites/figaro.md`) and adapt every value:
+
 ```md
 ---
-title: "H1 shown on the page and in the blog list"
-seoTitle: "≤ 60 chars, keyword first (only if different from title)"
-description: "140–160 chars. Answers the query, includes the keyword, no clickbait."
-date: 2026-11-10
-image: "/images/blog/<slug>/cover.webp"   # optional, 1200x630
+title: "H1 shown on the page and on cards"
+excerpt: "Card summary, 1–2 sentences."
+image: "/assets/<slug>-cover.avif"        # in public/assets/, 1200x630 or more
 imageAlt: "Describe the image"
-translationKey: "<shared-key>"           # same value on every language version
-jsonLd:
-  - |2-
-      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-        {"@type":"Question","name":"…","acceptedAnswer":{"@type":"Answer","text":"…"}}
-      ]}
+imageWidth: 1200
+imageHeight: 630
+date: "2026-11-10"                        # publication date (sort order)
+category: "SCPI"                          # SCPI | Viagers | Démembrements | Autres
+seo: {"title":"≤ 60 chars, keyword first | 2nd Market","description":"140–160 chars …","ogImage":"/assets/…","jsonLd":["{…BreadcrumbList + Article JSON-LD, adapted from the copied article…}"]}
+lastmod: "2026-11-10"
 ---
 ```
 
-- `date` = today unless told otherwise. When editing, keep `date` and add `updated:`.
-- Images in `public/images/blog/<slug>/`; images inside the body need alt text, width and height (S3) — use
+- `date` = today unless told otherwise. When editing, keep `date` and set `lastmod` to today.
+- `seo.jsonLd` is not generated: adapt the copied article's blocks (URL, headline, dates, image, breadcrumb) and add a
+  FAQPage block mirroring the `## FAQ` section.
+- Images go in `public/assets/`; images inside the body need alt text, width and height (S3) — use
   `<img src="…" alt="…" width="…" height="…">` rather than Markdown `![]()`.
-- BlogPosting JSON-LD, canonical, hreflang, og tags, sitemap and blog list are generated — don't add them.
 
 ## 4. Writing rules (SEO + AI answer engines)
 
@@ -69,8 +69,8 @@ jsonLd:
 
 ## 5. Check
 
-`npm run check && npm run build` pass, and `dist/blog/<slug>.html` (or `dist/<lang>/blog/<slug>.html`)
-exists. If the dev server is running, give the person the local link, e.g. http://localhost:4321/blog/<slug>.
+`npm run check && npm run build` pass, and `dist/actualites/<slug>.html` exists. If the dev server is running,
+give the person the local link, e.g. http://localhost:4321/actualites/<slug>.
 
 ## 6. Publish
 
