@@ -17,9 +17,10 @@ interface Props {
   nav?: boolean; // false on funnel pages (questionnaire, qrcode, merci, maintenance)
   footer?: boolean;
   floatingButton?: boolean; // round CTA ≤ 991px: only on /, /viager, /observatoire-scpi, /home-new, /landing-pages/viager
+  googleSources?: boolean; // "Ajouter aux sources préférées Google" block (absent on /merci only)
 }
 
-const { seo, lang = defaultLocale, nav = true, footer = true, floatingButton = false } = Astro.props;
+const { seo, lang = defaultLocale, nav = true, footer = true, floatingButton = false, googleSources = true } = Astro.props;
 const locale = locales[lang];
 const abs = (p?: string) => (p ? new URL(p, Astro.site).href : undefined);
 const canonical = seo.canonical ?? abs(pagePath(Astro.url));
@@ -72,7 +73,7 @@ const twitterImage = abs(seo.twitterImage);
         <main id="main">
           <slot />
         </main>
-        <GoogleSources />
+        {googleSources && <GoogleSources />}
       </div>
       {footer && <Footer />}
     </div>
