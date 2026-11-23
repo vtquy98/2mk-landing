@@ -6,7 +6,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import GoogleSources from '../components/GoogleSources.astro';
 import FloatingButton from '../components/FloatingButton.astro';
-import { defaultLocale, locales, PRODUCT } from '../i18n/config';
+import { defaultLocale, locales, PRODUCT, t } from '../i18n/config';
 import siteGraph from '../data/site-jsonld.json';
 import type { Seo } from '../lib/seo';
 
@@ -15,10 +15,10 @@ interface Props {
   lang?: string;
   nav?: boolean; // false on funnel pages (questionnaire, qrcode, merci, maintenance)
   footer?: boolean;
-  floatingButton?: boolean;
+  floatingButton?: boolean; // round CTA ≤ 991px: only on /, /viager, /observatoire-scpi, /home-new, /landing-pages/viager
 }
 
-const { seo, lang = defaultLocale, nav = true, footer = true, floatingButton = true } = Astro.props;
+const { seo, lang = defaultLocale, nav = true, footer = true, floatingButton = false } = Astro.props;
 const locale = locales[lang];
 const abs = (p?: string) => (p ? new URL(p, Astro.site).href : undefined);
 const canonical = seo.canonical ?? abs(Astro.url.pathname);
@@ -36,6 +36,8 @@ const twitterImage = abs(seo.twitterImage);
     <link rel="canonical" href={canonical} />
     <meta name="robots" content={seo.robots ?? 'max-image-preview:large'} />
     <script is:inline>
+      // Lets CSS tell whether JavaScript runs (menus fall back to plain links without it).
+      document.documentElement.classList.add('js');
       // Previews (workers.dev, localhost) must never be indexed.
       if (!/^(www\.)?2ndmarket\.fr$/.test(location.hostname)) document.head.append(Object.assign(document.createElement('meta'), { name: 'robots', content: 'noindex, nofollow' }));
     </script>
@@ -62,26 +64,44 @@ const twitterImage = abs(seo.twitterImage);
     <slot name="head" />
   </head>
   <body>
-    {nav && <Nav />}
+    <a class="skip" href="#main">{t(lang).nav.skip}</a>
     <div class="page">
-      <main id="main" class="main">
-        <slot />
+      <div class="page-body">
+        {nav && <Nav />}
+        <main id="main">
+          <slot />
+        </main>
         <GoogleSources />
-      </main>
+      </div>
       {footer && <Footer />}
     </div>
     {floatingButton && <FloatingButton />}
+    <script>
+      import '../scripts/alert-widget';
+    </script>
   </body>
 </html>
 
 <style>
   .page { overflow: clip; }
-  /* The footer is "revealed" under the page: main sits above it with rounded bottom corners. */
-  .main {
+  /* The footer is "revealed" under the page: the page body sits above it with rounded bottom corners. */
+  .page-body {
     position: relative;
     z-index: 2;
     background: var(--color-bg);
     border-bottom-left-radius: var(--radius-large);
     border-bottom-right-radius: var(--radius-large);
   }
+  .skip {
+    position: absolute;
+    top: var(--size-0-5);
+    left: var(--size-0-5);
+    z-index: 1001;
+    padding: var(--size-0-5) var(--size-1);
+    border-radius: var(--radius-small);
+    background: var(--white);
+    color: var(--color-text);
+    box-shadow: var(--shadow-large);
+  }
+  .skip:not(:focus) { clip-path: inset(50%); }
 </style>
