@@ -1,4 +1,455 @@
 ---
-// TODO(shell): site navigation (sticky header, desktop links + "Actualités & Infos" mega dropdown, account menu, mobile menu).
+// Site header: sticky bar with logo, main links, the "Actualités & Infos" mega menu, account menu and CTA.
+// ≤ 767px the menu collapses behind the burger. Without JavaScript every link stays reachable:
+// the mega menu and the account menu open on hover/focus (CSS), the mobile menu is shown expanded.
+import { PRODUCT, t } from '../i18n/config';
+import Button from './ui/Button.astro';
+import Chevron from './shell/icons/chevron-down.svg';
+import AccountIcon from './shell/icons/account.svg';
+import About from './shell/icons/about.svg';
+import Contact from './shell/icons/contact.svg';
+import Faqs from './shell/icons/faqs.svg';
+import News from './shell/icons/news.svg';
+import Guides from './shell/icons/guides.svg';
+import Dismemberment from './shell/icons/dismemberment.svg';
+import ViagerGuide from './shell/icons/viager-guide.svg';
+
+const d = t().nav;
+const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const current = (href: string) => (href === path ? 'page' : undefined);
+
+const links = [
+  { href: `${PRODUCT.app}/scpi`, label: d.scpi },
+  { href: `${PRODUCT.app}/viager`, label: d.viager },
+  { href: `${PRODUCT.app}/taxe-fonciere`, label: d.tax, newTab: true },
+  { href: '/simulateurs', label: d.simulators },
+];
+const groups = [
+  {
+    title: d.infos,
+    links: [
+      { href: '/a-propos', label: d.about, Icon: About },
+      { href: '/contact', label: d.contact, Icon: Contact },
+      { href: '/faqs', label: d.faqs, Icon: Faqs },
+    ],
+  },
+  {
+    title: d.news,
+    links: [
+      { href: '/actualites-conseils', label: d.newsLink, Icon: News },
+      { href: '/guides-scpi-viager-demembrement', label: d.guides, Icon: Guides },
+      { href: '/scpi-essentiel', label: d.essentials, Icon: Guides },
+      { href: '/demembrement', label: d.dismemberment, Icon: Dismemberment },
+      { href: '/viager-guides', label: d.viagerGuide, Icon: ViagerGuide },
+    ],
+  },
+];
+const cards = [
+  { href: `${PRODUCT.app}/scpi`, label: d.scpiListings, img: '6a2a31bf0b688ba26a36743a_image_nav' },
+  { href: `${PRODUCT.app}/viager`, label: d.viagerListings, img: '6a2a31bf00ec35583345c406_image_nav-1' },
+];
+const inMega = groups.some(g => g.links.some(l => l.href === path));
+const account = [
+  { href: `${PRODUCT.app}/auth/login`, label: d.login },
+  { href: `${PRODUCT.app}/auth/register`, label: d.register },
+];
 ---
-<header class="nav"></header>
+
+<header class="site-header gutter" data-site-header>
+  <div class="bar container">
+    <a href="/" class="logo" aria-current={current('/')}>
+      <img src="/assets/6a0c18efa2c34825ee1812d2_logo.svg" alt={d.home} width="202" height="32" fetchpriority="high" />
+    </a>
+
+    <nav class="menu" id="site-menu" aria-label={d.label}>
+      <ul class="menu__list" role="list">
+        {
+          links.map(l => (
+            <li>
+              <a class="menu__link" href={l.href} aria-current={current(l.href)} {...(l.newTab ? { target: '_blank', rel: 'noopener' } : {})}>
+                {l.label}
+                {l.newTab && <span class="visually-hidden"> {d.newTab}</span>}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mega" data-mega>
+          <button type="button" class:list={['menu__link', 'mega__toggle', { 'is-current': inMega }]} aria-expanded="false" aria-controls="mega-panel">
+            {d.more}
+            <Chevron class="mega__chevron" aria-hidden="true" />
+          </button>
+          <div class="mega__panel" id="mega-panel">
+            <div class="mega__grid">
+              {
+                groups.map(g => (
+                  <div class="mega__group">
+                    <p class="mega__title">{g.title}</p>
+                    <ul class="mega__links" role="list">
+                      {g.links.map(({ href, label, Icon }) => (
+                        <li>
+                          <a class="mega__link" href={href} aria-current={current(href)}>
+                            <span class="mega__icon"><Icon aria-hidden="true" /></span>
+                            {label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+              <div class="mega__cards">
+                {
+                  cards.map(c => (
+                    <a class="mega__card" href={c.href} target="_blank" rel="noopener">
+                      <img
+                        src={`/assets/${c.img}.avif`}
+                        srcset={`/assets/${c.img}-p-500.avif 500w, /assets/${c.img}-p-800.avif 800w, /assets/${c.img}.avif 1000w`}
+                        sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 30vw"
+                        alt=""
+                        width="1000"
+                        height="563"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="mega__card-text">
+                        {d.seeListings}
+                        <br />
+                        {c.label}
+                      </span>
+                      <span class="visually-hidden"> {d.newTab}</span>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </li>
+        {
+          account.map(l => (
+            <li class="mobile-only">
+              <a class="menu__link" href={l.href}>{l.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <div class="account" data-account>
+        <a class="account__toggle" href={PRODUCT.app} aria-label={d.account}><AccountIcon aria-hidden="true" /></a>
+        <div class="account__drop">
+          <ul class="account__list" role="list">
+            {account.map(l => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      </div>
+      <Button href={`${PRODUCT.app}/create`} arrow class="nav-cta"><span class="cta-text">{d.create}</span></Button>
+      <button type="button" class="burger" aria-expanded="false" aria-controls="site-menu" aria-label={d.menu} data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (header) {
+    const burger = header.querySelector<HTMLButtonElement>('[data-burger]')!;
+    const mega = header.querySelector<HTMLElement>('[data-mega]')!;
+    const toggle = mega.querySelector<HTMLButtonElement>('button')!;
+    const account = header.querySelector<HTMLElement>('[data-account]')!;
+    const set = (btn: HTMLButtonElement, open: boolean) => btn.setAttribute('aria-expanded', String(open));
+    const isOpen = (btn: HTMLButtonElement) => btn.getAttribute('aria-expanded') === 'true';
+
+    burger.addEventListener('click', () => set(burger, !isOpen(burger)));
+    toggle.addEventListener('click', () => set(toggle, !isOpen(toggle)));
+
+    document.addEventListener('click', e => {
+      if (isOpen(toggle) && !mega.contains(e.target as Node)) set(toggle, false);
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      if (isOpen(toggle)) {
+        set(toggle, false);
+        if (mega.contains(document.activeElement)) toggle.focus();
+      } else if (account.contains(document.activeElement) || account.matches(':hover')) {
+        account.dataset.dismissed = '';
+      } else if (isOpen(burger)) {
+        set(burger, false);
+        burger.focus();
+      }
+    });
+    // The account menu is CSS (hover/focus); Escape hides it until the pointer or focus leaves.
+    const undismiss = () => delete account.dataset.dismissed;
+    account.addEventListener('mouseleave', undismiss);
+    account.addEventListener('focusout', e => { if (!account.contains(e.relatedTarget as Node)) undismiss(); });
+    // Leaving the mobile layout closes the mobile menu.
+    matchMedia('(min-width: 768px)').addEventListener('change', () => set(burger, false));
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--size-1);
+    height: 4rem;
+  }
+  .logo { display: flex; align-items: center; width: 30%; }
+  .logo img { width: auto; height: var(--size-1-75); }
+
+  .menu__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-0-25);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .menu__link {
+    display: flex;
+    align-items: center;
+    gap: var(--size-0-25);
+    padding: var(--size-0-25) var(--size-0-5);
+    border: 0;
+    background: none;
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+    transition: color 0.4s;
+  }
+  .menu__link[aria-current='page'], .menu__link.is-current { color: var(--primary); }
+  .mobile-only { display: none; }
+
+  /* ---------- Mega menu ---------- */
+  .mega { align-self: stretch; display: flex; align-items: center; }
+  .mega__toggle { padding: var(--size-0-75) var(--size-0-25); white-space: nowrap; }
+  .mega__chevron { width: var(--size-1); height: var(--size-1); transition: transform 0.3s; }
+  .mega__panel {
+    position: absolute;
+    top: 3.5rem;
+    inset-inline: 0;
+    max-width: var(--site-width);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    border-bottom-left-radius: var(--radius-main);
+    border-bottom-right-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: 0 60px 60px color-mix(in srgb, var(--neutral-strong) 10%, transparent);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+  }
+  .mega__toggle[aria-expanded='true'] + .mega__panel,
+  :global(html:not(.js)) .mega:focus-within .mega__panel {
+    visibility: visible;
+    opacity: 1;
+  }
+  .mega__toggle[aria-expanded='true'] .mega__chevron { transform: rotate(180deg); }
+  @media (hover: hover) and (min-width: 768px) {
+    .mega:hover .mega__panel { visibility: visible; opacity: 1; }
+    .mega:hover .mega__chevron { transform: rotate(180deg); }
+  }
+  .mega__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+    gap: var(--size-2);
+    place-items: start stretch;
+    padding-block: var(--size-2);
+  }
+  .mega__group, .mega__cards { display: flex; flex-direction: column; gap: var(--size-0-5); }
+  .mega__cards { grid-column: span 2; }
+  .mega__title {
+    margin: 0;
+    color: var(--color-text-subtle);
+    font-size: 0.875rem;
+    font-weight: var(--weight-regular);
+    line-height: var(--lh-1-5);
+    letter-spacing: var(--ls-2);
+    text-transform: uppercase;
+  }
+  .mega__links { display: flex; flex-direction: column; gap: var(--size-0-5); margin: 0; padding: 0; list-style: none; }
+  .mega__link {
+    display: flex;
+    align-items: center;
+    gap: var(--size-0-75);
+    padding-block: var(--size-0-25);
+    color: var(--color-text);
+    font-weight: var(--weight-regular);
+    transition: transform 0.4s, color 0.4s;
+  }
+  .mega__link:hover, .mega__link[aria-current='page'] { color: var(--primary); }
+  .mega__link:hover { transform: translateX(var(--size-0-25)); }
+  .mega__icon {
+    display: flex;
+    padding: var(--size-0-75);
+    border: 0.5px solid var(--neutral-lightest);
+    border-radius: var(--size-0-75);
+    background: var(--neutral-bg);
+    box-shadow: var(--shadow-large);
+    color: var(--color-text);
+  }
+  .mega__icon :global(svg) { width: var(--size-1-25); height: var(--size-1-25); }
+  .mega__card {
+    position: relative;
+    display: block;
+    overflow: clip;
+    padding: var(--size-3) var(--size-2);
+    border: 0.5px solid var(--neutral-lightest);
+    border-radius: var(--radius-medium);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+    transition: transform 0.4s;
+  }
+  .mega__card:hover { transform: scale(0.98); }
+  .mega__card img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .mega__card-text {
+    position: relative;
+    display: block;
+    color: var(--color-text-light);
+    font-size: var(--text-medium-size);
+    font-weight: var(--weight-medium);
+    line-height: var(--lh-1-4);
+    letter-spacing: var(--ls-4);
+  }
+
+  /* ---------- Account menu ---------- */
+  .actions { display: flex; align-items: center; justify-content: flex-end; gap: var(--size-0-5); width: 30%; }
+  .account { position: relative; }
+  .account__toggle {
+    display: flex;
+    padding: var(--size-0-25);
+    border: 1px solid color-mix(in srgb, var(--white) 10%, transparent);
+    border-radius: var(--radius-round);
+    background: color-mix(in srgb, var(--white) 40%, transparent);
+    color: var(--neutral-medium);
+    transition: background-color 0.4s;
+  }
+  .account__toggle:hover { background: var(--neutral-lightest); }
+  .account__toggle :global(svg) { width: var(--size-2); height: var(--size-2); }
+  .account__drop {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 4;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s;
+  }
+  .account:hover .account__drop, .account:focus-within .account__drop { grid-template-rows: 1fr; }
+  .account[data-dismissed] .account__drop { grid-template-rows: 0fr; }
+  .account__list {
+    min-width: 10rem;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius-small);
+    background: var(--neutral-bg);
+    list-style: none;
+  }
+  .account:hover .account__list, .account:focus-within .account__list { box-shadow: var(--shadow-xlarge); }
+  .account__list li { margin-bottom: var(--size-0-25); }
+  .account__list a {
+    display: block;
+    padding: var(--size-0-5) var(--size-1);
+    color: var(--color-text);
+    transition: transform 0.4s, color 0.4s;
+  }
+  .account__list a:hover { color: var(--primary); transform: translateX(var(--size-0-25)); }
+
+  .cta-text { font-size: 0.875rem; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); }
+
+  /* ---------- Burger ---------- */
+  .burger {
+    --thickness: 0.15rem;
+    --gap: 0.3rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap);
+    box-sizing: content-box;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: var(--size-0-5);
+    border: 0;
+    background: none;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+  .burger span {
+    height: var(--thickness);
+    border-radius: var(--radius-round);
+    background: currentColor;
+    transition: transform 0.2s;
+  }
+  .burger[aria-expanded='true'] span:nth-child(2) { transform: scaleX(0); }
+  .burger[aria-expanded='true'] span:first-child { transform: translateY(calc(var(--thickness) + var(--gap))) rotate(135deg); }
+  .burger[aria-expanded='true'] span:last-child { transform: translateY(calc(-1 * (var(--thickness) + var(--gap)))) rotate(45deg); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 991px) {
+    .logo img { height: var(--size-1-25); }
+    .menu__link { font-size: 0.875rem; font-weight: var(--weight-regular); }
+    .mega__grid { gap: var(--size-1-5); }
+    .mega__card { display: flex; flex-direction: column; align-items: center; gap: var(--size-0-5); }
+    .mega__card-text { padding: var(--size-1); line-height: var(--lh-1-2); }
+    .account__list { margin-left: -5rem; }
+  }
+
+  @media (max-width: 767px) {
+    .logo { width: auto; }
+    .logo img { height: var(--size-2); }
+    .actions { flex: 1; gap: var(--size-1); width: auto; }
+    .account, :global(.nav-cta) { display: none !important; }
+    .burger { display: flex; }
+
+    .menu {
+      position: absolute;
+      top: 100%;
+      inset-inline: 0;
+      max-height: calc(100dvh - 100%);
+      overflow-y: auto;
+      padding: var(--size-1-25);
+      background: var(--white);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(calc(-1 * var(--size-0-5)));
+      transition: opacity 0.3s, transform 0.3s var(--ease-out), visibility 0.3s;
+    }
+    .site-header:has(.burger[aria-expanded='true']) .menu { visibility: visible; opacity: 1; transform: none; }
+    /* No JavaScript: the menu is simply shown under the bar. */
+    :global(html:not(.js)) .menu { position: static; visibility: visible; opacity: 1; transform: none; }
+    :global(html:not(.js)) .bar { flex-wrap: wrap; height: auto; min-height: 4rem; }
+    :global(html:not(.js)) .burger { display: none; }
+
+    .menu__list { flex-direction: column; align-items: stretch; gap: 0; }
+    .mobile-only { display: block; }
+    .menu__link { width: 100%; padding: var(--size-0-75) 0; font-size: var(--text-main-size); }
+    .mega { flex-direction: column; align-items: stretch; }
+    .mega__toggle { justify-content: flex-start; }
+    .mega__panel { position: static; display: none; margin: 0; padding: 0; box-shadow: none; border-radius: 0; }
+    .mega__toggle[aria-expanded='true'] + .mega__panel,
+    :global(html:not(.js)) .mega:focus-within .mega__panel { display: block; }
+    .mega__grid { padding-block: var(--size-1); }
+    .mega__card { justify-content: center; align-items: flex-start; min-height: var(--size-10); padding: var(--size-1); }
+    .mega__card-text { padding: 0; }
+  }
+
+  @media (max-width: 479px) {
+    .bar { height: 3rem; }
+    .logo img { height: var(--size-1-5); }
+    .mega__grid { grid-template-columns: 1fr; }
+    .mega__cards { grid-column: auto; }
+    .mega__icon { padding: var(--size-0-5); }
+    .mega__link { font-size: 0.875rem; }
+  }
+</style>
