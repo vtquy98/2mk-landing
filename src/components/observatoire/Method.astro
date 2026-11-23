@@ -1,0 +1,54 @@
+---
+// "Périmètre et méthode": scope, nature, tax and legal frame of the Observatoire figures.
+import Scope from './icons/scope.svg';
+import Balance from './icons/balance.svg';
+import Tax from './icons/tax.svg';
+import Gavel from './icons/gavel.svg';
+
+interface Props {
+  date: string;
+}
+const { date } = Astro.props;
+const items = [
+  { Icon: Scope, title: 'Périmètre', text: `Annonces de cession actives sur 2nd Market au ${date}, hors annonces sous compromis` },
+  { Icon: Balance, title: 'Nature', text: 'Offres de gré à gré entre particuliers. Les montants sont les prix demandés ; ni cours, ni prix de référence.' },
+  { Icon: Tax, title: 'Fiscalité', text: "Droits d'enregistrement de 5 % (art. 726 du CGI), à la charge de l'acheteur." },
+  { Icon: Gavel, title: 'Cadre', text: 'Cession sécurisée par acte notarié.' },
+];
+---
+
+<section class="method gutter" aria-labelledby="method-heading">
+  <div class="container container--medium section">
+    <div class="method__card">
+      <h2 id="method-heading" class="text-medium method__title">Périmètre et méthode</h2>
+      <ul class="method__list" role="list">
+        {
+          items.map(({ Icon, title, text }) => (
+            <li class="method__item">
+              <Icon class="method__icon" aria-hidden="true" />
+              <div class="method__body">
+                <h3 class="method__heading">{title}</h3>
+                <p class="method__text">{text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .method__card { display: flex; flex-direction: column; gap: var(--size-1); padding: var(--size-2); border-radius: var(--radius-main); background: var(--white); }
+  .method__title { margin: 0 0 var(--size-1); font-weight: var(--weight-regular); }
+  .method__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-2); margin: 0; padding: 0; list-style: none; }
+  .method__item { display: flex; gap: var(--size-1); align-items: flex-start; }
+  .method__icon { flex: none; width: var(--size-2); height: var(--size-2); color: var(--color-text-subtle); }
+  .method__body { display: flex; flex: 1; flex-direction: column; gap: var(--size-0-125); }
+  .method__heading { margin: 0 0 var(--size-0-5); font-size: var(--size-1); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-3); }
+  .method__text { margin: 0; text-wrap: pretty; }
+  @media (max-width: 479px) {
+    .method__list { grid-template-columns: 1fr; }
+    .method__card { padding: var(--size-1-5); }
+  }
+</style>

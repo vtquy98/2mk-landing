@@ -1,0 +1,128 @@
+---
+import './reveal.css';
+// "Témoignages": one testimonial at a time (scroll-snap), prev/next buttons loop around.
+const items = [
+  {
+    html: `<em>"Après presque un an d'attente suite à ma demande de retrait auprès de ma société de gestion, je n'avais toujours pas de solution. Avec 2nd Market, j'ai trouvé un acheteur </em><strong><em>en moins de 24 heures.</em></strong><em> Le processus était fluide, sécurisé et transparent. Une vraie solution efficace pour la cession de parts SCPI"</em>`,
+    author: 'Emile R., Yvelines',
+    image: '674edb68d2deec78ed80653a_IMG_0850-1-',
+    alt: "Immeubles de bureaux en quartier d'affaires",
+  },
+  {
+    html: `J'ai trouvé sur 2nd Market une opportunité à plus de 9% de rendement effectif. En quelques étapes, j'ai soumis mon offre et conclu l'acquisition. Interface intuitive, processus sécurisé : une expérience optimale.`,
+    author: 'Marc N.',
+    image: '674edb6813132cd085ecca45_IMG_0848',
+    alt: "Tour de bureaux vitrée en quartier d'affaires",
+  },
+];
+// Webflow variants drop a trailing dash of the name: …IMG_0850-1-.avif -> …IMG_0850-1-p-500.avif
+const src = (name: string, w?: number) => `/assets/${w ? `${name.replace(/-$/, '')}-p-${w}` : name}.avif`;
+const arrow = 'M6.75 8.25L3 12M3 12L6.75 15.75M3 12H21';
+---
+
+<section class="testimonials">
+  <div class="gutter">
+    <div class="container testimonials__inner">
+      <h2 class="h2 testimonials__title reveal">Témoignages</h2>
+      <div class="testimonials__slider">
+        <ul class="testimonials__track" role="list" tabindex="0" aria-label="Témoignages">
+          {
+            items.map(t => (
+              <li class="testimonials__slide">
+                <figure class="testimonials__item">
+                  <img class="testimonials__img" src={src(t.image)} srcset={`${src(t.image, 500)} 500w, ${src(t.image, 800)} 800w, ${src(t.image)} 1536w`} sizes="(max-width: 767px) 30vw, 25rem" alt={t.alt} width="1536" height="2048" loading="lazy" decoding="async" />
+                  <div class="testimonials__body">
+                    <blockquote class="h5 testimonials__quote"><p set:html={t.html} /></blockquote>
+                    <figcaption class="testimonials__author">{t.author}</figcaption>
+                  </div>
+                </figure>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="testimonials__arrows" hidden>
+          <button type="button" class="testimonials__arrow" data-dir="-1" aria-label="Témoignage précédent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={arrow} /></svg></button>
+          <button type="button" class="testimonials__arrow" data-dir="1" aria-label="Témoignage suivant"><svg viewBox="0 0 24 24" aria-hidden="true" style="transform: scaleX(-1)"><path d={arrow} /></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  for (const slider of document.querySelectorAll<HTMLElement>('.testimonials__slider')) {
+    const track = slider.querySelector<HTMLElement>('.testimonials__track')!;
+    const arrows = slider.querySelector<HTMLElement>('.testimonials__arrows')!;
+    arrows.hidden = false;
+    arrows.addEventListener('click', e => {
+      const dir = Number((e.target as Element).closest<HTMLElement>('[data-dir]')?.dataset.dir);
+      if (!dir) return;
+      const count = track.children.length;
+      const index = Math.round(track.scrollLeft / track.clientWidth);
+      track.scrollTo({ left: (((index + dir) % count) + count) % count * track.clientWidth });
+    });
+  }
+</script>
+
+<style>
+  .testimonials { margin-inline: var(--size-0-5); border-radius: var(--radius-large); background: var(--white); }
+  .testimonials__inner { padding-block: var(--section-main); }
+  .testimonials__title { margin: 0; padding-bottom: 0.125rem; }
+  .testimonials__slider { position: relative; padding-top: var(--size-2); }
+  .testimonials__track {
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+  .testimonials__track::-webkit-scrollbar { display: none; }
+  .testimonials__slide { scroll-snap-align: start; }
+  .testimonials__item { display: flex; gap: 5rem; align-items: center; margin: 0; }
+  .testimonials__img { flex: none; width: 100%; max-width: 25rem; height: 27.5rem; border-radius: var(--radius-main); }
+  .testimonials__body { display: flex; flex-direction: column; gap: var(--size-0-5); padding-bottom: 4rem; }
+  .testimonials__quote { margin: 0; padding: 0; border: 0; font-style: italic; font-weight: var(--weight-regular); letter-spacing: var(--ls-4); }
+  .testimonials__quote p { margin: 0; }
+  .testimonials__author { margin: 0; color: var(--neutral-large); font-size: 1rem; }
+  .testimonials__arrows { position: absolute; bottom: 2.25rem; left: 30rem; display: flex; gap: 0.5rem; }
+  .testimonials__arrows[hidden] { display: none; }
+  .testimonials__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-2-5);
+    height: var(--size-2-5);
+    padding: 0;
+    border: 1px solid var(--primary-light);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .testimonials__arrow:hover { background: var(--primary-lightest); }
+  .testimonials__arrow svg { width: var(--size-1-5); height: var(--size-1-5); fill: none; stroke: var(--primary); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 991px) {
+    .testimonials__item { gap: 2.5rem; }
+    .testimonials__img { max-width: 15rem; height: 15rem; }
+    .testimonials__arrows { right: 0; bottom: 0; left: auto; }
+    .testimonials__body { padding-bottom: 3.5rem; }
+  }
+  @media (max-width: 767px) {
+    .testimonials__item { gap: 2rem; align-items: flex-start; }
+    .testimonials__img { width: 30%; max-width: none; height: auto; aspect-ratio: 1; border-radius: var(--radius-small); }
+    .testimonials__quote { font-size: var(--h4-size); }
+  }
+  @media (max-width: 479px) {
+    .testimonials__item { flex-direction: column; gap: 1rem; }
+    .testimonials__author { font-size: 0.875rem; }
+  }
+</style>
+
+<script>
+  import './reveal';
+</script>

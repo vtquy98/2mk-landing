@@ -1,0 +1,83 @@
+---
+// Latest articles of the "actualites" collection (most recent `date` first), as cards. Renders nothing when empty.
+import './reveal.css';
+import Eyebrow from './Eyebrow.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  eyebrow?: string; // pill above the title
+  count?: number;
+}
+const { title, eyebrow, count = 3 } = Astro.props;
+const posts = (await getCollection('actualites'))
+  .filter(p => p.data.date)
+  .sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime())
+  .slice(0, count);
+---
+
+{
+  posts.length > 0 && (
+    <section class="news gutter">
+      <div class="container section">
+        {eyebrow && <div class="news__eyebrow reveal"><Eyebrow>{eyebrow}</Eyebrow></div>}
+        <h2 class="h2 news__title reveal">{title}</h2>
+        <ul class="news__grid" role="list">
+          {posts.map(p => (
+            <li>
+              <a class="news__card" href={`/actualites/${p.id}`}>
+                {p.data.image && <img class="news__img" src={p.data.image} alt={p.data.imageAlt ?? ''} width="800" height="450" loading="lazy" decoding="async" />}
+                <div class="news__body">
+                  <div>
+                    <h3 class="text-medium news__name">{p.data.title}</h3>
+                    {p.data.excerpt && <p class="clamp-2 news__excerpt">{p.data.excerpt}</p>}
+                  </div>
+                  <div class="news__foot">
+                    {p.data.category && <span class="news__category">{p.data.category}</span>}
+                    <span class="news__more">
+                      Lire la suite
+                      <svg viewBox="0 0 25 25" aria-hidden="true"><path d="M3.8 12.9h14.7m-5-6.3 6.6 6.3-6.6 6.6" /></svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <slot />
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .news__title { margin: 0; text-align: center; }
+  .news__eyebrow { display: flex; justify-content: center; margin-bottom: var(--size-1); }
+  .news__grid { display: grid; list-style: none; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: var(--size-2) 0 0; }
+  .news__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--size-0-25);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: 0 20px 50px color-mix(in srgb, var(--neutral-strong) 3%, transparent);
+    color: var(--color-text);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .news__card:hover { transform: translateY(-0.25rem); box-shadow: 0 20px 60px 5px color-mix(in srgb, var(--neutral-strong) 10%, transparent); }
+  .news__img { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--radius-medium); }
+  .news__body { display: flex; flex: 1; flex-direction: column; gap: var(--size-2); justify-content: space-between; padding: var(--size-0-5) var(--size-1) var(--size-1); }
+  .news__name { margin: 0; font-weight: var(--weight-medium); }
+  .news__excerpt { margin: 0; color: var(--neutral-large); }
+  .news__foot { display: flex; flex-wrap: wrap; gap: var(--size-0-5); align-items: center; justify-content: space-between; }
+  .news__category { padding: var(--size-0-25) var(--size-0-75); border-radius: var(--radius-round); background: var(--secondary-lightest); color: var(--secondary); text-transform: uppercase; }
+  .news__more { display: inline-flex; gap: var(--size-0-5); align-items: center; color: var(--primary); }
+  .news__more svg { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 767px) { .news__grid { padding-top: 1.5rem; } }
+  @media (max-width: 479px) { .news__grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  import './reveal';
+</script>

@@ -1,0 +1,13 @@
+/* Entrance of elements while scrolling (the live site slid them up). Usage in a component:
+     import './reveal.css';  …class="reveal"…  <script>import './reveal';</script>
+   The script marks them pending and shows each once when it enters the viewport. Without JS, or with reduced motion,
+   nothing is hidden. */
+.reveal.is-pending {
+  opacity: 0;
+  translate: 0 1.5rem;
+  transition: opacity 0.6s var(--ease-out), translate 0.6s var(--ease-out);
+}
+.reveal.is-pending.is-in {
+  opacity: 1;
+  translate: none;
+}

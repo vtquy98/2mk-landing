@@ -1,0 +1,55 @@
+---
+// "SCPI disponibles sur le marché secondaire": links to /2nd-seo pages (name + management company), in the order
+// recorded from the live home page (src/data/home/scpi-order.json). Renders nothing while the collection is empty.
+import './reveal.css';
+import Eyebrow from './Eyebrow.astro';
+import { getCollection } from 'astro:content';
+import order from '../../data/home/scpi-order.json';
+
+interface Props {
+  title: string;
+  eyebrow?: string; // pill above the title
+  headingClass?: string;
+}
+const { title, eyebrow, headingClass = 'h5' } = Astro.props;
+// `manager` / `managerPage` are added to the 2nd-seo schema by its importer.
+type Scpi = { title: string; manager?: string; managerPage?: { id: string } };
+const byId = new Map((await getCollection('2nd-seo')).map(e => [e.id, e.data as Scpi]));
+const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : []));
+---
+
+{
+  items.length > 0 && (
+    <section class="directory gutter">
+      <div class="container section">
+        {eyebrow && <div class="directory__eyebrow reveal"><Eyebrow>{eyebrow}</Eyebrow></div>}
+        <h2 class:list={[headingClass, 'directory__title reveal']}>{title}</h2>
+        <ul class="directory__grid" role="list">
+          {items.map(s => (
+            <li class="directory__item">
+              <a class="directory__name" href={`/2nd-seo/${s.id}`}>{s.title}</a>
+              {s.manager && (s.managerPage ? <a class="directory__manager" href={`/seo/${s.managerPage.id}`}>{s.manager}</a> : <span class="directory__manager">{s.manager}</span>)}
+            </li>
+          ))}
+        </ul>
+        <slot />
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .directory__title { margin: 0; text-align: center; }
+  .directory__eyebrow { display: flex; justify-content: center; margin-bottom: var(--size-1); }
+  .directory__grid { display: grid; list-style: none; grid-template-columns: repeat(6, 1fr); gap: var(--size-2) var(--size-1); place-items: start; margin: 0; padding: var(--size-2) 0 0; }
+  .directory__item { display: flex; flex-direction: column; gap: var(--size-0-25); }
+  .directory__name { color: var(--color-text); text-decoration: underline; transition: color 0.3s; }
+  .directory__manager { color: var(--neutral-large); font-size: 0.875rem; font-weight: var(--weight-light); line-height: var(--lh-1-5); letter-spacing: var(--ls-2); transition: color 0.3s; }
+  .directory__name:hover, a.directory__manager:hover { color: var(--primary); }
+  @media (max-width: 767px) { .directory__grid { grid-template-columns: repeat(4, 1fr); padding-top: 1.5rem; } }
+  @media (max-width: 479px) { .directory__grid { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<script>
+  import './reveal';
+</script>

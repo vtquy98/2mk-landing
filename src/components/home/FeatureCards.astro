@@ -1,0 +1,173 @@
+---
+// Photo cards (SCPI / Viager / Groupement Foncier / Private Equity by default). Wide container: one row, the hovered
+// or focused card widens and reveals its text and links. Narrower: a grid with every text visible.
+// `show` picks default cards by id; `cards` replaces them (with `title`, the section gets an h2 and cards use h3).
+import Button from '../ui/Button.astro';
+import { PRODUCT } from '../../i18n/config';
+import './reveal.css';
+
+type Card = {
+  title: string;
+  image: string; // asset base name: /assets/<image>.avif, Webflow variants <image>-p-<w>.avif
+  variants: number[];
+  alt: string;
+  html: string;
+  badge?: string;
+  links: { label: string; href: string; external?: boolean }[];
+};
+const defaults = {
+  scpi: {
+    title: 'SCPI',
+    image: '6a0e87a7cfb6c29eb2550cea_scpi',
+    variants: [500, 800, 1080, 1600],
+    alt: 'Immeuble résidentiel parisien, investissement en parts de SCPI',
+    html: "<p>- Marché secondaire des parts de SCPI en accès libre : annonces de vente et d'achat entre investisseurs.<br>- Publiez votre annonce, fixez votre prix, recevez des offres.<br>- Simulateurs frais, décote, rendement. Cession validée par la société de gestion.</p>",
+    links: [
+      { label: 'Explorer les annonces SCPI', href: `${PRODUCT.app}/scpi` },
+      { label: 'Explorer les annonces SCPI', href: `${PRODUCT.app}/scpi` },
+    ],
+  },
+  viager: {
+    title: 'Viager',
+    image: '6a1017226c5b65a83f5d40ce_viager',
+    variants: [500, 800, 1080, 1600],
+    alt: 'Couple de seniors, vente en viager',
+    html: `<p>- Viager libre et occupé entre particuliers, sans intermédiaire commercial. Annonces publiées, dépôt gratuit.<br>- Simulateurs viager intégrés : bouquet, rente, droit d'usage (DUH). Guides pratiques.<br>- Transaction encadrée par notaire avec séquestre bancaire des fonds.</p><p><a href="${PRODUCT.app}/viager">Créez votre compte</a> pour publier votre annonce ou suivre les nouvelles mises en ligne.</p>`,
+    links: [
+      { label: 'Explorer les annonces viager', href: `${PRODUCT.app}/viager` },
+      { label: 'Explorer les annonces SCPI', href: `${PRODUCT.app}/scpi` },
+    ],
+  },
+  'groupement-foncier': {
+    title: 'Groupement Foncier',
+    image: '6a1017233392a6615453dde0_forest',
+    variants: [500, 800, 1080, 1600],
+    alt: 'Forêt de résineux, investissement en groupement forestier',
+    badge: 'Bientôt',
+    html: '<p>- Groupements forestiers (GFI), agricoles (GFA) et viticoles (GFV) : actifs immobiliers diversifiés peu liquides.<br>- Guides, fiscalité IFI et présentation des véhicules existants.<br>- Annonces de cession sur le marché secondaire à venir.</p>',
+    links: [
+      { label: 'Être prévenu au lancement', href: '/contact' },
+      { label: 'Explorer les annonces SCPI', href: `${PRODUCT.app}/scpi` },
+    ],
+  },
+  'private-equity': {
+    title: 'Private Equity',
+    image: '6a1017ee98d12512a47c330c_private-equity',
+    variants: [500, 800, 1080, 1600],
+    alt: "Deux investisseurs en tenue d'affaires, private equity",
+    badge: 'Bientôt',
+    html: "<p>- Private equity immobilier : fonds non cotés investis dans l'immobilier professionnel et alternatif.<br>- Guides, fiscalité et présentation des principaux véhicules.<br>- Annonces de cession sur le marché secondaire à venir.</p>",
+    links: [
+      { label: 'Être prévenu au lancement', href: '/contact' },
+      { label: 'Explorer les annonces SCPI', href: `${PRODUCT.app}/scpi` },
+    ],
+  },
+} satisfies Record<string, Card>;
+export type FeatureCardId = keyof typeof defaults;
+
+interface Props {
+  show?: FeatureCardId[];
+  cards?: Card[];
+  title?: string;
+}
+const { show = Object.keys(defaults) as FeatureCardId[], cards = show.map(id => defaults[id] as Card), title } = Astro.props;
+const Heading = title ? 'h3' : 'h2';
+const src = (c: Card, w?: number) => `/assets/${c.image}${w ? `-p-${w}` : ''}.avif`;
+---
+
+<section class:list={['features gutter', title && 'features--titled']}>
+  <div class:list={['container features__inner', title ? 'container--medium section' : 'section--small']}>
+    {title && <h2 class="h2 features__title">{title}</h2>}
+    <div class="features__wrap">
+      <ul class="features__list" role="list">
+        {
+          cards.map(c => (
+            <li class="feature reveal">
+              <img class="feature__img" src={src(c)} srcset={[...c.variants.map(w => `${src(c, w)} ${w}w`), `${src(c)} 2000w`].join(', ')} sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 40vw" alt={c.alt} width="2000" height="1521" loading="lazy" decoding="async" />
+              {c.badge && <span class="feature__badge">{c.badge}</span>}
+              <div class="feature__content">
+                <Heading class="h3 feature__title">{c.title}</Heading>
+                <div class="feature__mask">
+                  <div class="feature__clip">
+                    <div class="feature__text" set:html={c.html} />
+                    <div class="feature__links">
+                      {c.links.map(l => <Button href={l.href} variant="tertiary" {...(l.external ? { target: '_blank' } : {})}>{l.label}</Button>)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  import './reveal';
+</script>
+
+<style>
+  .features__inner { display: flex; flex-direction: column; gap: var(--size-2); }
+  .features__title { max-width: 48rem; margin: 0 auto; text-align: center; }
+  .features__wrap { container-type: inline-size; }
+  /* Narrow (default): grid, every text visible */
+  .features__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-1); margin: 0; padding: 0; list-style: none; }
+  .feature {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 30rem;
+    padding: var(--size-2);
+    overflow: hidden;
+    border-radius: var(--radius-main);
+    color: var(--color-text-light);
+    transition: width 0.3s;
+  }
+  .feature__img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(transparent, color-mix(in srgb, black 50%, transparent) 25%, color-mix(in srgb, black 90%, transparent));
+  }
+  .feature__badge {
+    position: relative;
+    z-index: 2;
+    padding: var(--size-0-25) var(--size-0-75);
+    border: 1px solid #8bffe01a; /* "positive" greens: no token yet */
+    border-radius: var(--radius-round);
+    background: #68ffd233;
+    color: #5aff96;
+    font-weight: var(--weight-medium);
+    backdrop-filter: blur(30px);
+  }
+  .feature__content { position: relative; z-index: 2; display: flex; flex: 1; flex-direction: column; justify-content: flex-end; transition: opacity 0.4s; }
+  .feature__title { margin: 0 0 var(--size-2); text-wrap: balance; }
+  .feature__mask { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.3s ease; }
+  .feature__clip { min-height: 0; overflow: hidden; }
+  .feature__text { margin-bottom: var(--size-1); text-wrap: pretty; }
+  .feature__text :global(p:last-child) { margin-bottom: 0; }
+  .feature__links { display: flex; flex-wrap: wrap; gap: var(--size-0-5); align-items: center; }
+  .feature__links :global(.button) { font-weight: var(--weight-regular); }
+
+  /* Wide: one row, the active card widens and reveals its text */
+  @container (width > 55em) {
+    .features__list { display: flex; }
+    .feature { padding: var(--size-1-5); }
+    .feature::before { background: linear-gradient(transparent, color-mix(in srgb, black 50%, transparent) 60%, color-mix(in srgb, black 90%, transparent)); }
+    .feature:is(:hover, :focus-within) { width: 190%; }
+    .feature__mask { grid-template-rows: 0fr; }
+    .feature:is(:hover, :focus-within) .feature__mask { grid-template-rows: 1fr; }
+    .features__list:has(.feature:is(:hover, :focus-within)) .feature:not(:hover, :focus-within) .feature__content { opacity: 0; }
+  }
+  @media (max-width: 479px) {
+    .features__list { grid-template-columns: 1fr; }
+    .feature { min-height: 24rem; }
+    .feature::before { background: linear-gradient(transparent, color-mix(in srgb, black 50%, transparent) 15%, color-mix(in srgb, black 90%, transparent)); }
+  }
+</style>

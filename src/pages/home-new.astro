@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Hero from '../components/home/Hero.astro';
+import AboutMedia from '../components/home/AboutMedia.astro';
+import ListingSection from '../components/home/ListingSection.astro';
+import FeatureCards from '../components/home/FeatureCards.astro';
+import Benefits from '../components/home/Benefits.astro';
+import Liquidity from '../components/home/Liquidity.astro';
+import Reviews from '../components/home/Reviews.astro';
+import HowSection from '../components/home/HowSection.astro';
+import FaqSplit from '../components/home/FaqSplit.astro';
+import Simulators from '../components/home/Simulators.astro';
+import LatestNews from '../components/home/LatestNews.astro';
+import ScpiDirectory from '../components/home/ScpiDirectory.astro';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/home-new.json';
+
+const ads = (await getCollection('scpi-listing', e => e.data.source === 'webflow')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout seo={seo} floatingButton>
+  <Hero
+    title="Revente SCPI et marché secondaire"
+    stats={[
+      { value: '2,44 Md€', label: 'De parts SCPI en attente de retrait' },
+      { value: '18,4 M€', label: "D'annonces publiées sur la plateforme" },
+      { value: '1000+', label: 'Investisseurs inscrits' },
+      { value: '100%', label: 'Des cessions encadrées par notaire' },
+    ]}
+  >
+    <p slot="lead" class="text-medium lead">SCPI, viager, démembrement : achetez avec décote ou vendez en gré à gré entre investisseurs</p>
+    <div slot="actions" class="actions">
+      <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button>
+      <Button href={`${PRODUCT.app}/create`} variant="blur">Déposer une annonce gratuitement</Button>
+    </div>
+  </Hero>
+  <AboutMedia />
+  <ListingSection entries={ads} />
+  <FeatureCards />
+  <Benefits
+    eyebrow="Acheteurs"
+    title="Pourquoi acheter des SCPI sur le marché secondaire ?"
+    items={[
+      { image: '/assets/6a05371092a8562c396b7efd_benefit-1.avif', title: 'Décote et frais de souscription évités', text: "Sur le marché primaire, les frais de souscription représentent 8 à 12 % du prix de part. Sur le marché secondaire, ils disparaissent. L'acheteur négocie directement avec le vendeur, souvent avec décote." },
+      { image: '/assets/6a05371037e24827e138d81a_benefit-2.avif', title: 'Même dividende, rendement effectif amélioré', text: 'Une décote de –20 % sur une SCPI à 4,5 % de rendement standard génère environ 5,6 % de rendement effectif (hypothèse simplificatrice, dividende constant non garanti).' },
+      { image: '/assets/6a0537104d6b72c0e168a73f_benefit-3.avif', title: 'SCPI à capital fixe et fermées', text: 'Les SCPI à capital fixe et les SCPI fermées à la souscription primaire ne sont accessibles que sur le marché secondaire.' },
+    ]}
+  />
+  <Liquidity />
+  <Reviews />
+  <HowSection />
+  <FaqSplit list="/" />
+  <Simulators />
+  <LatestNews eyebrow="Actualités & Conseils" title="Comprendre le marché secondaire">
+    <div class="center"><Button href="/actualites-conseils">Tous les articles</Button></div>
+  </LatestNews>
+  <ScpiDirectory eyebrow="Une plateforme, un écosystème" title="Une plateforme, un écosystème" headingClass="h2">
+    <div class="center"><Button href="/repertoire">Tous les articles</Button></div>
+  </ScpiDirectory>
+</BaseLayout>
+
+<style>
+  .lead { max-width: 48rem; margin: 0; opacity: 0.7; text-wrap: balance; }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--size-0-5); justify-content: center; }
+  .center { display: flex; justify-content: center; padding-top: var(--size-2); }
+</style>

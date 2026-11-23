@@ -1,0 +1,124 @@
+---
+// "Comment ça marche": 5 steps as cards that stack while scrolling (position: sticky), required documents aside.
+import './reveal.css';
+import Button from '../ui/Button.astro';
+import DocId from './icons/doc-id.svg';
+import DocProperty from './icons/doc-property.svg';
+import DocAddress from './icons/doc-address.svg';
+import { PRODUCT } from '../../i18n/config';
+
+const register = `${PRODUCT.app}/auth/register`;
+const numbers = ['6746b6807f05d1797c2e0603_Number.svg', '6746b680f78b59d0a38ee2e3_Number-1.svg', '6746b6805b8f2a2050be0cb0_Number-2.svg', '6746b6807f05d1797c2e0600_Number-3.svg', '6746b6801536bd7e36d03be5_Number-4.svg'];
+const documents = [
+  { Icon: DocId, label: 'Pièce d’identité' },
+  { Icon: DocProperty, label: 'Preuve de propriété' },
+  { Icon: DocAddress, label: 'Justificatif de domicile' },
+];
+---
+
+<section id="step" class="steps gutter">
+  <div class="container section">
+    <h2 class="h2 steps__title reveal">Comment ça marche</h2>
+    <div class="steps__layout">
+      <ol class="steps__list" role="list">
+        <li class="steps__item">
+          <img src={`/assets/${numbers[0]}`} alt="" width="64" height="64" loading="lazy" />
+          <div>
+            <h3 class="h5 steps__heading"><a href={register}>Créez un compte </a>gratuitement</h3>
+            <p><a href={register}>Inscrivez-vous</a> avec une pièce d’identité. Accès immédiat à toutes les annonces SCPI</p>
+          </div>
+        </li>
+        <li class="steps__item">
+          <img src={`/assets/${numbers[1]}`} alt="" width="64" height="64" loading="lazy" />
+          <div>
+            <h3 class="h5 steps__heading">Publiez votre annonce ou faites une offre</h3>
+            <p>Vendeur : déposez votre annonce gratuitement. <br />Acheteur : parcourez les annonces et proposez un prix. Publication gratuite.</p>
+          </div>
+        </li>
+        <li class="steps__item">
+          <img src={`/assets/${numbers[2]}`} alt="" width="64" height="64" loading="lazy" />
+          <div>
+            <h3 class="h5 steps__heading">Négociez directement</h3>
+            <p><strong>Recevez des offres et négociez</strong> — Échangez par messagerie sécurisée. Vous pouvez aussi publier une annonce de recherche (Wanted).</p>
+          </div>
+        </li>
+        <li class="steps__item">
+          <img src={`/assets/${numbers[3]}`} alt="" width="64" height="64" loading="lazy" />
+          <div>
+            <h3 class="h5 steps__heading">Le notaire sécurise la transaction</h3>
+            <p><strong>Le notaire vérifie et sécurise</strong> — Identités, fonds, propriété: tout est contrôlé. Coordination avec la société de gestion.</p>
+          </div>
+        </li>
+        <li class="steps__item">
+          <img src={`/assets/${numbers[4]}`} alt="" width="64" height="64" loading="lazy" />
+          <div>
+            <h3 class="h5 steps__heading">Finalisation de la vente</h3>
+            <p>Le notaire sécurise la vente, conserve les fonds sous séquestre et s’assure de la conformité juridique.<br />Comme pour une vente immobilière, les frais vendeur ne sont dus que lors de la signature.</p>
+          </div>
+        </li>
+      </ol>
+      <aside class="steps__docs">
+        <div class="steps__docs-card">
+          <h3 class="h5 steps__heading steps__docs-title">Documents requis</h3>
+          <ul class="steps__docs-list" role="list">
+            {documents.map(({ Icon, label }) => <li><Icon aria-hidden="true" /><span class="text-medium">{label}</span></li>)}
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <div class="steps__action"><Button href={`${PRODUCT.app}/scpi`}>Voir les annonces</Button></div>
+  </div>
+</section>
+
+<style>
+  .steps__title { margin: 0; text-align: center; }
+  .steps__layout { display: flex; gap: var(--size-1); padding-top: 4rem; }
+  .steps__list { display: flex; list-style: none; flex: 1; flex-direction: column; margin: 0; padding: 0; }
+  .steps__item {
+    position: sticky;
+    top: 20%;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    height: var(--size-10);
+    margin-bottom: var(--size-1);
+    padding: var(--size-0-5);
+    overflow: hidden;
+    border-radius: var(--radius-main);
+    background: var(--white);
+  }
+  .steps__item:last-child { margin-bottom: 0; }
+  .steps__item img { flex: none; width: var(--size-4); height: var(--size-4); }
+  .steps__item > div { display: flex; flex-direction: column; gap: var(--size-0-25); }
+  .steps__item p { margin: 0; }
+  .steps__heading { margin: 0; font-weight: var(--weight-regular); text-wrap: pretty; }
+  .steps__docs { flex: 0 auto; width: 40%; }
+  .steps__docs-card { position: sticky; top: 20%; padding: var(--size-0-5); border-radius: var(--radius-main); background: color-mix(in srgb, var(--neutral-lightest) 30%, transparent); backdrop-filter: blur(4px); }
+  .steps__docs-title { padding: var(--size-1) var(--size-1-5); }
+  .steps__docs-list { display: flex; list-style: none; flex-direction: column; gap: var(--size-0-5); margin: 0; padding: 0; border-radius: var(--radius-medium); background: var(--white); }
+  .steps__docs-list li { display: flex; flex-direction: column; gap: var(--size-0-5); align-items: center; padding: var(--size-1) var(--size-1-5); border-radius: var(--radius-medium); }
+  .steps__docs-list :global(svg) { width: var(--size-2); height: var(--size-2); }
+  .steps__action { display: flex; justify-content: center; padding-top: 4rem; }
+  @media (max-width: 991px) {
+    .steps__layout, .steps__action { padding-top: 2.5rem; }
+    .steps__item { top: 15%; }
+    .steps__docs-list li { align-items: flex-start; padding: var(--size-1-5); }
+  }
+  @media (max-width: 767px) {
+    .steps__layout, .steps__action { padding-top: 2rem; }
+    .steps__item { height: 14rem; }
+    .steps__item .steps__heading { font-size: var(--h4-size); }
+  }
+  @media (max-width: 479px) {
+    .steps__layout { flex-direction: column; }
+    .steps__item { flex-direction: column; gap: var(--size-0-75); justify-content: center; align-items: stretch; height: auto; min-height: 14rem; padding: var(--size-0-5) var(--size-0-5) var(--size-1-5); border-radius: 2rem; }
+    .steps__item img { width: 3rem; height: 3rem; }
+    .steps__item > div { gap: var(--size-0-75); }
+    .steps__item .steps__heading { font-size: var(--h3-size); }
+    .steps__docs { width: 100%; margin-bottom: 2rem; }
+  }
+</style>
+
+<script>
+  import './reveal';
+</script>
