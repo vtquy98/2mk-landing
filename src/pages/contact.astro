@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/static/PageHeader.astro';
+import LeadForm from '../components/static/LeadForm.astro';
+import Field from '../components/static/Field.astro';
+import RadioGroup from '../components/static/RadioGroup.astro';
+import '../components/static/reveal.css';
+import seo from '../data/seo/contact.json';
+---
+
+<BaseLayout seo={seo} floatingButton={false}>
+  <PageHeader title="Contact" />
+  <section class="gutter" aria-label="Formulaire de contact">
+    <div class="container section--small">
+      <div class="card" data-reveal="right">
+        <LeadForm leadAction="contact" label="Contact" submit="Envoyer">
+          <RadioGroup name="gender" legend="Civilité" options={['Mr', 'Mme']} required hideLegend />
+          <Field label="Prénom" name="firstName" placeholder="Entrez votre Prénom" autocomplete="given-name" />
+          <Field label="Nom" name="lastName" placeholder="Entrez votre Nom" autocomplete="family-name" />
+          <Field label="Email" name="email" type="email" placeholder="Utilisez une adresse valide" autocomplete="email" required />
+          <Field label="Numéro de téléphone" name="phone" type="tel" placeholder="+33" autocomplete="tel" />
+          <Field label="Message" name="message" type="textarea" placeholder="Message" />
+        </LeadForm>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .card {
+    width: 60%;
+    margin-inline: auto;
+    padding: var(--size-2-5);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+  }
+  @media (max-width: 991px) { .card { width: 100%; } }
+  @media (max-width: 767px) { .card { padding: 2rem; } }
+  @media (max-width: 479px) { .section--small { padding-block: var(--size-1) var(--size-1-5); } }
+</style>
