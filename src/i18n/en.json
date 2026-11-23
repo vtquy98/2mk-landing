@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "title": "2ndmarket — TODO tagline",
+    "description": "TODO: 140–160 character description of 2ndmarket for search results."
+  },
+  "nav": {
+    "skip": "Skip to main content",
+    "features": "Features",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "download": "Download",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "TODO eyebrow",
+    "title": "TODO: main headline",
+    "lead": "TODO: one or two sentences on what 2ndmarket does and for whom."
+  },
+  "store": {
+    "appStore": "Download on the App Store",
+    "playStore": "Get it on Google Play"
+  },
+  "features": {
+    "title": "TODO: features headline",
+    "items": [
+      { "title": "TODO feature 1", "text": "TODO: short benefit." },
+      { "title": "TODO feature 2", "text": "TODO: short benefit." },
+      { "title": "TODO feature 3", "text": "TODO: short benefit." }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      { "q": "TODO question 1?", "a": "TODO answer." },
+      { "q": "TODO question 2?", "a": "TODO answer." }
+    ]
+  },
+  "cta": {
+    "title": "TODO: closing call to action",
+    "text": "TODO: one line."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "TODO: blog meta description.",
+    "empty": "No posts yet.",
+    "readMore": "Read more"
+  },
+  "footer": {
+    "privacy": "Privacy policy",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist.",
+    "home": "Back to home"
+  }
+}

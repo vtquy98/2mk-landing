@@ -1,0 +1,14 @@
+// Static site (dist/) on Cloudflare Workers static assets. No Worker code yet (add "main" when forms/API are needed).
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "2mk-landing",
+  "compatibility_date": "2026-11-23",
+  // workers.dev URL + per-PR preview URLs (pr-<number>-2mk-landing.<account>.workers.dev)
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

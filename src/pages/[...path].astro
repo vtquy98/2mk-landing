@@ -1,0 +1,107 @@
+---
+// Every HTML URL of the site (home, blog list, pages, posts) is generated here from src/lib/routes.ts.
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Home from '../components/home/Home.astro';
+import { locales, PRODUCT, t } from '../i18n/config';
+import { alternatesOf, getRoutes, type Route } from '../lib/routes';
+
+export async function getStaticPaths() {
+  const routes = await getRoutes();
+  return routes.map(route => ({ params: { path: route.path === '/' ? undefined : route.path.slice(1) }, props: { route, routes } }));
+}
+
+const { route, routes } = Astro.props as { route: Route; routes: Route[] };
+const tx = t(route.lang);
+const locale = locales[route.lang];
+const alternates = alternatesOf(route, routes);
+const ld = (o: object) => JSON.stringify(o);
+const abs = (p: string) => new URL(p, Astro.site).href;
+const fmt = (d: Date) => d.toLocaleDateString(locale.dateLocale, { year: 'numeric', month: 'long', day: 'numeric' });
+
+const posts = routes
+  .filter((r): r is Extract<Route, { kind: 'post' }> => r.kind === 'post' && r.lang === route.lang)
+  .sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf());
+
+const entry = route.kind === 'page' || route.kind === 'post' ? route.entry : undefined;
+const { Content } = entry ? await render(entry) : { Content: undefined };
+
+const head =
+  route.kind === 'home'
+    ? {
+        title: tx.meta.title,
+        description: tx.meta.description,
+        jsonLd: [
+          ld({ '@context': 'https://schema.org', '@type': 'MobileApplication', name: PRODUCT.name, operatingSystem: 'iOS, Android', applicationCategory: 'LifestyleApplication', url: abs(route.path) }),
+          ld({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: tx.faq.items.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }),
+        ],
+      }
+    : route.kind === 'blog-list'
+      ? { title: `${tx.blog.title} — ${PRODUCT.name}`, description: tx.blog.description, jsonLd: [] }
+      : route.kind === 'page'
+        ? { title: route.entry.data.title, description: route.entry.data.description, ogImage: route.entry.data.ogImage, robots: route.entry.data.robots, jsonLd: route.entry.data.jsonLd }
+        : {
+            title: route.entry.data.seoTitle ?? route.entry.data.title,
+            description: route.entry.data.description,
+            ogType: 'article' as const,
+            ogImage: route.entry.data.ogImage ?? route.entry.data.image,
+            robots: route.entry.data.robots,
+            jsonLd: [
+              ld({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: route.entry.data.title,
+                description: route.entry.data.description,
+                datePublished: route.entry.data.date.toISOString(),
+                dateModified: (route.entry.data.updated ?? route.entry.data.date).toISOString(),
+                inLanguage: locale.htmlLang,
+                url: abs(route.path),
+                ...(route.entry.data.image && { image: abs(route.entry.data.image) }),
+                publisher: { '@type': 'Organization', name: PRODUCT.name },
+              }),
+              ...route.entry.data.jsonLd,
+            ],
+          };
+---
+
+<BaseLayout lang={route.lang} path={route.path} alternates={alternates} {...head}>
+  {route.kind === 'home' && <Home lang={route.lang} />}
+
+  {route.kind === 'blog-list' && (
+    <section class="section">
+      <div class="container container--narrow">
+        <h1>{tx.blog.title}</h1>
+        {posts.length === 0 && <p>{tx.blog.empty}</p>}
+        <ul class="posts">
+          {posts.map(p => (
+            <li>
+              <a href={p.path}><h2>{p.entry.data.title}</h2></a>
+              <time datetime={p.entry.data.date.toISOString()}>{fmt(p.entry.data.date)}</time>
+              <p>{p.entry.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {route.kind === 'page' && Content && (
+    <article class="section">
+      <div class="container container--narrow prose">
+        <h1>{route.entry.data.title}</h1>
+        <Content />
+      </div>
+    </article>
+  )}
+
+  {route.kind === 'post' && Content && (
+    <article class="section">
+      <div class="container container--narrow prose">
+        <h1>{route.entry.data.title}</h1>
+        <time datetime={route.entry.data.date.toISOString()}>{fmt(route.entry.data.date)}</time>
+        {route.entry.data.image && <img src={route.entry.data.image} alt={route.entry.data.imageAlt ?? ''} width="1200" height="630" />}
+        <Content />
+      </div>
+    </article>
+  )}
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale, t } from '../i18n/config';
+
+const tx = t(defaultLocale).notFound;
+---
+
+<BaseLayout lang={defaultLocale} path="/404" title={tx.title} description={tx.text} robots="noindex">
+  <section class="section">
+    <div class="container container--narrow">
+      <h1>{tx.title}</h1>
+      <p>{tx.text}</p>
+      <a class="btn" href="/">{tx.home}</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { defaultLocale, locales, PRODUCT } from '../i18n/config';
+
+interface Props {
+  lang: string;
+  path: string; // canonical path
+  title: string;
+  description: string;
+  alternates?: Record<string, string>; // { lang: path } of the same page in every language
+  ogType?: 'website' | 'article';
+  ogImage?: string;
+  robots?: string;
+  jsonLd?: string[];
+}
+
+const { lang, path, title, description, alternates = {}, ogType = 'website', ogImage, robots, jsonLd = [] } = Astro.props;
+const locale = locales[lang];
+const abs = (p: string) => new URL(p, Astro.site).href;
+const alt = Object.entries(alternates);
+---
+
+<!doctype html>
+<html lang={locale.htmlLang} dir={locale.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={abs(path)} />
+    <meta name="robots" content={robots ?? 'index, follow, max-image-preview:large'} />
+    {alt.length > 1 && alt.map(([l, href]) => <link rel="alternate" hreflang={locales[l].hreflang} href={abs(href)} />)}
+    {alt.length > 1 && alternates[defaultLocale] && <link rel="alternate" hreflang="x-default" href={abs(alternates[defaultLocale])} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={PRODUCT.name} />
+    <meta property="og:locale" content={locale.ogLocale} />
+    <meta property="og:url" content={abs(path)} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={abs(ogImage)} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+
+    {jsonLd.map(j => <script type="application/ld+json" is:inline set:html={j} />)}
+  </head>
+  <body>
+    <Nav lang={lang} alternates={alternates} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

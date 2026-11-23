@@ -1,0 +1,14 @@
+---
+import { locales, PRODUCT, t } from '../i18n/config';
+
+interface Props { lang: string }
+const { lang } = Astro.props;
+const tx = t(lang).footer;
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© {new Date().getFullYear()} {PRODUCT.name}. {tx.rights}</span>
+    <a href={`${locales[lang].base}/privacy`}>{tx.privacy}</a>
+  </div>
+</footer>
