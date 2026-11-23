@@ -12,3 +12,4 @@ dist/
 
 .omc/
 .webflow-cache/
+.claude/worktrees/
