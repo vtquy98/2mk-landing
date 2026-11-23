@@ -10,7 +10,7 @@ import Split from '../components/home/Split.astro';
 import Links from '../components/home/Links.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 import Faqs from '../components/home/Faqs.astro';
-import CtaBand from '../components/home/CtaBand.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
 import LatestNews from '../components/home/LatestNews.astro';
 import ScpiDirectory from '../components/home/ScpiDirectory.astro';
 import { PRODUCT } from '../i18n/config';
@@ -29,7 +29,7 @@ const ads = (await getCollection('scpi-listing', e => e.data.source === 'app')).
       { value: '100%', label: 'Des cessions encadrées par notaire' },
     ]}
   />
-  <ListingSection entries={ads} />
+  <ListingSection entries={ads} live />
   <About>
     1,9 milliards d'euros de parts SCPI sont en file d'attente de retrait au 30/06/2026 (ASPIM). <br />2nd Market permet aux vendeurs et acheteurs de se rencontrer, négocier librement et finaliser la transaction avec un notaire.<br />L'argent est versé directement sur le compte séquestre du notaire — jamais chez 2nd Market.<br />1 500+ utilisateurs inscrits. Mentionné dans Le Figaro, Mieux Vivre Votre Argent et Le Particulier.<br /><a href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</a>
   </About>
@@ -81,7 +81,12 @@ const ads = (await getCollection('scpi-listing', e => e.data.source === 'app')).
   />
   <Testimonials />
   <Faqs list="/" title="Questions fréquentes sur la revente SCPI" />
-  <CtaBand />
+  <CtaCard
+    title="Simulateurs gratuits : frais, rendement, fiscalité, viager"
+    text="Estimez votre net vendeur ou acheteur en 30 secondes. Calculez le rendement effectif avec décote. Simulez la taxe foncière, l'IFI ou un viager."
+    href="/simulateurs"
+    label="Accéder aux simulateurs"
+  />
   <LatestNews title="Actualités SCPI et viager">
     <div class="center"><Button href="/actualites-conseils">Tous les articles</Button></div>
   </LatestNews>

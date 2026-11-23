@@ -1,7 +1,7 @@
 ---
 // "SCPI disponibles avec décote": carousel of SCPI ads (scroll-snap, prev/next buttons) + link to the app.
-// Usable without JavaScript (the track scrolls); the script only drives the arrows.
-import './reveal.css';
+// Usable without JavaScript (the track scrolls); the script drives the arrows and, with `live`, refreshes the
+// build-time snapshot of the app's ads from the app's API (listing-refresh.ts).
 import type { CollectionEntry } from 'astro:content';
 import Button from '../ui/Button.astro';
 import Eyebrow from './Eyebrow.astro';
@@ -10,16 +10,24 @@ import { PRODUCT } from '../../i18n/config';
 
 interface Props {
   entries: CollectionEntry<'scpi-listing'>[];
+  live?: boolean; // entries are app ads (source "app"): refresh them in the browser
 }
-const { entries } = Astro.props;
+const { entries, live = false } = Astro.props;
+const endpoint = 'https://api.2ndmarket.fr/scpi-ad/embedded?pageSize=12'; // same request as the former Webflow widget
+// Card with every optional part (logo, discount, struck price): the script clones and fills it for each live ad.
+const template = {
+  id: 'template',
+  collection: 'scpi-listing',
+  data: { title: '', image: '/assets/scpi-logo-SCPI_LOGO_atland-scpi-logo.png', source: 'app', order: 0, url: PRODUCT.app, scpi: '', parts: 0, pricePerShare: 0, distributionRate: 0, annualIncome: 0, effectiveYield: 0, discountPercent: 1, totalPrice: 0, marketPrice: 1, seo: { title: '' } },
+} as CollectionEntry<'scpi-listing'>;
 ---
 
-<section class="listing gutter" aria-labelledby="listing-heading">
+<section class="listing gutter" aria-labelledby="listing-heading" data-live={live ? endpoint : undefined} data-app={PRODUCT.app}>
   <div class="container listing__inner">
     <div class="listing__top">
       <div class="listing__heading">
         <Eyebrow>SCPI — Annonces disponibles</Eyebrow>
-        <h2 id="listing-heading" class="h2 reveal">SCPI disponibles avec décote</h2>
+        <h2 id="listing-heading" class="h2" data-reveal>SCPI disponibles avec décote</h2>
       </div>
       <div class="listing__arrows" hidden>
         <button type="button" class="listing__arrow listing__arrow--prev" aria-label="Annonces précédentes" disabled>
@@ -31,8 +39,9 @@ const { entries } = Astro.props;
       </div>
     </div>
     <ul class="listing__track" role="list" tabindex="0" aria-label="Annonces SCPI">
-      {entries.map(entry => <li class="listing__slide"><ListingCard entry={entry} /></li>)}
+      {entries.map(entry => <li class="listing__slide" data-slug={live ? entry.id.replace(/^app-/, '') : undefined}><ListingCard entry={entry} /></li>)}
     </ul>
+    {live && <template class="listing__template"><li class="listing__slide"><ListingCard entry={template} /></li></template>}
     <div class="listing__actions">
       <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces SCPI</Button>
     </div>
@@ -40,6 +49,8 @@ const { entries } = Astro.props;
 </section>
 
 <script>
+  import { refresh } from './listing-refresh';
+
   for (const root of document.querySelectorAll<HTMLElement>('.listing')) {
     const track = root.querySelector<HTMLElement>('.listing__track')!;
     const arrows = root.querySelector<HTMLElement>('.listing__arrows')!;
@@ -54,6 +65,8 @@ const { entries } = Astro.props;
     next.addEventListener('click', () => track.scrollBy({ left: step() }));
     track.addEventListener('scroll', update, { passive: true });
     new ResizeObserver(update).observe(track);
+    const template = root.querySelector<HTMLTemplateElement>('.listing__template');
+    if (root.dataset.live && template) refresh(track, template, root.dataset.live, root.dataset.app!).then(ok => ok && (track.scrollLeft = 0, update()));
   }
 </script>
 
@@ -106,5 +119,5 @@ const { entries } = Astro.props;
 </style>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
