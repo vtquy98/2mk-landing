@@ -1,0 +1,56 @@
+---
+// Management company page: /seo/<slug> (collection seo).
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/scpi/PageHeader.astro';
+import LatestListings from '../../components/scpi/LatestListings.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('seo')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'seo'> };
+const d = entry.data;
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={d.seo}>
+  <PageHeader title={d.title} crumbs={[{ label: 'Accueil', href: '/' }, { label: 'Repertoire', href: '/repertoire' }, { label: d.title }]}>
+    <p class="managed">
+      <span class="managed-label">Types de SCPI Gérées:</span>
+      <span>{d.managedScpis}</span>
+    </p>
+  </PageHeader>
+
+  <div class="gutter">
+    <div class="container section layout">
+      <div class="description"><Content /></div>
+      {
+        d.image && (
+          <div class="logo">
+            <img src={d.image} alt={d.imageAlt ?? `Logo ${d.title}`} width={d.imageWidth} height={d.imageHeight} decoding="async" />
+          </div>
+        )
+      }
+    </div>
+  </div>
+
+  <LatestListings />
+</BaseLayout>
+
+<style>
+  .managed { display: inline-flex; gap: var(--size-0-25); justify-content: center; margin: 0; padding-top: var(--size-1); }
+  .managed-label { opacity: 0.8; }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-5); }
+  .description { min-width: 0; }
+  .description :global(:is(ul, ol)) { overflow: hidden; }
+  .description :global(a) { text-decoration: underline; }
+  .logo img { width: 100%; height: auto; animation: fade 0.8s var(--ease-out) both; }
+  @keyframes fade { from { opacity: 0; } }
+  /* Webflow kept two columns on phones (text squeezed into half the width): stacked here, logo first. */
+  @media (max-width: 767px) {
+    .layout { grid-template-columns: 1fr; }
+    .logo { order: -1; max-width: 12rem; }
+  }
+</style>

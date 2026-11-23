@@ -1,0 +1,58 @@
+---
+// Dark rounded page header of the SCPI directory pages (/repertoire, /2nd-seo/*, /seo/*, /legal/*):
+// breadcrumb, H1 (size from the global h1 style), optional line below (slot).
+interface Crumb { label: string; href?: string }
+interface Props { title: string; crumbs: Crumb[] }
+const { title, crumbs } = Astro.props;
+---
+
+<header class="header">
+  <div class="gutter">
+    <div class="container inner">
+      <nav class="crumbs" aria-label="Fil d'Ariane">
+        <ol>
+          {
+            crumbs.map((c, i) => (
+              <li>
+                {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+                {i < crumbs.length - 1 && (
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                )}
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+      <h1 class="title">{title}</h1>
+      <slot />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    margin-inline: var(--size-0-5);
+    border-radius: var(--radius-large);
+    background: var(--color-bg-medium);
+    color: var(--color-text-light);
+  }
+  .inner { padding-block: var(--section-small); text-align: center; }
+  .crumbs ol { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 0; padding: 0; list-style: none; }
+  .crumbs li { display: flex; align-items: center; }
+  .crumbs svg { margin-inline: 0.25rem; }
+  .crumbs a { color: inherit; transition: color 0.3s; }
+  .crumbs a:hover { color: var(--primary); }
+  .crumbs [aria-current] { opacity: 0.6; }
+  .title {
+    max-width: 64rem;
+    margin: var(--size-1-5) auto 0;
+    padding-bottom: var(--size-0-125);
+    text-wrap: balance;
+    animation: rise 0.8s var(--ease-out) both;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(0.5em); } }
+  @media (max-width: 767px) { .title { margin-top: var(--size-1-25); } }
+  @media (max-width: 479px) { .inner { padding-block: var(--size-1) var(--size-1-5); } }
+</style>
