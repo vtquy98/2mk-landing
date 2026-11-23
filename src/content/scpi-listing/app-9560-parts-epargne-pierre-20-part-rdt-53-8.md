@@ -3,7 +3,7 @@ title: "9560 parts · Epargne Pierre · 20 €/part · Rdt 53,8%"
 image: "/assets/scpi-logo-SCPI_LOGO_atland-scpi-logo.png"
 imageAlt: "Epargne Pierre"
 source: "app"
-order: 0
+order: 1
 url: "https://app.2ndmarket.fr/scpi/9560-parts-epargne-pierre-20-part-rdt-53-8"
 scpi: "Epargne Pierre"
 parts: 9560

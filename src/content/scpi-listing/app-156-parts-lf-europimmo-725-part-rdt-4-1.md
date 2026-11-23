@@ -3,7 +3,7 @@ title: "156 parts · LF Europimmo · 725 €/part · Rdt 4,1%"
 image: "/assets/675bd4a6fb456a47e80911bd_lf-europimmo-la-francaise-logo_scpi.jpg"
 imageAlt: "LF Europimmo"
 source: "app"
-order: 6
+order: 7
 url: "https://app.2ndmarket.fr/scpi/156-parts-lf-europimmo-725-part-rdt-4-1"
 scpi: "LF Europimmo"
 parts: 156

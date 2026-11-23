@@ -3,7 +3,7 @@ title: "56 parts · Acces Valeur Pierre · 650 €/part · Rdt 4,5%"
 image: "/assets/scpi-logo-SCPI_LOGO_bnp-logo-scpi-reim-france.png"
 imageAlt: "Acces Valeur Pierre"
 source: "app"
-order: 1
+order: 2
 url: "https://app.2ndmarket.fr/scpi/56-parts-acces-valeur-pierre-650-part-rdt-4-5"
 scpi: "Acces Valeur Pierre"
 parts: 56

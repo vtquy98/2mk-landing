@@ -6,7 +6,6 @@ import { APP, assetPath, extractSeo, lastmod, loadPage, pagesIn, richText, rewri
 // Webflow's runtime decoder of "tm*" classes, pasted in most articles: cleanFragment() now does it at build time.
 const TM_DECODER = /function r\(\)\{function d\(s\)\{return s\.replace/;
 // Asset URLs inside JSON-LD must stay absolute.
-const absoluteAssets = s => s.replace(/"(\/assets\/[^"]+)"/g, `"${SITE}$1"`);
 
 // Webflow 301s that are in no sitemap (answered live on 2026-11-23) and two links that were already 404 on Webflow.
 const LIVE_REDIRECTS = {
@@ -74,14 +73,8 @@ export default async function () {
       $body.find('h1').each((_, h) => { h.tagName = 'h2'; $(h).addClass('s2m-h1'); });
       $body.find('style').each((_, s) => { $(s).text($(s).text().replace(/\bh1\b/g, '.s2m-h1')); });
     }
-    // Turndown collapses whitespace in every text node: a script's line breaks (and so its // comments) must survive.
-    const scripts = [];
-    $body.find('script').each((_, el) => { scripts.push($(el).html()); $(el).text(`S2M_SCRIPT_${scripts.length - 1}`); });
-    const md = richText($, $body).replace(/S2M_SCRIPT_(\d+)/g, (_, i) => scripts[i].replace(/\n\s*\n/g, '\n'));
-    const body = resolveLinks(md).replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (_, a, j, b) => a + absoluteAssets(j) + b);
-
+    const body = resolveLinks(richText($, $body));
     const seo = extractSeo($);
-    seo.jsonLd = seo.jsonLd?.map(absoluteAssets);
     const date = $('script[type="application/ld+json"]').text().match(/"datePublished":\s*"(\d{4}-\d{2}-\d{2})/)?.[1];
 
     entries.push({

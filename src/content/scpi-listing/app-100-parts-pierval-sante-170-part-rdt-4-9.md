@@ -3,7 +3,7 @@ title: "100 parts · Pierval Santé · 170 €/part · Rdt 4,9%"
 image: "/assets/scpi-logo-1784305135203-WhatsApp-Image-2026-07-17-at-23.17.51.jpeg"
 imageAlt: "Pierval Santé"
 source: "app"
-order: 3
+order: 4
 url: "https://app.2ndmarket.fr/scpi/100-parts-pierval-sante-170-part-rdt-4-9"
 scpi: "Pierval Santé"
 parts: 100

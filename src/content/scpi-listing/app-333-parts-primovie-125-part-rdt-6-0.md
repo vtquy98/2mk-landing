@@ -3,7 +3,7 @@ title: "333 parts · Primovie · 125 €/part · Rdt 6,0%"
 image: "/assets/scpi-logo-SCPI_LOGO_praemia-reim-france-scpi-logo.png"
 imageAlt: "Primovie"
 source: "app"
-order: 5
+order: 6
 url: "https://app.2ndmarket.fr/scpi/333-parts-primovie-125-part-rdt-6-0"
 scpi: "Primovie"
 parts: 333

@@ -3,7 +3,7 @@ title: "124 parts · Epargne Fonciere · 670 €/part · Rdt 4,9%"
 image: "/assets/scpi-logo-SCPI_LOGO_la-francaise-logo-scpi.jpg"
 imageAlt: "Epargne Fonciere"
 source: "app"
-order: 7
+order: 8
 url: "https://app.2ndmarket.fr/scpi/124-parts-epargne-fonciere-670-part-rdt-4-9"
 scpi: "Epargne Fonciere"
 parts: 124

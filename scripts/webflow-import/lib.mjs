@@ -64,6 +64,8 @@ export const assetEntries = () => [...assets];
 // ---------- HTML rewriting ----------
 
 const LEGACY_APP_ROUTES = { '/annonce-scpi': '/scpi', '/creer-annonce': '/create', '/index/login': '/auth/login', '/index/sign-up': '/auth/register' };
+// Links that were already dead (404) on the Webflow site, pointed at the page they meant.
+const DEAD_LINKS = { '/politique-confidentialite': '/legal/politique-de-confidentialite', '/scpi': `${APP}/scpi` };
 const CREATE_INTENT = /(publie|déposez|deposez|dépôt|depot|créer une annonce|creer une annonce)/i;
 
 /**
@@ -80,6 +82,7 @@ export function cleanFragment($, root) {
       if (href.includes(`2ndmarket.fr${old}`)) href = APP + (old === '/annonce-scpi' && CREATE_INTENT.test($(a).text()) ? '/create' : target);
     }
     href = href.replace(/^https?:\/\/(www\.)?2ndmarket\.fr(?=\/|$|[?#])/, '') || '/';
+    href = DEAD_LINKS[href] ?? href;
     if (/^\/[^?#]+\/$/.test(href)) href = href.slice(0, -1);
     $(a).attr('href', href);
   });
@@ -155,8 +158,17 @@ export function richText($, el) {
   cleanFragment($, $el);
   $el.find('.w-embed').each((_, e) => { $(e).removeClass('w-embed'); if (!$(e).attr('class')) $(e).removeAttr('class'); });
   $el.find('figure.w-richtext-figure-type-image').each((_, f) => { $(f).removeAttr('style').removeAttr('data-rt-type').removeAttr('data-rt-align').removeAttr('data-rt-max-width'); });
-  return rewriteUrls(td.turndown(rewriteUrls($.html($el.contents())))).trim();
+  // Turndown collapses whitespace in every text node: script/style bodies are swapped for placeholders so their line
+  // breaks (and `//` comments) survive, then put back verbatim.
+  const raw = [];
+  $el.find('script, style').each((_, s) => { raw.push($(s).html()); $(s).text(`WFRAW${raw.length - 1}WFRAW`); });
+  const md = td.turndown(rewriteUrls($.html($el.contents()))).replace(/WFRAW(\d+)WFRAW/g, (_, i) => raw[i].replace(/\n\s*\n/g, '\n'));
+  return absoluteJsonLd(rewriteUrls(md)).trim();
 }
+
+/** JSON-LD needs absolute URLs: /assets/… -> https://2ndmarket.fr/assets/… inside ld+json blocks. */
+const absoluteAssets = j => j.replace(/(["(])\/assets\//g, `$1${SITE}/assets/`);
+const absoluteJsonLd = s => s.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (_, a, j, b) => a + absoluteAssets(j) + b);
 
 // ---------- SEO ----------
 
@@ -165,7 +177,7 @@ export function extractSeo($) {
   const meta = sel => $(sel).attr('content')?.trim() || undefined;
   const jsonLd = $('script[type="application/ld+json"]')
     .toArray()
-    .map(s => rewriteUrls($(s).html().trim()))
+    .map(s => absoluteAssets(rewriteUrls($(s).html().trim())))
     .filter(j => !isSiteGraph(j));
   return prune({
     title: $('title').text().trim(),
