@@ -16,4 +16,6 @@ seo: {"title":"SCPI Pierre Plus : prix de part et taux de distribution","descrip
 lastmod: "2026-11-22"
 ---
 
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+
 Pierre Plus est une SCPI qui investit dans des commerces de détail et des actifs immobiliers de grande qualité situés dans des zones à forte fréquentation commerciale en Europe.

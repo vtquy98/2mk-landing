@@ -26,6 +26,8 @@ lastmod: "2026-11-19"
 -   **TOF au 31/12/2025 :** 100 % (taux d'occupation financier moyen du 2nd semestre 2025)
 -   **Délai de jouissance :** 1er jour du 2e trimestre suivant le trimestre de souscription
 
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+
 ## Distribution
 
 La distribution brute du T4 2025 s'élève à **2,25 € par part** en pleine jouissance. La distribution brute de l'exercice clos le 31/12/2025 s'élève à 4,55 € par part. Les performances passées et les distributions ne préjugent pas des performances futures.

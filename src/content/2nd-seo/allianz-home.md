@@ -13,3 +13,5 @@ lastmod: "2026-11-19"
 ---
 
 Créée en 2021, Allianz Home est une SCPI résidentielle mixte à capital variable. Allianz Home permet de se constituer un patrimoine immobilier, au comptant ou à crédit, dès 2000€ de souscription (montant minimum de souscription : 10 parts de 200€). Les parts de SCPI peuvent être souscrites auprès d'Allianz Immovalor, des réseaux du groupe Allianz et de Conseillers en Gestion de Patrimoine Indépendants. Durée de placement indiquée par Allianz Immovalor : 10 ans.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

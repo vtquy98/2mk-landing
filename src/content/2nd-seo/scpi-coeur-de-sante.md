@@ -17,3 +17,5 @@ lastmod: "2026-11-22"
 ---
 
 Cœur de Santé est une SCPI spécialisée dans l'immobilier de santé, investissant dans des actifs comme des cliniques, des maisons de soins, et d'autres infrastructures de santé partout en France.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

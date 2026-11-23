@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Arkéa REIM se spécialise dans la gestion de SCPI axées sur les transitions énergétiques et les secteurs innovants, comme Transitions Europe.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

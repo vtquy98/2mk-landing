@@ -12,3 +12,5 @@ lastmod: "2026-11-22"
 ---
 
 Novaxia Investissement est une société de gestion spécialisée dans l’immobilier urbain à fort impact. Leur objectif est de transformer des actifs obsolètes en nouveaux projets immobiliers, tout en favorisant l'urbanisme responsable et l'innovation sociale.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

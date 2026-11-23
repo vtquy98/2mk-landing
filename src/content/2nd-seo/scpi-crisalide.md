@@ -17,3 +17,5 @@ lastmod: "2026-11-22"
 ---
 
 Crisalide est une SCPI qui investit principalement dans des bureaux et locaux commerciaux, offrant aux investisseurs une diversification et une performance attractive sur des actifs de qualité.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

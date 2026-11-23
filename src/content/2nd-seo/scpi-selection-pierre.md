@@ -17,3 +17,5 @@ lastmod: "2026-11-22"
 ---
 
 Sélection Pierre est une SCPI de rendement investie dans des actifs immobiliers diversifiés en France, principalement axés sur l'immobilier commercial et les bureaux.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

@@ -13,3 +13,5 @@ lastmod: "2026-11-19"
 ---
 
 Lancée en 2019, Novapierre Allemagne 2 est une SCPI à capital variable qui suit le même modèle que sa prédécesseure, axée sur l'immobilier commercial en Allemagne. Avec une capitalisation de près de 389 millions d'euros, elle vise à offrir un rendement attractif à ses associés, affichant un taux de distribution de 4,79% en fin d'année 2023. Son patrimoine est composé à 100% de commerces.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

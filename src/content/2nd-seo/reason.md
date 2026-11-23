@@ -10,3 +10,5 @@ lastmod: "2026-11-19"
 ---
 
 Un positionnement d’investissement singulier grâce à son modèle basé sur la data, permettant d’anticiper et de piloter les cycles immobiliers avec plus de précision. Sa gestion active réduit les biais cognitifs et maximise la stabilité des performances, même en période de volatilité. Reason s’engage également dans des projets durables, investissant dans les énergies renouvelables pour un rendement à long terme responsable et résilient. Lancée en octobre 2024 par MNK Partners, Reason se positionne comme une SCPI innovante axée sur l'immobilier international avec une approche opportuniste. Son objectif est d'exploiter les cycles immobiliers pour générer des performances stables sur le long terme. minimum de 200 parts, Reason se distingue par son accessibilité et son engagement envers les énergies renouvelables.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

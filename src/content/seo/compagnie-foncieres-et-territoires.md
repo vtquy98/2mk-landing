@@ -12,3 +12,5 @@ lastmod: "2026-11-22"
 ---
 
 Foncières et Territoires est une société de gestion spécialisée dans les actifs en régions, principalement dans les bureaux et locaux d’activité.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

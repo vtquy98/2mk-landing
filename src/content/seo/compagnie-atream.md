@@ -12,3 +12,5 @@ lastmod: "2026-11-22"
 ---
 
 Atream se concentre sur la gestion d’actifs immobiliers hôteliers et de tourisme en Europe, collaborant avec des grandes chaînes hôtelières reconnues.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 Sogenial Immobilier est spécialisée dans la gestion de SCPI thématiques, se concentrant sur les investissements urbains et de proximité. Leur portefeuille comprend des actifs situés principalement dans les centres-villes, offrant des opportunités d'investissement stables et diversifiées.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

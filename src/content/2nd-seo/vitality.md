@@ -15,6 +15,8 @@ lastmod: "2026-11-19"
 ## **SCPI Vitality : Investissez dans l'Immobilier du Bien-Être et de la Santé**  
 ‍
 
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+
 ### SCPI Vitality permet d'investir dans le bien-être et la santé avec un rendement cible de 6 %.
 
 ### Accessible dès 200 €. Une SCPI ESG unique par ClubFunding AM.

@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 Lancée en novembre 2024 par Patrimonia Capital, cette SCPI vise à constituer un patrimoine immobilier diversifié axé sur des actifs commerciaux en périphérie urbaine. Avec une capitalisation initiale de 12,36 millions d'euros et un objectif de rendement autour de 6%, elle a pour ambition de répondre aux besoins croissants du e-commerce et des services en périphérie. Le portefeuille comprend déjà plusieurs actifs générant un loyer annuel de 1,2 million d'euros.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

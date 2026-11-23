@@ -11,6 +11,8 @@ seo: {"title":"Perial AM – Guide SCPI 2026 | 2nd Market","description":"Décou
 lastmod: "2026-11-22"
 ---
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ## Perial AM est un gestionnaire reconnu pour ses SCPI innovantes, notamment PFO2 qui a été l’une des premières à intégrer des critères ESG dans son modèle.
 
 ‍

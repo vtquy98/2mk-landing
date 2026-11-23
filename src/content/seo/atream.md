@@ -11,6 +11,8 @@ lastmod: "2026-11-19"
 
 Atream est une société de gestion de SCPI. Une SCPI gérée par Atream est référencée sur 2nd Market pour la cession de parts de gré à gré. Cette page rassemble, pour chacune d'elles, les chiffres publiés par Atream dans son dernier bulletin d'information, ainsi que les modalités de cession de parts entre particuliers.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ### Autres SCPI gérées par Atream référencées sur 2nd Market
 
 Atream Hôtels. Les chiffres de ces SCPI seront ajoutés dès la publication de leur prochain bulletin d'information.

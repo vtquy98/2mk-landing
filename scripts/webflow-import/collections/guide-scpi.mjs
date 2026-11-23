@@ -9,28 +9,8 @@ import { APP, assetPath, cleanFragment, extractSeo, lastmod, loadPage, pagesIn, 
 const MEDIA = 'img,iframe,video,audio,svg,canvas,input,select,textarea,button,embed,object,picture';
 const TM_DECODER = /function r\(\)\{function d\(s\)\{return s\.replace/;
 // Webflow 301s that are in no sitemap, linked from guide/landing bodies (answered live on 2026-11-23).
-const LIVE_REDIRECTS = {
-  '/actualites': '/actualites-conseils',
-  '/annonces': `${APP}/scpi`,
-  '/faq': '/faqs',
-  '/guide-scpi/analyser-scpi-avant-achat': '/landing-pages/guide-scpi-acheter-scpi-decote',
-  '/guide-scpi/comparatif-scpi-viager-sci': '/guide-scpi/scpi-vs-autres-placements',
-  '/guide-scpi/decote-2025': '/landing-pages/guide-scpi-acheter-scpi-decote',
-  '/guide-scpi/guide-scpi-meilleures-2026': '/landing-pages/guide-scpi-acheter-scpi-decote',
-  '/guide-scpi/revente-guide-pratique': '/guide-scpi/revente',
-  '/guides/revente-scpi-2025': '/guide-scpi/revente',
-  '/guides/viager': '/viager-guides',
-  '/landing-pages/frais-revente-scpi': '/simulateurs/frais-scpi',
-  '/marche-secondaire-scpi': '/guide-scpi/marche-secondaire-fonctionnement',
-  '/publier-annonce': `${APP}/create`,
-  '/simulateurs/achat-comptant-credit': '/simulateurs/scpi-credit',
-  '/simulateurs/rentabilite-scpi': '/simulateurs/rendement-performance',
-  '/simulateurs/scpi-demembrement': '/simulateurs/calculateur-demembrement',
-  '/simulateurs/viager-libre-ou-occupe': '/simulateurs/viager-libre-occupe',
-};
 const REDIRECTS = {
   ...Object.fromEntries(statuses().filter(s => s[1] === 301).map(([from, , to]) => [from, to.replace(/^https?:\/\/(www\.)?2ndmarket\.fr(?=\/)/, '')])),
-  ...LIVE_REDIRECTS,
 };
 
 /** Internal links point at the final page, not at a Webflow redirect. */

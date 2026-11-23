@@ -16,8 +16,13 @@ export const loadPage = path => load(readFileSync(pageFile(path), 'utf8'));
 export const hasPage = path => existsSync(pageFile(path));
 
 /** [path, status, location] for every URL of the sitemap and the extra probes. */
-export const statuses = () =>
-  ['status.json', 'status-extra.json'].flatMap(f => (existsSync(join(CACHE, f)) ? JSON.parse(readFileSync(join(CACHE, f), 'utf8')) : []));
+export const statuses = () => [
+  ...new Map(
+    ['status-extra.json', 'status.json']
+      .flatMap(f => (existsSync(join(CACHE, f)) ? JSON.parse(readFileSync(join(CACHE, f), 'utf8')) : []))
+      .map(s => [s[0], s]),
+  ).values(),
+];
 
 /** Last modification date the Webflow sitemap gives for a path (YYYY-MM-DD), if any. */
 let lastmods;
@@ -118,7 +123,17 @@ function decodeTmClasses($, el) {
 // Block elements Markdown can't express are kept as raw HTML blocks; inline ones stay inline.
 const RAW_BLOCK = ['div', 'figure', 'table', 'style', 'script', 'iframe', 'form', 'details', 'section', 'aside', 'svg', 'video', 'audio', 'canvas', 'dl', 'header', 'footer', 'nav', 'article'];
 const RAW_INLINE = ['span', 'sup', 'sub', 'mark', 'u', 'input', 'select', 'textarea', 'button', 'label', 'small', 'abbr', 'time'];
-const td = new TurndownService({ headingStyle: 'atx', bulletListMarker: '-', codeBlockStyle: 'fenced', emDelimiter: '*' });
+const td = new TurndownService({
+  headingStyle: 'atx',
+  bulletListMarker: '-',
+  codeBlockStyle: 'fenced',
+  emDelimiter: '*',
+  // Empty blocks with an id/class are mount points filled by scripts (alert widget, calculators): keep them.
+  blankReplacement: (_, node) =>
+    RAW_BLOCK.includes(node.nodeName.toLowerCase()) && (node.id || node.className || node.querySelector?.('[id],[class]'))
+      ? `\n\n${node.outerHTML}\n\n`
+      : node.isBlock ? '\n\n' : '',
+});
 td.addRule('rawBlocks', {
   filter: node => RAW_BLOCK.includes(node.nodeName.toLowerCase()),
   // A raw HTML block must not contain blank lines, or Markdown would end the block early.

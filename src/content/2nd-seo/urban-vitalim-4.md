@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 La SCPI URBAN VITALIM N°4 a pour stratégie l’acquisition d’un patrimoine immobilier locatif en centre-ville, dans les communes éligibles au dispositif Pinel. Ce dernier est le soutien de l’investissement locatif. Il propose d’apporter une réponse aux difficultés que les Français rencontrent pour se loger.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

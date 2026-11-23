@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 SCPI MALRAUX : URBAN PRESTIGIMMO N°5. Acquérir des immeubles de caractère, situés en cœur de ville et engager une politique de mise en valeur par une réhabilitation complète et profonde de ces bâtis anciens situés dans les sites patrimoniaux remarquables : telle est la stratégie d’investissement de la SCPI URBAN PRESTIGIMMO N°5
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

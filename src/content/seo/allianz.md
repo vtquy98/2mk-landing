@@ -11,6 +11,8 @@ lastmod: "2026-11-19"
 
 Allianz Immovalor est une société de gestion de SCPI, agréée par l'Autorité des marchés financiers sous le numéro GP-07000035. 2 SCPI gérées par Allianz Immovalor sont référencées sur 2nd Market pour la cession de parts de gré à gré. Cette page rassemble, pour chacune d'elles, les chiffres publiés par Allianz Immovalor dans son dernier bulletin d'information, ainsi que les modalités de cession de parts entre particuliers.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ### Les SCPI gérées par Allianz Immovalor en chiffres
 
 #### Allianz Pierre

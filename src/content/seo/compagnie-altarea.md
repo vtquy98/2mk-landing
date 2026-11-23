@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Altarea se spécialise dans la gestion d’actifs immobiliers diversifiés en France et en Europe, avec un accent sur des investissements résidentiels et tertiaires de qualité.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

@@ -11,6 +11,8 @@ lastmod: "2026-11-19"
 
 Epsicap REIM est une société de gestion de SCPI. 3 SCPI gérées par Epsicap REIM sont référencées sur 2nd Market pour la cession de parts de gré à gré. Cette page rassemble, pour chacune d'elles, les chiffres publiés par Epsicap REIM dans son dernier bulletin d'information, ainsi que les modalités de cession de parts entre particuliers.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ### Les SCPI gérées par Epsicap REIM en chiffres
 
 #### Epsicap Explore

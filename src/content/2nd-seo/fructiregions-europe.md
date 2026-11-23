@@ -14,3 +14,5 @@ lastmod: "2026-11-22"
 ---
 
 Fructiregions Europe est une SCPI qui cible principalement des actifs en Europe, offrant une diversification géographique significative. Elle est orientée vers l’immobilier commercial, incluant des bureaux et commerces situés en dehors des grandes métropoles.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

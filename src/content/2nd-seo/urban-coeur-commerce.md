@@ -13,3 +13,5 @@ lastmod: "2026-11-19"
 ---
 
 SCPI RENDEMENT : URBAN COEUR COMMERCELa SCPI URBAN COEUR COMMERCE développe une stratégie d’investissement visant à acquérir principalement des actifs de commerce en pied d’immeubles, situés dans des quartiers commerçants et dynamiques, en centre-ville de métropoles régionales, de villes de Province et d’Ile-de-France.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

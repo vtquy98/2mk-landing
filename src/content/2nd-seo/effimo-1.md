@@ -14,3 +14,5 @@ lastmod: "2026-11-22"
 ---
 
 **EFIMMO 1** est une SCPI de rendement à capital variable créée en 1987 et gérée par **SOFIDY** (acronyme de Société Financière de Développement de l'Agglomération d'Évry) depuis l'année 2000. La SCPI Efimmo 1 est une SCPI thématique sur les actifs de bureaux, tout en exposant une part mineure de son patrimoine aux commerces de centre-ville et milieu urbain, moyennes surfaces de périphérie (retail parks) ou galeries de centres commerciaux, ou encore locaux d'activité, logements, hôtels et participations financières. Efimmo 1 est investie majoritairement en France dont la moitié dans la région Paris/Île-de-France, et également à l'étranger : en particulier en Allemagne, au Royaume-Uni, aux Pays-Bas, Belgique, en Irlande, en Italie et en Espagne
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

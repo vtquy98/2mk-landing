@@ -15,6 +15,8 @@ lastmod: "2026-11-22"
 
 La Française Real Estate Managers est une société de gestion de SCPI. 8 SCPI gérées par La Française Real Estate Managers sont référencées sur 2nd Market pour la cession de parts de gré à gré. Cette page rassemble, pour chacune d'elles, les chiffres publiés par La Française Real Estate Managers dans son dernier bulletin d'information, ainsi que les modalités de cession de parts entre particuliers.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ### Les SCPI gérées par La Française Real Estate Managers en chiffres
 
 #### Crédit Mutuel Pierre 1

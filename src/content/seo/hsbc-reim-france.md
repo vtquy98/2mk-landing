@@ -11,6 +11,8 @@ lastmod: "2026-11-19"
 
 HSBC REIM (France) est une société de gestion de SCPI. 3 SCPI gérées par HSBC REIM (France) sont référencées sur 2nd Market pour la cession de parts de gré à gré.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ### SCPI gérées référencées sur 2nd Market
 
 -   Elysees Résidence 5

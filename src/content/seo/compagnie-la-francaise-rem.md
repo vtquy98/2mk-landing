@@ -11,6 +11,8 @@ seo: {"title":"La Française REM – Guide SCPI 2026 | 2nd Market","description"
 lastmod: "2026-11-22"
 ---
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ## La Française REM est un acteur majeur de la gestion immobilière en France, avec un portefeuille diversifié allant des bureaux aux commerces et à l’habitation.
 
 ### Elle gère plus de 9 milliards d'euros d'actifs immobiliers à travers divers fonds[2](https://www.primaliance.com/societes-de-gestion/la-francaise-rem). En 2025, elle a réduit le prix de souscription de plusieurs SCPI historiques pour améliorer la compétitivité et la liquidité.

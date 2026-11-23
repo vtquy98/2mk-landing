@@ -12,3 +12,5 @@ lastmod: "2026-11-22"
 ---
 
 Corum AM est une société de gestion réputée pour sa capacité à générer des rendements stables à travers des SCPI investissant dans divers secteurs, tels que les bureaux, commerces et autres actifs immobiliers, en Europe. La stratégie de Corum repose sur une approche de diversification géographique et sectorielle.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

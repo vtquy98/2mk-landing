@@ -14,3 +14,5 @@ lastmod: "2026-11-19"
 ---
 
 La SCPI Sofidy Europe Invest est dédiée à l'investissement immobilier en zone euro. Au terme de l'exercice 2023, sa capitalisation s'élevait à environ 321 millions d'euros, avec un rendement brut de 4,71 %. La stratégie se concentre sur la diversification géographique et sectorielle pour saisir les meilleurs actifs du marché immobilier européen.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

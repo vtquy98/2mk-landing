@@ -13,6 +13,8 @@ lastmod: "2026-11-22"
 
 ## Amundi Immobilier est l’une des principales sociétés de gestion d’actifs en Europe, offrant une large gamme de SCPI visant à répondre aux besoins de diversification des investisseurs, tout en maximisant les rendements.
 
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>
+
 ## Amundi Immobilier est un gestionnaire de premier plan qui bénéficie d’une marque forte, mais ses SCPI doivent composer avec des défis sectoriels, notamment dans le tertiaire.
 
 ‍

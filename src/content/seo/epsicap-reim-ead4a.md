@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Epsicap REIM propose des solutions d’investissement axées sur des actifs immobiliers stratégiques.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

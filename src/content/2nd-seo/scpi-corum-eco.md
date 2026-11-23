@@ -16,4 +16,6 @@ seo: {"title":"SCPI Corum Eco : prix de part et taux de distribution","descripti
 lastmod: "2026-11-22"
 ---
 
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+
 Corum Eco investit dans des actifs liés à l’énergie renouvelable et à la logistique, avec une forte orientation vers la durabilité et les infrastructures vertes.

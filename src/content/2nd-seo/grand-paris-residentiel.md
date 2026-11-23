@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 Lancée récemment en février 2021 par Inter Gestion REIM, Grand Paris Résidentiel vise à constituer un patrimoine immobilier résidentiel majoritairement situé en Île-de-France. Avec un objectif clair sur la valorisation du capital investi et la perception régulière de revenus locatifs, cette SCPI s'inscrit dans le dynamisme du marché résidentiel parisien.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

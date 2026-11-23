@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Kyaneos AM gère des SCPI avec un accent particulier sur l’immobilier résidentiel et l’efficacité énergétique.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

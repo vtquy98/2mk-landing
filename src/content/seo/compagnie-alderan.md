@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Alderan est une société de gestion spécialisée dans les actifs logistiques et industriels, offrant des opportunités d’investissement ciblées sur des entrepôts urbains et la logistique du dernier kilomètre.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

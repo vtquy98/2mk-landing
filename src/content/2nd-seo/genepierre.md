@@ -37,6 +37,8 @@ lastmod: "2026-11-22"
 -   **TOF au 30/06/2026 :** 80,92 %
 -   **Délai de jouissance :** jouissance des parts souscrites à compter du 1er jour du 3e mois suivant la date de souscription
 
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+
 ## Distribution
 
 La distribution brute du T2 2026 s'élève à **1,66 € par part** en pleine jouissance. Le cumul du T1 2026 et du T2 2026 s'établit à 3,32 € par part au 30/06/2026. Au titre de l'exercice clos 2025, la distribution brute s'est élevée à 8,36 € par part. Les performances passées et les distributions ne préjugent pas des performances futures.

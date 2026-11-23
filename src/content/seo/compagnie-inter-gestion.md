@@ -12,3 +12,5 @@ lastmod: "2026-11-22"
 ---
 
 Inter-Gestion propose des solutions d’investissement immobilier diversifié, couvrant des secteurs comme les commerces, bureaux, et résidences, en France et en Europe.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 Avec Patrimmo Croissance Impact, vous investissez indirectement dans un patrimoine social et intermédiaire :Les programmes sont localisés par Praemia REIM France prioritairement dans des communes et métropoles résidentielles qui connaissent une forte demande de logements. L’usufruit est acquis par des bailleurs sociaux qui sont en charge de la gestion locative des biens, dans le cadre d’une convention de démembrement conclue avec la SCPI.Chaque bien immobilier est généralement cédé au terme de sa période de démembrement. Le produit de cette cession est ensuite principalement réalloué à de nouvelles acquisitions en nue-propriété de logements vous permettant de bénéficier potentiellement de l’évolution des valeurs des parts.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

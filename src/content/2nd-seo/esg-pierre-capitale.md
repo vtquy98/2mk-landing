@@ -13,3 +13,5 @@ lastmod: "2026-11-19"
 ---
 
 La SCPI ESG Pierre Capitale investit dans des actifs immobiliers de qualité(1) et les adapte aux enjeux sociétaux de demain. Elle privilégie en particulier les secteurs suivants :Smart Office : des bureaux modulables offrant des services, des nouveaux espaces de travail et une accessibilité optimale Smart City : des actifs de logistique urbaine permettant d’assurer in fine une livraison de proximité écoresponsableSmart Travel : De l’hôtellerie de loisir adaptée à un tourisme local et international avec un exploitant engagé dans le monde du développement durable(1) Selon l’évaluation et l’appréciation de nos équipes. Le placement est investi uniquement en immobilier, il est donc peu liquide. Durée de placement indiquée par Swiss Life Asset Managers France : 10 ans. La société de gestion ne garantit ni le retrait ou la vente des parts, ni le capital investi (risque de perte en capital).
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

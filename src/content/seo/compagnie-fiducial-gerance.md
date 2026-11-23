@@ -36,3 +36,5 @@ lastmod: "2026-11-22"
 ### [Revendez vos parts](/landing-pages/revendre-scpi-rapidement-2025) directement à d'autres investisseurs
 
 #### ‍
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

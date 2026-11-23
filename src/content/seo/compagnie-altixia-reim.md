@@ -8,3 +8,5 @@ lastmod: "2026-11-19"
 ---
 
 Altixia REIM propose des SCPI diversifiées axées sur des actifs de taille moyenne, allant des bureaux aux commerces en centre-ville, situés en France et en Europe.
+
+<div data-rt-embed-type="true"><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div>

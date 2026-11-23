@@ -12,3 +12,5 @@ lastmod: "2026-11-19"
 ---
 
 Depuis sa création, Novapierre Résidentiel a pour objectif de constituer un patrimoine investi en immobilier locatif résidentiel décoté pour occupation. La cible initiale était les appartements occupés en vertu de la loi de 1948. Aujourd’hui, elle s’est élargie aux appartements occupés par des locataires maintenables au regard de la loi de 1989 (dont la loi ALUR a abaissé en 2014 l’âge minimum de 70 ans à 65 ans), aux démembrements (nue-propriété), aux viagers, aux conventions d’occupation sociale, etc. Au 30 juin 2024, plus de 700 appartements étaient détenus indirectement par les associés de Novapierre Résidentiel, situés à 98% en Île-de-France, dont 80% à Paris intra-muros.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

@@ -11,3 +11,5 @@ lastmod: "2026-11-19"
 ---
 
 La SCPI Urban Pierre n°6 vise la constitution d'un patrimoine immobilier locatif composé d'immeubles, ou parties d'immeuble à usage d'habitation, situés en centre-ville, exclusivement orientés autour du bâti ancien à rénover. La SCPI a choisi de privilégier les métropoles régionales françaises, disposant notamment de dessertes TGV, bénéficiant d'un réel dynamisme économique et offrant des perspectives démographiques favorables. La SCPI Urban Pierre n°6 est un produit classé Article 8 en application des dispositions du règlement UE 2019/2088 dit Disclosure (SFDR). L’objectif des notes DPE (Diagnostic de Performance Énergétique) pour le patrimoine de la SCPI Urban Pierre n°6 est à minima D après travaux d’entretien, de réparation et d’amélioration, avec une moyenne à C.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

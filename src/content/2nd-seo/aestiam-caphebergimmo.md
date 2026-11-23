@@ -13,3 +13,5 @@ lastmod: "2026-11-19"
 ---
 
 Aestiam Cap’Hébergimmo investit dans des actifs liés au secteur de l'hébergement, tels que les résidences services et les établissements hôteliers. Son objectif est d'assurer une rentabilité stable tout en s'adaptant aux évolutions du marché du logement temporaire.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

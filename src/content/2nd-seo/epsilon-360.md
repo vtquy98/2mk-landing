@@ -17,3 +17,5 @@ lastmod: "2026-11-22"
 ---
 
 Lancée en 2021 par Epsicap REIM, Epsilon 360 est une SCPI spécialisée dans l'immobilier tertiaire de petite taille (small caps). Avec un taux de distribution de 6,25% en 2023, la SCPI cible des actifs entre 1 et 5 millions d'euros dans des métropoles régionales comme Bordeaux et Marseille. Epsilon 360 adopte une gestion proactive pour garantir un taux d'occupation élevé et explorer des investissements innovants. Accessible dès 250 euros par part, elle est également admissible à l'assurance-vie, offrant ainsi des avantages fiscaux intéressants aux investisseurs.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
