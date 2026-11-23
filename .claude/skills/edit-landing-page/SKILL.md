@@ -18,16 +18,17 @@ a reference (Figma link, screenshot, site they like). A Figma link → use the F
 
 | Change | File |
 | --- | --- |
-| A text | `src/i18n/en.json` **and** every other `src/i18n/<lang>.json` |
-| A section of the home page | `src/components/home/` (new section = new component, imported in `Home.astro`) |
-| Nav / footer / store buttons | `src/components/Nav.astro`, `Footer.astro`, `StoreButtons.astro` |
-| Colors, fonts, spacing, radii | tokens on `:root` in `src/styles/global.css` (add a token, never a raw value in a component) |
-| Images | `public/images/<section>/…` (WebP/AVIF, ≤ 200 KB, 2× the displayed size), `<img>` with `alt`, `width`, `height`, `loading="lazy"` below the fold |
-| Store links, product name | `PRODUCT` in `src/i18n/config.ts` |
-| A new page (terms, SEO page) | `src/content/pages/<lang>/<slug>.md` (README "Add a page") |
-
-New section texts go under a new key in `en.json` (`howItWorks.title`, `howItWorks.steps[]`) and are read with
-`t(lang).howItWorks.title`. Copy the key to every other language file, translated (Rule 3).
+| Copy of a static page | that page in `src/pages/<page>.astro` or its sections in `src/components/<page>/` |
+| Nav / footer / 404 texts | `src/i18n/fr.json`; markup in `src/components/Nav.astro`, `Footer.astro` |
+| An article, guide, SCPI page, simulator | `src/content/<collection>/<slug>.md` (fields in frontmatter) |
+| A template (all articles, all guides…) | `src/pages/<collection>/[slug].astro` and `src/components/<collection>/` |
+| Colors, fonts, spacing, radii, shadows | tokens on `:root` in `src/styles/global.css` (add a token, never a raw value in a component) |
+| Buttons, CTA cards, scroll reveal | `src/components/ui/` (reuse them) |
+| Images | `public/assets/…` (WebP/AVIF, ≤ 200 KB, 2× the displayed size), `<img>` with `alt`, `width`, `height`, `loading="lazy"` below the fold |
+| App URLs, product name, contact email | `PRODUCT` in `src/i18n/config.ts` |
+| `<head>` of a static page (title, description, JSON-LD) | `src/data/seo/<page>.json` |
+| A new static page | `src/pages/<slug>.astro` + `src/data/seo/<slug>.json` |
+| A changed or removed URL | a 301 in `public/_redirects` |
 
 ## 3. Design bar
 

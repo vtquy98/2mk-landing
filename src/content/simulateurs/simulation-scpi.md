@@ -1,0 +1,258 @@
+---
+title: "Simulation SCPI Complète 2026 | Revenus, Fiscalité & Plus-Value"
+name: "SCPI Revenus, Fiscalité & Plus-Value"
+excerpt: "Simulation SCPI sur 10 à 20 ans : revenus nets, fiscalité, plus-value, TRI. Comparez plusieurs scénarios, gratuitement."
+category: "SCPI"
+highlights: ["Projetez revenus nets, fiscalité et TRI, avec paramètres taux de distribution, revalorisation, TMI","Annonces entre investisseurs, cession via notaire, décotes possibles","Déposer une annonce, voir les opportunités, comparer avec nos simulateurs (arbitrage, frais, plus-value)."]
+order: 17
+seo: {"title":"Simulation SCPI : revenus, fiscalité et plus-value","description":"Simulation SCPI sur 10 à 20 ans : revenus nets, fiscalité, plus-value, TRI. Comparez plusieurs scénarios, gratuitement.","canonical":"https://2ndmarket.fr/simulateurs/simulation-scpi","robots":"max-image-preview:large","ogTitle":"Simulation SCPI : revenus, fiscalité et plus-value","ogDescription":"Simulation SCPI sur 10 à 20 ans : revenus nets, fiscalité, plus-value, TRI. Comparez plusieurs scénarios, gratuitement.","ogImage":"/assets/68cd3b3510c084dec3e8d81f_2nd-market-logo-1200x600.png","ogType":"website","twitterTitle":"Simulation SCPI : revenus, fiscalité et plus-value","twitterDescription":"Simulation SCPI sur 10 à 20 ans : revenus nets, fiscalité, plus-value, TRI. Comparez plusieurs scénarios, gratuitement.","jsonLd":["{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#webpage\",\"url\":\"https://2ndmarket.fr/simulateurs/simulation-scpi\",\"name\":\"Simulation SCPI : revenus, fiscalité et plus-value\",\"description\":\"Projection des revenus nets de SCPI après TMI et prélèvements sociaux, de la valeur du capital et du rendement annualisé, sur 1 à 30 ans.\",\"inLanguage\":\"fr-FR\",\"datePublished\":\"2025-10-09\",\"dateModified\":\"2026-09-09\",\"isPartOf\":{\"@id\":\"https://2ndmarket.fr/#website\"},\"publisher\":{\"@id\":\"https://2ndmarket.fr/#organization\"},\"breadcrumb\":{\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#breadcrumb\"},\"mainEntity\":{\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#app\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Accueil\",\"item\":\"https://2ndmarket.fr/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Simulateurs\",\"item\":\"https://2ndmarket.fr/simulateurs\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Simulation SCPI\"}]},{\"@type\":\"SoftwareApplication\",\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#app\",\"name\":\"Simulation SCPI\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Web\",\"url\":\"https://2ndmarket.fr/simulateurs/simulation-scpi\",\"inLanguage\":\"fr-FR\",\"description\":\"Projette année par année les revenus bruts, la fiscalité, les revenus nets, la valeur du capital et le taux de rentabilité interne d'un investissement en parts de SCPI, avec décote de marché secondaire et frais d'entrée paramétrables.\",\"featureList\":[\"Projection année par année sur 1 à 30 ans\",\"Fiscalité TMI et prélèvements sociaux paramétrables\",\"Taux de rentabilité interne calculé par dichotomie\",\"Effet d'une décote au marché secondaire\"],\"isPartOf\":{\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#webpage\"},\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"provider\":{\"@id\":\"https://2ndmarket.fr/#organization\"}},{\"@type\":\"FAQPage\",\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#faq\",\"isPartOf\":{\"@id\":\"https://2ndmarket.fr/simulateurs/simulation-scpi#webpage\"},\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Sur quelle durée puis-je projeter ma simulation SCPI ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"De 1 à 30 ans. Au-delà de dix ans, les hypothèses de revalorisation et de taux de distribution pèsent lourdement sur le résultat : elles se lisent comme des ordres de grandeur, pas comme une prévision.\"}},{\"@type\":\"Question\",\"name\":\"Les prélèvements sociaux sur les revenus de SCPI passent-ils à 18,6 % en 2026 ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non, pas pour la détention directe. L'article 12 de la loi de financement de la sécurité sociale pour 2026 a porté la CSG sur les revenus du capital de 9,2 % à 10,6 %, mais il maintient un taux dérogatoire de 9,2 % pour les revenus fonciers et les plus-values immobilières : les revenus de SCPI perçus en direct restent soumis à 17,2 % de prélèvements sociaux.\"}},{\"@type\":\"Question\",\"name\":\"Comment une décote améliore-t-elle le rendement ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Le rendement effectif brut est égal au taux de distribution divisé par (1 moins la décote). À 4,91 % de taux de distribution et 20 % de décote, il ressort à 6,14 % : pour un même budget, l'acquéreur détient davantage de parts et perçoit le même dividende par part.\"}},{\"@type\":\"Question\",\"name\":\"Le rendement annualisé affiché intègre-t-il l'impôt sur la plus-value ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non. Le taux de rentabilité interne est calculé par dichotomie sur les flux nets annuels et la valeur du capital au terme, après fiscalité des revenus mais avant l'imposition d'une éventuelle plus-value à la revente.\"}},{\"@type\":\"Question\",\"name\":\"Faut-il renseigner des frais d'entrée pour un achat au marché secondaire ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non. Au marché secondaire de gré à gré, il n'y a pas de frais de souscription : le champ reste à 0 %. Des droits d'enregistrement de 5 % (CGI art. 726) s'appliquent en revanche, et ne sont pas modélisés par ce simulateur.\"}},{\"@type\":\"Question\",\"name\":\"Le simulateur convient-il à une SCPI européenne ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Partiellement. La fraction des revenus provenant d'immeubles situés hors de France n'est pas soumise aux prélèvements sociaux français et relève des conventions fiscales bilatérales. Le simulateur applique la fiscalité française à la totalité des revenus : sur une SCPI majoritairement européenne, il sous-estime le montant net perçu.\"}}]}]}"]}
+lastmod: "2026-11-21"
+---
+
+<div class="simulator">
+<div><div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div></div><div><!-- ============================================================
+     2nd Market - BLOC-1 Simulation SCPI (simulation-scpi) - v2.1
+     Page : /simulateurs/simulation-scpi - champ Calculator Code Embed,
+     2e bloc. REMPLACE integralement la v2.0.
+     ETAT TROUVE. La reparation v2.0 tient : script executable, 23 ids et
+     racine restaures, feuille de style scopee appliquee, Lead Capture
+     branche, formules justes. Chiffres recontroles par script Node le
+     09/09/2026 (voir cas de test en bas de fichier). Les points ci-dessous
+     sont des defauts residuels, pas des sequelles de l'import.
+     CORRECTIFS v2.1
+     1) DEUX POLICES SUR LA MEME PAGE. Le simulateur imposait
+        font-family:Inter,system-ui,... et le corps editorial
+        system-ui,-apple-system,Segoe UI,... : deux rendus typographiques
+        differents dans la meme colonne, aucun des deux n'heritant du
+        Webflow. Les deux blocs passent en font-family:inherit, regle de
+        plateforme (aucun import de police depuis un embed).
+     2) BALISE <form> RETIREE. Un embed ne doit jamais contenir de <form> :
+        imbrique dans un formulaire Webflow il en casse la soumission, et
+        ici, si le JS ne s'execute pas, le bouton « Calculer » rechargeait
+        la page en perdant la saisie. Remplace par un <div> et un
+        <button type='button'>. L'id s2m-sim-form est conserve (garde
+        data-bound et entree SKIP du Lead Capture).
+     3) INFOBULLES INACCESSIBLES AU TACTILE. Les dix infobulles ne
+        s'ouvraient qu'au :hover : invisibles sur mobile, ou se joue la
+        majorite du trafic, et inatteignables au clavier. Ajout de
+        tabindex, role et d'une regle :focus-visible identique au :hover.
+     4) LIBELLES DE LEADS. Les id des champs se terminaient par -eur et
+        -pct : le prospect recevait « Montant investi eur » et « Taux
+        distribution pct » dans son email, et la meme chose arrivait dans
+        le Sheet. Ids renommes ; le BLOC-4 (facultatif) ajoute les
+        libelles accentues a la table LABELS du script de collection.
+     5) DATES ET REFERENCES. Badges alignes sur le corps editorial
+        (septembre 2026) et sur le texte reellement applicable :
+        LFSS 2026 art. 12. Le badge disait « LFSS & LFI 2026 » cote
+        simulateur et « LFSS & PLF 2026 » cote contenu - un PLF n'est pas
+        une loi promulguee.
+     6) HYPOTHESE MANQUANTE : la fraction etrangere des SCPI europeennes
+        n'est pas soumise aux prelevements sociaux francais. Le simulateur
+        applique PS + TMI a la totalite des revenus : la mention est
+        ajoutee aux hypotheses, sans changer le calcul.
+     DECISION EN ATTENTE - D-SS-4 (DECOTE PAR DEFAUT). Le champ « Decote
+     d'achat » vaut 20 % au chargement : le « Rendement annualise
+     indicatif » affiche d'emblee 6,23 % au lieu de 3,59 %, sur une
+     hypothese que le visiteur n'a pas saisie, et le corps editorial
+     presente au contraire le cas sans decote en premier. Passer la valeur
+     par defaut a 0 % rendrait la page coherente et neutre. Non applique
+     ici : la valeur 20 % releve de la decision D-SS-1. A trancher.
+     FORMULES INCHANGEES : TRI par dichotomie (200 iterations, encadrement
+     elargi jusqu'a 10 fois), revenus bruts assis sur le prix de la part de
+     l'annee et jamais sur le prix decote, prix d'acquisition
+     = prix x (1 - decote) x (1 + frais).
+     Collage au Designer uniquement, JAMAIS via import CSV.
+     ============================================================ -->
+<div id="s2m-simulation-scpi">
+<style>
+#s2m-simulation-scpi,#s2m-simulation-scpi *,#s2m-simulation-scpi *::before,#s2m-simulation-scpi *::after{box-sizing:border-box}
+#s2m-simulation-scpi{font-family:inherit;color:#0f172a;background:#f0f4f8;border-radius:12px;padding:18px;margin:0 auto;max-width:960px;line-height:1.5}
+#s2m-simulation-scpi>h2{margin:0 0 6px;font-size:clamp(20px,3.5vw,28px);font-weight:700;color:#104A65}
+#s2m-simulation-scpi>.s2m-badges{margin:0 0 4px}
+#s2m-simulation-scpi>.s2m-intro{margin:0 0 16px;font-size:14px;color:#334155}
+#s2m-simulation-scpi .s2m-badge{display:inline-block;font-size:11px;background:#e6f0f4;color:#104A65;padding:3px 10px;border-radius:999px;font-weight:600;margin-right:4px}
+#s2m-simulation-scpi .s2m-tip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:#104A65;color:#fff;border-radius:50%;font-size:10px;font-weight:700;cursor:help;flex-shrink:0;margin-left:4px;vertical-align:middle}
+#s2m-simulation-scpi .s2m-tip:hover::after,#s2m-simulation-scpi .s2m-tip:focus-visible::after,#s2m-simulation-scpi .s2m-tip:focus::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#0a3347;color:#fff;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:400;white-space:normal;width:230px;z-index:10;line-height:1.4;box-shadow:0 4px 12px rgba(16,74,101,0.2)}
+#s2m-simulation-scpi .s2m-tip:focus-visible{outline:2px solid #104A65;outline-offset:2px}
+#s2m-simulation-scpi .s2m-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;margin:0 0 16px}
+#s2m-simulation-scpi .s2m-card>h3{margin:0 0 10px;font-size:18px;color:#104A65;font-weight:700}
+#s2m-simulation-scpi .s2m-input-grid{display:grid;grid-template-columns:1fr;gap:10px}
+#s2m-simulation-scpi .s2m-field{display:flex;flex-direction:column}
+#s2m-simulation-scpi .s2m-field>label{font-weight:600;margin:0 0 4px;font-size:14px;display:flex;align-items:center;justify-content:space-between}
+#s2m-simulation-scpi .s2m-field>input,#s2m-simulation-scpi .s2m-field>select{padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;width:100%;background:#fff;color:#0f172a;font-family:inherit}
+#s2m-simulation-scpi .s2m-field>input[type=range]{padding:0;border:none;accent-color:#104A65;background:transparent}
+#s2m-simulation-scpi input:focus,#s2m-simulation-scpi select:focus{outline:2px solid #104A65;border-color:#104A65}
+#s2m-simulation-scpi .s2m-hint{font-size:12px;color:#64748b;margin-top:4px}
+#s2m-simulation-scpi .s2m-btn{width:100%;margin-top:12px;background:#eb5031;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity 0.15s ease}
+#s2m-simulation-scpi .s2m-btn:hover{opacity:0.9}
+#s2m-simulation-scpi .s2m-results{display:grid;grid-template-columns:1fr;gap:12px}
+#s2m-simulation-scpi .s2m-line{display:flex;align-items:center;justify-content:space-between;border-bottom:1px dashed #e2e8f0;padding:6px 0;gap:0.8rem}
+#s2m-simulation-scpi .s2m-line>span{color:#475569}
+#s2m-simulation-scpi .s2m-line-total{display:flex;align-items:center;justify-content:space-between;border-top:2px solid #e2e8f0;padding:8px 0 0;gap:0.8rem}
+#s2m-simulation-scpi .s2m-line-plain{display:flex;align-items:center;justify-content:space-between;padding:6px 0;gap:0.8rem}
+#s2m-simulation-scpi .s2m-line-hl{display:flex;align-items:center;justify-content:space-between;background:#ebf5f2;border:1px solid #cce7de;border-radius:8px;padding:8px;gap:0.8rem}
+#s2m-simulation-scpi .s2m-red{color:#b1221f}
+#s2m-simulation-scpi .s2m-green{color:#0b7a51}
+#s2m-simulation-scpi .s2m-brand{color:#104A65}
+#s2m-simulation-scpi .s2m-strong{font-weight:700;color:#0f172a}
+#s2m-simulation-scpi .s2m-card-buyer{background:#f3f8fb;border:1px solid #cfe0ea;border-radius:10px;padding:14px}
+#s2m-simulation-scpi .s2m-card-decote{background:#ebf5f2;border:1px solid #cce7de;border-radius:10px;padding:14px;display:none}
+#s2m-simulation-scpi .s2m-card-buyer>h3,#s2m-simulation-scpi .s2m-card-decote>h3{margin:0 0 6px;font-size:16px}
+#s2m-simulation-scpi .s2m-card-buyer>p,#s2m-simulation-scpi .s2m-card-decote>p{margin:0 0 6px;font-size:13px;color:#334155}
+#s2m-simulation-scpi .s2m-duo{display:grid;grid-template-columns:1fr;gap:8px}
+#s2m-simulation-scpi .s2m-scroll{overflow:auto}
+#s2m-simulation-scpi table{width:100%;border-collapse:collapse;font-size:13px}
+#s2m-simulation-scpi th{text-align:right;border-bottom:2px solid #e2e8f0;padding:8px 6px;color:#475569;white-space:nowrap}
+#s2m-simulation-scpi th:first-child{text-align:left}
+#s2m-simulation-scpi td{padding:8px 6px;border-bottom:1px solid #f1f5f9;text-align:right}
+#s2m-simulation-scpi td.s2m-an{text-align:left;font-weight:600}
+#s2m-simulation-scpi tr.s2m-alt{background:#f8fafc}
+#s2m-simulation-scpi td.s2m-c-red{color:#b1221f}
+#s2m-simulation-scpi td.s2m-c-green{color:#0b7a51;font-weight:600}
+#s2m-simulation-scpi td.s2m-c-muted{color:#475569}
+#s2m-simulation-scpi td.s2m-c-brand{color:#104A65}
+#s2m-simulation-scpi td.s2m-vide{text-align:center;color:#94a3b8}
+#s2m-simulation-scpi .s2m-cta-box{background:#fff;border:1px dashed #cbd5e1;border-radius:10px;padding:12px;margin-top:12px}
+#s2m-simulation-scpi .s2m-cta-box>h3{margin:0 0 6px;font-size:16px;color:#0f172a}
+#s2m-simulation-scpi .s2m-cta-box>p{margin:0 0 10px;font-size:13px;color:#334155}
+#s2m-simulation-scpi .s2m-cta-row{display:flex;gap:8px;flex-wrap:wrap}
+#s2m-simulation-scpi .s2m-cta{display:inline-block;background:#104A65;color:#fff;text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;font-size:13px}
+#s2m-simulation-scpi .s2m-cta-ghost{background:#fff;color:#104A65;border:1px solid #104A65}
+#s2m-simulation-scpi .s2m-cta-green{background:#0b7a51}
+#s2m-simulation-scpi .s2m-hypo{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;margin-top:12px}
+#s2m-simulation-scpi .s2m-hypo>h3{margin:0 0 8px;font-size:18px;color:#104A65;font-weight:700}
+#s2m-simulation-scpi .s2m-hypo>ul{margin:0;padding:0 0 0 18px;font-size:13px;color:#334155;line-height:1.7}
+#s2m-simulation-scpi .s2m-hypo>ul>li{margin:6px 0}
+#s2m-simulation-scpi .s2m-hypo>p{margin:10px 0 0;font-size:12px;color:#64748b;border-top:1px solid #e2e8f0;padding-top:8px}
+#s2m-simulation-scpi a{color:#104A65}
+@media (min-width:640px){#s2m-simulation-scpi .s2m-input-grid{grid-template-columns:1fr 1fr}#s2m-simulation-scpi .s2m-duo{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){#s2m-simulation-scpi .s2m-tip:hover::after,#s2m-simulation-scpi .s2m-tip:focus::after{width:min(230px,70vw)}}
+</style>
+<h2>Simulation SCPI : projetez vos revenus sur 1 à 30 ans</h2>
+<p class="s2m-badges"><span class="s2m-badge">Mis à jour septembre 2026</span><span class="s2m-badge">LFSS 2026 art. 12</span><span class="s2m-badge">PS 17,2 %</span></p>
+<p class="s2m-intro">Projetez vos revenus nets, la fiscalité annuelle, la valeur finale des parts et le rendement annualisé. Testez plusieurs scénarios : revalorisation, TMI, frais d'entrée, décote au marché secondaire.</p>
+<div class="s2m-card" id="s2m-sim-form">
+<h3>Paramètres de votre simulation</h3>
+<div class="s2m-input-grid">
+<div class="s2m-field"><label for="montant-investi"><span>Montant investi (€) <span class="s2m-tip" data-for="montant-investi" tabindex="0" role="note">?</span></span></label><input type="number" id="montant-investi" min="100" step="100" inputmode="numeric" value="50000"></div><div class="s2m-field"><label for="prix-de-la-part"><span>Prix de la part (€) <span class="s2m-tip" data-for="prix-de-la-part" tabindex="0" role="note">?</span></span></label><input type="number" id="prix-de-la-part" min="1" step="1" inputmode="numeric" value="200"></div><div class="s2m-field"><label for="taux-de-distribution"><span>Taux de distribution annuel (%) <span class="s2m-tip" data-for="taux-de-distribution" tabindex="0" role="note">?</span></span></label><input type="number" id="taux-de-distribution" min="0" max="20" step="0.01" inputmode="decimal" value="4.91"></div><div class="s2m-field"><label for="duree-de-detention"><span>Durée de détention <span class="s2m-tip" data-for="duree-de-detention" tabindex="0" role="note">?</span></span><span id="s2m-duree-val">10 ans</span></label><input type="range" id="duree-de-detention" min="1" max="30" step="1" value="10"></div><div class="s2m-field"><label for="revalorisation-annuelle"><span>Revalorisation annuelle du capital (%) <span class="s2m-tip" data-for="revalorisation-annuelle" tabindex="0" role="note">?</span></span></label><input type="number" id="revalorisation-annuelle" min="-20" max="20" step="0.1" inputmode="decimal" value="1"></div><div class="s2m-field"><label for="prelevements-sociaux"><span>Prélèvements sociaux (%) <span class="s2m-tip" data-for="prelevements-sociaux" tabindex="0" role="note">?</span></span></label><input type="number" id="prelevements-sociaux" min="0" max="40" step="0.1" inputmode="decimal" value="17.2"></div><div class="s2m-field"><label for="decote-achat"><span>Décote d'achat (%) <span class="s2m-tip" data-for="decote-achat" tabindex="0" role="note">?</span></span></label><input type="number" id="decote-achat" min="0" max="90" step="0.1" inputmode="decimal" value="20"><div class="s2m-hint">Marché secondaire de gré à gré : 15 % à 35 % observés.</div></div><div class="s2m-field"><label for="frais-entree"><span>Frais d'entrée / souscription (%) <span class="s2m-tip" data-for="frais-entree" tabindex="0" role="note">?</span></span></label><input type="number" id="frais-entree" min="0" max="30" step="0.1" inputmode="decimal" value="0"><div class="s2m-hint">0 % pour un achat au marché secondaire : il n'y a pas de frais de souscription.</div></div>
+<div class="s2m-field"><label for="tranche-marginale"><span>Tranche marginale d'imposition <span class="s2m-tip" data-for="tranche-marginale" tabindex="0" role="note">?</span></span></label><select id="tranche-marginale"><option value="0">0 % (non imposable)</option><option value="11">11 %</option><option value="30" selected="">30 %</option><option value="41">41 %</option><option value="45">45 %</option></select></div>
+</div>
+<button type="button" class="s2m-btn" id="s2m-btn-calc">Calculer ma simulation SCPI</button>
+</div>
+<div class="s2m-results" id="sim-results">
+<div class="s2m-card">
+<h3>Synthèse de votre simulation</h3>
+<div class="s2m-line"><span>Nombre de parts</span><strong id="res-nombre-de-parts">—</strong></div>
+<div class="s2m-line"><span>Montant investi effectif</span><strong id="res-investi-effectif">—</strong></div>
+<div class="s2m-line"><span>Revenus bruts cumulés</span><strong id="res-revenus-bruts-cumules">—</strong></div>
+<div class="s2m-line"><span>Fiscalité cumulée (TMI + PS)</span><strong class="s2m-red" id="res-fiscalite-cumulee">—</strong></div>
+<div class="s2m-line-total"><span class="s2m-strong">Revenus nets cumulés</span><strong class="s2m-green" id="res-revenus-nets-cumules">—</strong></div>
+<div class="s2m-line-plain"><span class="s2m-strong">Valeur estimée du capital au terme</span><strong class="s2m-brand" id="res-capital-final">—</strong></div>
+<div class="s2m-line-hl"><span class="s2m-green s2m-strong">Rendement annualisé indicatif <span class="s2m-tip" data-for="tri" tabindex="0" role="note">?</span></span><strong class="s2m-green" id="res-rendement-annualise">—</strong></div>
+</div>
+<div class="s2m-card-buyer">
+<h3 class="s2m-brand">Performance acheteur, après fiscalité des revenus</h3>
+<p>Revenus nets annuels moyens, après TMI et prélèvements sociaux sur les distributions.</p>
+<div class="s2m-duo">
+<div class="s2m-line-plain"><span>Flux nets annuels moyens</span><strong class="s2m-brand" id="res-net-annuel-moyen">—</strong></div>
+<div class="s2m-line-plain"><span>Flux nets mensuels moyens</span><strong class="s2m-brand" id="res-net-mensuel-moyen">—</strong></div>
+</div>
+</div>
+<div class="s2m-card-decote" id="s2m-decote-card">
+<h3 class="s2m-green">Effet de la décote</h3>
+<p>Économie réalisée en achetant avec décote plutôt qu'au prix de souscription, à hypothèses identiques.</p>
+<div class="s2m-duo">
+<div class="s2m-line-plain"><span>Économie à l'achat</span><strong class="s2m-green" id="res-economie-decote">—</strong></div>
+<div class="s2m-line-plain"><span>Rendement effectif brut</span><strong class="s2m-green" id="res-rendement-effectif-brut">—</strong></div>
+</div>
+</div>
+<div class="s2m-card">
+<h3>Projection année par année</h3>
+<div class="s2m-scroll">
+<table>
+<thead><tr><th>Année</th><th>Revenus bruts</th><th>Fiscalité</th><th>Revenus nets</th><th>Revenus nets cumulés</th><th>Valeur capital</th></tr></thead>
+<tbody id="s2m-rows"><tr><td colspan="6" class="s2m-vide">Renseignez vos paramètres</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="s2m-cta-box">
+<h3>Aller plus loin</h3>
+<p>Comparez avec un achat à décote sur le marché secondaire, calculez votre plus-value nette avec abattements, ou consultez les annonces à prix réduit.</p>
+<div class="s2m-cta-row">
+<a class="s2m-cta" href="/simulateurs/scpi-marche-secondaire">Comparer avec la décote</a>
+<a class="s2m-cta s2m-cta-ghost" href="/simulateurs/plus-value-scpi">Simuler ma plus-value</a>
+<a class="s2m-cta s2m-cta-green" href="https://app.2ndmarket.fr/scpi" target="_blank" rel="noopener">Voir les annonces SCPI</a>
+</div>
+</div>
+<div class="s2m-hypo">
+<h3>Hypothèses de calcul</h3>
+<ul>
+<li>Revenus bruts = nombre de parts × prix de la part de l'année × taux de distribution. Le taux de distribution est supposé <strong>constant</strong> sur toute la durée, hypothèse simplificatrice.</li>
+<li>Fiscalité simplifiée sur les revenus : TMI + prélèvements sociaux, 17,2 % par défaut pour les revenus fonciers (taux dérogatoire de CSG maintenu à 9,2 % par l'article 12 de la LFSS 2026). CSG déductible de 6,8 % non prise en compte, régime réel foncier supposé. <strong>Détention directe uniquement</strong> : les parts logées en assurance-vie ou en SCI à l'impôt sur les sociétés suivent des règles différentes.</li>
+<li><strong>SCPI européennes</strong>: la fraction des revenus provenant d'immeubles situés hors de France n'est pas soumise aux prélèvements sociaux français et relève des conventions fiscales bilatérales. Le simulateur applique TMI et prélèvements sociaux à la totalité des revenus : sur une SCPI majoritairement européenne, il sous-estime le net perçu.</li>
+<li>Prix d'acquisition = prix de la part × (1 − décote) × (1 + frais d'entrée). Les frais s'appliquent au prix négocié.</li>
+<li>Revalorisation appliquée au prix de la part chaque année, en intérêts composés.</li>
+<li>Le rendement annualisé est un taux de rentabilité interne calculé <strong>par dichotomie</strong> sur les flux nets annuels et la valeur du capital au terme. <strong>Il n'intègre pas la fiscalité de la plus-value à la revente</strong> : 19 % d'impôt sur le revenu et 17,2 % de prélèvements sociaux, avec abattements pour durée de détention. Voir le <a href="/simulateurs/plus-value-scpi">simulateur de plus-value</a>.</li>
+<li>Frais d'entrée : à renseigner pour un achat au marché primaire uniquement. Au marché secondaire, il n'y a pas de frais de souscription mais des droits d'enregistrement de 5 % (CGI art. 726), non modélisés ici.</li>
+<li>Non modélisés : crédit d'impôt sur revenus de source étrangère, déficit foncier, SCPI fiscales, frais supportés à la revente.</li>
+</ul>
+<p><strong>Simulation indicative</strong>, non garantie, ne constituant ni un conseil en investissement ni une promesse de performance. Les SCPI comportent un risque de perte en capital, un risque de liquidité et des revenus non garantis. 2nd Market est une plateforme de mise en relation entre investisseurs — ni CGP, ni CIF, ni société de gestion. <strong>En cas de divergence entre le simulateur et la réglementation en vigueur, ce sont les textes officiels et le calcul du notaire qui prévalent.</strong></p>
+</div>
+</div>
+<script>(function(){ 'use strict'; var TIPS={ 'montant-investi':"Somme totale que vous consacrez à l'achat de parts. Le nombre de parts est arrondi à l'entier inférieur.", 'prix-de-la-part':"Prix de souscription publié par la société de gestion, avant décote et avant frais.", 'taux-de-distribution':"Taux de distribution annuel publié par la société de gestion. Moyenne du marché 2025 : 4,91 % (ASPIM).", 'duree-de-detention':"Durée de détention projetée, de 1 à 30 ans. La fiscalité de la plus-value à la revente n'est pas modélisée.", 'revalorisation-annuelle':"Évolution annuelle du prix de la part, en intérêts composés. Peut être négative pour tester un scénario de correction.", 'tranche-marginale':"Votre tranche marginale d'imposition au barème 2026. Les revenus de SCPI en détention directe sont des revenus fonciers.", 'prelevements-sociaux':"17,2 % pour les revenus fonciers. La hausse à 18,6 % de la LFSS 2026 ne vise pas cette catégorie.", 'decote-achat':"Remise obtenue sur le prix de souscription au marché secondaire de gré à gré. Fourchette observée : 15 % à 35 %.", 'frais-entree':"Frais de souscription du marché primaire, de l'ordre de 8 % à 12 %. À laisser à 0 % pour un achat au marché secondaire." }; var TIP_TRI="Taux de rentabilité interne calculé par dichotomie sur les flux nets annuels et la valeur du capital au terme. Hors fiscalité de la plus-value à la revente."; function el(id){return document.getElementById(id);} function txt(id,v){var n=el(id);if(n){n.textContent=v;}} var LOC='fr-FR'; function fMoney(x){if(!isFinite(x)){return '—';}return new Intl.NumberFormat(LOC,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(x);} function fMoney2(x){if(!isFinite(x)){return '—';}return new Intl.NumberFormat(LOC,{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2}).format(x);} function fPct(x){if(!isFinite(x)){return '—';}return new Intl.NumberFormat(LOC,{minimumFractionDigits:2,maximumFractionDigits:2}).format(x)+' %';} function lire(id,def){var n=el(id);if(!n){return def;}var v=parseFloat(String(n.value).replace(',','.'));return isFinite(v)?v:def;} function borne(n,mi,ma){return Math.min(Math.max(n,mi),ma);} /* TRI par dichotomie uniquement : Newton-Raphson interdit sur ce projet */ function irr(flux){ function npv(r){var a=0;for(var t=0;t<flux.length;t++){a+=flux[t]/Math.pow(1+r,t);}return a;} var lo=-0.99,hi=1.0,flo=npv(lo),fhi=npv(hi),exp=0; while(flo*fhi>0&&exp<10){lo-=0.5;hi+=0.5;flo=npv(lo);fhi=npv(hi);exp++;} if(flo*fhi>0){return NaN;} for(var i=0;i<200;i++){ var mid=(lo+hi)/2,fm=npv(mid); if(Math.abs(fm)<1e-7){return mid;} if(flo*fm<0){hi=mid;fhi=fm;}else{lo=mid;flo=fm;} } return (lo+hi)/2; } function calculer(p){ var td=p.tdvm/100,rev=p.revalo/100,tmi=p.tmi/100,ps=p.ps/100; var prixEff=p.prix*(1-p.decote/100)*(1+p.frais/100); var prixSansDecote=p.prix*(1+p.frais/100); var parts=Math.max(0,Math.floor(p.invest/Math.max(0.01,prixEff))); var investi=parts*prixEff; var rb=0,fisc=0,rn=0,lignes=[],flux=[-investi]; for(var an=1;an<=p.duree;an++){ var prixAn=p.prix*Math.pow(1+rev,an-1); var brut=parts*prixAn*td; var imp=brut*(tmi+ps); var net=brut-imp; rb+=brut;fisc+=imp;rn+=net; flux.push(net); lignes.push({an:an,rb:brut,fisc:imp,rn:net,rnCum:rn,cap:parts*p.prix*Math.pow(1+rev,an)}); } var valFinale=parts*p.prix*Math.pow(1+rev,p.duree); flux[flux.length-1]+=valFinale; return {parts:parts,investi:investi,rb:rb,fisc:fisc,rn:rn,valFinale:valFinale, tri:irr(flux),netAn:p.duree>0?rn/p.duree:0,lignes:lignes, ecoDecote:Math.max(0,parts*(prixSansDecote-prixEff)), rdtEff:p.decote<100?(td/(1-p.decote/100)):td}; } function refresh(){ var p={ invest:borne(lire('montant-investi',50000),100,1e9), prix:borne(lire('prix-de-la-part',200),1,1e6), tdvm:borne(lire('taux-de-distribution',4.91),0,20), duree:borne(parseInt(el('duree-de-detention')?el('duree-de-detention').value:'10',10)||10,1,30), revalo:borne(lire('revalorisation-annuelle',1),-20,20), tmi:borne(lire('tranche-marginale',30),0,60), ps:borne(lire('prelevements-sociaux',17.2),0,40), decote:borne(lire('decote-achat',0),0,90), frais:borne(lire('frais-entree',0),0,30) }; txt('s2m-duree-val',p.duree+(p.duree>1?' ans':' an')); var R=calculer(p); if(R.parts<=0){ var vides=['res-nombre-de-parts','res-investi-effectif','res-revenus-bruts-cumules','res-fiscalite-cumulee','res-revenus-nets-cumules','res-capital-final','res-rendement-annualise','res-net-annuel-moyen','res-net-mensuel-moyen','res-economie-decote','res-rendement-effectif-brut']; for(var v=0;v<vides.length;v++){txt(vides[v],'—');} var c0=el('s2m-decote-card'); if(c0){c0.style.display='none';} var r0=el('s2m-rows'); if(r0){r0.innerHTML='<tr><td colspan="6" class="s2m-vide">Le montant investi ne permet d\'acheter aucune part entière à ce prix.</td></tr>';} return; } txt('res-nombre-de-parts',isFinite(R.parts)?new Intl.NumberFormat(LOC).format(R.parts):'—'); txt('res-investi-effectif',fMoney(R.investi)); txt('res-revenus-bruts-cumules',fMoney(R.rb)); txt('res-fiscalite-cumulee','− '+fMoney(R.fisc)); txt('res-revenus-nets-cumules',fMoney(R.rn)); txt('res-capital-final',fMoney(R.valFinale)); txt('res-rendement-annualise',isFinite(R.tri)?fPct(R.tri*100):'—'); txt('res-net-annuel-moyen',fMoney2(R.netAn)); txt('res-net-mensuel-moyen',fMoney2(R.netAn/12)); txt('res-economie-decote',fMoney(R.ecoDecote)); txt('res-rendement-effectif-brut',fPct(R.rdtEff*100)); var card=el('s2m-decote-card'); if(card){card.style.display=p.decote>0?'block':'none';} var corps=el('s2m-rows'); if(corps){ var h=''; for(var i=0;i<R.lignes.length;i++){ var l=R.lignes[i]; h+='<tr class="'+(l.an%2===0?'s2m-alt':'')+'"><td class="s2m-an">'+l.an+'</td><td>'+fMoney(l.rb)+'</td><td class="s2m-c-red">'+fMoney(l.fisc)+'</td><td class="s2m-c-green">'+fMoney(l.rn)+'</td><td class="s2m-c-muted">'+fMoney(l.rnCum)+'</td><td class="s2m-c-brand">'+fMoney(l.cap)+'</td></tr>'; } corps.innerHTML=h||'<tr><td colspan="6" class="s2m-vide">Renseignez vos paramètres</td></tr>'; } } function init(){ var f=el('s2m-sim-form'); if(!f||f.getAttribute('data-bound')){return;} f.setAttribute('data-bound','1'); var ids=['montant-investi','prix-de-la-part','taux-de-distribution','duree-de-detention','revalorisation-annuelle','tranche-marginale','prelevements-sociaux','decote-achat','frais-entree']; for(var i=0;i<ids.length;i++){ var n=el(ids[i]); if(!n){continue;} n.addEventListener('input',refresh); n.addEventListener('change',refresh); var t=document.querySelector('#s2m-simulation-scpi .s2m-tip[data-for="'+ids[i]+'"]'); if(t&&TIPS[ids[i]]){t.setAttribute('data-tip',TIPS[ids[i]]);t.setAttribute('aria-label',TIPS[ids[i]]);} } var tt=document.querySelector('#s2m-simulation-scpi .s2m-tip[data-for="tri"]'); if(tt){tt.setAttribute('data-tip',TIP_TRI);tt.setAttribute('aria-label',TIP_TRI);} var btn=el('s2m-btn-calc'); if(btn){ btn.addEventListener('click',function(){ refresh(); var r=el('sim-results'); if(r){r.scrollIntoView({behavior:'smooth',block:'nearest'});} }); } refresh(); } init(); document.addEventListener('DOMContentLoaded',init); })();</script>
+<script>/* CAS DE TEST - verifies par script Node le 09/09/2026 (MATH PASS).
+ * Reference commune : 50 000 EUR investis, part 200 EUR, taux de
+ * distribution 4,91 %, 10 ans, revalorisation 1 %, TMI 30 %, PS 17,2 %,
+ * frais d'entree 0 %.
+ * 1. SANS DECOTE : 250 parts, 50 000 EUR investis, revenus bruts cumules
+ *    25 685 EUR, revenus nets cumules 13 562 EUR, capital au terme
+ *    55 231 EUR, rendement annualise 3,59 %.
+ * 2. DECOTE 20 % : 312 parts, 49 920 EUR investis, revenus nets cumules
+ *    16 925 EUR, capital au terme 68 928 EUR, rendement annualise 6,23 %,
+ *    economie a l'achat 12 480 EUR, rendement effectif brut 6,14 %
+ *    (= 4,91 / 0,80). Ce sont les chiffres cites dans le corps editorial.
+ * 3. CAS LIMITES : investissement de 100 EUR pour une part a 200 EUR ->
+ *    0 part, tous les resultats a "—" et message explicite dans le
+ *    tableau, aucun TRI affiche. Revalorisation -5 % -> capital au terme
+ *    29 937 EUR et rendement annualise -2,41 % : la dichotomie converge
+ *    sur des flux a TRI negatif, la ou Newton-Raphson diverge.
+ */</script></div>
+</div>
+
+<div class="guide">
+
+<div><div id="s2m-simulation-scpi-contenu"><style>
+#s2m-simulation-scpi-contenu,#s2m-simulation-scpi-contenu *{box-sizing:border-box}
+#s2m-simulation-scpi-contenu{color:#0f172a;font-family:inherit;line-height:1.6}
+#s2m-simulation-scpi-contenu>#s2m-ssc-title{margin:0 0 8px 0;font-size:clamp(22px,4vw,30px);line-height:1.2;color:#0f172a}
+#s2m-simulation-scpi-contenu .s2m-block{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin:12px 0}
+#s2m-simulation-scpi-contenu h2{margin:0 0 8px 0;font-size:clamp(18px,3vw,22px);color:#104A65;scroll-margin-top:90px}
+#s2m-simulation-scpi-contenu h3{margin:10px 0 6px 0;font-size:16px;color:#0f172a}
+#s2m-simulation-scpi-contenu p{margin:6px 0;font-size:15px;line-height:1.6;color:#0f172a}
+#s2m-simulation-scpi-contenu ul{margin:6px 0 10px 18px;padding:0}
+#s2m-simulation-scpi-contenu li{margin:6px 0}
+#s2m-simulation-scpi-contenu li::marker{color:#5BB5D5}
+#s2m-simulation-scpi-contenu a{color:#104A65}
+#s2m-simulation-scpi-contenu .s2m-lead{background:#F4F7F9;border:1px solid #e2e8f0;border-left:4px solid #5BB5D5;border-radius:10px;padding:14px 16px;margin:12px 0}
+#s2m-simulation-scpi-contenu .s2m-lead p{margin:0;color:#334155}
+#s2m-simulation-scpi-contenu .s2m-toc ul{list-style:none;margin:6px 0 0 0;padding:0}
+#s2m-simulation-scpi-contenu .s2m-toc li{margin:4px 0}
+#s2m-simulation-scpi-contenu .s2m-note{font-size:13px;color:#475569;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:10px}
+#s2m-simulation-scpi-contenu .s2m-note-info{font-size:13px;color:#92400e;background:#fffbeb;border:1px solid #f59e0b;border-radius:10px;padding:10px}
+#s2m-simulation-scpi-contenu .s2m-cta{display:inline-block;background:#104A65;color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:600;font-size:14px}
+#s2m-simulation-scpi-contenu .s2m-cta:hover{opacity:0.9}
+#s2m-simulation-scpi-contenu .s2m-cta:focus{outline:2px solid #104A65;outline-offset:2px}
+#s2m-simulation-scpi-contenu .s2m-grid{display:grid;grid-template-columns:1fr;gap:10px}
+#s2m-simulation-scpi-contenu .s2m-badge{display:inline-block;font-size:11px;background:#e6f0f4;color:#104A65;padding:3px 10px;border-radius:999px;font-weight:600;margin-right:4px}
+@media (min-width:720px){#s2m-simulation-scpi-contenu .s2m-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#s2m-simulation-scpi-contenu details{border:1px solid #e2e8f0;border-radius:8px;padding:0 12px;margin:8px 0;background:#fff}
+#s2m-simulation-scpi-contenu summary{cursor:pointer;font-weight:600;color:#104A65;padding:10px 0;list-style:none}
+#s2m-simulation-scpi-contenu summary::-webkit-details-marker{display:none}
+#s2m-simulation-scpi-contenu summary::after{content:'+';float:right}
+#s2m-simulation-scpi-contenu details[open]>summary::after{content:'\2013'}
+#s2m-simulation-scpi-contenu details>p{margin:0 0 12px;color:#475569}
+@media (max-width:600px){#s2m-simulation-scpi-contenu .s2m-block{padding:12px}}
+</style><h2 id="s2m-ssc-title">Simulation SCPI : ce que la projection vous apprend</h2><div class="s2m-block"><p><span class="s2m-badge">À jour septembre 2026</span> <span class="s2m-badge">LFSS 2026 art. 12</span> <span class="s2m-badge">PS 17,2 %</span></p><p>Une simulation cadre des ordres de grandeur : revenus nets, fiscalité, valeur finale, rendement annualisé. Elle permet de mesurer l'effet d'une variation de taux de distribution, de revalorisation, de TMI, de frais d'entrée ou de décote sur un même investissement.</p><div class="s2m-lead"><p><strong>L'essentiel.</strong> 50 000 € investis en parts à 200 €, avec un taux de distribution de 4,91 %, une TMI de 30 %, 17,2 % de prélèvements sociaux et 1 % de revalorisation annuelle donnent, sur dix ans : 250 parts, environ 13 600 € de revenus nets cumulés, un capital estimé à environ 55 200 € et un rendement annualisé d'environ 3,6 %. Avec une décote d'achat de 20 % au marché secondaire, le même budget achète 312 parts : environ 16 900 € de revenus nets et 6,2 % de rendement annualisé.</p></div></div><div class="s2m-block s2m-toc"><h2 id="s2m-ssc-sommaire">Sommaire</h2><ul><li><a href="#s2m-ssc-pourquoi">Ce que mesure une simulation complète</a></li><li><a href="#s2m-ssc-fiscalite">Fiscalité 2026 : ce qui change et ce qui ne change pas</a></li><li><a href="#s2m-ssc-secondaire">Marché secondaire : blocages et alternatives</a></li><li><a href="#s2m-ssc-decote">Décote : impact sur le rendement</a></li><li><a href="#s2m-ssc-demembrement">Démembrement : nue-propriété et usufruit</a></li><li><a href="#s2m-ssc-lecture">Comment lire vos résultats</a></li><li><a href="#s2m-ssc-exemples">Exemples chiffrés</a></li><li><a href="#s2m-ssc-faq">Questions fréquentes</a></li></ul></div><div class="s2m-block"><h2 id="s2m-ssc-pourquoi">Ce que mesure une simulation complète</h2><p>Un taux de distribution seul ne dit rien du montant réellement perçu. La projection ajoute quatre dimensions :</p><ul><li>L'évolution des revenus année par année, <strong>après fiscalité</strong> (TMI + prélèvements sociaux 17,2 %).</li><li>Le montant payé en impôt sur le revenu et en prélèvements sociaux, selon la tranche marginale.</li><li>La part de la performance liée à la revalorisation des parts, en intérêts composés.</li><li>L'effet d'un achat avec <strong>décote</strong> sur le marché secondaire : davantage de parts pour le même budget.</li></ul><p>Le simulateur projette ces éléments sur 1 à 30 ans, à hypothèses entièrement paramétrables.</p><p class="s2m-note">Pour estimer vos frais ou votre fiscalité : <a href="/simulateurs/frais-scpi">simulateur de frais</a> · <a href="/simulateurs/fiscalite-scpi">simulateur fiscal</a> · <a href="/simulateurs/plus-value-scpi">plus-value SCPI</a> · <a href="/simulateurs/scpi-marche-secondaire">SCPI marché secondaire</a></p></div><div class="s2m-block"><h2 id="s2m-ssc-fiscalite">Fiscalité 2026 : ce qui change et ce qui ne change pas</h2><p>L'article 12 de la loi de financement de la sécurité sociale pour 2026 (loi n° 2025-1403 du 30 décembre 2025) a porté la CSG sur les revenus du capital de 9,2 % à 10,6 %, soit <strong>18,6 %</strong> de prélèvements sociaux. Le même article maintient un taux dérogatoire de 9,2 % pour les revenus fonciers et les plus-values immobilières, qui <strong>restent à 17,2 %</strong> (art. L. 136-8 du code de la sécurité sociale).</p><p>Pour des parts de SCPI détenues en direct :</p><ul><li><strong>Revenus fonciers</strong> : TMI + prélèvements sociaux 17,2 %, inchangé.</li><li><strong>Plus-value à la revente</strong> : IR 19 % + prélèvements sociaux 17,2 %, avec abattements pour durée de détention (exonération d'IR à 22 ans, exonération totale à 30 ans).</li><li><strong>SCPI européennes</strong> : la fraction des revenus provenant d'immeubles situés hors de France échappe aux prélèvements sociaux français et relève des conventions fiscales bilatérales. Le simulateur applique la fiscalité française à la totalité des revenus : sur une SCPI majoritairement européenne, il sous-estime le net perçu.</li></ul><p class="s2m-note-info"><strong>Attention :</strong> cette simulation porte sur la <strong>détention directe</strong>. Les parts logées en assurance-vie, en SCI à l'impôt sur les sociétés ou dans une autre enveloppe suivent des règles différentes.</p></div><div class="s2m-block"><h2 id="s2m-ssc-secondaire">Marché secondaire : blocages et alternatives</h2><p>Le marché organisé par la société de gestion sature lorsque les demandes de retrait dépassent les nouvelles souscriptions. Les ordres s'accumulent et les délais s'allongent, sans qu'aucun délai d'exécution ne soit garanti.</p><p><strong>2nd Market</strong> propose une voie de gré à gré : des annonces entre investisseurs, et un notaire pour sécuriser la vente et la mise à jour du registre des associés.</p><div class="s2m-grid"><p><a class="s2m-cta" href="https://app.2ndmarket.fr/create" target="_blank" rel="noopener">Créer une annonce SCPI</a></p><p><a class="s2m-cta" href="https://app.2ndmarket.fr/scpi" target="_blank" rel="noopener">Voir les annonces disponibles</a></p></div><p class="s2m-note">Besoin d'un compte ? <a href="https://app.2ndmarket.fr/auth/register" target="_blank" rel="noopener">Inscription</a>.</p></div><div class="s2m-block"><h2 id="s2m-ssc-decote">Décote : impact sur le rendement</h2><ul><li><strong>Sans décote</strong> : le prix payé est le prix de souscription, auquel s'ajoutent le cas échéant 8 % à 12 % de frais d'entrée au marché primaire.</li><li><strong>Avec 20 % de décote</strong> : à un taux de distribution de 4,91 % — moyenne du marché 2025 selon l'ASPIM —, le rendement effectif brut ressort à <strong>6,14 %</strong>, soit le taux de distribution divisé par (1 − décote). Le même budget achète davantage de parts.</li></ul><p>Le champ « Décote d'achat (%) » du simulateur isole cet effet : en ne modifiant que ce paramètre, l'écart apparaît sur le <strong>rendement annualisé</strong> et sur les <strong>flux nets</strong>.</p><p class="s2m-note"><a href="/guide-scpi/decote-2026">Comprendre les décotes 2026</a> · <a href="/guide-scpi/acheter-scpi-marche-secondaire">Acheter sur le marché secondaire</a> · <a href="/guide-scpi/analyser-annonce-marche-secondaire">Analyser une annonce</a></p></div><div class="s2m-block"><h2 id="s2m-ssc-demembrement">Démembrement : nue-propriété et usufruit</h2><p><strong>Nue-propriété</strong> : l'acquéreur renonce aux revenus pendant une durée fixée, en contrepartie d'un prix réduit. La nue-propriété est hors assiette de l'IFI pendant le démembrement.</p><p><strong>Usufruit</strong> : l'acquéreur perçoit les revenus pendant la durée convenue et ne conserve rien à l'échéance.</p><p class="s2m-note">Pour aller plus loin : <a href="/simulateurs/calculateur-demembrement">simulateur SCPI démembrement</a> · <a href="/actualites/ifi-et-demembrement">IFI et démembrement</a> · <a href="/simulateurs/ifi-demembrement">simulateur IFI démembrement</a></p></div><div class="s2m-block"><h2 id="s2m-ssc-lecture">Comment lire vos résultats</h2><ul><li><strong>Revenus bruts et nets</strong> : le net intègre la TMI et les prélèvements sociaux (17,2 %). Hypothèse : régime réel foncier, CSG déductible non prise en compte.</li><li><strong>Valeur du capital</strong> : projection à partir de l'hypothèse de revalorisation annuelle, en intérêts composés. Les hypothèses prudentes se situent entre 0,5 % et 1,5 % par an.</li><li><strong>Rendement annualisé indicatif</strong> : taux de rentabilité interne calculé par dichotomie sur les flux nets annuels et la valeur du capital au terme. <strong>Il n'intègre pas la fiscalité de la plus-value à la revente</strong> (IR 19 % + prélèvements sociaux 17,2 %, avec abattements pour durée). Pour cette estimation, le <a href="/simulateurs/plus-value-scpi">simulateur de plus-value</a> est dédié.</li></ul><p class="s2m-note">Une lecture par intervalle est plus robuste qu'une valeur unique : partir d'hypothèses prudentes (taux de distribution moyen sur 3 à 5 ans, revalorisation faible, décote mesurée), puis élargir la fourchette.</p></div><div class="s2m-block"><h2 id="s2m-ssc-exemples">Exemples chiffrés</h2><h3>50 000 € investis · taux de distribution 4,91 % · TMI 30 % · PS 17,2 % · 10 ans · revalorisation 1 %</h3><p>250 parts à 200 €. Revenus nets cumulés : environ 13 600 €. Valeur du capital à 10 ans : environ 55 200 €. Rendement annualisé indicatif : environ 3,6 %.</p><h3>Même cas avec 20 % de décote</h3><p>312 parts achetées, contre 250 sans décote. Revenus nets cumulés : environ 16 900 €. Rendement annualisé indicatif : environ 6,2 %. L'écart tient entièrement au nombre de parts obtenues pour le même budget ; il reste dépendant des revenus distribués et du prix futur des parts.</p><p class="s2m-note">Ces montants sont des ordres de grandeur produits par le simulateur avec les paramètres ci-dessus. Ils ne constituent pas une prévision.</p></div><div class="s2m-block"><h2 id="s2m-ssc-suite">Autres outils et pages</h2><ul><li><a href="https://app.2ndmarket.fr/create" target="_blank" rel="noopener">Déposer une annonce</a> · <a href="https://app.2ndmarket.fr/auth/register" target="_blank" rel="noopener">Créer un compte</a></li><li><a href="https://app.2ndmarket.fr/scpi" target="_blank" rel="noopener">Consulter les annonces</a> · <a href="/simulateurs/scpi-marche-secondaire">Comparer avec la décote</a></li><li><a href="/simulateurs/arbitrage-scpi">Simulateur d'arbitrage</a> · <a href="/simulateurs/scpi-credit">Comptant ou crédit</a> · <a href="/simulateurs/plus-value-scpi">Plus-value</a></li><li><a href="/simulateurs/frais-scpi">Estimer mes frais</a> · <a href="/simulateurs/rendement-performance">Calculette rapide</a></li></ul></div><div class="s2m-block"><h2 id="s2m-ssc-role">Le rôle de 2nd Market</h2><ul><li>La plateforme met en relation vendeurs et acquéreurs, et travaille avec un notaire pour sécuriser la vente.</li><li>Elle ne délivre aucun conseil personnalisé : la décision appartient à l'investisseur.</li><li>Les simulateurs sont des outils de cadrage, non des recommandations.</li></ul><p class="s2m-note">Questions fréquentes et guides pratiques : <a href="/faqs">FAQs</a> · <a href="/guides-scpi-viager-demembrement">Guides</a> · <a href="/guide-scpi/revente-guide-pratique">Guide de revente SCPI</a></p></div><div class="s2m-block"><h2 id="s2m-ssc-faq">Questions fréquentes</h2><details><summary>Sur quelle durée puis-je projeter ma simulation SCPI ?</summary><p>De 1 à 30 ans. Au-delà de dix ans, les hypothèses de revalorisation et de taux de distribution pèsent lourdement sur le résultat : elles se lisent comme des ordres de grandeur, pas comme une prévision.</p></details><details><summary>Les prélèvements sociaux sur les revenus de SCPI passent-ils à 18,6 % en 2026 ?</summary><p>Non, pas pour la détention directe. L'article 12 de la loi de financement de la sécurité sociale pour 2026 a porté la CSG sur les revenus du capital de 9,2 % à 10,6 %, mais il maintient un taux dérogatoire de 9,2 % pour les revenus fonciers et les plus-values immobilières : les revenus de SCPI perçus en direct restent soumis à 17,2 % de prélèvements sociaux.</p></details><details><summary>Comment une décote améliore-t-elle le rendement ?</summary><p>Le rendement effectif brut est égal au taux de distribution divisé par (1 moins la décote). À 4,91 % de taux de distribution et 20 % de décote, il ressort à 6,14 % : pour un même budget, l'acquéreur détient davantage de parts et perçoit le même dividende par part.</p></details><details><summary>Le rendement annualisé affiché intègre-t-il l'impôt sur la plus-value ?</summary><p>Non. Le taux de rentabilité interne est calculé par dichotomie sur les flux nets annuels et la valeur du capital au terme, après fiscalité des revenus mais avant l'imposition d'une éventuelle plus-value à la revente.</p></details><details><summary>Faut-il renseigner des frais d'entrée pour un achat au marché secondaire ?</summary><p>Non. Au marché secondaire de gré à gré, il n'y a pas de frais de souscription : le champ reste à 0 %. Des droits d'enregistrement de 5 % (CGI art. 726) s'appliquent en revanche, et ne sont pas modélisés par ce simulateur.</p></details><details><summary>Le simulateur convient-il à une SCPI européenne ?</summary><p>Partiellement. La fraction des revenus provenant d'immeubles situés hors de France n'est pas soumise aux prélèvements sociaux français et relève des conventions fiscales bilatérales. Le simulateur applique la fiscalité française à la totalité des revenus : sur une SCPI majoritairement européenne, il sous-estime le montant net perçu.</p></details></div><div class="s2m-block"><h2 id="s2m-ssc-avertissement">Avertissement</h2><p>Ces informations et simulations sont fournies à titre indicatif, au regard de la réglementation en vigueur en septembre 2026. Elles ne constituent ni un conseil en investissement ni une garantie de performance. Les SCPI comportent un risque de perte en capital, une variabilité des revenus et une liquidité limitée. Les documents officiels (DIC, note d'information) font foi.</p><p><strong>En cas de divergence entre le simulateur et la réglementation en vigueur, ce sont les textes officiels et le calcul du notaire qui prévalent.</strong> 2nd Market n'est ni conseiller en gestion de patrimoine, ni conseiller en investissements financiers, ni société de gestion.</p><p><a href="/contact">Nous contacter</a></p></div></div></div>
+
+</div>

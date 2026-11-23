@@ -1,0 +1,153 @@
+---
+// SCPI fact sheet: /2nd-seo/<slug> (collection 2nd-seo). Items with `redirect` have no page (301 in public/_redirects).
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/scpi/PageHeader.astro';
+import LatestListings from '../../components/scpi/LatestListings.astro';
+import Icon from '../../components/scpi/Icon.astro';
+import { statIcons } from '../../components/scpi/icons';
+
+export async function getStaticPaths() {
+  return (await getCollection('2nd-seo', e => !e.data.redirect)).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'2nd-seo'> };
+const d = entry.data;
+const { Content } = await render(entry);
+const stats = [
+  { icon: statIcons.rate, value: d.distributionRateText, label: 'Taux de Rendement (%)' },
+  { icon: statIcons.price, value: d.sharePriceText, label: 'Prix de Marché (€/part)' },
+  { icon: statIcons.income, value: d.annualIncomeText, label: 'Revenu Annuel (€/part)' },
+];
+---
+
+<BaseLayout seo={d.seo}>
+  <PageHeader title={d.title} crumbs={[{ label: 'Accueil', href: '/' }, { label: 'Repertoire', href: '/repertoire' }, { label: d.title }]}>
+    {
+      d.manager && (
+        <p class="manager">
+          <span>Nom de la Société de Gestion:</span>
+          {d.managerPage ? <a href={`/seo/${d.managerPage.id}`}>{d.manager}</a> : d.manager}
+        </p>
+      )
+    }
+  </PageHeader>
+
+  <div class="gutter">
+    <div class="container section layout">
+      <div class="main">
+        {d.image && <img class="logo" src={d.image} alt={d.imageAlt ?? `Logo ${d.title}`} width={d.imageWidth} height={d.imageHeight} decoding="async" />}
+        <div class="description"><Content /></div>
+        <div class="warning">
+          <p class="warning-title">Avertissement</p>
+          <p>
+            Notre plateforme agit uniquement comme un marché secondaire facilitant les transactions de gré à gré entre vendeurs et
+            acheteurs de parts de SCPI. Nous ne sommes ni Conseillers en Gestion de Patrimoine (CGP), ni Conseillers en
+            Investissements Financiers (CIF), et nous ne fournissons aucun conseil ou recommandation d’investissement. Toutes les
+            informations affichées sont issues de données publiques et des calculs simples. Bien que nous veillions à leur
+            exactitude, des erreurs peuvent survenir. Les utilisateurs doivent effectuer leurs propres vérifications et consulter
+            des professionnels si nécessaire. Nous déclinons toute responsabilité pour les décisions prises sur la base des
+            informations fournies.
+          </p>
+        </div>
+      </div>
+      <ul class="stats" role="list">
+        {
+          stats.map(s => (
+            <li>
+              <Icon icon={s.icon} size={32} />
+              <span>
+                {s.value && <strong>{s.value}</strong>}
+                <span class="stat-label">{s.label}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <LatestListings />
+</BaseLayout>
+
+<style>
+  .manager { display: inline-flex; justify-content: center; gap: var(--size-0-25); margin: 0; padding-top: var(--size-1); }
+  .manager span { opacity: 0.8; }
+  .manager a { color: inherit; }
+  .manager a:hover { color: var(--primary); }
+
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-6); align-items: start; }
+  .main { display: flex; flex-direction: column; gap: var(--size-2-5); min-width: 0; }
+  .logo { width: 12rem; height: auto; object-fit: contain; }
+  .warning-title { margin: 0 0 var(--size-0-5); font-weight: var(--weight-semibold); }
+  .warning p { margin: 0; }
+  .warning p + p { margin-top: var(--size-0-5); }
+
+  .stats { display: flex; flex-direction: column; gap: var(--size-0-75); margin: 0; padding: 0; list-style: none; animation: fade 0.8s var(--ease-out) both; }
+  .stats li { display: flex; gap: var(--size-1-5); align-items: center; padding: var(--size-1-5); border-radius: var(--radius-main); background: var(--white); }
+  .stats :global(svg) { flex: none; color: var(--neutral-medium); }
+  .stats li > span { display: flex; flex-direction: column; flex: 1; }
+  .stats strong { margin-block: var(--size-0-25) var(--size-0-5); font-size: var(--size-1-5); font-weight: var(--weight-semibold); line-height: var(--lh-1-2); letter-spacing: var(--ls-4); }
+  .stat-label { color: var(--neutral-medium); text-wrap: balance; }
+  @keyframes fade { from { opacity: 0; transform: translateY(1rem); } }
+
+  @media (max-width: 991px) { .layout { grid-template-columns: 1fr; } }
+  @media (max-width: 767px) { .stats li { padding: var(--size-1-25); } }
+  @media (max-width: 479px) { .main { gap: var(--size-1-25); } }
+
+  /* ---- Rich text (CMS field "description"): Webflow rich text + the content team's .seo-description rules ---- */
+  .description { font-size: 1rem; line-height: 1.65; color: var(--content-text); }
+  .description > :global(:first-child), .description :global(.s2m-fiche-scpi-2026 > :first-child) { margin-top: 0; }
+  .description :global(h2) { margin: 2rem 0 0.75rem; font-size: 1.35rem; font-weight: var(--weight-bold); line-height: 1.25; letter-spacing: normal; color: var(--neutral-large); }
+  .description :global(h3) { margin: 1.5rem 0 0.5rem; font-size: 1.08rem; font-weight: var(--weight-semibold); line-height: 1.3; letter-spacing: normal; color: var(--neutral-large); }
+  .description :global(h4) { margin: 1.25rem 0 0.5rem; font-size: 1rem; font-weight: var(--weight-semibold); line-height: 1.3; color: var(--neutral-large); }
+  .description :global(p) { margin: 0 0 1rem; font-size: 1rem; line-height: 1.65; }
+  .description :global(:is(ul, ol)) { margin: 0 0 1.25rem; padding-left: 1.25rem; overflow: hidden; }
+  .description :global(li) { margin: 0 0 0.35rem; font-size: 1rem; line-height: 1.65; }
+  .description :global(strong) { font-weight: var(--weight-semibold); color: var(--content-heading); }
+  .description :global(a) { color: var(--neutral-large); text-decoration: underline; text-underline-offset: 2px; }
+  @media (min-width: 640px) { .description :global(h2) { font-size: 1.5rem; } }
+
+  /* ---- 2026 fact sheet (rich text wrapped in .s2m-fiche-scpi-2026 by the content team) ---- */
+  .description :global(.s2m-fiche-scpi-2026) {
+    --ink: var(--content-ink);
+    --ink-soft: var(--content-ink-soft);
+    --rule: var(--content-rule);
+    --tint: var(--content-tint);
+    max-width: 100%;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-intro) { margin: 0 0 1.5em; font-size: 1.0625rem; line-height: 1.7; color: var(--content-text); }
+  .description :global(.s2m-fiche-scpi-2026 h2) { margin: 2em 0 0.75em; padding-bottom: 8px; border-bottom: 2px solid var(--tint); font-size: 1.5rem; font-weight: var(--weight-semibold); line-height: 1.3; }
+  .description :global(.s2m-fiche-scpi-2026 h3) { margin: 1.6em 0 0.6em; font-size: 1.1rem; font-weight: var(--weight-semibold); line-height: 1.35; color: var(--ink); }
+  .description :global(.s2m-fiche-scpi-2026 p) { margin: 0 0 1em; font-size: 1rem; line-height: 1.7; color: var(--ink); }
+  .description :global(.s2m-fiche-scpi-2026 ul) { margin: 0 0 1.25em; padding-left: 20px; }
+  .description :global(.s2m-fiche-scpi-2026 li) { margin: 0 0 0.5em; font-size: 1rem; line-height: 1.7; }
+  .description :global(.s2m-fiche-scpi-2026 strong) { color: var(--ink); }
+  .description :global(.s2m-fiche-scpi-2026 a:hover) { color: var(--neutral-strong); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-table-wrapper) { margin: 1em 0 1.5em; overflow-x: auto; }
+  .description :global(.s2m-fiche-scpi-2026 table) { width: 100%; margin: 0; border-collapse: collapse; background: var(--white); font-size: 0.9375rem; line-height: 1.5; }
+  .description :global(.s2m-fiche-scpi-2026 caption) { padding: 0 0 8px; caption-side: top; text-align: left; font-size: 0.8125rem; color: var(--ink-soft); }
+  .description :global(.s2m-fiche-scpi-2026 :is(th, td)) { padding: 10px 14px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .description :global(.s2m-fiche-scpi-2026 th) { width: 46%; background: var(--content-surface-alt); font-weight: var(--weight-semibold); color: var(--neutral-large); }
+  .description :global(.s2m-fiche-scpi-2026 thead th) { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .description :global(.s2m-fiche-scpi-2026 td) { color: var(--ink); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info) { margin: 1.25em 0; padding: 16px 20px; border-left: 4px solid var(--content-accent); border-radius: 4px; background: var(--tint); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info p) { margin: 0 0 0.4em; }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info p:last-child) { margin: 0; }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-note) { font-size: 0.875rem; color: var(--ink-soft); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-disclaimer) { margin: 2.5em 0 1.5em; padding: 20px; border: 1px solid var(--rule); border-radius: 6px; background: var(--content-surface-grey); }
+  .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources)) { font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
+  .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources) h2) { margin: 0 0 0.4em; padding: 0; border: 0; font-size: 0.9375rem; font-weight: var(--weight-semibold); color: var(--ink); }
+  .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources) p) { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-sources li) { font-size: 0.875rem; }
+  @media (max-width: 767px) {
+    .description :global(.s2m-fiche-scpi-2026 h2) { font-size: 1.3125rem; }
+    .description :global(.s2m-fiche-scpi-2026 .s2m-intro) { font-size: 1rem; }
+    .description :global(.s2m-fiche-scpi-2026 table) { font-size: 0.875rem; }
+    .description :global(.s2m-fiche-scpi-2026 :is(th, td)) { padding: 8px 10px; }
+    .description :global(.s2m-fiche-scpi-2026 th) { width: 50%; }
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+// /faqs/<slug>: one question of the collection "faqs" (entries with `page: true`). Hidden pages: not in the
+// sitemap, as on Webflow, but indexable. Webflow rendered only their <head> (empty body); here the question is the
+// H1 and the answer from /faqs is shown under it.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HubHeader from '../../components/hub/HubHeader.astro';
+import HubSection from '../../components/hub/HubSection.astro';
+import Answer from '../../components/faqs/Answer.astro';
+import Button from '../../components/ui/Button.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('faqs', e => e.data.page)).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'faqs'> };
+const { title, seo } = entry.data;
+---
+
+<BaseLayout seo={seo}>
+  <HubHeader title={title} crumb={title} parent={{ label: 'FAQs', href: '/faqs' }} />
+  <HubSection>
+    <div class="wrap">
+      {entry.body?.trim() && <div class="card"><Answer entry={entry} /></div>}
+      <Button href="/faqs" variant="secondary" size="small">Toutes les questions</Button>
+    </div>
+  </HubSection>
+</BaseLayout>
+
+<style>
+  .wrap { display: flex; flex-direction: column; align-items: flex-start; gap: var(--size-2); width: 60%; margin-inline: auto; }
+  .card { width: 100%; padding: var(--size-1-5); border-radius: var(--radius-main); background: var(--white); }
+  @media (max-width: 991px) {
+    .wrap { width: 100%; }
+  }
+  @media (max-width: 479px) {
+    .card { padding: var(--size-1); }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+// "Vendre des parts de SCPI ou un viager en gré à gré": photo + labelled rows (exit, exchange, labels, security partners).
+import Button from '../ui/Button.astro';
+import Eyebrow from './Eyebrow.astro';
+import FinanceInnovation from './icons/finance-innovation.svg';
+import Stripe from './icons/stripe.svg';
+import Docusign from './icons/docusign.svg';
+import Qonto from './icons/qonto.svg';
+
+const partners = [
+  { name: 'Stripe', href: 'https://stripe.com/', Logo: Stripe },
+  { name: 'Docusign', href: 'https://www.docusign.com/', Logo: Docusign },
+  { name: 'Qonto', href: 'https://qonto.com/', Logo: Qonto },
+];
+---
+
+<section class="about gutter" aria-labelledby="about-heading">
+  <div class="container section about__inner">
+    <img class="about__img" data-reveal src="/assets/6a0443e19beb74440eb2a28c_about_image.avif" alt="Conseiller et cliente examinant un dossier" width="1245" height="1740" loading="lazy" decoding="async" />
+    <div class="about__text">
+      <Eyebrow>SCPI — Marché secondaire</Eyebrow>
+      <h2 id="about-heading" class="h2 about__title">Vendre des parts de SCPI ou un viager en gré à gré</h2>
+      <dl class="about__rows">
+        <div class="about__row">
+          <dt>Sortir des SCPI</dt>
+          <dd>Investir en SCPI est simple. En sortir, beaucoup moins. Au 31/12/2025, 2,79 Md€ de parts SCPI étaient en attente de retrait (ASPIM). Les délais peuvent dépasser 18 mois. Le viager et les actifs peu liquides connaissent les mêmes frictions : peu d'acheteurs, négociation difficile.</dd>
+        </div>
+        <div class="about__row">
+          <dt>Échangez librement</dt>
+          <dd>2nd Market met en relation directe vendeurs et acheteurs de parts SCPI et de viager. Prix libre, négociation directe entre investisseurs.</dd>
+        </div>
+        <div class="about__row">
+          <dt>Labelisé</dt>
+          <dd class="about__logos">
+            <a href="https://finance-innovation.org/" target="_blank" rel="noopener" aria-label="Finance Innovation"><FinanceInnovation aria-hidden="true" /></a>
+            <a href="https://finance-innovation.org/" target="_blank" rel="noopener"><img src="/assets/68bc05130df74d5bdff0d2ef_CN.avif" alt="French Tech Caen Normandy" width="1094" height="224" loading="lazy" decoding="async" /></a>
+          </dd>
+        </div>
+        <div class="about__row">
+          <dt>Sécurisé par</dt>
+          <dd class="about__logos">
+            {partners.map(({ name, href, Logo }) => <a href={href} target="_blank" rel="noopener" aria-label={name}><Logo aria-hidden="true" /></a>)}
+          </dd>
+        </div>
+      </dl>
+      <div class="about__action"><Button href="/a-propos">En savoir plus</Button></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../ui/reveal';
+</script>
+
+<style>
+  .about__inner { display: grid; grid-template-columns: 1fr 1.25fr; gap: var(--size-4); align-items: center; }
+  .about__img { width: 100%; height: auto; aspect-ratio: 1; border-radius: var(--radius-main); }
+  .about__text { display: flex; flex-direction: column; gap: var(--size-0-5); align-items: flex-start; }
+  .about__title { margin: 0; }
+  .about__rows { display: flex; flex-direction: column; gap: var(--size-1-5); margin: 0; padding-top: var(--size-1-5); }
+  .about__row { display: flex; gap: var(--size-1); align-items: flex-start; }
+  .about__row dt { flex: none; width: var(--size-10); font-size: 0.875rem; font-weight: var(--weight-medium); line-height: var(--lh-1-5); letter-spacing: var(--ls-2); text-wrap: balance; }
+  .about__row dd { flex: 1; margin: 0; text-wrap: pretty; }
+  .about__logos { display: flex; flex-wrap: wrap; gap: var(--size-1); align-items: center; }
+  .about__logos a { display: block; transition: transform 0.4s; }
+  .about__logos a:hover { transform: translateY(-0.25rem); }
+  .about__logos :global(svg), .about__logos img { display: block; width: auto; height: var(--size-1-5); }
+  .about__action { padding-top: var(--size-1-5); }
+  @media (max-width: 767px) {
+    .about__inner { grid-template-columns: 1fr; }
+    .about__rows, .about__action { padding-top: 1.25rem; }
+  }
+  @media (max-width: 479px) {
+    .about__row { flex-direction: column; gap: var(--size-0-5); }
+    .about__row dt { width: auto; }
+  }
+</style>

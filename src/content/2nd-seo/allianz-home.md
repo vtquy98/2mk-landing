@@ -1,0 +1,17 @@
+---
+title: "Allianz Home"
+excerpt: "Allianz Home : SCPI à capital variable, orientation résidentiel. Cession de parts de gré à gré, acte notarié — 2nd Market."
+category: "SCPI"
+manager: "Allianz Immovalor"
+managerPage: "allianz"
+distributionRate: 2.9
+sharePrice: 200
+annualIncome: 5.9
+website: "https://www.immovalor.fr/"
+seo: {"title":"SCPI Allianz Home : prix de part et taux de distribution","description":"Allianz Home : SCPI à capital variable, orientation résidentiel. Cession de parts de gré à gré, acte notarié — 2nd Market.","canonical":"https://2ndmarket.fr/2nd-seo/allianz-home","robots":"max-image-preview:large","ogTitle":"SCPI Allianz Home : prix de part et taux de distribution","ogDescription":"Allianz Home : SCPI à capital variable, orientation résidentiel. Cession de parts de gré à gré, acte notarié — 2nd Market.","ogImage":"/assets/68cd3b3510c084dec3e8d81f_2nd-market-logo-1200x600.png","ogType":"website","twitterTitle":"SCPI Allianz Home : prix de part et taux de distribution","twitterDescription":"Allianz Home : SCPI à capital variable, orientation résidentiel. Cession de parts de gré à gré, acte notarié — 2nd Market.","jsonLd":["{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BreadcrumbList\",\n  \"@id\": \"https://2ndmarket.fr/2nd-seo/allianz-home#breadcrumb\",\n  \"itemListElement\": [\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 1,\n      \"name\": \"Accueil\",\n      \"item\": \"https://2ndmarket.fr/\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 2,\n      \"name\": \"Répertoire SCPI\",\n      \"item\": \"https://2ndmarket.fr/repertoire\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 3,\n      \"name\": \"Allianz Home\",\n      \"item\": \"https://2ndmarket.fr/2nd-seo/allianz-home\"\n    }\n  ]\n}","{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"WebPage\",\n  \"@id\": \"https://2ndmarket.fr/2nd-seo/allianz-home#webpage\",\n  \"url\": \"https://2ndmarket.fr/2nd-seo/allianz-home\",\n  \"name\": \"SCPI Allianz Home : prix de part et taux de distribution\",\n  \"description\": \"Allianz Home : SCPI à capital variable, orientation résidentiel. Cession de parts de gré à gré, acte notarié — 2nd Market.\",\n  \"inLanguage\": \"fr-FR\",\n  \"isPartOf\": { \"@id\": \"https://2ndmarket.fr/#website\" },\n  \"breadcrumb\": { \"@id\": \"https://2ndmarket.fr/2nd-seo/allianz-home#breadcrumb\" },\n  \"publisher\": { \"@id\": \"https://2ndmarket.fr/#organization\" },\n  \"dateModified\": \"2026-11-18\",\n  \"about\": {\n    \"@type\": \"FinancialProduct\",\n    \"name\": \"SCPI Allianz Home\",\n    \"category\": \"Société civile de placement immobilier (SCPI)\"\n  }\n}"]}
+lastmod: "2026-11-19"
+---
+
+Créée en 2021, Allianz Home est une SCPI résidentielle mixte à capital variable. Allianz Home permet de se constituer un patrimoine immobilier, au comptant ou à crédit, dès 2000€ de souscription (montant minimum de souscription : 10 parts de 200€). Les parts de SCPI peuvent être souscrites auprès d'Allianz Immovalor, des réseaux du groupe Allianz et de Conseillers en Gestion de Patrimoine Indépendants. Durée de placement indiquée par Allianz Immovalor : 10 ans.
+
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>

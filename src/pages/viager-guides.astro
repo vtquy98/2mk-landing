@@ -1,0 +1,18 @@
+---
+// /viager-guides: every actualité of category "Viagers", newest first (Webflow list).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
+import PostList from '../components/hub/PostList.astro';
+import { getActualites } from '../lib/actualites';
+import seo from '../data/seo/viager-guides.json';
+
+const posts = (await getActualites()).filter(e => /^viager/i.test(e.data.category ?? ''));
+---
+
+<BaseLayout seo={seo}>
+  <HubHeader title="L'investissement viager" crumb="Viager" />
+  <HubSection>
+    <PostList entries={posts} />
+  </HubSection>
+</BaseLayout>

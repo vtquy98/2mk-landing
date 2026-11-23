@@ -1,0 +1,34 @@
+---
+// Two chevrons marching right, looping (replaces Webflow's Lottie "arrows-processing-next"). Color = currentColor.
+interface Props { size?: 'md' | 'lg' }
+const { size = 'md' } = Astro.props;
+---
+
+<svg class:list={['arrow', `arrow--${size}`]} viewBox="0 0 960 960" aria-hidden="true">
+  <path d="M-120 240 120 0-120-240" />
+  <path d="M-120 240 120 0-120-240" />
+</svg>
+
+<style>
+  .arrow { width: var(--size-1-25); height: var(--size-1-25); flex: none; overflow: hidden; }
+  .arrow--lg { width: 2.5rem; height: 2.5rem; position: relative; z-index: 1; }
+  @media (max-width: 479px) { .arrow--lg { width: var(--size-3); height: var(--size-3); } }
+  path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 80;
+    transform: translate(160px, 480px);
+    animation: march 1s cubic-bezier(0.33, 0, 0.67, 1) infinite;
+  }
+  path:last-child { animation-delay: -0.5s; }
+  @keyframes march {
+    0% { transform: translate(160px, 480px); opacity: 0; }
+    33% { opacity: 1; }
+    67% { opacity: 1; }
+    100% { transform: translate(780px, 480px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    path { animation: none; opacity: 1; }
+    path:last-child { transform: translate(470px, 480px); }
+  }
+</style>

@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/static/PageHeader.astro';
+import Row from '../components/a-propos/Row.astro';
+import Team from '../components/a-propos/Team.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
+import Docusign from '../components/a-propos/icons/docusign.svg';
+import Stripe from '../components/a-propos/icons/stripe.svg';
+import Qonto from '../components/a-propos/icons/qonto.svg';
+import Bolt from '../components/a-propos/icons/bolt.svg';
+import Cube from '../components/a-propos/icons/cube.svg';
+import Shield from '../components/a-propos/icons/shield.svg';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/a-propos.json';
+
+const photo = (name: string, alt: string, widths: number[], full: number, height: number) => ({
+  src: `/assets/${name}.avif`,
+  srcset: widths.map(w => `/assets/${name}-p-${w}.avif ${w}w`).concat(`/assets/${name}.avif ${full}w`).join(', '),
+  alt,
+  width: full,
+  height,
+});
+const offices = photo('6746df04d4f4aaba0238bc1e_about', 'Immeubles de bureaux modernes', [500, 800, 1080], 1800, 1350);
+const towers = photo('6746dec9db0283c961c0d57c_about', 'Tours de bureaux vues en contre-plongée', [500, 800, 1080], 1800, 1350);
+const label = photo('679a3e9b5eba232010a69a91_FI', '2nd Market SCPI revente scpi Finance Innovation', [500], 1420, 1064);
+const partners = photo('69ba4ce08e8baf01f5a1f450_Doc_Stripe_Qonto', 'Logos Stripe, Docusign et Qonto', [500], 1420, 1064);
+
+const advantages = [
+  { icon: '💸', title: 'Flexibilité', text: 'Fixez vos prix et publiez vos annonces sur un marché ouvert à des acheteurs motivés' },
+  { icon: '🔒', title: 'Transactions sécurisées', text: 'Chaque vente est validée par un notaire et sécurisée' },
+  { icon: '⏳', title: 'Gain de temps', text: 'Vendez plus rapidement, sans des délais d’attente opaques' },
+  { icon: '📈', title: 'Simulateur SCPI', text: 'Utilisez notre simulateur pour estimer la valeur de vos parts' },
+  { icon: '🏠', title: 'Solution pour tous les actifs immobiliers', text: 'SCPI, viager, démembrement ou parts de SCI (à venir)' },
+];
+const values = [
+  { Icon: Bolt, title: 'Rapidité', text: 'Vous pouvez récupérez vos liquidités plus rapidement qu’avec les canaux traditionnels, nous digitalisons le processus' },
+  { Icon: Cube, title: 'Simplicité', text: 'Nous avons tout simplifié pour vous, sans jargon compliqué' },
+  { Icon: Shield, title: 'Sécurité', text: 'Chaque transaction est validée par un notaire et sécurisée via DocuSign et nous proposons des moyens de paiement électroniques sécurisés tels que Stripe' },
+];
+---
+
+<BaseLayout seo={seo} floatingButton={false}>
+  <PageHeader title="Notre histoire, notre mission et notre équipe d'experts" crumb="À Propos" />
+
+  <section class="gutter">
+    <div class="container section about">
+      <Row title="Qui sommes-nous?" image={offices} eager>
+        2nd Market est une plateforme de marché secondaire permettant la revente de parts de SCPI de gré à gré, avec décote, encadrée par notaire. Nous facilitons également les transactions de viagers et d'actifs en démembrement.<br />
+        Au 31 décembre 2025, <strong>2,79 milliards d'euros de parts SCPI</strong> sont en attente de retrait, soit 3,14 % de la capitalisation du marché (89 Md€). Le stock est concentré : <strong>20 SCPI</strong> dépassent 5 % de leur capitalisation en file d'attente, et 15 d'entre elles regroupent environ les trois quarts des parts en attente (source : ASPIM, 4ᵉ trimestre 2025).<br />
+        Pour les associés concernés, l'horizon de sortie par la voie classique se compte en années.<br /><br />
+        2ndMarket.fr permet aux vendeurs de <strong>fixer leur prix</strong> et de <strong>trouver rapidement un acheteur</strong>, directement, sans prix figé.<br />
+        Nous avons conçu une plateforme sécurisée et conforme aux exigences réglementaires, où chaque transaction est <strong>validée par un notaire</strong>, garantissant un cadre juridique fiable à tous les utilisateurs.<br /><br />
+        Grâce à notre approche en ligne, vous avez le contrôle total sur votre transaction.
+      </Row>
+
+      <Row title="Pourquoi choisir 2nd Market?" image={towers} imageFirst>
+        2nd Market, c’est comme Leboncoin… mais pensé pour les investisseurs immobiliers.<br />
+        💡<strong>Vous gardez le contrôle</strong> : Fixez votre prix, publiez votre annonce en quelques clics et accédez à un réseau d’acheteurs sérieux.<br />
+        ⚡ <strong>Plus rapide et plus simple</strong> : Contrairement aux circuits traditionnels où les ventes sont longues et complexes, ici vous vendez à vos conditions, sans intermédiaire.<br />
+        🔒 <strong>Un cadre sécurisé</strong> : Nous intégrons des solutions comme <strong>Stripe</strong> pour des paiements sécurisés et <strong>DocuSign</strong> pour la signature électronique des documents.<br /><br />
+        Que ce soit pour la <strong>revente de SCPI</strong>, le <strong>viager</strong> ou le <strong>démembrement immobilier</strong>, notre plateforme vous permet de toucher plus d’acheteurs et d’optimiser votre transaction.<br />
+        <a href={`${PRODUCT.app}/create`}>👉 <em>Publiez votre annonce gratuitement</em></a>
+      </Row>
+
+      <Row title="Innovation et confiance" image={label}>
+        <strong>2nd Market est labellisé Finance Innovation 2025</strong>, une reconnaissance qui valorise les entreprises innovantes en finance. Cette distinction souligne notre engagement envers la transparence, l’efficacité et l’amélioration continue de notre plateforme dédiée au marché secondaire des SCPI et des investissements immobiliers alternatifs<br />
+        ✔️ <strong>Transparence</strong> : pas de frais cachés, mandat clair<br />
+        ✔️ <strong>Sécurité</strong> : documents signés avec DocuSign, paiements protégés via Stripe<br />
+        ✔️ <strong>Simplicité</strong> : un parcours 100 % digital, encadré par notaire
+      </Row>
+
+      <Row title="Un marché secondaire sécurisé et transparent" image={partners} imageFirst>
+        Publication gratuite. Les frais acheteur (1,8 % TTC + 240 € d'avant-contrat) sont réglés après acceptation de l'offre. Les commissions vendeur et frais notariaux ne sont dus qu'à la <strong>validation définitive de la vente</strong>.<br />
+        Les fonds sont versés sur le <strong>compte séquestre du notaire</strong> — jamais chez 2nd Market. Les droits d'enregistrement dépendent du droit acquis : <strong>5 %</strong> du prix en pleine propriété et en nue-propriété (article 726 du CGI), <strong>droit fixe de 125 €</strong> pour l'usufruit seul (article 680 du CGI). Le régime appliqué à l'acte est déterminé par le notaire rédacteur.<br />
+        <a href="/simulateurs/frais-scpi">Estimez vos frais avec notre simulateur</a> →
+        <div slot="extra" class="partners" data-reveal>
+          <span>Sécurisé par:</span>
+          <span class="logos">
+          <a href="https://www.docusign.com/" target="_blank" rel="noopener" aria-label="DocuSign"><Docusign class="logo" width="120" height="24" /></a>
+          <a href="https://stripe.com/" target="_blank" rel="noopener" aria-label="Stripe"><Stripe class="logo" width="59" height="24" /></a>
+          <a href="https://qonto.com/" target="_blank" rel="noopener" aria-label="Qonto"><Qonto class="logo" width="72" height="24" /></a>
+          </span>
+        </div>
+      </Row>
+
+      <Row title="Notre mission" image={towers}>
+        Les sociétés de gestion traitent les retraits par ordre chronologique, sans alternative pour les associés pressés.<br /><br />
+        2nd Market permet à deux investisseurs de <strong>se rencontrer, négocier un prix et finaliser sous contrôle notarial</strong> — sans dépendre de la file d'attente.<br /><br />
+        Nous ne sommes ni société de gestion, ni CGP, ni CIF. Nous ne fournissons <strong>aucun conseil en investissement</strong>.
+      </Row>
+
+      <Team />
+
+      <div class="block">
+        <h2 class="h2 centered">Avantages de 2nd Market</h2>
+        <ul class="tiles tiles--5" role="list" data-reveal>
+          {
+            advantages.map(a => (
+              <li class="tile">
+                <span class="emoji h3" aria-hidden="true">{a.icon}</span>
+                <h3 class="tile-title">{a.title}</h3>
+                <p class="muted">{a.text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="block">
+        <h2 class="h2 centered">Comment ça marche ?</h2>
+        <ol class="steps" role="list" data-reveal>
+          <li class="step">
+            <span class="step-number h3" aria-hidden="true">1</span>
+            <p class="muted">
+              <a href={`${PRODUCT.app}/auth/register`}><strong>Publiez</strong></a><strong> une annonce en quelques clics</strong><br />
+              Créez un compte <strong>gratuitement</strong> avec votre pièce d’identité valide pour assurer la sécurité des interactions sur la plateforme.
+            </p>
+          </li>
+          <li class="step">
+            <span class="step-number h3" aria-hidden="true">2</span>
+            <p class="muted">
+              <strong>Fixez votre prix librement</strong><br />
+              Publiez votre annonce SCPI : Ajoutez les détails essentiels concernant votre SCPI (type, rendement, date d'acquisition, etc.) et téléchargez les documents requis tels que un relevé de compte SCPi datant de moins de 6 mois.<br />
+              <em>Les frais de publication sont gratuits pendant une période promotionnelle limitée. Profitez-en pour lister vos SCPI sans frais.</em>
+            </p>
+          </li>
+          <li class="step">
+            <span class="step-number h3" aria-hidden="true">3</span>
+            <p class="muted">
+              <strong>Attendez qu’un acheteur vous contacte.</strong><br />
+              Une fois votre annonce en ligne, recevez des propositions d'acheteurs intéressés. Analysez et sélectionnez l’offre qui répond le mieux à vos attentes en termes de prix et de conditions.<br />
+              <em>Astuce : Vous pouvez échanger directement avec les acheteurs via notre plateforme pour clarifier les détails avant d'accepter l'offre.</em>
+            </p>
+          </li>
+          <li class="step">
+            <span class="step-number h3" aria-hidden="true">4</span>
+            <p class="muted">
+              <strong>Finalisez la transaction</strong><br />
+              <strong>Pour le vendeur :</strong><br />
+              Après l’acceptation de l’offre par un acheteur, toutes les informations nécessaires sont transmises à notre notaire partenaire.<br />
+              Le notaire s’assure de valider la conformité légale de la transaction et accompagne les parties dans les étapes administratives et juridiques.<br />
+              <strong>Les frais de vente (incluant les frais notariaux) sont dus uniquement après la validation finale de la transaction.</strong> Aucun paiement anticipé n’est requis, garantissant un processus sécurisé et sans risque.<br />
+              Le processus est rapide et transparent, avec un suivi étape par étape assuré par notre équipe et le notaire.<br /><br />
+              <strong>Pour l’acheteur :</strong><br />
+              Une fois l’offre acceptée par le vendeur, vous serez invité à fournir les documents et informations afin de rédiger un contrat d'avant-vente, et de le signer par voie électronique grâce à notre intégration avec DocuSign.<br />
+              <strong>Paiement :</strong> Vous devrez verser un <strong>acompte (dépôt de garantie), qui sera sécurisé sur un compte séquestre géré par le notaire.</strong> Cela garantit la protection de vos fonds jusqu’à la finalisation.<br />
+              <strong>Validation :</strong> Le notaire procède ensuite à toutes les vérifications légales nécessaires, notamment la conformité des documents et des droits de propriété.<br /><br />
+              <strong>Signature finale :</strong> Une fois toutes les étapes validées, la transaction est officialisée. Vous recevez alors les documents confirmant votre acquisition des parts SCPI.<br />
+              <strong>Délai :</strong> Nous garantissons un accompagnement sur mesure pour minimiser les délais, tout en assurant la sécurité et la conformité légale.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <h2 class="h2 centered">Nos valeurs</h2>
+        <ul class="tiles tiles--3" role="list" data-reveal>
+          {
+            values.map(({ Icon, title, text }) => (
+              <li class="tile">
+                <Icon class="value-icon" aria-hidden="true" />
+                <h3 class="tile-title">{title}</h3>
+                <p class="muted">{text}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="pair">
+        <div class="panel" data-reveal="left">
+          <h2 class="h4">Une équipe d'experts</h2>
+          <p class="muted">
+            Notre équipe est composée de professionnels passionnés par l'immobilier et la finance, dédiés à vous fournir des informations utiles et adaptées à vos projets immobiliers.<br />
+            Nous mettons à votre disposition notre connaissance des marchés du SCPI, SCI, viager et démembrement immobilier.<br />
+            Nous ne proposons pas de conseil en investissement, mais nous nous engageons à partager des informations claires et objectives pour vous aider à mieux comprendre vos options.<br />
+            Notre mission est de rendre les informations sur l'immobilier et les solutions disponibles plus accessibles afin que chaque utilisateur puisse faire des choix éclairés en toute autonomie.
+          </p>
+        </div>
+        <div class="panel" data-reveal>
+          <h2 class="h4">Pourquoi acheter via 2nd Market ?</h2>
+          <p class="muted">
+            Sur 2nd Market, les acheteurs bénéficient de nombreuses opportunités d'acquisition d'actifs immobiliers spécifiques, rarement accessibles ailleurs. Que vous cherchiez des SCPI, des viagers ou des démembrements, notre plateforme offre un accès direct à ces offres.<br />
+            <a href={`${PRODUCT.app}/scpi`}><b>Accès rapide aux offres</b></a>: Trouvez des biens immobiliers plus facilement que sur le marché traditionnel.<br />
+            <b>Liberté de prix</b>: Contrairement à certains systèmes plus figés, les prix ici sont fixés librement par les vendeurs, vous permettant de trouver de meilleures offres.<br />
+            <b>Transactions sécurisées</b>: Toutes les transactions sont validées par un notaire, vous assurant une conformité légale et la sécurité de vos investissements.
+          </p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2 class="h4 centered">Responsabilité et avertissement légal</h2>
+        <p class="disclaimer">
+          Bien que 2nd Market facilite les transactions, nous ne donnons pas de conseils financiers. Nous ne sommes ni une société de gestion, ni des conseillers en gestion de patrimoine (CGP). Nous agissons uniquement comme intermédiaire, offrant une plateforme d’annonces pour mettre en relation vendeurs et acheteurs.<br /><br />
+          Nous ne garantissons pas le succès des transactions au sens large. La responsabilité de vos décisions d’investissement vous revient entièrement. Avant de vendre ou d’acheter, il est crucial de bien analyser vos options et de vous informer sur les risques.<br /><br />
+          Imaginez que vous décidiez d'acheter une maison dans une ville en pleine expansion ou que vous trouvez une opportunité immobilière. Vous pensez que sa valeur augmentera, mais il y a toujours un risque que le marché ralentisse ou que l’investissement ne soit pas aussi rentable que prévu. Cela ne signifie pas que l’achat est une mauvaise décision, mais il est important de comprendre les risques avant de s’engager.<br />
+          Il en va de même pour l’investissement dans des SCPI, des viagers ou des démembrements: parfois, vous ferez un bon investissement, mais dans d'autres cas, les rendements peuvent être plus faibles, ou même entraîner des pertes. C'est pourquoi il est important de faire vos propres recherches et de consulter un professionnel si nécessaire.<br /><br />
+          En tant qu'acheteur, vous avez accès à des offres uniques, mais il vous revient de vérifier la rentabilité et les conditions du marché avant d'acheter.<br />
+          Vous devez être conscient des risques liés à l’immobilier, tels que la volatilité du marché et la possibilité de perdre de l’argent, et comme au Poker, vous pouvez tout perdre.<br />
+          En tant que vendeur, vous bénéficiez d’une plus grande flexibilité sur la fixation de vos prix.<br />
+          Cependant, il est également important de rester réaliste quant aux prix de vente pour attirer les acheteurs.<br />
+          L'immobilier peut être affecté par les tendances du marché à la baisse mais aussi à la hausse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaCard
+    title="Prêt à vendre ou acheter ?"
+    text="Créez votre annonce, trouvez des acheteurs. C'est aussi simple que ça ! Rejoignez-nous dès aujourd'hui et découvrez comment 2nd Market peut simplifier la vente ou l’achat de vos actifs immobiliers."
+    href={`${PRODUCT.app}/scpi`}
+    label="Voir les annonces"
+    padded={false}
+  />
+
+  <section class="gutter">
+    <div class="container section--small">
+      <p class="notice">
+        2nd Market n'est ni CGP, ni société de gestion, ni CIF. La plateforme ne fournit aucun conseil en investissement. Les parts de SCPI présentent un <strong>risque de perte en capital</strong> et un <strong>risque de liquidité</strong>. Les performances passées ne préjugent pas des performances futures. La plateforme ne garantit ni la vente des parts, ni les délais, ni le niveau de décote.<br />
+        Consultez un professionnel qualifié avant toute décision d'investissement.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about { display: flex; flex-direction: column; gap: var(--size-12); }
+  .block { display: flex; flex-direction: column; gap: var(--size-1-5); }
+  .centered { text-align: center; }
+  .block > h2 { padding-bottom: var(--size-0-125); }
+  .muted { flex: 1; margin: 0; color: var(--color-text-muted); text-wrap: balance; }
+
+  .partners { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0-75); padding-top: var(--size-1-5); color: var(--neutral-large); }
+  .logos { display: flex; flex-wrap: wrap; gap: var(--size-1); }
+  .partners a { display: flex; transition: translate 0.4s; }
+  .partners a:hover { translate: 0 -0.25rem; }
+  .partners :global(.logo) { width: auto; height: 1.5rem; }
+
+  .tiles { display: grid; gap: var(--size-0-75); margin: 0; padding: 0; list-style: none; }
+  .tiles--5 { grid-template-columns: repeat(5, 1fr); }
+  .tiles--3 { grid-template-columns: repeat(3, 1fr); }
+  .tile { display: flex; flex-direction: column; gap: var(--size-0-75); padding: var(--size-1-5); border-radius: var(--radius-main); background: var(--white); }
+  /* emoji and title were h3s on Webflow: same margins */
+  .tile-title, .emoji { margin-block: var(--size-0-25) var(--size-0-5); }
+  .tile-title { font-size: var(--text-main-size); font-weight: var(--weight-regular); line-height: var(--lh-1-4); letter-spacing: var(--ls-3); }
+  .emoji { display: block; line-height: var(--lh-1-2); }
+  .tile :global(.value-icon) { width: var(--size-2); height: var(--size-2); color: var(--primary); }
+
+  .steps { display: grid; gap: var(--size-1); width: 60%; margin: 0 auto; padding: 0; list-style: none; }
+  .step { display: flex; align-items: center; gap: var(--size-2-5); padding: var(--size-2-5); border-radius: var(--radius-main); background: var(--white); }
+  .step-number { font-weight: var(--weight-medium); }
+  .step .muted { text-wrap: pretty; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-0-75); }
+  .panel { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--size-2); padding: var(--size-2); border-radius: var(--radius-main); background: var(--white); }
+  .panel h2 { padding-bottom: var(--size-0-125); }
+  .panel b { font-weight: var(--weight-semibold); }
+
+  .disclaimer { width: 60%; margin: 0 auto; color: var(--neutral-large); }
+  .notice { width: 60%; margin: 0 auto; }
+
+  @media (max-width: 991px) {
+    .tiles--5 { grid-template-columns: repeat(3, 1fr); }
+    .steps, .disclaimer, .notice { width: 100%; }
+    .pair { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 767px) {
+    .tiles--5 { grid-template-columns: 1fr 1fr; }
+    .tiles--3 { grid-template-columns: 1fr; }
+    .tile { padding: 1.25rem; }
+    .step { padding: 2rem; }
+    .panel { padding: 1.5rem; }
+  }
+  @media (max-width: 479px) {
+    .tiles--5 { grid-template-columns: 1fr; }
+    .partners { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<script>
+  import '../components/ui/reveal';
+</script>

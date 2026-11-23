@@ -1,0 +1,54 @@
+---
+// "Add 2nd Market to your Google preferred sources" block at the end of every page.
+// The link is Google's official deep link; once the Preferred Sources SDK is loaded (Analytics.astro, after the
+// first interaction) the click opens Google's in-page flow instead.
+import { t } from '../i18n/config';
+const d = t().gps;
+---
+
+<aside class="gps" data-nosnippet>
+  <p class="gps__label">{d.label}</p>
+  <a class="gps__button" href="https://www.google.com/preferences/source?q=2ndmarket.fr" rel="noopener" data-gps>{d.button}</a>
+</aside>
+
+<script>
+  type PreferredSource = { init(o: { theme: string; lang: string }): void; addPreferredSource(): void };
+  const w = window as unknown as { PREFERRED_SOURCE?: ((s: PreferredSource) => void)[] };
+  let sdk: PreferredSource | undefined;
+  (w.PREFERRED_SOURCE ??= []).push(s => {
+    s.init({ theme: 'light', lang: 'fr' });
+    sdk = s;
+  });
+  document.querySelector('[data-gps]')?.addEventListener('click', e => {
+    if (!sdk) return; // no SDK (previews, blocked): plain link to Google
+    e.preventDefault();
+    sdk.addPreferredSource();
+  });
+</script>
+
+<style>
+  .gps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.2rem 1rem 1.4rem;
+    border-top: 1px solid var(--neutral-lightest);
+    background: var(--neutral-bg);
+    text-align: center;
+  }
+  .gps__label { margin: 0; color: var(--color-text-muted); font-size: 0.82rem; line-height: var(--lh-1-4); letter-spacing: var(--ls-1); }
+  .gps__button {
+    display: inline-flex;
+    padding: 0.6rem 1.3rem;
+    border-radius: var(--radius-round);
+    background: var(--neutral-large);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: var(--weight-semibold);
+    line-height: 1;
+    transition: background-color 0.15s;
+  }
+  .gps__button:hover { background: var(--neutral-strong); }
+  @media (max-width: 600px) { .gps { padding: 1rem 0.75rem 1.2rem; } }
+</style>

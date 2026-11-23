@@ -1,0 +1,17 @@
+{
+  "title": "Guides SCPI, viager et démembrement : vendre, acheter",
+  "description": "Guides pratiques 2nd Market : vendre ou acheter des parts de SCPI de gré à gré, fiscalité, succession, viager et démembrement. Tutoriels de la plateforme",
+  "canonical": "https://2ndmarket.fr/guides-scpi-viager-demembrement",
+  "robots": "max-image-preview:large",
+  "ogTitle": "Guides SCPI, viager et démembrement : vendre, acheter",
+  "ogDescription": "Guides pratiques 2nd Market : vendre ou acheter des parts de SCPI de gré à gré, fiscalité, succession, viager et démembrement. Tutoriels de la plateforme",
+  "ogImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "ogType": "website",
+  "twitterTitle": "Guides SCPI, viager et démembrement : vendre, acheter",
+  "twitterDescription": "Guides pratiques 2nd Market : vendre ou acheter des parts de SCPI de gré à gré, fiscalité, succession, viager et démembrement. Tutoriels de la plateforme",
+  "twitterImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "jsonLd": [
+    "{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Accueil\",\"item\":\"https://2ndmarket.fr/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Guides pratiques : SCPI, viager et démembrement\",\"item\":\"https://2ndmarket.fr/guides-scpi-viager-demembrement\"}]}",
+    "{\"@context\": \"https://schema.org\",\"@type\": \"FAQPage\",\"mainEntity\": [{\"@type\": \"Question\",\"name\": \"Comment se déroule une vente de parts de SCPI sur 2nd Market ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"Le vendeur publie une annonce avec le nom de la SCPI, le nombre de parts et son prix. Les acheteurs font des offres ; le vendeur accepte, refuse ou contre-propose. Une fois l'offre acceptée, un avant-contrat est signé, le notaire reçoit les fonds, vérifie le dossier et procède au transfert des parts. Le délai observé est de 4 à 8 semaines une fois le dossier transmis, selon la rapidité des parties.\"}},{\"@type\": \"Question\",\"name\": \"Quels frais paie l'acheteur ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"L'acheteur règle une commission fixe de 1,8 % TTC du prix, des frais d'avant-contrat de 240 € TTC et les droits d'enregistrement de 5 % prévus à l'article 726 du Code général des impôts pour une cession de parts en pleine propriété.\"}},{\"@type\": \"Question\",\"name\": \"Quels frais paie le vendeur ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"Le vendeur supporte une commission dégressive par tranches de prix et les frais du notaire, prélevés sur le produit de la vente. Le détail des tranches figure dans le guide Frais et coûts d'une cession.\"}}]}"
+  ]
+}

@@ -1,0 +1,56 @@
+---
+// /repertoire: directory of every SCPI (collection 2nd-seo) with its management company, sorted by name like Webflow
+// (case, accents and punctuation ignored). Webflow paginated it (96 per page); it is one page here.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/scpi/PageHeader.astro';
+import seo from '../data/seo/repertoire.json';
+
+const title = 'Annuaire SCPI';
+const byName = new Intl.Collator('fr', { sensitivity: 'base', ignorePunctuation: true });
+const scpis = (await getCollection('2nd-seo')).sort((a, b) => byName.compare(a.data.title, b.data.title));
+
+const collectionPage = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  url: seo.canonical,
+  publisher: { '@id': 'https://2ndmarket.fr/#organization' },
+};
+---
+
+<BaseLayout seo={{ ...seo, jsonLd: [...seo.jsonLd, JSON.stringify(collectionPage)] }}>
+  <PageHeader title={title} crumbs={[{ label: 'Accueil', href: '/' }, { label: 'Repertoire' }]} />
+  <div class="gutter">
+    <div class="container section--small">
+      <ul class="directory" role="list">
+        {
+          scpis.map(({ id, data }) => (
+            <li>
+              <a class="name" href={data.redirect ?? `/2nd-seo/${id}`}>{data.title}</a>
+              {data.manager && (data.managerPage ? <a class="manager" href={`/seo/${data.managerPage.id}`}>{data.manager}</a> : <span class="manager">{data.manager}</span>)}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .directory {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--size-2) var(--size-1);
+    align-items: start;
+    margin: 0;
+    padding: var(--size-2) 0 0;
+    list-style: none;
+  }
+  .directory li { display: flex; flex-direction: column; gap: var(--size-0-25); min-width: 0; }
+  .name { font-weight: var(--weight-regular); color: var(--color-text); text-decoration: underline; transition: color 0.3s; }
+  .manager { font-size: 0.875rem; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); color: var(--neutral-large); transition: color 0.3s; }
+  .name:hover, a.manager:hover { color: var(--primary); }
+  @media (max-width: 767px) { .directory { grid-template-columns: repeat(4, 1fr); padding-top: var(--size-1-5); } }
+  @media (max-width: 479px) { .directory { grid-template-columns: repeat(2, 1fr); } }
+</style>

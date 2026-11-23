@@ -1,0 +1,173 @@
+---
+// Observatoire figures: top 5 bars, newer SCPI, full table of offers, CTA card, top 5 "Wanted" (buy) ads.
+// All figures come from the page (monthly snapshot).
+import Button from '../ui/Button.astro';
+import Eyebrow from '../home/Eyebrow.astro';
+import { PRODUCT } from '../../i18n/config';
+
+type Logo = { logo: string; logoAlt: string; logoWidth: number; logoHeight: number };
+type Row = { name: string; parts: string; right: string };
+interface Props {
+  summary: string; // HTML
+  top: (Logo & { name: string; parts: string; height: number })[]; // height: bar height in % of the tallest
+  diversity: string;
+  newcomers: Row[];
+  offers: (Logo & Row)[];
+  offersTotal: string;
+  wanted: { title: string; text: string; rows: Row[] };
+}
+const { summary, top, diversity, newcomers, offers, offersTotal, wanted } = Astro.props;
+---
+
+<section class="board gutter" aria-labelledby="board-heading">
+  <div class="container container--medium section board__inner">
+    <div class="board__heading" data-reveal>
+      <Eyebrow>Observatoire</Eyebrow>
+      <h2 id="board-heading" class="h2 board__title">Parts de SCPI proposées à la cession</h2>
+      <p class="text-medium board__text" set:html={summary} />
+    </div>
+
+    <div class="board__block">
+      <h3 class="board__subtitle">Top 5 par volume de parts</h3>
+      <ol class="bars" role="list">
+        {
+          top.map(b => (
+            <li class="bar" style={`--h: ${b.height}%`}>
+              <p class="bar__value"><span class="bar__number">{b.parts}</span> parts</p>
+              <div class="bar__scpi">
+                <img class="bar__logo" src={b.logo} alt={b.logoAlt} width={b.logoWidth} height={b.logoHeight} loading="lazy" decoding="async" />
+                <span class="bar__name">{b.name}</span>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="board__block">
+      <h3 class="board__subtitle">Un marché qui ne se limite pas aux SCPI historiques</h3>
+      <p class="text-medium board__text">{diversity}</p>
+      <div class="board__card">
+        <table class="table">
+          <thead><tr><th scope="col">SCPI</th><th scope="col">Parts proposées</th><th scope="col">Droits proposés</th></tr></thead>
+          <tbody>{newcomers.map(r => <tr><td>{r.name}</td><td>{r.parts}</td><td>{r.right}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="board__card board__offers">
+      <table class="table">
+        <caption class="visually-hidden">Annonces de cession par SCPI</caption>
+        <thead><tr><th scope="col">SCPI</th><th scope="col">Parts proposées</th><th scope="col">Montant des annonces</th></tr></thead>
+        <tbody>
+          {
+            offers.map(r => (
+              <tr>
+                <td>
+                  <span class="table__scpi">
+                    <img class="table__logo" src={r.logo} alt={r.logoAlt} width={r.logoWidth} height={r.logoHeight} loading="lazy" decoding="async" />
+                    {r.name}
+                  </span>
+                </td>
+                <td>{r.parts}</td>
+                <td>{r.right}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+      <p class="board__total">{offersTotal}</p>
+    </div>
+
+    <div class="cta">
+      <div class="cta__content">
+        <h2 class="h2 cta__title">Consulter les annonces disponibles</h2>
+        <Button href={`${PRODUCT.app}/scpi`}>Parcourir les annonces</Button>
+      </div>
+      <img class="cta__wordmark" src="/assets/67443b2e9369c2292c34f558_2nd-Market.svg" alt="" width="799" height="125" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="board__block">
+      <h3 class="board__subtitle">{wanted.title}</h3>
+      <p class="text-medium board__text">{wanted.text}</p>
+      <div class="board__card">
+        <table class="table">
+          <thead><tr><th scope="col">SCPI</th><th scope="col">Parts recherchées</th><th scope="col">Droits recherchés</th></tr></thead>
+          <tbody>{wanted.rows.map(r => <tr><td>{r.name}</td><td>{r.parts}</td><td>{r.right}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../ui/reveal';
+</script>
+
+<style>
+  .board__inner { display: flex; flex-direction: column; gap: var(--size-4); }
+  .board__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: flex-start; }
+  .board__title { margin: 0; }
+  .board__text { max-width: 46rem; margin: 0; text-wrap: pretty; }
+  .board__text :global(strong) { font-weight: var(--weight-semibold); }
+  .board__block { display: flex; flex-direction: column; gap: var(--size-1-5); }
+  .board__subtitle { margin: 0; padding-left: var(--size-0-5); border-left: 2px solid var(--neutral-strong); font-size: var(--size-1); font-weight: var(--weight-medium); line-height: var(--lh-1-2); letter-spacing: var(--ls-4); }
+
+  /* Bars */
+  .bars { display: flex; gap: var(--size-0-5); align-items: flex-end; height: 32rem; margin: 0; padding: 0; list-style: none; }
+  .bar { display: flex; flex: 1; flex-direction: column; justify-content: space-between; min-width: 0; height: var(--h); padding: var(--size-1); border-radius: var(--radius-small); background: var(--neutral-lightest); }
+  .bar__value { display: flex; gap: var(--size-0-25); align-items: baseline; margin: 0; font-weight: var(--weight-light); }
+  .bar__number { font-size: var(--size-1-5); font-weight: var(--weight-medium); letter-spacing: var(--ls-3); }
+  .bar__scpi { display: flex; gap: var(--size-0-5); align-items: center; justify-content: center; min-width: 0; }
+  .bar__logo { flex: none; width: var(--size-3); height: var(--size-1-5); border-radius: var(--size-0-5); object-fit: contain; }
+  .bar__name { overflow: hidden; font-weight: var(--weight-regular); white-space: nowrap; text-overflow: ellipsis; opacity: 0.8; }
+
+  /* Tables */
+  .board__card { padding: var(--size-1-5); border-radius: var(--radius-main); background: var(--white); }
+  .board__offers { margin-top: var(--size-2); }
+  .table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  .table th { padding: var(--size-0-5) var(--size-1); border-bottom: 1px solid var(--neutral-lightest); font-weight: var(--weight-light); text-align: left; text-transform: uppercase; }
+  .table tbody::before { content: ''; display: block; height: var(--size-0-5); }
+  .table td { padding: var(--size-1); font-weight: var(--weight-medium); }
+  .table :is(th, td):first-child { width: 24rem; }
+  .table :is(th, td):last-child { width: var(--size-18); text-align: right; }
+  .table__scpi { display: flex; gap: var(--size-1); align-items: center; }
+  .table__logo { flex: none; width: var(--size-5-5); height: var(--size-3); border-radius: var(--size-0-5); object-fit: contain; }
+  .board__total { margin: 0; padding: var(--size-1); font-weight: var(--weight-medium); }
+  @media (max-width: 767px) { .board__total { padding-inline: 0; } }
+
+  /* CTA */
+  .cta { position: relative; display: flex; flex-direction: column; width: 70%; margin: 0 auto; padding: var(--size-4); overflow: clip; border-radius: var(--radius-large); background: var(--neutral-large); }
+  .cta__content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--size-1); align-items: center; width: 90%; margin-inline: auto; }
+  .cta__title { margin: 0; color: var(--color-text-light); text-align: center; }
+  .cta__wordmark { position: absolute; inset: auto 0 0; width: 100%; height: auto; }
+
+  @media (max-width: 991px) {
+    .table :is(th, td):first-child { width: 18rem; }
+    .bar__scpi { flex-direction: column; align-items: flex-start; }
+    .table__logo { width: var(--size-4); height: var(--size-2-5); }
+    .cta { width: 100%; }
+  }
+  @media (max-width: 767px) {
+    .board__card { padding: var(--size-1); }
+    /* Rows as two lines: name then parts on the left, last column on the right */
+    .table, .table tbody, .table thead { display: block; }
+    .table tbody::before { display: none; }
+    .table tr { display: grid; grid-template-columns: 1fr auto; column-gap: var(--size-1); align-items: center; padding: var(--size-0-75) 0; border-top: 1px solid var(--neutral-lightest); }
+    .table thead tr { border-top: 0; border-bottom: 1px solid var(--neutral-lightest); }
+    .table :is(th, td) { width: auto !important; padding: 0; border: 0; }
+    .table :is(th, td):nth-child(2) { grid-row: 2; }
+    .table :is(th, td):last-child { grid-column: 2; grid-row: 1 / span 2; max-width: 9rem; }
+    .cta { padding: var(--size-2); }
+  }
+  @media (max-width: 479px) {
+    .bars { display: grid; grid-template-columns: repeat(5, 1fr); height: 24rem; }
+    .bar { align-self: end; padding: var(--size-0-5); }
+    .bar__value { flex-direction: column; gap: 0; }
+    .bar__number { font-size: var(--size-1); }
+    .bar__scpi { flex-direction: column; }
+    .bar__name { max-width: 100%; font-size: var(--size-0-75); }
+    .table__logo { width: var(--size-3); height: var(--size-2); }
+    .cta { padding: var(--size-1-5) var(--size-1); }
+  }
+</style>

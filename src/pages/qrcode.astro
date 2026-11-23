@@ -1,0 +1,81 @@
+---
+// Landing of the QR code handed out to wealth managers (no nav, no footer).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/static/LeadForm.astro';
+import Field from '../components/static/Field.astro';
+import RadioGroup from '../components/static/RadioGroup.astro';
+import seo from '../data/seo/qrcode.json';
+---
+
+<BaseLayout seo={seo} nav={false} footer={false} floatingButton={false}>
+  <section class="gutter">
+    <div class="container layout">
+      <div class="intro">
+        <div class="lead">
+          <a href="/" class="logo"><img src="/assets/674421500ee7ea5451c50850_logo.svg" alt="2nd Market revente SCPI" width="166" height="48" /></a>
+          <h1 class="h1">Vos clients veulent revendre leurs SCPI?</h1>
+          <p class="text-medium">Remplissez le formulaire et notre équipe vous recontactera.</p>
+        </div>
+        <div>
+          <p class="press">On en parle dans : Mieux Vivre Votre Argent – Le Particulier</p>
+          <div class="proofs">
+            <a href="https://finance-innovation.org/" target="_blank" rel="noopener"><img src="/assets/68bc0513c2801cb66f86c143_FI.avif" alt="Labelisé Finance Innovation" width="912" height="224" loading="lazy" decoding="async" /></a>
+            <a href="https://www.frenchtechcaen.com/" target="_blank" rel="noopener"><img src="/assets/68bc05130df74d5bdff0d2ef_CN.avif" alt="French Tech Caen" width="1094" height="224" loading="lazy" decoding="async" /></a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <LeadForm leadAction="qrcode" label="Demande de contact partenaire" submit="Envoyer & Découvrir 2nd Market">
+          <RadioGroup name="gender" legend="Civilité" options={['Mr', 'Mme']} required hideLegend row />
+          <Field label="Prénom" name="firstName" placeholder="Entrez votre Prénom" autocomplete="given-name" required />
+          <Field label="Nom" name="lastName" placeholder="Entrez votre Nom" autocomplete="family-name" required />
+          <Field label="Email" name="email" type="email" placeholder="Utilisez une adresse valide" autocomplete="email" required />
+          <Field label="Société" name="company" placeholder="Entrez votre Société" autocomplete="organization" required />
+          <Field label="Numéro de téléphone" name="phone" type="tel" placeholder="+33" autocomplete="tel" />
+          <Field label="Message" name="message" type="textarea" placeholder="Message" />
+        </LeadForm>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size-8);
+    align-items: start;
+    padding-block: var(--section-main);
+  }
+  .intro { position: sticky; top: 6rem; display: flex; flex-direction: column; gap: 10rem; }
+  .lead { display: flex; flex-direction: column; gap: var(--size-1); }
+  .lead p { margin: 0; text-wrap: balance; }
+  .logo { align-self: start; }
+  .logo img { display: block; width: auto; height: var(--size-1-75); }
+  .h1 { padding-bottom: var(--size-0-125); }
+  .press { margin: 0; color: var(--color-text-muted); text-wrap: balance; }
+  .proofs { display: flex; flex-wrap: wrap; gap: var(--size-0-5); padding-top: var(--size-1); }
+  .proofs img { width: auto; height: 3rem; transition: translate 0.4s; }
+  .proofs a:hover img { translate: 0.25rem 0; }
+  .card {
+    padding: var(--size-2-5);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+  }
+
+  @media (max-width: 991px) { .logo img { height: var(--size-1-25); } }
+  @media (max-width: 767px) {
+    .layout { grid-template-columns: 1fr; gap: var(--size-2); }
+    .intro { position: static; }
+    .logo img { height: var(--size-2); }
+    .proofs { padding-top: 0.75rem; }
+    .card { padding: 2rem; }
+  }
+  @media (max-width: 479px) {
+    .intro { gap: 1rem; }
+    .logo img { height: var(--size-1-5); }
+    .proofs img { height: 2rem; }
+    .card { padding: 1.5rem; }
+  }
+</style>

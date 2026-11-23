@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" style="width: 100%; height: auto; aspect-ratio: 5 / 4; display: block; margin: 0 auto;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap');
+      
+      .s2m-svg-text { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+      
+      /* Animation Ligne Boursière (Produit Structuré) */
+      .anim-stock-line {
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+        animation: traceLine 4s ease-in-out forwards infinite alternate;
+      }
+      
+      /* Animation Apparition Conditionnelle (Sécurisée) */
+      .anim-conditional {
+        opacity: 0;
+        animation: popIn 4s ease-in-out forwards infinite alternate;
+      }
+
+      /* Animations Loyers SCPI (Changement de couleur sans mouvement pour compatibilité 100%) */
+      .anim-coin-1 { fill: #94A3B8; animation: pulseCoin 4s infinite; }
+      .anim-coin-2 { fill: #94A3B8; animation: pulseCoin 4s infinite; animation-delay: 1s; }
+      .anim-coin-3 { fill: #94A3B8; animation: pulseCoin 4s infinite; animation-delay: 2s; }
+      .anim-coin-4 { fill: #94A3B8; animation: pulseCoin 4s infinite; animation-delay: 3s; }
+
+      @keyframes traceLine {
+        0% { stroke-dashoffset: 400; }
+        50%, 100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes popIn {
+        0%, 45% { opacity: 0; transform: translateY(10px); }
+        55%, 100% { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes pulseCoin {
+        0%, 100% { fill: #94A3B8; }
+        15%, 85% { fill: #0B5D3E; }
+      }
+    </style>
+
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#104A65" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#F8FAFC" rx="12" />
+
+  <text x="250" y="35" font-size="16" fill="#104A65" font-weight="700" text-anchor="middle" class="s2m-svg-text">Comparatif des mécaniques de rendement</text>
+
+  <rect x="25" y="60" width="450" height="150" fill="#ffffff" rx="10" filter="url(#shadow-card)" />
+  
+  <text x="45" y="95" font-size="15" fill="#104A65" font-weight="700" class="s2m-svg-text">Produit Structuré</text>
+  <text x="45" y="115" font-size="12" fill="#64748B" font-weight="500" class="s2m-svg-text">Pari boursier sur indice</text>
+  <rect x="45" y="130" width="140" height="24" fill="#FFEBEE" rx="4" />
+  <text x="115" y="146" font-size="11" fill="#B71C1C" font-weight="700" text-anchor="middle" class="s2m-svg-text">Rendement Conditionnel</text>
+
+  <rect x="240" y="75" width="215" height="120" fill="#F1F5F9" rx="6" />
+  
+  <line x1="240" y1="165" x2="455" y2="165" stroke="#B71C1C" stroke-width="1.5" stroke-dasharray="4 4" />
+  <text x="245" y="160" font-size="9" fill="#B71C1C" font-weight="600" class="s2m-svg-text">Barrière (-40%)</text>
+  
+  <path d="M 240 140 L 270 100 L 310 150 L 350 90 L 390 130 L 440 80" 
+        fill="none" stroke="#104A65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="anim-stock-line"/>
+  
+  <g transform="translate(400, 50)">
+    <g class="anim-conditional">
+      <rect x="-35" y="0" width="70" height="22" fill="#104A65" rx="4" />
+      <text x="0" y="15" font-size="10" fill="#ffffff" font-weight="700" text-anchor="middle" class="s2m-svg-text">Coupon ?</text>
+      <polygon points="-5,22 5,22 0,27" fill="#104A65" />
+    </g>
+  </g>
+
+
+  <rect x="25" y="225" width="450" height="150" fill="#ffffff" rx="10" filter="url(#shadow-card)" />
+  
+  <text x="45" y="260" font-size="15" fill="#104A65" font-weight="700" class="s2m-svg-text">Part de SCPI</text>
+  <text x="45" y="280" font-size="12" fill="#64748B" font-weight="500" class="s2m-svg-text">Immobilier physique</text>
+  <rect x="45" y="295" width="140" height="24" fill="#E8F5E9" rx="4" />
+  <text x="115" y="311" font-size="11" fill="#0B5D3E" font-weight="700" text-anchor="middle" class="s2m-svg-text">Loyers Trimestriels</text>
+
+  <rect x="240" y="240" width="215" height="120" fill="#F1F5F9" rx="6" />
+  
+  <g transform="translate(260, 275)">
+    <rect x="0" y="0" width="36" height="50" fill="#94A3B8" rx="2" />
+    <rect x="6" y="8" width="8" height="8" fill="#ffffff" />
+    <rect x="22" y="8" width="8" height="8" fill="#ffffff" />
+    <rect x="6" y="24" width="8" height="8" fill="#ffffff" />
+    <rect x="22" y="24" width="8" height="8" fill="#ffffff" />
+    <rect x="14" y="40" width="8" height="10" fill="#CBD5E1" />
+  </g>
+
+  <path d="M 310 300 L 440 300" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4 4" />
+  <polygon points="440,296 448,300 440,304" fill="#CBD5E1" />
+
+  <g transform="translate(330, 300)">
+    <circle cx="0" cy="0" r="14" class="anim-coin-1" />
+    <text x="0" y="4" font-size="10" fill="#ffffff" font-weight="700" text-anchor="middle" class="s2m-svg-text">T1</text>
+  </g>
+  <g transform="translate(365, 300)">
+    <circle cx="0" cy="0" r="14" class="anim-coin-2" />
+    <text x="0" y="4" font-size="10" fill="#ffffff" font-weight="700" text-anchor="middle" class="s2m-svg-text">T2</text>
+  </g>
+  <g transform="translate(400, 300)">
+    <circle cx="0" cy="0" r="14" class="anim-coin-3" />
+    <text x="0" y="4" font-size="10" fill="#ffffff" font-weight="700" text-anchor="middle" class="s2m-svg-text">T3</text>
+  </g>
+  <g transform="translate(435, 300)">
+    <circle cx="0" cy="0" r="14" class="anim-coin-4" />
+    <text x="0" y="4" font-size="10" fill="#ffffff" font-weight="700" text-anchor="middle" class="s2m-svg-text">T4</text>
+  </g>
+
+</svg>

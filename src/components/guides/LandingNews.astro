@@ -1,0 +1,71 @@
+---
+// "Actus & Infos" at the bottom of every landing page: a fixed selection of press articles.
+import ReadMore from './ReadMore.astro';
+
+const posts = [
+  {
+    href: '/actualites/le-particulier-avril-2025',
+    title: '2nd Market dans Le Particulier',
+    summary: 'Liquidité SCPI compliquée ? 2ndMarket facilite la revente entre particuliers, sans intermédiaire ni longue attente. Déposez votre annonce en quelques clics !',
+    img: { src: '/assets/69006aba169413974905e49f_67d6df7142fc281ac05f2d3f_investir-mars-2025-.avif', srcset: '/assets/69006aba169413974905e49f_67d6df7142fc281ac05f2d3f_investir-mars-2025-p-500.avif 500w, /assets/69006aba169413974905e49f_67d6df7142fc281ac05f2d3f_investir-mars-2025-.avif 800w', alt: 'Article du magazine Investir, mars 2025', width: 800, height: 600 },
+  },
+  {
+    href: '/actualites/figaro',
+    title: 'SCPI à prix cassé : Le Figaro Magazine parle de 2nd Market',
+    summary: 'Dans son édition du 2 mai 2025, Le Figaro Magazine parle de 2nd Market comme la seule solution en ligne pour acheter ou revendre librement des parts de SCPI à prix décoté.',
+    img: { src: '/assets/69006bf1e61c9b8014164e9e_68218b389d4a7fab5d0ec84e_le-figaro-magazine-2nd-market-revente-scpi.avif', srcset: '/assets/69006bf1e61c9b8014164e9e_68218b389d4a7fab5d0ec84e_le-figaro-magazine-2nd-market-revente-scpi-p-500.avif 500w, /assets/69006bf1e61c9b8014164e9e_68218b389d4a7fab5d0ec84e_le-figaro-magazine-2nd-market-revente-scpi.avif 1080w', alt: 'Article du Figaro Magazine sur la revente de parts de SCPI', width: 1080, height: 1384 },
+  },
+  {
+    href: '/actualites/scpi-2025-le-particulier',
+    title: '2nd Market cité dans Le Particulier – Dossier SCPI 2025',
+    summary: 'Dans son numéro d’octobre 2025, Le Particulier publie son dossier annuel sur les SCPI et cite 2nd Market comme solution de revente sur le marché secondaire.',
+    img: { src: '/assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-.avif', srcset: '/assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-p-500.avif 500w, /assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-p-800.avif 800w, /assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-p-1080.avif 1080w, /assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-p-1600.avif 1600w, /assets/69006d61c354008d03af85ea_68de0836d955386cd16b56d3_le-particulier-1-.avif 1920w', alt: 'Article du Particulier', width: 1920, height: 1080 },
+  },
+];
+---
+
+<section class="gutter" aria-labelledby="lp-news">
+  <div class="container news">
+    <h2 id="lp-news" class="h2">Actus &amp; Infos</h2>
+    <ul>
+      {
+        posts.map(p => (
+          <li>
+            <a class="card" href={p.href}>
+              <div class="media">
+                <img src={p.img.src} srcset={p.img.srcset} sizes="(max-width: 767px) 100vw, 30vw" alt={p.img.alt} width={p.img.width} height={p.img.height} loading="lazy" decoding="async" />
+              </div>
+              <div class="content">
+                <div>
+                  <h3>{p.title}</h3>
+                  <p class="clamp-2">{p.summary}</p>
+                </div>
+                <ReadMore />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .news { padding-block: var(--section-small); }
+  h2 { margin: 0; padding-bottom: var(--size-0-125); text-align: center; }
+  ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: var(--size-2) 0 0; list-style: none; }
+  .card {
+    display: flex; flex-direction: column; height: 100%; padding: var(--size-0-25);
+    border-radius: var(--radius-main); background: var(--white); color: var(--color-text);
+    box-shadow: 0 20px 50px color-mix(in srgb, var(--neutral-strong) 3%, transparent);
+    transition: transform 0.4s, box-shadow 0.4s, border-radius 0.4s;
+  }
+  .card:hover { border-radius: 2rem; transform: translateY(-0.25rem); box-shadow: 0 20px 60px 5px color-mix(in srgb, var(--neutral-strong) 10%, transparent); }
+  .media { border-radius: var(--radius-medium); overflow: clip; }
+  img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: var(--size-2); padding: var(--size-0-5) var(--size-1) var(--size-1); }
+  h3 { margin-block: var(--size-0-5); font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); text-wrap: balance; }
+  p { margin: 0; color: var(--neutral-large); }
+  /* Webflow kept 3 columns down to phones (horizontal scroll): one column under 768px instead. */
+  @media (max-width: 767px) { ul { grid-template-columns: 1fr; padding-top: 1.5rem; } }
+</style>

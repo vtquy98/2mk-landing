@@ -1,0 +1,21 @@
+---
+// /scpi-essentiel: every landing page (Webflow CMS "landing-pages"), newest first (Webflow list).
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
+import PostList from '../components/hub/PostList.astro';
+import seo from '../data/seo/scpi-essentiel.json';
+
+// Newest first; `order` (card position on Webflow) breaks same-day ties.
+const posts = (await getCollection('landing-pages')).sort(
+  (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0) || (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+---
+
+<BaseLayout seo={seo}>
+  <HubHeader title="l'Essentiel immobilier" crumb="l' Essentiel" />
+  <HubSection>
+    <PostList entries={posts} variant="link" />
+  </HubSection>
+</BaseLayout>

@@ -1,0 +1,139 @@
+---
+// "Avis sur 2nd Market": one review card at a time (scroll-snap), dot navigation, autoplay that stops on hover/focus
+// and for reduced motion. Without JavaScript the track simply scrolls.
+import Eyebrow from './Eyebrow.astro';
+
+const items = [
+  {
+    quote: "« Après presque un an d'attente suite à ma demande de retrait auprès de ma société de gestion, je n'avais toujours pas de solution. Sur 2nd Market, un acheteur a été identifié en moins de 24 heures. Processus fluide,sécurisé, transparent. »",
+    author: 'Emile R., Yvelines -',
+    role: 'Vendeur SCPI, 2025',
+    image: '/assets/6a17e727719f7ecaa29701e9_testimonial-1.avif',
+    alt: "Poignée de main autour d'un contrat",
+    width: 616,
+    height: 822,
+  },
+  {
+    quote: '« Pour mes clients en situation de succession ou de besoin de liquidité rapide, 2nd Market est devenu une solution complémentaire au retrait classique. »',
+    author: 'CGP partenaire, région parisienne -',
+    role: 'Partenaire CGP, 2025',
+    image: '/assets/6a17e728e26efe4dcc883573_testimonial.avif',
+    alt: 'Deux professionnels se serrant la main',
+    width: 616,
+    height: 822,
+  },
+  {
+    quote: "« J'ai identifié sur 2nd Market une annonce SCPI avec une décote générant plus de 9 % de rendement effectif. Offre soumise, acquisition conclue en quelques étapes. Interface intuitive et processus notarié rassurant. »",
+    author: 'Marc N -',
+    role: 'Acheteur SCPI, 2025',
+    image: '/assets/6a05453c42a3540c623e1f4b_testimonial.avif',
+    alt: 'Homme travaillant sur un ordinateur portable',
+    width: 520,
+    height: 712,
+  },
+];
+---
+
+<section class="reviews gutter" aria-labelledby="reviews-heading">
+  <div class="container container--medium section reviews__inner">
+    <div class="reviews__heading" data-reveal>
+      <Eyebrow>SCPI — Marché secondaire actif</Eyebrow>
+      <h2 id="reviews-heading" class="h2 reviews__title">Avis sur 2nd Market</h2>
+    </div>
+    <div class="reviews__slider">
+      <ul class="reviews__track" role="list" tabindex="0" aria-label="Avis clients">
+        {
+          items.map(r => (
+            <li class="reviews__slide">
+              <figure class="review">
+                <div class="review__body">
+                  <blockquote class="h5 review__quote"><p>{r.quote}</p></blockquote>
+                  <figcaption class="review__author">
+                    <span class="h6 review__name">{r.author}</span>
+                    <span class="text-small review__role">{r.role}</span>
+                  </figcaption>
+                </div>
+                <img class="review__img" src={r.image} alt={r.alt} width={r.width} height={r.height} loading="lazy" decoding="async" />
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="reviews__dots" hidden>
+        {items.map((_, i) => <button type="button" class="reviews__dot" aria-label={`Afficher l'avis ${i + 1}`} aria-current={i === 0 ? 'true' : undefined} />)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../ui/reveal';
+
+  for (const slider of document.querySelectorAll<HTMLElement>('.reviews__slider')) {
+    const track = slider.querySelector<HTMLElement>('.reviews__track')!;
+    const dotsBox = slider.querySelector<HTMLElement>('.reviews__dots')!;
+    const dots = [...dotsBox.querySelectorAll<HTMLButtonElement>('button')];
+    dotsBox.hidden = false;
+    const current = () => Math.round(track.scrollLeft / track.clientWidth);
+    const go = (i: number) => track.scrollTo({ left: i * track.clientWidth });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => go(i)));
+    track.addEventListener('scroll', () => dots.forEach((d, i) => (i === current() ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'))), { passive: true });
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let paused = false;
+      slider.addEventListener('pointerenter', () => (paused = true));
+      slider.addEventListener('pointerleave', () => (paused = false));
+      slider.addEventListener('focusin', () => (paused = true));
+      slider.addEventListener('focusout', () => (paused = false));
+      setInterval(() => !paused && go((current() + 1) % dots.length), 5000);
+    }
+  }
+</script>
+
+<style>
+  .reviews__inner { display: flex; flex-direction: column; gap: var(--size-2); align-items: center; }
+  .reviews__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: center; max-width: 35rem; text-align: center; }
+  .reviews__title { margin: 0; }
+  .reviews__slider { display: flex; flex-direction: column; gap: var(--size-2); align-items: center; width: min(100%, 56rem); }
+  .reviews__track {
+    display: grid;
+    grid-auto-columns: 100%;
+    grid-auto-flow: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    list-style: none;
+  }
+  .reviews__track::-webkit-scrollbar { display: none; }
+  .reviews__slide { scroll-snap-align: start; }
+  .review { display: flex; gap: var(--size-4); align-items: stretch; height: 25rem; margin: 0; padding: var(--size-0-5); border-radius: var(--radius-main); background: var(--white); }
+  .review__body { display: flex; flex: 1; flex-direction: column; justify-content: space-between; padding: var(--size-2); }
+  .review__quote { margin: 0; padding: 0; border: 0; font-size: var(--size-1-5); font-weight: var(--weight-medium); text-wrap: pretty; }
+  .review__quote p { margin: 0; }
+  .review__author { display: flex; flex-direction: column; gap: var(--size-0-25); }
+  .review__name { font-weight: var(--weight-medium); }
+  .review__role { color: var(--neutral-large); }
+  .review__img { width: auto; max-width: 24rem; height: 100%; border-radius: var(--radius-medium); }
+  .reviews__dots { display: flex; gap: var(--size-0-5); }
+  .reviews__dots[hidden] { display: none; }
+  .reviews__dot { width: 0.5rem; height: 0.5rem; padding: 0; border: 0; border-radius: 50%; background: var(--neutral-light); opacity: 0.6; cursor: pointer; }
+  .reviews__dot[aria-current] { background: var(--neutral-strong); opacity: 1; }
+  @media (max-width: 991px) {
+    .reviews__slider { width: min(100%, 48rem); }
+  }
+  @media (max-width: 767px) {
+    .review { height: auto; min-height: 22rem; }
+    .review__img { display: none; }
+  }
+  @media (max-width: 479px) {
+    .review { padding: var(--size-0-5); }
+    .review__body { gap: var(--size-2); padding: var(--size-1-5); }
+    .review__quote { font-size: 1.15rem; }
+    .review__name { font-size: 1rem; }
+    .review__role { font-size: 0.8rem; }
+  }
+</style>

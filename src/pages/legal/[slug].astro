@@ -1,0 +1,31 @@
+---
+// Legal pages: /legal/<slug> (collection legal): privacy policy, terms of use.
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/scpi/PageHeader.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('legal')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'legal'> };
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={entry.data.seo}>
+  <PageHeader title={entry.data.title} crumbs={[{ label: 'Accueil', href: '/' }, { label: entry.data.title }]} />
+  <div class="gutter">
+    <div class="container section">
+      <article class="content"><Content /></article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content { width: 60%; margin-inline: auto; }
+  .content :global(:is(ul, ol)) { overflow: hidden; }
+  /* The document title typed at the top of the rich text (an H1 on Webflow, H2 here: the page H1 is the header). */
+  .content > :global(h2:first-child) { font-size: var(--size-3-5); text-wrap: wrap; }
+  @media (max-width: 991px) { .content { width: 100%; } }
+  @media (max-width: 767px) { .content > :global(h2:first-child) { font-size: var(--size-2-5); } }
+</style>

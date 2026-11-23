@@ -1,0 +1,47 @@
+---
+// Labelled text input / textarea of the site's forms. A required field shows the red star, like on Webflow.
+interface Props {
+  label: string;
+  name: string;
+  type?: 'text' | 'email' | 'tel' | 'textarea';
+  placeholder?: string;
+  required?: boolean;
+  autocomplete?: string;
+}
+const { label, name, type = 'text', placeholder, required = false, autocomplete } = Astro.props;
+const id = `f-${name}`;
+---
+
+<div class="field">
+  <label for={id}>{label}{required && <span class="star" aria-hidden="true"> *</span>}</label>
+  {
+    type === 'textarea' ? (
+      <textarea id={id} name={name} placeholder={placeholder} required={required} maxlength="5000" />
+    ) : (
+      <input id={id} name={name} type={type} placeholder={placeholder} required={required} autocomplete={autocomplete} maxlength="256" />
+    )
+  }
+</div>
+
+<style>
+  label { margin-bottom: var(--size-0-25); }
+  .star { color: var(--primary); }
+  input, textarea {
+    display: block;
+    width: 100%;
+    height: 2.375rem;
+    min-height: var(--size-3);
+    padding: var(--size-0-5) var(--size-1);
+    border: 1px solid var(--neutral-lightest);
+    border-radius: var(--radius-small);
+    background: var(--white);
+    color: var(--color-text);
+    line-height: var(--lh-1-4);
+  }
+  textarea { height: auto; min-height: 11.25rem; padding-block: 0.75rem; resize: vertical; }
+  input::placeholder, textarea::placeholder { color: var(--color-text-subtle); }
+  input:focus, textarea:focus { border-color: var(--color-text); outline: 0; }
+  input:focus-visible, textarea:focus-visible { outline: 0.125rem solid var(--focus); outline-offset: 0.125rem; }
+  /* Flag errors only after the visitor has interacted with the field (or tried to submit). */
+  input:user-invalid, textarea:user-invalid { border-color: var(--primary); }
+</style>

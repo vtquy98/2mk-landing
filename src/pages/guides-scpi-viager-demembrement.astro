@@ -1,0 +1,354 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/guides/Breadcrumb.astro';
+import GuideCard from '../components/guides/GuideCard.astro';
+import seo from '../data/seo/guides-scpi-viager-demembrement.json';
+
+const VIDEO = '2v5XqsApmmo'; // YouTube: presentation of the 2nd Market app
+
+const objectives = [
+  {
+    title: 'Vendre des parts de SCPI',
+    intro: "Du dépôt de l'annonce à l'acte.",
+    links: [
+      ['/guide-scpi/revente', 'Revente de parts de SCPI : les trois canaux'],
+      ['/guide-scpi/revente-vs-retrait-societe-gestion', 'Revente ou retrait auprès de la société de gestion'],
+      ['/guide-scpi/prix-part-scpi', 'Fixer le prix de revente'],
+      ['/guide-scpi/vente-chez-notaire', 'Vente chez le notaire : étapes et délais'],
+      ['/guide-scpi/frais-et-commissions-scpi', "Frais et coûts d'une cession"],
+      ['/guide-scpi/meilleures-solutions-scpi-bloquee', "Cinq voies de sortie d'une SCPI en difficulté"],
+    ],
+  },
+  {
+    title: 'Acheter sur le marché secondaire',
+    intro: "Prix négocié, frais, analyse d'une annonce.",
+    links: [
+      ['/landing-pages/guide-scpi-acheter-scpi-decote', 'Acheter des parts sur le marché secondaire'],
+      ['/guide-scpi/analyser-annonce-marche-secondaire', 'Analyser une annonce'],
+      ['/guide-scpi/prix-part-scpi', "Les trois prix d'une part de SCPI"],
+      ['/guide-scpi/scpi-sans-frais-souscription', 'Frais de souscription : primaire et secondaire'],
+      ['/guide-scpi/delai-jouissance', 'Délai de jouissance'],
+      ['/landing-pages/guide-scpi-acheter-scpi-decote', 'Combien investir'],
+    ],
+  },
+  {
+    title: 'Fiscalité et transmission',
+    intro: 'Revenus, plus-value, succession, divorce.',
+    links: [
+      ['/guide-scpi/fiscalite-scpi', 'Fiscalité des revenus de SCPI'],
+      ['/guide-scpi/plus-value-scpi', 'Plus-value de cession'],
+      ['/guide-scpi/revente-succession-divorce', 'Parts de SCPI reçues en succession'],
+      ['/guide-scpi/divorce', 'Parts de SCPI et divorce'],
+      ['/guide-scpi/donation-partage', 'Donation-partage'],
+      ['/guide-scpi/assurance-vie', 'SCPI en assurance-vie'],
+    ],
+  },
+  {
+    title: 'Viager',
+    intro: 'Calcul, annonce, contrat.',
+    links: [
+      ['/guide-scpi/guide-pratique-viager-2026', 'Guide pratique du viager'],
+      ['/guide-scpi/viager-calcul-viager-2026-methode-insee', "Calcul d'un viager : méthode INSEE"],
+      ['/guide-scpi/viager-calcul-duh-economique-fiscal', 'Calcul du DUH : économique ou fiscal'],
+      ['/guide-scpi/viager-deposer-une-annonce', 'Déposer une annonce viager'],
+      ['/guide-scpi/fiscal-succession-viager', "Fiscalité et succession d'un viager"],
+      ['/guide-scpi/contrat-viager', 'Rédiger le contrat'],
+    ],
+  },
+  {
+    title: 'Démembrement',
+    intro: 'Usufruit, nue-propriété, revente avant terme.',
+    links: [
+      ['/guide-scpi/demembrement-guide-fiscalite', 'Démembrement de SCPI : guide et fiscalité'],
+      ['/guide-scpi/decote-nue-propriete-usufruit', 'Décote en nue-propriété et en usufruit'],
+      ['/guide-scpi/revendre-nue-propriete', 'Revendre une nue-propriété avant le terme'],
+      ['/guide-scpi/revendre-usufruit', 'Revendre un usufruit avant le terme'],
+      ['/guide-scpi/vendre-usufruit-temporaire', "Vendre l'usufruit temporaire de parts en pleine propriété"],
+      ['/guide-scpi/succession', 'Démembrement et succession'],
+    ],
+  },
+  {
+    title: 'Utiliser 2nd Market',
+    intro: 'Tutoriels de la plateforme.',
+    links: [
+      ['/guide-scpi/comment-ca-marche', 'Comment ça marche'],
+      ['/guide-scpi/tutoriel-creer-un-compte', 'Créer un compte'],
+      ['/guide-scpi/tutoriel-creer-une-annonce', 'Créer une annonce'],
+      ['/guide-scpi/tutoriel-faire-offre', 'Faire une offre'],
+      ['/guide-scpi/annonces-wanted', 'Publier une annonce Wanted'],
+      ['/guide-scpi/tutoriel-cgp', 'Compte tiers pour CGP'],
+    ],
+  },
+];
+
+// The FAQPage JSON-LD of these questions is in the page's SEO data.
+const faq = [
+  ['Comment se déroule une vente de parts de SCPI sur 2nd Market ?', "Le vendeur publie une annonce avec le nom de la SCPI, le nombre de parts et son prix. Les acheteurs font des offres ; le vendeur accepte, refuse ou contre-propose. Une fois l'offre acceptée, un avant-contrat est signé, le notaire reçoit les fonds, vérifie le dossier et procède au transfert des parts. Le délai observé est de 4 à 8 semaines une fois le dossier transmis, selon la rapidité des parties."],
+  ["Quels frais paie l'acheteur ?", "L'acheteur règle une commission fixe de 1,8 % TTC du prix, des frais d'avant-contrat de 240 € TTC et les droits d'enregistrement de 5 % prévus à l'article 726 du Code général des impôts pour une cession de parts en pleine propriété."],
+  ['Quels frais paie le vendeur ?', 'Le vendeur supporte une commission dégressive par tranches de prix et les frais du notaire, prélevés sur le produit de la vente. Le détail des tranches figure dans le guide Frais et coûts d\'une cession.'],
+];
+
+// One tab per category, cards in the hub order.
+const TABS = ['SCPI', 'Viager', 'Démembrement', 'Autres'];
+const guides = (await getCollection('guide-scpi')).sort((a, b) => a.data.order - b.data.order);
+const tabs = TABS.map((label, i) => ({ id: `guides-${i}`, label, entries: guides.filter(g => g.data.category === label) }));
+---
+
+<BaseLayout seo={seo}>
+  <header class="hero">
+    <div class="gutter">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <Breadcrumb onDark items={[{ href: '/', label: 'Accueil' }, { label: 'Nos Guides pratiques' }]} />
+          <h1 class="h1">Guides pratiques : SCPI, viager et démembrement</h1>
+        </div>
+        <div class="video">
+          <img
+            src="/assets/685e3dedd8ab26cb2fe92580_thumbnail.avif"
+            srcset="/assets/685e3dedd8ab26cb2fe92580_thumbnail-p-500.avif 500w, /assets/685e3dedd8ab26cb2fe92580_thumbnail.avif 1840w"
+            sizes="(max-width: 767px) 100vw, 40vw"
+            alt="Application 2nd Market de revente de parts de SCPI sur smartphone"
+            width="1840"
+            height="1380"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <a class="play" href={`https://www.youtube.com/watch?v=${VIDEO}`} data-video={VIDEO} aria-label="Voir la vidéo de présentation de 2nd Market">
+            <svg viewBox="0 0 33 33" aria-hidden="true">
+              <path d="M27 16.53a2 2 0 0 1-.95 1.69L8.04 29.23A2 2 0 0 1 5 27.54V5.51a2 2 0 0 1 3.04-1.69l18.01 11.02a2 2 0 0 1 .95 1.69Z" fill="currentColor" />
+            </svg>
+            <span class="play-label">Video</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <dialog class="lightbox" aria-label="Vidéo de présentation de 2nd Market">
+      <button type="button" class="close" aria-label="Fermer la vidéo">
+        <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M2 2l14 14M16 2 2 16" stroke="currentColor" stroke-width="2.5" /></svg>
+      </button>
+      <div class="frame"></div>
+    </dialog>
+  </header>
+
+  <section class="gutter">
+    <div class="container guides">
+      <div class="intro">
+        <div class="lead">
+          <p><strong>Ces guides décrivent les mécanismes d'une cession de parts de SCPI, d'un viager ou d'un démembrement, avec les textes applicables et des cas chiffrés.</strong> Ils informent ; la décision reste celle du lecteur.</p>
+          <p>Une cession de gré à gré se fait à un prix librement négocié entre vendeur et acheteur. Sur 2nd Market, l'acte est reçu par un notaire : c'est un choix de sécurisation, pas une obligation légale.</p>
+          <p>Les tutoriels en fin de page décrivent chaque étape de la plateforme : compte, annonce, offre, avant-contrat.</p>
+        </div>
+        <h2>Les guides par objectif</h2>
+        <div class="objectives">
+          {
+            objectives.map(o => (
+              <div class="objective">
+                <h3>{o.title}</h3>
+                <p>{o.intro}</p>
+                <ul>
+                  {o.links.map(([href, label]) => (
+                    <li><a href={href}>{label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+        <h2 class="all" id="tous-les-guides">Tous les guides</h2>
+      </div>
+
+      <div class="tabs" data-tabs>
+        <div class="tablist" role="tablist" aria-labelledby="tous-les-guides">
+          {
+            tabs.map((t, i) => (
+              <button type="button" role="tab" id={`${t.id}-tab`} aria-controls={t.id} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+                {t.label}
+              </button>
+            ))
+          }
+        </div>
+        {
+          tabs.map(t => (
+            <div class="panel" role="tabpanel" id={t.id} aria-labelledby={`${t.id}-tab`}>
+              <ul class="cards">
+                {t.entries.map(entry => (
+                  <li><GuideCard entry={entry} /></li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="faq">
+        <h2>Questions fréquentes</h2>
+        {
+          faq.map(([q, a]) => (
+            <details>
+              <summary>{q}</summary>
+              <p>{a}</p>
+            </details>
+          ))
+        }
+        <div class="legal">
+          <p>Sources : article 726 du Code général des impôts ; conditions tarifaires publiées sur 2ndmarket.fr.</p>
+          <p>2nd Market n'est ni conseiller en gestion de patrimoine, ni société de gestion, et ne fournit aucun conseil en investissement, fiscal ou comptable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Tabs (WAI-ARIA tabs pattern). Without JavaScript every list stays visible and the tab bar is hidden.
+  for (const root of document.querySelectorAll<HTMLElement>('[data-tabs]')) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+      }
+      if (focus) tab.focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', e => {
+        const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        select(tabs[(next + tabs.length) % tabs.length], true);
+      });
+    });
+    select(tabs[0]);
+    root.classList.add('is-ready');
+  }
+
+  // Video: the YouTube player is only loaded when asked for (the link opens YouTube without JavaScript).
+  const play = document.querySelector<HTMLAnchorElement>('.play[data-video]');
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox');
+  if (play && dialog) {
+    const frame = dialog.querySelector('.frame')!;
+    play.addEventListener('click', e => {
+      e.preventDefault();
+      const iframe = Object.assign(document.createElement('iframe'), {
+        src: `https://www.youtube-nocookie.com/embed/${play.dataset.video}?autoplay=1`,
+        title: 'Vidéo de présentation de 2nd Market',
+        allow: 'autoplay; fullscreen; encrypted-media; picture-in-picture',
+        allowFullscreen: true,
+      });
+      frame.replaceChildren(iframe);
+      dialog.showModal();
+    });
+    dialog.querySelector('.close')!.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => frame.replaceChildren());
+  }
+</script>
+
+<style>
+  /* Hero */
+  .hero { position: relative; margin-inline: var(--size-0-5); border-radius: var(--radius-large); background: var(--color-bg-medium); overflow: clip; }
+  .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--size-4); align-items: center; padding-block: var(--section-small); }
+  .hero-text { display: flex; flex-direction: column; }
+  h1 { max-width: 64rem; padding-top: var(--size-1-5); color: var(--secondary-lightest); text-wrap: balance; animation: rise 0.9s var(--ease-out) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(1rem); } }
+  .video { position: relative; display: flex; justify-content: center; align-items: center; aspect-ratio: 4 / 3; border-radius: var(--radius-main); overflow: clip; }
+  .video img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .video::after { content: ''; position: absolute; inset: 0; background: var(--color-bg-dark); opacity: 0.1; }
+  /* Round play button that widens to show its label on hover (as on Webflow). */
+  .play {
+    position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: 0.625rem; overflow: hidden;
+    width: 4rem; height: 4rem; transition: width 0.4s var(--ease-out), background-color 0.2s ease-in-out; border: 1px solid color-mix(in srgb, var(--neutral-strong) 5%, transparent); border-radius: var(--radius-round);
+    background: color-mix(in srgb, var(--neutral-strong) 30%, transparent); backdrop-filter: blur(20px);
+    color: var(--secondary-lightest);
+  }
+  .play:is(:hover, :focus-visible) { width: 11.25rem; background: color-mix(in srgb, var(--neutral-strong) 45%, transparent); }
+  .play svg { flex: none; width: 1.5rem; height: 1.5rem; }
+  .play-label { display: none; }
+  .play:is(:hover, :focus-visible) .play-label { display: inline; animation: fade 0.4s ease both; }
+  @media (min-width: 1440px) { .play { transform: scale(1.15); } }
+  @media (min-width: 1920px) { .play { transform: scale(1.4); } }
+
+  .lightbox { width: min(940px, 92vw); max-width: none; padding: 0; border: 0; background: transparent; overflow: visible; }
+  .lightbox::backdrop { background: color-mix(in srgb, var(--neutral-strong) 90%, transparent); }
+  .frame { aspect-ratio: 940 / 528; }
+  .frame :global(iframe) { width: 100%; height: 100%; border: 0; }
+  .close { position: fixed; top: var(--size-1); right: var(--size-1); width: 2.5rem; height: 2.5rem; padding: 0.6rem; border: 0; background: transparent; color: var(--white); cursor: pointer; }
+
+  /* Guides */
+  .guides {
+    /* Palette of the content team's blocks (same as the article embeds), not site tokens. */
+    --hub-text: var(--content-text);
+    --hub-muted: var(--content-muted);
+    --hub-accent: var(--sky);
+    --hub-surface: var(--content-surface);
+    --hub-border: var(--content-border);
+    padding-block: var(--section-small);
+  }
+  .intro, .faq { max-width: 1120px; margin: 0 auto 2.4rem; color: var(--hub-text); line-height: 1.6; }
+  .intro h2, .faq h2 { margin: 0 0 1rem; color: var(--neutral-large); font-size: 1.5rem; font-weight: var(--weight-bold); line-height: 1.3; }
+  .lead { margin: 0 0 2rem; padding: 1.05rem 1.25rem; border: 1px solid var(--hub-border); border-left: 4px solid var(--hub-accent); border-radius: 10px; background: var(--hub-surface); }
+  .lead p { margin: 0 0 0.6rem; }
+  .lead p:last-child { margin: 0; }
+  .lead strong { color: var(--neutral-large); font-weight: var(--weight-semibold); }
+  .objectives { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin: 0 0 2.2rem; }
+  .objective { padding: 1.1rem 1.2rem; border: 1px solid var(--hub-border); border-radius: 12px; background: var(--white); }
+  .objective h3 { margin: 0 0 0.35rem; color: var(--neutral-large); font-size: 1.08rem; font-weight: var(--weight-bold); line-height: 1.3; letter-spacing: inherit; }
+  .objective p { margin: 0 0 0.6rem; color: var(--hub-muted); font-size: 0.92rem; }
+  .objective ul { margin: 0; padding-left: 1.05rem; }
+  .objective li { margin: 0 0 0.35rem; font-size: 0.95rem; }
+  .objective a { color: var(--neutral-large); font-weight: var(--weight-semibold); text-decoration: underline; text-underline-offset: 2px; }
+  .objective a:hover { color: var(--hub-accent); }
+  .intro h2.all { margin: 0.4rem 0 0; font-size: 1.3rem; }
+  @media (min-width: 640px) { .objectives { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 980px) { .objectives { grid-template-columns: 1fr 1fr 1fr; } }
+
+  /* Tabs */
+  .tabs { display: flex; flex-direction: column; align-items: center; gap: var(--size-2); }
+  .tablist {
+    position: sticky; top: 8rem; z-index: 2; display: none; align-items: center; gap: var(--size-0-25); padding: var(--size-0-25);
+    border-radius: var(--radius-round); background: color-mix(in srgb, var(--white) 60%, transparent); backdrop-filter: blur(10px); box-shadow: var(--shadow-xxlarge);
+  }
+  .tabs:global(.is-ready) .tablist { display: flex; }
+  [role='tab'] {
+    padding: var(--size-0-5) var(--size-1); border: 1px solid transparent; border-radius: var(--radius-round);
+    background: transparent; color: var(--color-text); cursor: pointer; transition: color 0.3s, background-color 0.4s;
+  }
+  [role='tab']:hover { background: color-mix(in srgb, var(--white) 50%, transparent); }
+  [role='tab'][aria-selected='true'] { border-color: var(--color-bg-dark); background: var(--white); }
+  .panel { width: 100%; }
+  .panel:not([hidden]) { animation: fade 0.4s ease both; }
+  @keyframes fade { from { opacity: 0; } }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-1); margin: 0; padding: 0; list-style: none; }
+
+  /* FAQ */
+  .faq { margin-top: 2.4rem; margin-bottom: 2rem; }
+  details { margin: 0 0 0.6rem; padding: 0.2rem 1.1rem; border: 1px solid var(--hub-border); border-radius: 10px; background: var(--hub-surface); }
+  summary { padding: 0.75rem 0; color: var(--neutral-large); font-weight: var(--weight-semibold); list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; float: right; color: var(--hub-accent); font-weight: var(--weight-bold); }
+  details[open] > summary::after { content: '–'; }
+  details p { margin: 0; padding: 0 0 0.9rem; font-size: 0.95rem; }
+  .legal { margin: 1.6rem 0 0; padding: 1rem 1.2rem; border-top: 1px solid var(--hub-border); color: var(--hub-muted); font-size: 0.8rem; }
+  .legal p { margin: 0 0 0.5rem; }
+  .legal p:last-child { margin: 0; }
+
+  @media (max-width: 767px) {
+    .hero-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .lead { padding: 0.9rem 1rem; }
+    .objective { padding: 1rem; }
+    .intro h2, .faq h2 { font-size: 1.3rem; }
+    details { padding: 0.2rem 0.9rem; }
+  }
+  @media (max-width: 479px) {
+    .hero-inner, .guides { padding-block: var(--size-1) var(--size-1-5); }
+    .tablist { width: 100%; overflow: auto; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

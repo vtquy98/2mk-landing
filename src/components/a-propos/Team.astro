@@ -1,0 +1,100 @@
+---
+// Founders: portrait cards linking to their LinkedIn profile.
+import LinkedIn from './icons/linkedin.svg';
+
+const founders = [
+  {
+    name: 'Christophe Neves',
+    role: 'Co-CEO',
+    bio: 'Ancien Directeur Général Délégué dans le secteur de l’assurance, Christophe apporte une vision stratégique pour structurer et développer 2nd Market',
+    linkedin: 'https://www.linkedin.com/in/christophe-neves/',
+    photo: '679a47af494b02b3b6aa74c6_christophe',
+    alt: '2nd Market revente scpi Christophe Neves fondateur CEO',
+  },
+  {
+    name: 'Thuyly Abecassis',
+    role: 'Co-CEO',
+    bio: "Ancienne Directrice du B2C chez Corum, Thuyly met son énergie dans l'innovation et la simplification des transactions immobilières",
+    linkedin: 'https://www.linkedin.com/in/thuyly-abecassis-82a228/',
+    photo: '679a47b00e449303cb65d551_thuyly',
+    alt: '2nd Market revente SCPI Fondateur CEO',
+  },
+];
+const srcset = (p: string) =>
+  [500, 800, 1080, 1600, 2000].map(w => `/assets/${p}-p-${w}.avif ${w}w`).concat(`/assets/${p}.avif 2061w`).join(', ');
+---
+
+<div>
+  <h2 class="h2 title">Les fondateurs de 2nd Market</h2>
+  <ul class="cards" role="list">
+    {
+      founders.map(f => (
+        <li>
+          <a class="card" href={f.linkedin} target="_blank" rel="noopener">
+            <img src={`/assets/${f.photo}.avif`} srcset={srcset(f.photo)} sizes="(max-width: 767px) 90vw, 45vw" alt={f.alt} width="2061" height="2061" loading="lazy" decoding="async" />
+            <div class="body">
+              <div class="name">
+                <h3 class="h4">{f.name}</h3>
+                <span class="icon"><LinkedIn aria-hidden="true" /><span class="visually-hidden">(LinkedIn)</span></span>
+              </div>
+              <p class="role text-medium">{f.role}</p>
+              <p class="bio">{f.bio}</p>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .title { text-align: center; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-1); margin: 0; padding: var(--size-2) 0 0; list-style: none; }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    aspect-ratio: 1;
+    padding: var(--size-2);
+    overflow: clip;
+    border-radius: var(--radius-main);
+    color: var(--color-text-light);
+    transition: translate 0.4s;
+  }
+  .card:hover { translate: 0 -0.5rem; }
+  .card img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      transparent 20%,
+      color-mix(in srgb, var(--neutral-strong) 19%, transparent) 45%,
+      color-mix(in srgb, var(--neutral-strong) 46%, transparent) 75%,
+      var(--neutral-strong)
+    );
+  }
+  .body { position: relative; z-index: 1; }
+  .name { display: flex; align-items: center; gap: var(--size-0-5); }
+  .icon {
+    display: flex;
+    width: var(--size-2);
+    height: var(--size-2);
+    padding: var(--size-0-25) var(--size-0-5);
+    border-radius: var(--size-0-5);
+    background: color-mix(in srgb, var(--white) 20%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .icon :global(svg) { width: 100%; height: 100%; }
+  .role { margin: 0; font-style: italic; }
+  .bio { margin: 0; padding-top: var(--size-0-5); }
+
+  @media (max-width: 991px) { .card { padding: var(--size-1-5); } }
+  @media (max-width: 767px) { .cards { grid-template-columns: 1fr; padding-top: 1.5rem; } }
+  @media (max-width: 479px) {
+    .card { padding: var(--size-1); border-radius: var(--radius-medium); }
+    .name h3 { font-size: var(--h3-size); }
+    .bio { font-size: var(--size-0-75); line-height: var(--lh-1-4); }
+  }
+</style>

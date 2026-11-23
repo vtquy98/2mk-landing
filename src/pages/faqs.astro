@@ -1,0 +1,133 @@
+---
+// /faqs: questions grouped by category in tabs (SCPI / Viager / Démembrement), each answer in a <details>.
+// Data: collection "faqs" (entries with a category, in `order`); the FAQPage JSON-LD is in src/data/seo/faqs.json.
+// Without JavaScript every category is shown one after the other; the script turns them into tabs.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
+import Answer from '../components/faqs/Answer.astro';
+import seo from '../data/seo/faqs.json';
+
+const faqs = (await getCollection('faqs', e => !!e.data.category)).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const categories = [...new Set(faqs.map(f => f.data.category))].map((name, i) => ({
+  id: `faq-${i + 1}`,
+  name,
+  items: faqs.filter(f => f.data.category === name),
+}));
+---
+
+<BaseLayout seo={seo}>
+  <HubHeader title="Nos réponses à vos questions sur l'investissement immobilier" crumb="FAQs" />
+
+  <HubSection>
+    <div class="faqs" data-tabs>
+      <div class="tabs" role="tablist" aria-label="Catégories" hidden>
+        {
+          categories.map((c, i) => (
+            <button type="button" class="tab" role="tab" id={`${c.id}-tab`} aria-controls={c.id} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+              {c.name}
+            </button>
+          ))
+        }
+      </div>
+      {
+        categories.map(c => (
+          <div class="panel" id={c.id} role="tabpanel" aria-labelledby={`${c.id}-tab`}>
+            {c.items.map(f => (
+              <details class="item">
+                <summary>
+                  <h2 class="question">{f.data.title}</h2>
+                  <img class="caret" src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
+                </summary>
+                <div class="answer"><Answer entry={f} /></div>
+              </details>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </HubSection>
+</BaseLayout>
+
+<script>
+  // Tabs (WAI-ARIA pattern): click or arrow keys switch the visible category.
+  for (const root of document.querySelectorAll<HTMLElement>('[data-tabs]')) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+      }
+    };
+    root.querySelector<HTMLElement>('[role="tablist"]')!.hidden = false;
+    select(tabs[0]);
+    root.addEventListener('click', e => {
+      const tab = (e.target as Element).closest<HTMLButtonElement>('[role="tab"]');
+      if (tab) select(tab);
+    });
+    root.addEventListener('keydown', e => {
+      const i = tabs.indexOf(e.target as HTMLButtonElement);
+      if (i < 0 || !['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+      const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      select(next);
+      next.focus();
+    });
+  }
+</script>
+
+<style>
+  .faqs { display: flex; flex-direction: column; align-items: center; gap: var(--size-2); width: 60%; margin-inline: auto; }
+  .tabs {
+    position: sticky;
+    top: 8rem;
+    z-index: 2;
+    display: flex;
+    gap: var(--size-0-25);
+    padding: var(--size-0-25);
+    border-radius: var(--radius-round);
+    background: color-mix(in srgb, var(--white) 60%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .tabs[hidden] { display: none; }
+  .tab {
+    padding: var(--size-0-5) var(--size-1);
+    border: 1px solid transparent;
+    border-radius: var(--radius-round);
+    background: transparent;
+    color: var(--color-text);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.4s;
+  }
+  .tab:hover { background: color-mix(in srgb, var(--white) 50%, transparent); }
+  .tab[aria-selected='true'] { border-color: var(--color-bg-dark); background: var(--white); }
+  .panel { width: 100%; padding-top: var(--size-2); }
+  .panel[hidden] { display: none; }
+
+  .item { margin-bottom: var(--size-0-5); padding: var(--size-0-5) var(--size-1); border-radius: var(--radius-main); background: var(--white); }
+  /* Smooth open/close where ::details-content is supported; elsewhere it just opens. */
+  .faqs { interpolate-size: allow-keywords; }
+  .item::details-content { overflow: clip; height: 0; transition: height 0.4s var(--ease-out), content-visibility 0.4s allow-discrete; }
+  .item[open]::details-content { height: auto; }
+  summary { display: flex; justify-content: space-between; align-items: center; gap: var(--size-1); padding: var(--size-1) var(--size-1) var(--size-1) var(--size-0-5); cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  .question { font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); }
+  .caret { flex: none; width: var(--size-1-5); height: var(--size-1-5); transition: transform 0.4s var(--ease-out); }
+  .item[open] .caret { transform: rotate(180deg); }
+  .answer { margin-right: var(--size-1); padding: 0 0 var(--size-1) var(--size-0-5); }
+
+  @media (max-width: 991px) {
+    .faqs { width: 100%; }
+  }
+  @media (max-width: 767px) {
+    .panel { padding-top: var(--size-1-5); }
+    .answer { margin-right: 0; }
+  }
+  @media (max-width: 479px) {
+    .tabs { width: 100%; overflow: auto; }
+    .item { padding-inline: var(--size-1); }
+  }
+</style>

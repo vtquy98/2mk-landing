@@ -11,3 +11,5 @@ dist/
 !.env.example
 
 .omc/
+.webflow-cache/
+.claude/worktrees/

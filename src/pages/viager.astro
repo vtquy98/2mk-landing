@@ -1,0 +1,71 @@
+---
+// /viager (Webflow template shared with /landing-pages/viager, which now 301s here).
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Hero from '../components/home/Hero.astro';
+import ListingSection from '../components/home/ListingSection.astro';
+import About from '../components/home/About.astro';
+import HowSection from '../components/home/HowSection.astro';
+import FeatureCards from '../components/home/FeatureCards.astro';
+import Links from '../components/home/Links.astro';
+import Testimonials from '../components/home/Testimonials.astro';
+import Faqs from '../components/home/Faqs.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
+import LatestNews from '../components/home/LatestNews.astro';
+import ScpiDirectory from '../components/home/ScpiDirectory.astro';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/viager.json';
+
+const listings = (await getCollection('scpi-listing', e => e.data.source === 'webflow')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout seo={seo} floatingButton>
+  <Hero
+    title="SCPI à décote : achetez ou revendez entre particuliers"
+    stats={[
+      { value: '2,44 Md€', label: 'De parts SCPI en attente de retrait' },
+      { value: '18,4 M€', label: "D'annonces publiées sur la plateforme" },
+      { value: '1000+', label: 'Investisseurs inscrits' },
+      { value: '100%', label: 'Des cessions encadrées par notaire' },
+    ]}
+  />
+  <ListingSection entries={listings} />
+  <About>
+    2,44 milliards d'euros de parts SCPI sont en file d'attente de retrait au 31/03/2026 (ASPIM). <br />2nd Market permet aux vendeurs et acheteurs de se rencontrer, négocier librement et finaliser la transaction avec un notaire.<br />L'argent est versé directement sur le compte séquestre du notaire — jamais chez 2nd Market.<br />1 000+ utilisateurs inscrits. Mentionné dans Le Figaro, Mieux Vivre Votre Argent et Le Particulier.<br /><a href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</a>
+  </About>
+  <HowSection />
+  <FeatureCards show={['scpi', 'viager']} />
+  <Links
+    title="SCPI et viager : 2 marchés, une plateforme"
+    cards={[
+      {
+        title: 'Viagers',
+        href: `${PRODUCT.app}/viager`,
+        image: '/assets/67443333fa2ceafe83c87237_link-2.avif',
+        variants: [500, 800],
+        width: 1896,
+        height: 1026,
+        alt: 'Annonces de viager entre particuliers',
+        cta: 'Voir les annonces viager',
+        html: `<strong>Le Viager est maintenant disponible</strong><br>Déposez votre annonce <strong>gratuitement</strong> et explorez les premières opportunités publiées.<br>Accédez à nos outils dédiés : simulateurs viager (bouquet, rente, DUH), calculs transparents et guides pratiques pour comprendre chaque étape.<br>Créez votre compte sur <strong>https://app.2ndmarket.fr/viager </strong>pour publier votre annonce ou suivre les nouvelles mises en ligne.`,
+      },
+    ]}
+  />
+  <Testimonials />
+  <Faqs list="/" title="Questions fréquentes sur la revente SCPI" />
+  <CtaCard
+    title="Simulateurs gratuits : frais, rendement, fiscalité, viager"
+    text="Estimez votre net vendeur ou acheteur en 30 secondes. Calculez le rendement effectif avec décote. Simulez la taxe foncière, l'IFI ou un viager."
+    href="/simulateurs"
+    label="Accéder aux simulateurs"
+  />
+  <LatestNews title="Actualités SCPI et viager">
+    <div class="center"><Button href="/actualites-conseils">Tous les articles</Button></div>
+  </LatestNews>
+  <ScpiDirectory title="SCPI disponibles sur le marché secondaire" />
+</BaseLayout>
+
+<style>
+  .center { display: flex; justify-content: center; padding-top: var(--size-2); }
+</style>

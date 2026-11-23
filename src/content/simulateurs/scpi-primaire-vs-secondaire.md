@@ -1,0 +1,155 @@
+---
+title: "Comparateur SCPI 2026: primaire ou secondaire ?"
+name: "Comparateur SCPI 2026: primaire ou secondaire, quel canal coûte le moins cher ?"
+excerpt: "Comparez le coût total: souscription directe vs marché secondaire avec décote. Frais réels 2026, rendement effectif, seuil de rentabilité. Gratuit."
+category: "SCPI"
+highlights: ["Coût total réel des deux canaux, frais inclus (souscription, commission, droits, notaire)","Rendement rapporté au capital réellement investi, pas au prix affiché","Seuil de décote à partir duquel le secondaire devient moins cher que le primaire"]
+order: 3
+seo: {"title":"SCPI primaire ou secondaire ? Comparateur coût total 2026","description":"Comparez le coût total: souscription directe vs marché secondaire avec décote. Frais réels 2026, rendement effectif, seuil de rentabilité. Gratuit.","canonical":"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire","robots":"max-image-preview:large","ogTitle":"SCPI primaire ou secondaire ? Comparateur coût total 2026","ogDescription":"Comparez le coût total: souscription directe vs marché secondaire avec décote. Frais réels 2026, rendement effectif, seuil de rentabilité. Gratuit.","ogImage":"/assets/68cd3b3510c084dec3e8d81f_2nd-market-logo-1200x600.png","ogType":"website","twitterTitle":"SCPI primaire ou secondaire ? Comparateur coût total 2026","twitterDescription":"Comparez le coût total: souscription directe vs marché secondaire avec décote. Frais réels 2026, rendement effectif, seuil de rentabilité. Gratuit.","jsonLd":["{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire#webpage\",\"url\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire\",\"name\":\"SCPI primaire ou secondaire ? Comparateur coût total 2026\",\"description\":\"Comparez le coût total : souscription directe vs marché secondaire avec décote. Frais réels 2026, rendement effectif, seuil de bascule.\",\"inLanguage\":\"fr-FR\",\"datePublished\":\"2026-07-11\",\"dateModified\":\"2026-09-09\",\"isPartOf\":{\"@type\":\"WebSite\",\"@id\":\"https://2ndmarket.fr/#website\",\"name\":\"2nd Market\",\"url\":\"https://2ndmarket.fr/\"},\"breadcrumb\":{\"@id\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Accueil\",\"item\":\"https://2ndmarket.fr/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Simulateurs\",\"item\":\"https://2ndmarket.fr/simulateurs\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Comparateur SCPI primaire vs secondaire\"}]},{\"@type\":\"SoftwareApplication\",\"@id\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire#app\",\"name\":\"Comparateur SCPI marché primaire vs marché secondaire\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Web\",\"url\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire\",\"inLanguage\":\"fr-FR\",\"description\":\"Compare le coût total d'acquisition et le rendement effectif d'une souscription directe et d'un achat sur le marché secondaire de gré à gré, frais et droits d'enregistrement inclus.\",\"featureList\":[\"Coût total d'acquisition sur les deux canaux\",\"Rendement rapporté au coût total\",\"Seuil de décote à partir duquel le marché secondaire revient moins cher\"],\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"EUR\"},\"provider\":{\"@type\":\"Organization\",\"name\":\"2nd Market\",\"url\":\"https://2ndmarket.fr/\"}},{\"@type\":\"FAQPage\",\"@id\":\"https://2ndmarket.fr/simulateurs/scpi-primaire-vs-secondaire#faq\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Le marché secondaire est-il toujours moins cher que la souscription directe ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non. Cela dépend du niveau de décote et du montant investi. En dessous du seuil de bascule (calculé à partir des frais fixes du secondaire), la souscription directe reste moins chère à l'achat.\"}},{\"@type\":\"Question\",\"name\":\"Le dividende change-t-il selon le canal d'achat ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non. Le dividende versé par la société de gestion est identique quel que soit le canal. Seul le prix d'acquisition et les frais associés diffèrent, ce qui modifie le rendement rapporté au coût total.\"}},{\"@type\":\"Question\",\"name\":\"Quels frais s'appliquent sur le marché secondaire ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"L'acheteur paie une commission de plateforme de 1,8 % TTC, des droits d'enregistrement de 5 % (article 726 CGI), des frais d'avant-contrat de 240 € TTC et, selon la SCPI, des frais de société de gestion de 0 à 200 €.\"}},{\"@type\":\"Question\",\"name\":\"Les frais de souscription du marché primaire sont-ils négociables ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Non. Ils sont fixés par la société de gestion et intégrés au prix de souscription officiel, identique pour tous les souscripteurs.\"}},{\"@type\":\"Question\",\"name\":\"Ce comparateur est-il gratuit ?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Oui. Le comparateur est gratuit et sans inscription. Les calculs s'exécutent dans votre navigateur.\"}}]}]}"]}
+lastmod: "2026-11-21"
+---
+
+<div class="simulator">
+<div>
+<div class="s2m-alert-anchor" style="min-height:22rem" id="s2m-alert-short"></div>
+</div><div><!-- 2nd Market — BLOC-1 Comparateur SCPI primaire vs secondaire — v2.0 (09/09/2026)
+REPARATION post-incident import CSV du 05/09.
+Constat: les 25 ids referencés par le script (helper el()/num(), invisible d'un
+detecteur getElementById) avaient tous ete supprimes du markup -> el('s2m-pvs-form')
+null -> TypeError au chargement -> calculateur totalement inerte.
+CHANGEMENTS
+ 1. Pattern tm generalise (tmid-/tmfor-/tmval-/tmmin-/tmmax-/tmstep-/tmim-/tmsel),
+    valeurs a point hex-encodees (_2e_). Shim v2 en fin de bloc.
+ 2. Lead Capture: conteneur de resultats id sim-results, resultats en res-*,
+    ids d'entree lisibles (label via tmfor-), libelle bouton contenant 'Calculer'.
+ 3. Selecteurs CSS en combinateur enfant (>) sans espace + tous les decimaux avec
+    zero de tete (parade soudure d'espace avant point).
+ 4. font-size des champs porte a 16px (anti-zoom iOS).
+ 5. Bouton en enfant direct de la grille (grid-column:1/-1 etait inoperant sur un
+    bouton encapsule dans un div).
+ 6. Gardes null sur chaque acces DOM; commentaires /* */ uniquement.
+ 7. Nouveau resultat res-seuil-bascule (seuil de bascule expose et moissonne).
+ 8. Libelles KPI dynamiques: economie/surcout, capital en moins/en plus
+    (l'ancien affichage prefixait une economie d'un signe moins).
+ 9. Cas limite traite: si le seuil de bascule depasse 60 %, message dedie au lieu
+    d'un pourcentage irrealiste (petits montants ecrases par les frais fixes).
+VALEURS PAR DEFAUT (D-PVS-1, a valider): 200 EUR / 4,5 % / 250 parts / 20 % / 100 EUR
+ = l'exemple chiffre de la page (cout total 43 060 EUR, rendement 5,23 %).
+FORMULES (verifiees par script independant)
+ - dividende annuel = N x P x td (TD assis sur le prix de reference)
+ - primaire: cout = N x P ; rendement = td
+ - secondaire: cout = N x P x (1-d) x (1 + 0,018 + 0,05) + 240 + SDG
+   commission acheteur 1,8 % TTC ; droits d'enregistrement 5 % (CGI art. 726, I-2)
+ - rendement secondaire = dividende annuel / cout total secondaire
+ - seuil de bascule d* = 1 - (1 - (240+SDG)/(N x P)) / 1,068
+-->
+<div id="s2m-pvs">
+<style>
+#s2m-pvs,#s2m-pvs *{box-sizing:border-box}
+#s2m-pvs{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:#0f172a;max-width:960px;margin:0 auto;padding:1.5rem 1rem 2rem;line-height:1.6}
+#s2m-pvs>h2{color:#104A65;font-size:clamp(1.3rem,3vw,1.6rem);margin:0 0.4rem;font-weight:700}
+#s2m-pvs>p{margin:0 0.9rem;font-size:15px}
+#s2m-pvs>.s2m-form{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-top:1rem;display:grid;gap:14px;grid-template-columns:1fr}
+#s2m-pvs>.s2m-form>.s2m-field>label{font-size:13px;font-weight:600;color:#334155;display:block;margin-bottom:4px}
+#s2m-pvs>.s2m-form>.s2m-field>input,#s2m-pvs>.s2m-form>.s2m-field>select{width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px;color:#0f172a;background:#fff}
+#s2m-pvs>.s2m-form>.s2m-field>input:focus,#s2m-pvs>.s2m-form>.s2m-field>select:focus{outline:2px solid #104A65;border-color:#104A65}
+#s2m-pvs>.s2m-form>.s2m-field>.s2m-hint{font-size:12px;color:#64748b;margin-top:3px}
+#s2m-pvs>.s2m-form>.s2m-btn{grid-column:1/-1;background:#eb5031;color:#fff;border:none;border-radius:10px;padding:13px 20px;font-size:16px;font-weight:700;cursor:pointer;transition:opacity 0.15s ease}
+#s2m-pvs>.s2m-form>.s2m-btn:hover{opacity:0.9}
+#s2m-pvs>.s2m-form>.s2m-error{display:none;grid-column:1/-1;color:#991b1b;background:#fef2f2;border-left:4px solid #ef4444;border-radius:8px;padding:10px 14px;font-size:14px}
+#s2m-pvs>.s2m-results{display:none;margin-top:1.4rem}
+#s2m-pvs>.s2m-results>.s2m-kpis{display:grid;gap:12px;grid-template-columns:1fr;margin:1rem 0}
+#s2m-pvs>.s2m-results>.s2m-kpis>.s2m-kpi{background:#104A65;color:#fff;border-radius:12px;padding:16px;text-align:center}
+#s2m-pvs>.s2m-results>.s2m-kpis>.s2m-kpi>strong{display:block;font-size:22px}
+#s2m-pvs>.s2m-results>.s2m-kpis>.s2m-kpi>span{font-size:12.5px;opacity:0.9}
+#s2m-pvs>.s2m-results>.s2m-cols{display:grid;gap:14px;grid-template-columns:1fr;margin:0.8rem 0}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col{background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:18px}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col.s2m-winner{border-color:#eb5031;background:#fff7f5}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col>h3{margin:0 0 0.6rem;color:#0f172a;font-size:1.05rem;font-weight:700}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col>.s2m-line{display:flex;justify-content:space-between;gap:0.8rem;font-size:14px;padding:5px 0;border-bottom:1px dashed #e2e8f0}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col>.s2m-line>strong{color:#104A65;text-align:right}
+#s2m-pvs>.s2m-results>.s2m-cols>.s2m-col>.s2m-total{display:flex;justify-content:space-between;gap:0.8rem;font-size:16px;font-weight:800;color:#104A65;padding-top:8px;margin-top:6px;border-top:2px solid #104A65}
+#s2m-pvs>.s2m-results>.s2m-breakeven{display:flex;justify-content:space-between;gap:0.8rem;font-size:14px;color:#475569;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:10px 14px;margin:0.8rem 0}
+#s2m-pvs>.s2m-results>.s2m-breakeven>strong{color:#104A65;white-space:nowrap}
+#s2m-pvs>.s2m-results>.s2m-verdict{background:#f8fafc;border-left:4px solid #eb5031;border-radius:10px;padding:14px 16px;font-size:14.5px;margin:0.8rem 0}
+#s2m-pvs>.s2m-results>.s2m-cta{display:inline-block;background:#eb5031;color:#fff;text-decoration:none;font-weight:700;border-radius:10px;padding:11px 20px;margin:0.5rem 0 0}
+#s2m-pvs>.s2m-note{font-size:13px;color:#475569;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:12px;margin-top:1rem}
+#s2m-pvs>.s2m-note>a{color:#104A65}
+@media (min-width:720px){#s2m-pvs>.s2m-form{grid-template-columns:1fr 1fr}#s2m-pvs>.s2m-results>.s2m-kpis{grid-template-columns:repeat(3,1fr)}#s2m-pvs>.s2m-results>.s2m-cols{grid-template-columns:1fr 1fr}}
+</style>
+<h2>Comparateur : souscription directe ou marché secondaire ?</h2>
+<p>Comparez le coût total d'acquisition et le rendement effectif des deux canaux, tous frais inclus (commission 1,8 % TTC, avant-contrat 240 € TTC, droits d'enregistrement 5 % — art. 726 CGI — et frais de société de gestion).</p>
+<form class="s2m-form" id="s2m-pvs-form">
+<div class="s2m-field"><label for="prix-souscription-eur">Prix de souscription officiel (€/part)</label><input type="number" id="prix-souscription-eur" min="0.01" step="0.01" inputmode="decimal" value="200"><div class="s2m-hint">Le prix de référence publié par la société de gestion (frais de souscription inclus)</div></div>
+<div class="s2m-field"><label for="taux-distribution-pct">Taux de distribution officiel (%)</label><input type="number" id="taux-distribution-pct" min="0" max="20" step="0.01" inputmode="decimal" value="4.5"><div class="s2m-hint">TD publié, calculé sur le prix de référence</div></div>
+<div class="s2m-field"><label for="nombre-de-parts">Nombre de parts</label><input type="number" id="nombre-de-parts" min="1" step="1" inputmode="numeric" value="250"></div>
+<div class="s2m-field"><label for="decote-secondaire-pct">Décote négociée sur le marché secondaire (%)</label><input type="number" id="decote-secondaire-pct" min="0" max="60" step="0.1" inputmode="decimal" value="20"><div class="s2m-hint">Décotes observées sur la plateforme : 10 à 35 % selon la SCPI</div></div>
+<div class="s2m-field"><label for="frais-sdg-eur">Frais de société de gestion (€)</label><select id="frais-sdg-eur"><option value="0">0 € — aucune facturation</option><option value="100" selected="">100 € — cas courant</option><option value="200">200 € — maximum constaté</option></select><div class="s2m-hint">Frais administratifs de transfert, variables selon la SCPI</div></div>
+<button type="submit" class="s2m-btn">Calculer le coût total des deux canaux</button>
+<div class="s2m-error" id="s2m-pvs-error">Vérifiez les valeurs saisies : prix, taux et nombre de parts doivent être positifs, décote comprise entre 0 et 60 %.</div>
+</form>
+<div class="s2m-results" id="sim-results">
+<div class="s2m-kpis">
+<div class="s2m-kpi"><strong id="res-economie">—</strong><span id="s2m-pvs-kpi-eco-lbl">Économie à l'achat (secondaire vs primaire)</span></div>
+<div class="s2m-kpi"><strong id="res-rendement-secondaire">—</strong><span>Rendement effectif sur coût total (secondaire)</span></div>
+<div class="s2m-kpi"><strong id="res-capital-economise">—</strong><span id="s2m-pvs-kpi-gain-lbl">Capital mobilisé en moins, revenus identiques</span></div>
+</div>
+<div class="s2m-cols">
+<div class="s2m-col" id="s2m-pvs-col-prim">
+<h3>Marché primaire (souscription directe)</h3>
+<div class="s2m-line"><span>Prix par part</span><strong id="res-primaire-prix">—</strong></div>
+<div class="s2m-line"><span>Frais de souscription</span><strong>inclus dans le prix (8–12 %)</strong></div>
+<div class="s2m-line"><span>Dividendes annuels estimés</span><strong id="res-primaire-dividendes">—</strong></div>
+<div class="s2m-line"><span>Rendement sur coût total</span><strong id="res-primaire-rendement">—</strong></div>
+<div class="s2m-total"><span>Coût total</span><span id="res-primaire-cout-total">—</span></div>
+</div>
+<div class="s2m-col" id="s2m-pvs-col-sec">
+<h3>Marché secondaire (gré à gré, notaire)</h3>
+<div class="s2m-line"><span>Prix négocié par part</span><strong id="res-secondaire-prix">—</strong></div>
+<div class="s2m-line"><span>Commission acheteur (1,8 % TTC)</span><strong id="res-secondaire-commission">—</strong></div>
+<div class="s2m-line"><span>Avant-contrat</span><strong>240 € TTC</strong></div>
+<div class="s2m-line"><span>Droits d'enregistrement (5 % — art. 726 CGI)</span><strong id="res-secondaire-droits">—</strong></div>
+<div class="s2m-line"><span>Frais société de gestion</span><strong id="res-secondaire-frais-sdg">—</strong></div>
+<div class="s2m-line"><span>Dividendes annuels estimés</span><strong id="res-secondaire-dividendes">—</strong></div>
+<div class="s2m-line"><span>Rendement sur coût total</span><strong id="res-secondaire-rendement">—</strong></div>
+<div class="s2m-total"><span>Coût total</span><span id="res-secondaire-cout-total">—</span></div>
+</div>
+</div>
+<div class="s2m-breakeven"><span>Seuil de bascule : décote à partir de laquelle le secondaire revient moins cher</span><strong id="res-seuil-bascule">—</strong></div>
+<div class="s2m-verdict" id="s2m-pvs-verdict">—</div>
+<a class="s2m-cta" href="https://app.2ndmarket.fr/scpi?utm_source=simulateur&amp;utm_medium=embed&amp;utm_campaign=primaire-vs-secondaire&amp;utm_content=cta-resultats" target="_blank" rel="noopener">Voir les annonces SCPI avec décote →</a>
+</div>
+<div class="s2m-note"><strong>Hypothèses et avertissement.</strong> Comparaison à dividende constant et identique sur les deux canaux — les distributions futures ne sont pas garanties et les performances passées ne préjugent pas des performances futures. Le rendement est rapporté au coût total déboursé, hors fiscalité (voir le <a href="/simulateurs/fiscalite-scpi">simulateur fiscalité SCPI</a>) et hors délai de jouissance. Les parts de SCPI présentent un risque de perte en capital et un risque de liquidité. 2nd Market est une plateforme de mise en relation entre investisseurs — ni CGP, ni CIF, ni société de gestion — et ne fournit aucune recommandation personnalisée. Résultats indicatifs.</div>
+</div>
+<script>(function(){var COMMISSION=0.018,DROITS=0.05,AVANT_CONTRAT=240,DECOTE_MAX=0.60;var fEUR=new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0});var fEUR2=new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2});var fPCT=new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2});function el(id){return document.getElementById(id);}function txt(id,v){var n=el(id);if(n){n.textContent=v;}}function val(id){var n=el(id);if(!n){return NaN;}return parseFloat(String(n.value).replace(',','.'));}function run(e){if(e&&e.preventDefault){e.preventDefault();}var P=val('prix-souscription-eur');var td=val('taux-distribution-pct')/100;var N=Math.round(val('nombre-de-parts'));var d=val('decote-secondaire-pct')/100;var SDG=val('frais-sdg-eur');var err=el('s2m-pvs-error');var res=el('sim-results');if(!isFinite(SDG)){SDG=0;}var ok=(P>0)&&(td>=0)&&(N>0)&&(d>=0)&&(DECOTE_MAX>=d);if(!ok){if(err){err.style.display='block';}if(res){res.style.display='none';}return;}if(err){err.style.display='none';}var divAnnuel=N*P*td;var coutPrim=N*P;var rdtPrim=divAnnuel/coutPrim;var Psec=P*(1-d);var base=N*Psec;var com=base*COMMISSION;var droits=base*DROITS;var coutSec=base+com+droits+AVANT_CONTRAT+SDG;var rdtSec=divAnnuel/coutSec;var eco=coutPrim-coutSec;var fixes=AVANT_CONTRAT+SDG;var seuil=1-(1-fixes/coutPrim)/(1+COMMISSION+DROITS);var gagnantSec=eco>0;var seuilTxt=(seuil>DECOTE_MAX)?'hors plage (au-delà de 60 %)':fPCT.format(seuil*100)+' %';txt('res-primaire-prix',fEUR2.format(P));txt('res-primaire-dividendes',fEUR.format(divAnnuel)+'/an');txt('res-primaire-rendement',fPCT.format(rdtPrim*100)+' %');txt('res-primaire-cout-total',fEUR.format(coutPrim));txt('res-secondaire-prix',fEUR2.format(Psec)+' (−'+fPCT.format(d*100)+' %)');txt('res-secondaire-commission',fEUR.format(com));txt('res-secondaire-droits',fEUR.format(droits));txt('res-secondaire-frais-sdg',fEUR.format(SDG));txt('res-secondaire-dividendes',fEUR.format(divAnnuel)+'/an');txt('res-secondaire-rendement',fPCT.format(rdtSec*100)+' %');txt('res-secondaire-cout-total',fEUR.format(coutSec));txt('res-rendement-secondaire',fPCT.format(rdtSec*100)+' %');txt('res-economie',fEUR.format(Math.abs(eco)));txt('res-capital-economise',fPCT.format(Math.abs(eco)/coutPrim*100)+' %');txt('res-seuil-bascule',seuilTxt);txt('s2m-pvs-kpi-eco-lbl',gagnantSec?'Économie à l\'achat (secondaire vs primaire)':'Surcoût à l\'achat (secondaire vs primaire)');txt('s2m-pvs-kpi-gain-lbl',gagnantSec?'Capital mobilisé en moins, revenus identiques':'Capital mobilisé en plus, revenus identiques');var colP=el('s2m-pvs-col-prim');var colS=el('s2m-pvs-col-sec');if(colP){colP.classList.remove('s2m-winner');}if(colS){colS.classList.remove('s2m-winner');}var v=el('s2m-pvs-verdict');if(v){if(gagnantSec){if(colS){colS.classList.add('s2m-winner');}v.innerHTML='Avec une décote de <strong>'+fPCT.format(d*100)+'&nbsp;%</strong>, le marché secondaire revient <strong>'+fEUR.format(eco)+' moins cher</strong>, tous frais inclus, pour des dividendes estimés identiques. Pour ce montant, le seuil de bascule est de <strong>'+seuilTxt+'</strong>.';}else{if(colP){colP.classList.add('s2m-winner');}if(seuil>DECOTE_MAX){v.innerHTML='À <strong>'+fPCT.format(d*100)+'&nbsp;%</strong> de décote, les frais fixes du secondaire (avant-contrat et frais de société de gestion) ne sont pas couverts pour ce montant. Sur un investissement de cette taille, aucune décote comprise entre 0 et 60&nbsp;% ne suffit à les compenser.';}else{v.innerHTML='À <strong>'+fPCT.format(d*100)+'&nbsp;%</strong> de décote, les frais du secondaire ne sont pas encore couverts pour ce montant : il revient moins cher qu\'une souscription directe à partir de <strong>'+seuilTxt+'</strong> de décote. Sur la plateforme, les décotes observées vont de 10 à 35&nbsp;% selon les SCPI.';}}}if(res){res.style.display='block';res.scrollIntoView({behavior:'smooth',block:'nearest'});}}function bind(){var f=el('s2m-pvs-form');if(f&&!f.getAttribute('data-bound')){f.setAttribute('data-bound','1');f.addEventListener('submit',run);}}bind();document.addEventListener('DOMContentLoaded',bind);})();</script></div>
+</div>
+
+<div class="guide">
+
+<div><div id="s2m-seo-pvs"><style>
+#s2m-seo-pvs,#s2m-seo-pvs *{box-sizing:border-box}
+#s2m-seo-pvs{--brand:#104A65;--text:#1c2d4a;--muted:#475569;--border:#E2E8F0;--soft:#F8FAFC;--accent:#eaf1fd;max-width:880px;margin:0 auto;padding:1.5rem 1rem;font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);line-height:1.65;font-size:1rem}
+#s2m-seo-pvs>h2{color:var(--brand);font-weight:700;line-height:1.25;font-size:clamp(1.3rem,2.6vw,1.7rem);margin:1.6rem 0.6rem}
+#s2m-seo-pvs>h2:first-of-type{margin-top:0}
+#s2m-seo-pvs>h3{color:var(--brand);font-weight:700;font-size:1.1rem;margin:1.4rem 0.6rem 0.6rem}
+#s2m-seo-pvs>p{margin:0.6rem 0}
+#s2m-seo-pvs>ul{margin:0.5rem 0 1rem 1.2rem;padding:0}
+#s2m-seo-pvs>ul>li{margin:0.3rem 0}
+#s2m-seo-pvs strong{color:var(--brand)}
+#s2m-seo-pvs>.s2m-lead{font-size:1.05rem;color:var(--muted)}
+#s2m-seo-pvs>.s2m-callout{background:var(--accent);border-left:4px solid var(--brand);border-radius:8px;padding:0.9rem 1.1rem;margin:1rem 0;font-size:0.95rem}
+#s2m-seo-pvs>.s2m-note{font-size:0.82rem;color:var(--muted);margin-top:0.3rem}
+#s2m-seo-pvs>details{border:1px solid var(--border);border-radius:10px;padding:0 1rem;margin:0.6rem 0;background:#fff}
+#s2m-seo-pvs>details>summary{cursor:pointer;font-weight:600;color:var(--brand);padding:0.9rem 0;list-style:none}
+#s2m-seo-pvs>details>summary::-webkit-details-marker{display:none}
+#s2m-seo-pvs>details>summary::after{content:'+';float:right;font-size:1.2rem;line-height:1}
+#s2m-seo-pvs>details[open]>summary::after{content:'\2013'}
+#s2m-seo-pvs>details>p{margin:0 0 1rem;color:var(--muted)}
+#s2m-seo-pvs>.s2m-xref{margin:1rem 0}
+#s2m-seo-pvs>.s2m-xref>ul{margin:0.5rem 0 1rem 1.2rem;padding:0}
+#s2m-seo-pvs>.s2m-xref>ul>li{margin:0.3rem 0}
+#s2m-seo-pvs>.s2m-xref>ul>li>a{color:var(--brand);font-weight:600;text-decoration:underline}
+#s2m-seo-pvs>.s2m-legal{margin-top:1.6rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--muted);line-height:1.55}
+</style><h2>Comparateur SCPI 2026 : marché primaire ou marché secondaire, quel canal revient le moins cher ?</h2><p class="s2m-lead">Souscrire directement auprès d'une société de gestion ou acheter des parts déjà émises sur le marché secondaire : les deux canaux donnent accès aux mêmes parts et aux mêmes dividendes, mais leur structure de frais diffère entièrement. Cette page explique comment comparer le coût total des deux canaux et à partir de quel niveau de décote le marché secondaire devient plus avantageux que la souscription directe.</p><h2>Deux canaux, une seule part</h2><p>Une part de SCPI donne les mêmes droits (dividendes, vote en assemblée) quel que soit le canal d'acquisition. Ce qui change, c'est le prix payé et la structure des frais.</p><p>Sur le <strong>marché primaire</strong>, la société de gestion émet des parts neuves au prix de souscription officiel. Ce prix intègre des frais de collecte et de commercialisation, de l'ordre de <strong>8 à 12 %</strong> selon les SCPI.</p><p>Sur le <strong>marché secondaire</strong> de gré à gré, un associé vend des parts existantes à un prix librement négocié, qui peut être inférieur au prix de souscription officiel : c'est la décote. L'acheteur règle en plus une commission de plateforme, des droits d'enregistrement et des frais fixes de transaction.</p><h2>Le coût total de chaque canal</h2><p>Le prix affiché ne suffit pas à comparer les deux canaux : il faut raisonner en <strong>coût total d'acquisition</strong>.</p><ul><li><strong>Marché primaire</strong> : coût total = nombre de parts × prix de souscription. Les frais de collecte sont déjà inclus ; aucun frais supplémentaire à l'achat.</li><li><strong>Marché secondaire</strong> : coût total = (nombre de parts × prix négocié) + commission acheteur (1,8 % TTC) + droits d'enregistrement (5 %, article 726 CGI) + frais d'avant-contrat (240 € TTC) + frais éventuels de société de gestion (0 à 200 €).</li></ul><p class="s2m-note">Les droits d'enregistrement de 5 % sont prévus par l'article 726 du code général des impôts et s'appliquent à toute transmission de parts de SCPI à titre onéreux, quel que soit le canal utilisé pour la finaliser.</p><h2>Le rendement sur coût total : l'indicateur qui compte</h2><p>Le dividende annuel dépend du nombre de parts détenues, pas du canal d'achat. Comparer les deux canaux revient à rapporter ce même dividende au coût total réellement déboursé sur chaque canal.</p><div class="s2m-callout">Exemple indicatif : pour une SCPI à 200 € de prix de souscription, un taux de distribution de 4,5 % et 250 parts, la souscription directe revient à <strong>50 000 €</strong> pour un rendement de <strong>4,5 %</strong> sur coût total. À une décote de 20 % sur le marché secondaire, le coût total (prix négocié + commission + droits + avant-contrat + frais de société de gestion à 100 €) ressort à <strong>43 060 €</strong>, soit une économie de <strong>6 940 €</strong> et un rendement sur coût total de <strong>5,23 %</strong>, pour un dividende annuel identique.</div><h2>Le seuil de bascule : à partir de quelle décote le secondaire devient-il moins cher ?</h2><p>Le marché secondaire ajoute des frais fixes (avant-contrat, frais de société de gestion) que le marché primaire n'a pas. Une faible décote peut, sur un petit montant, ne pas suffire à compenser ces frais fixes.</p><p>Dans l'exemple ci-dessus, le seuil de bascule se situe à <strong>7,00 % de décote</strong> : en dessous, la souscription directe reste moins chère à l'achat ; au-dessus, le marché secondaire devient moins cher, à dividende identique. Ce seuil dépend du montant investi : plus le montant est élevé, moins les frais fixes pèsent, et plus le seuil de bascule est bas. Sur de très petits montants, les frais fixes peuvent ne jamais être compensés, quelle que soit la décote.</p><p>Les décotes observées sur la plateforme vont de 10 à 35 % selon les SCPI, au-dessus du seuil de bascule dans la majorité des cas.</p><h2>Comment utiliser le comparateur</h2><ul><li>Renseignez le <strong>prix de souscription officiel</strong> et le <strong>taux de distribution</strong> publiés par la société de gestion.</li><li>Indiquez le <strong>nombre de parts</strong> visé et la <strong>décote</strong> négociée sur le marché secondaire.</li><li>Sélectionnez les <strong>frais de société de gestion</strong> applicables à la SCPI concernée.</li><li>Le comparateur calcule le coût total, le rendement sur coût total et le seuil de bascule pour les deux canaux.</li></ul><h2>Questions fréquentes</h2><details><summary>Le marché secondaire est-il toujours moins cher que la souscription directe ?</summary><p>Non. Cela dépend du niveau de décote et du montant investi. En dessous du seuil de bascule (calculé à partir des frais fixes du secondaire), la souscription directe reste moins chère à l'achat.</p></details><details><summary>Le dividende change-t-il selon le canal d'achat ?</summary><p>Non. Le dividende versé par la société de gestion est identique quel que soit le canal. Seul le prix d'acquisition et les frais associés diffèrent, ce qui modifie le rendement rapporté au coût total.</p></details><details><summary>Quels frais s'appliquent sur le marché secondaire ?</summary><p>L'acheteur paie une commission de plateforme de 1,8 % TTC, des droits d'enregistrement de 5 % (article 726 CGI), des frais d'avant-contrat de 240 € TTC et, selon la SCPI, des frais de société de gestion de 0 à 200 €.</p></details><details><summary>Les frais de souscription du marché primaire sont-ils négociables ?</summary><p>Non. Ils sont fixés par la société de gestion et intégrés au prix de souscription officiel, identique pour tous les souscripteurs.</p></details><details><summary>Ce comparateur est-il gratuit ?</summary><p>Oui. Le comparateur est gratuit et sans inscription. Les calculs s'exécutent dans votre navigateur.</p></details><h3>Aller plus loin</h3><div class="s2m-xref"><ul><li><a href="/simulateurs/frais-scpi">Simulateur de frais SCPI</a> — détail poste par poste des frais acheteur et vendeur</li><li><a href="/simulateurs/rendement-performance">Simulateur de rendement SCPI</a> — taux de distribution net, fiscalité, projection pluriannuelle</li><li><a href="/simulateurs/decote-scpi">Simulateur de décote SCPI</a> — impact de la décote sur le rendement effectif</li><li><a href="/simulateurs/scpi-marche-secondaire">Simulateur marché secondaire SCPI</a> — projections sur 10 ans</li></ul></div><div class="s2m-legal"><strong>Mentions légales et avertissement</strong><br>Les résultats fournis par ce comparateur sont donnés à titre indicatif et ne constituent ni un conseil en investissement, ni une recommandation personnalisée. La comparaison suppose un dividende identique sur les deux canaux ; les distributions futures ne sont pas garanties. Un investissement en SCPI comporte un risque de perte en capital et un risque de liquidité. Les performances passées ne préjugent pas des performances futures.<br><br>2nd Market est une plateforme de mise en relation entre investisseurs pour la revente de parts de SCPI sur le marché secondaire de gré à gré. 2nd Market n'est ni conseiller en gestion de patrimoine (CGP), ni conseiller en investissements financiers (CIF), ni société de gestion.</div></div></div>
+
+</div>

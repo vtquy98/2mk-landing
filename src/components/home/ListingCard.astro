@@ -1,0 +1,91 @@
+---
+// One SCPI ad (collection "scpi-listing") as a card: logo, discount, title, 4 key figures, price, link.
+import type { CollectionEntry } from 'astro:content';
+import Button from '../ui/Button.astro';
+import Building from './icons/building.svg';
+import PiggyBank from './icons/piggy-bank.svg';
+import Money from './icons/money.svg';
+import HandUp from './icons/hand-up.svg';
+
+interface Props {
+  entry: CollectionEntry<'scpi-listing'>;
+  headingLevel?: 'h2' | 'h3';
+  standalone?: boolean; // on the ad's own page: the page heading is the title, no link to itself
+}
+const { entry, headingLevel: Heading = 'h3', standalone = false } = Astro.props;
+const d = entry.data;
+const href = d.url ?? `/scpi-listing/${entry.id}`;
+
+const fmt = (n: number, digits = 0) => new Intl.NumberFormat('fr-FR', { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(n);
+const discount = d.discountPercent && d.discountPercent > 0 ? Math.round(d.discountPercent) : undefined;
+const figures = [
+  { Icon: Building, value: `${fmt(d.pricePerShare)} €`, label: 'Valeur officielle des Parts' },
+  { Icon: PiggyBank, value: `${fmt(d.distributionRate, 2)} %`, label: 'Rendement Annuel Standard' },
+  { Icon: Money, value: `${fmt(d.annualIncome)} €`, label: 'Revenu Annuel (Cash)' },
+  { Icon: HandUp, value: `${fmt(d.effectiveYield, 1)} %`, label: 'Rendement Effectif avec Réduction' },
+];
+---
+
+<article class="card">
+  <div class="card__head">
+    <div class="card__top">
+      {d.image && <img class="card__logo" src={d.image} alt={d.imageAlt ?? ''} width="100" height="40" loading="lazy" decoding="async" />}
+      {discount && <span class="card__badge">Décote {discount}%</span>}
+    </div>
+    {!standalone && <Heading class="card__title">{d.title}</Heading>}
+  </div>
+  <dl class="card__figures">
+    {
+      figures.map(({ Icon, value, label }) => (
+        <div class="card__figure">
+          <Icon class="card__icon" aria-hidden="true" />
+          <dt>{label}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+  <div class="card__action">
+    <p class="card__prices">
+      <span class="card__price">{fmt(d.totalPrice)} €</span>
+      {discount && d.marketPrice && <s class="card__original">{fmt(d.marketPrice)} €</s>}
+    </p>
+    {!standalone && <Button href={href} variant="secondary" size="small" class="card__cta" aria-label={`Voir l'annonce : ${d.title}`}>Voir l'annonce</Button>}
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--size-0-25);
+    border-radius: var(--radius-medium);
+    background: var(--white);
+  }
+  .card__head { display: flex; flex-direction: column; gap: var(--size-0-5); padding: var(--size-1) var(--size-1) var(--size-0-25); }
+  .card__top { display: flex; gap: var(--size-0-5); align-items: center; justify-content: space-between; min-height: 2.5rem; }
+  .card__logo { width: auto; max-width: 6.25rem; height: 2.5rem; object-fit: contain; object-position: left; }
+  .card__badge {
+    margin-left: auto;
+    padding: var(--size-0-25) var(--size-0-75);
+    border: 1px solid var(--positive-border);
+    border-radius: var(--radius-round);
+    background: var(--positive-light);
+    color: var(--positive);
+    font-weight: var(--weight-medium);
+    white-space: nowrap;
+  }
+  .card__title { margin: 0; font-size: var(--size-1-25); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-3); }
+  .card__figures { display: flex; flex-direction: column; gap: var(--size-1); margin: 0 var(--size-0-25); padding: var(--size-1-5); border-radius: var(--radius-medium); background: var(--neutral-bg); }
+  .card__figure { display: grid; grid-template-columns: var(--size-1-5) 1fr; column-gap: var(--size-0-5); row-gap: 0.125rem; align-items: center; }
+  .card__figure :global(.card__icon) { grid-area: 1 / 1 / 3 / 2; width: var(--size-1-5); height: var(--size-1-5); }
+  .card__figure dd { grid-column: 2; grid-row: 1; margin: 0; font-weight: var(--weight-medium); }
+  .card__figure dt { grid-column: 2; grid-row: 2; color: var(--neutral-large); font-size: 0.875rem; }
+  .card__action { display: flex; gap: var(--size-1); align-items: center; justify-content: space-between; margin-top: auto; padding: var(--size-1) var(--size-1-5); }
+  .card__prices { display: flex; flex-direction: column; gap: 0.125rem; margin: 0; }
+  .card__price { font-size: 1.225rem; font-weight: var(--weight-semibold); }
+  .card__original { color: var(--neutral-light); }
+  .card :global(.card__cta) { flex: none; }
+  .card :global(.card__cta:hover) { background: var(--primary); color: var(--white); }
+</style>

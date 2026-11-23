@@ -1,6 +1,7 @@
 # 2ndmarket — landing page
 
-Astro static site (`dist/`), English first, i18n-ready. Team rules: **CLAUDE.md** (read it before your first PR).
+Astro static site (`dist/`) for https://2ndmarket.fr, in French. Rebuilt from Webflow: see
+**docs/webflow-migration.md**. Team rules: **CLAUDE.md** (read it before your first PR).
 
 ```sh
 npm install
@@ -12,49 +13,40 @@ npm run check            # types + content schema
 Deploy: `.github/workflows/deploy.yml` builds, then deploys to Cloudflare (Workers static assets,
 `wrangler.jsonc`): push to `main` = production, every pull request = preview URL posted as a PR comment.
 Repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
-Cloudflare account TODO, Worker `2mk-landing`:
-production https://2mk-landing.<account>.workers.dev (until the custom domain),
-previews `https://pr-<number>-2mk-landing.<account>.workers.dev`.
+Cloudflare Worker `2mk-landing` (account subdomain `vtquy98`):
+production https://2mk-landing.vtquy98.workers.dev (until the custom domain),
+previews `https://pr-<number>-2mk-landing.vtquy98.workers.dev`.
 
 ## Structure
 
 | Path | What |
 | --- | --- |
-| `src/i18n/config.ts` | Languages (`locales`), product name and store links (`PRODUCT`), `t(lang)` texts helper |
-| `src/i18n/<lang>.json` | Every text of the shared layout. `en.json` is the reference; a key missing in another language fails the build |
-| `src/components/home/Home.astro` | Home page sections (hero, features, FAQ, download), same for every language |
-| `src/components/` | Nav, footer, store buttons |
-| `src/layouts/BaseLayout.astro` | `<head>`: SEO, canonical, hreflang, Open Graph, JSON-LD |
-| `src/styles/global.css` | Design tokens (`:root`) and all styles |
-| `src/content/pages/<lang>/*.md` | Markdown pages (privacy, terms, SEO landing pages) → `/<slug>`, `/<lang>/<slug>` |
-| `src/content/blog/<lang>/*.md` | Blog posts → `/blog/<slug>`, `/<lang>/blog/<slug>` |
-| `src/lib/routes.ts` | Every URL of the site; same `translationKey` across languages = hreflang link |
-| `src/pages/[...path].astro` | Renders every route; `sitemap.xml`, `robots.txt`, `llms.txt` are generated next to it |
+| `src/pages/*.astro` | Static pages (home, a-propos, contact, faqs, hubs…), one file per URL |
+| `src/pages/<collection>/[slug].astro` | Template of a CMS collection (`/actualites/<slug>`, `/guide-scpi/<slug>`…) |
+| `src/content/<collection>/*.md` | CMS items: frontmatter = fields + `seo`, body = rich text (Markdown + raw HTML embeds) |
+| `src/collections/<collection>.ts` | Schema of each collection (shared card fields: `title`, `excerpt`, `image`, `date`, `category`) |
+| `src/data/seo/<page>.json` | `<head>` of each static page (title, description, OG, JSON-LD) |
+| `src/data/site-jsonld.json` | Organization / WebSite graph, added to every page |
+| `src/layouts/BaseLayout.astro` | `<head>` (SEO, JSON-LD, fonts, analytics), nav, footer, Google sources block |
+| `src/components/` | Shell (Nav, Footer…), `ui/` (Button, CtaCard, reveal…), one folder per page or template |
+| `src/scripts/` | Client scripts: `lead.ts` (all forms → Apps Script), alert widget, simulators |
+| `src/styles/global.css` | Design tokens (`:root`) and base styles |
+| `src/i18n/` | `PRODUCT` constants and the shared layout texts (`fr.json`) |
+| `public/assets/` | Every image/video/PDF of the site (self-hosted) |
+| `public/_redirects` | 301 rules (from Webflow), served by Cloudflare |
+| `public/llms.txt` | Map of the site for AI answer engines (hand-written) |
+| `scripts/webflow-import/` | One-off Webflow import (crawl, import, visual compare, URL parity). Delete after cut-over |
 | `QA/REVIEW-CHECKLIST.md` | What a human checks on the preview URL |
 | `.claude/skills/` | Claude Code skills |
 
-## Add a page
+## Add an article, a guide, a page
 
-`src/content/pages/en/terms.md` → `/terms`:
+- Article: `src/content/actualites/<slug>.md` → `/actualites/<slug>` (copy an existing file for the fields;
+  `category` is `SCPI`, `Viagers`, `Démembrements` or `Autres`; `date` = publication date). Same idea for
+  `guide-scpi`, `landing-pages`, `simulateurs`…
+- Static page: `src/pages/<slug>.astro` + `src/data/seo/<slug>.json`.
+- Changing a URL: add the old one to `public/_redirects`.
 
-```md
----
-title: "<title> and H1"
-description: "meta description (140–160 chars)"
-translationKey: "terms"   # same key on the other language versions
----
-Markdown body…
-```
+## Going live
 
-## Add a language (e.g. `fr`)
-
-1. Add `fr` to `locales` in `src/i18n/config.ts` (`base: '/fr'`).
-2. Add `src/i18n/fr.json` (copy `en.json`, translate the values, keep the keys).
-3. Add `src/content/pages/fr/*.md` (same `translationKey` as the English pages).
-
-Routes, hreflang, sitemap, llms.txt and the language switcher pick it up.
-
-## Before launch (TODO)
-
-- `site` in `astro.config.mjs` (real domain), `PRODUCT` in `src/i18n/config.ts`, every `TODO` text, privacy policy.
-- Custom domain on the `2mk-landing` Worker (Cloudflare dashboard), favicon and og image.
+See the cut-over checklist in docs/webflow-migration.md.

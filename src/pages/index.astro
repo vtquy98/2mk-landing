@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Hero from '../components/home/Hero.astro';
+import ListingSection from '../components/home/ListingSection.astro';
+import About from '../components/home/About.astro';
+import Steps from '../components/home/Steps.astro';
+import Split from '../components/home/Split.astro';
+import Links from '../components/home/Links.astro';
+import Testimonials from '../components/home/Testimonials.astro';
+import Faqs from '../components/home/Faqs.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
+import LatestNews from '../components/home/LatestNews.astro';
+import ScpiDirectory from '../components/home/ScpiDirectory.astro';
+import { PRODUCT } from '../i18n/config';
+import seo from '../data/seo/index.json';
+
+const ads = (await getCollection('scpi-listing', e => e.data.source === 'app')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout seo={seo} floatingButton>
+  <Hero
+    title="Achetez - Vendez des parts de SCPI au prix que vous négociez"
+    stats={[
+      { value: '1,9 Md€', label: 'De parts SCPI en attente de retrait' },
+      { value: '25 M€', label: "D'annonces publiées sur la plateforme" },
+      { value: '1500+', label: 'Investisseurs inscrits' },
+      { value: '100%', label: 'Des cessions encadrées par notaire' },
+    ]}
+  />
+  <ListingSection entries={ads} live />
+  <About>
+    1,9 milliards d'euros de parts SCPI sont en file d'attente de retrait au 30/06/2026 (ASPIM). <br />2nd Market permet aux vendeurs et acheteurs de se rencontrer, négocier librement et finaliser la transaction avec un notaire.<br />L'argent est versé directement sur le compte séquestre du notaire — jamais chez 2nd Market.<br />1 500+ utilisateurs inscrits. Mentionné dans Le Figaro, Mieux Vivre Votre Argent et Le Particulier.<br /><a href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</a>
+  </About>
+  <Steps />
+  <Split kicker="Acheter SCPI" title="Achetez des parts SCPI avec décote">
+    <p class="text-medium">
+      En souscription directe, la commission de souscription représente le plus souvent 8 à 12 % du prix de part, non investis. <br />Sur le marché secondaire, ces frais n'existent pas.<br />Vous achetez à un associé, à un prix négocié. Même dividende, meilleur rendement d'entrée.<br />Faire une offre est gratuit. Frais de service uniquement à l'acceptation de l'offre.<br />Publiez une annonce <strong>Wanted</strong> pour indiquer ce que vous cherchez.
+    </p>
+    <div><Button href={`${PRODUCT.app}/scpi`}>Voir les annonces SCPI</Button></div>
+  </Split>
+  <Links
+    title="SCPI, viager, taxe foncière : une plateforme"
+    cards={[
+      {
+        title: 'SCPI',
+        href: `${PRODUCT.app}/scpi`,
+        image: '/assets/674433336e3a38690de3f8e0_link.avif',
+        variants: [500, 800, 1080],
+        width: 1896,
+        height: 1026,
+        alt: 'Achat et revente de parts de SCPI entre particuliers',
+        cta: 'Voir les annonces SCPI',
+        html: 'Profitez de notre plateforme en <strong>accès libre</strong> pour explorer le <strong>marché secondaire des SCPI</strong>.<br>Publiez votre annonce de <strong>vente ou d’achat de parts SCPI</strong>, fixez votre prix et recevez des offres.<br>Nos <strong>simulateurs</strong> (frais, <strong>décote</strong>, rendement) vous aident à comparer et estimer le net.<br>Chaque transaction est <strong>sécurisée par notaire</strong> : vérification, séquestre des fonds, transfert des parts',
+      },
+      {
+        title: 'Viagers',
+        href: `${PRODUCT.app}/viager`,
+        image: '/assets/67443333fa2ceafe83c87237_link-2.avif',
+        variants: [500, 800],
+        width: 1896,
+        height: 1026,
+        alt: 'Annonces de viager entre particuliers',
+        cta: 'Voir les annonces viager',
+        html: `<strong>Le Viager est maintenant disponible</strong><br>Déposez votre annonce <strong>gratuitement</strong> et explorez les premières opportunités publiées.<br>Accédez à nos outils dédiés : simulateurs viager (bouquet, rente, DUH), calculs transparents et guides pratiques pour comprendre chaque étape.<br>Créez votre compte sur <strong>https://app.2ndmarket.fr/viager </strong>pour publier votre annonce ou suivre les nouvelles mises en ligne.`,
+      },
+      {
+        title: 'Taxe foncière',
+        href: `${PRODUCT.app}/taxe-fonciere`,
+        external: true,
+        image: '/assets/6abdfc97a103bb08375e64cc_tax.avif',
+        variants: [500, 800, 1080],
+        width: 1280,
+        height: 1178,
+        alt: "Vérification de la fiche d'évaluation 6675-M de la taxe foncière",
+        cta: 'Vérifier ma taxe foncière',
+        html: "La taxe foncière est calculée sur la valeur locative cadastrale du logement, diminuée de 50 % (art. 1388 du CGI). Cette valeur repose sur la fiche d'évaluation 6675-M, absente de l'avis : surface, catégorie, éléments de confort. Demandez la fiche avec un courrier pré-rempli, ou confiez son analyse à Solucia, spécialiste de la protection juridique. Rien n'est contesté sans votre signature. À partir de 9 € TTC.",
+      },
+    ]}
+  />
+  <Testimonials />
+  <Faqs list="/" title="Questions fréquentes sur la revente SCPI" />
+  <CtaCard
+    title="Simulateurs gratuits : frais, rendement, fiscalité, viager"
+    text="Estimez votre net vendeur ou acheteur en 30 secondes. Calculez le rendement effectif avec décote. Simulez la taxe foncière, l'IFI ou un viager."
+    href="/simulateurs"
+    label="Accéder aux simulateurs"
+  />
+  <LatestNews title="Actualités SCPI et viager">
+    <div class="center"><Button href="/actualites-conseils">Tous les articles</Button></div>
+  </LatestNews>
+  <ScpiDirectory title="SCPI disponibles sur le marché secondaire" />
+</BaseLayout>
+
+<style>
+  .center { display: flex; justify-content: center; padding-top: var(--size-2); }
+</style>

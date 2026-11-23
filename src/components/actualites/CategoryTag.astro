@@ -1,0 +1,18 @@
+---
+// Category pill of an article ("SCPI", "Viagers"…), on the article header and on cards.
+const { label } = Astro.props as { label: string };
+---
+
+<span class="tag">{label}</span>
+
+<style>
+  .tag {
+    display: inline-block;
+    padding: var(--size-0-25) var(--size-0-75);
+    border-radius: var(--radius-round);
+    background: var(--secondary-lightest);
+    color: var(--secondary);
+    font-weight: var(--weight-regular);
+    text-transform: uppercase;
+  }
+</style>

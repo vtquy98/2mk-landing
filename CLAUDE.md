@@ -1,10 +1,11 @@
 # 2ndmarket landing — rules for Claude Code (and humans)
 
-Repo: github.com/vtquy98/2mk-landing (owner and final reviewer: Quy). Astro 7 static site,
-deployed to Cloudflare Workers static assets by GitHub Actions. Structure and commands: README.md.
+Repo: github.com/vtquy98/2mk-landing (owner and final reviewer: Quy). Astro 7 static site for https://2ndmarket.fr
+(French), deployed to Cloudflare Workers static assets by GitHub Actions. Structure and commands: README.md.
+Migration from Webflow in progress: docs/webflow-migration.md (rules, inventory, status).
 Never push to `main`, never merge a PR, never run `wrangler deploy` by hand (CI deploys), never touch
 secrets (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`) or add one to a file.
-Product claims: TODO (what we may and may not say about 2ndmarket). Never write a price: prices come from the stores.
+Product claims: 2nd Market is a matchmaking platform (ni CGP, ni CIF, ni société de gestion); transactions are signed before a notary. Keep the compliance wording of existing pages.
 
 ## Rule 1 — Git workflow (mandatory)
 1. Before any work (feature, fix, text, blog post): `git checkout main && git pull`, then `git log --oneline -10`
@@ -14,20 +15,21 @@ Product claims: TODO (what we may and may not say about 2ndmarket). Never write 
 3. One PR = one topic. No unrequested refactors, renames or "while I'm here" changes.
 4. Done and `npm run check && npm run build` pass: commit (`feat: …`, `fix: …`, `copy: …`, `blog: …`), push the branch,
    `gh pr create` filling `.github/pull_request_template.md` (what changed, Rule 5 items).
-5. CI comments a preview URL on the PR (`https://pr-<number>-2mk-landing.<account>.workers.dev`); share it.
+5. CI comments a preview URL on the PR (`https://pr-<number>-2mk-landing.vtquy98.workers.dev`); share it.
 6. Quy reviews and merges; merging deploys to production.
 
 ## Rule 2 — One source of truth
 | What | Lives only in |
 | --- | --- |
-| Every visible text of the shared layout (nav, home sections, footer, 404) | `src/i18n/<lang>.json` |
-| Product name, App Store / Google Play links | `PRODUCT` in `src/i18n/config.ts` |
-| Languages, URL prefixes | `locales` in `src/i18n/config.ts` |
-| Colors, fonts, spacing, radii | tokens on `:root` in `src/styles/global.css` |
+| Texts of the shared layout (nav, footer, 404) | `src/i18n/<lang>.json` |
+| Copy of a static page | that page (`src/pages/<page>.astro` or its sections in `src/components/<page>/`) |
+| CMS content (articles, guides, SCPI pages, simulators…) | `src/content/<collection>/<slug>.md`, schema in `src/collections/` |
+| `<head>` of a static page (title, description, JSON-LD…) | `src/data/seo/<page>.json` |
+| Product name, app URLs, contact email | `PRODUCT` in `src/i18n/config.ts` |
+| Colors, fonts, spacing, radii, shadows | tokens on `:root` in `src/styles/global.css` |
 | Domain | `site` in `astro.config.mjs` |
-| URLs of the site | `src/lib/routes.ts` |
-Components never contain a hard-coded sentence, a raw color (`#…`, `rgb(…)`), a store URL or a domain.
-A new text = a new key in `en.json` (`section.key`, camelCase, describes the meaning) used as `t(lang).section.key`.
+| Redirects | `public/_redirects` |
+Components never contain a raw color (`#…`, `rgb(…)`) or a domain; site-wide sentences live in `<lang>.json`.
 Code that bypasses this is a bug, even if it "works".
 
 ## Rule 3 — Every change applies to every language
@@ -42,7 +44,7 @@ PR, say so explicitly in the PR.
 - S3 Every `<img>` has `alt` (empty `alt=""` only for decoration) and `width`/`height` (no layout shift).
 - S4 Internal links are root-relative, resolve to a built page, and have no trailing slash (`/blog`, not `/blog/`).
 - S5 No external `<script>` (analytics, chat, A/B tools) unless Quy approved it in the PR.
-- S6 No price and no store URL written in `src/i18n` or `src/content` (store links come from `PRODUCT`).
+- S6 No URL of the Webflow CDN (`website-files.com`): every asset is self-hosted in `public/assets/`.
 - S7 Readable and usable without JavaScript; no horizontal scroll at 360 px width.
 - S8 Keyboard: every link and button reachable with Tab, visible focus ring; contrast AA (4.5:1 for text).
 - S9 Motion respects `prefers-reduced-motion` (global rule in `global.css`; don't override it).

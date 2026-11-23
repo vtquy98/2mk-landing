@@ -1,0 +1,62 @@
+---
+// Questionnaire funnel (no nav, no footer). The questions are still Webflow's placeholders: same as live.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/static/PageHeader.astro';
+import LeadForm from '../components/static/LeadForm.astro';
+import Field from '../components/static/Field.astro';
+import RadioGroup from '../components/static/RadioGroup.astro';
+import seo from '../data/seo/questionnaire.json';
+
+const questions = [1, 2, 3, 4, 5].map(n => ({
+  name: `q${n}`,
+  text: 'This is some text inside of a div block.',
+  options: ['Anwser', 'Answer', 'Anwer', 'Anwser'],
+}));
+---
+
+<BaseLayout seo={seo} nav={false} footer={false} floatingButton={false}>
+  <PageHeader title="Questionnarie" bare />
+  <section class="gutter">
+    <div class="container section--small">
+      <div class="body">
+        <LeadForm leadAction="questionnaire" label="Questionnaire" submit="Envoyer & Découvrir 2nd Market" wideSubmit>
+          <div class="card">
+            <h2 class="h4">Information</h2>
+            <div class="pair">
+              <Field label="Prénom" name="firstName" placeholder="Entrez votre Prénom" autocomplete="given-name" required />
+              <Field label="Nom" name="lastName" placeholder="Entrez votre Nom" autocomplete="family-name" required />
+            </div>
+            <Field label="Email" name="email" type="email" placeholder="Utilisez une adresse valide" autocomplete="email" required />
+          </div>
+          <div class="card">
+            <h2 class="h4">Question</h2>
+            {questions.map(q => <RadioGroup name={q.name} legend={q.text} options={q.options} required />)}
+          </div>
+        </LeadForm>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .body { width: 60%; margin-inline: auto; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1-5);
+    padding: var(--size-2-5);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+  }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-1); }
+
+  @media (max-width: 991px) { .body { width: 100%; } }
+  @media (max-width: 767px) { .card { padding: 2rem; } }
+  @media (max-width: 479px) {
+    .section--small { padding-block: var(--size-1) var(--size-1-5); }
+    .card { padding: var(--size-1); border-radius: var(--radius-small); }
+    .card h2 { font-size: var(--h3-size); }
+    .pair { grid-template-columns: 1fr; }
+  }
+</style>

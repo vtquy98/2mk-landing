@@ -1,0 +1,104 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "FinancialService"
+      ],
+      "@id": "https://2ndmarket.fr/#organization",
+      "name": "2nd Market",
+      "alternateName": "2ndMarket",
+      "legalName": "SAS 2nd Market",
+      "url": "https://2ndmarket.fr",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/assets/68cd3b3510c084dec3e8d81f_2nd-market-logo-1200x600.png",
+        "width": 1200,
+        "height": 600
+      },
+      "image": "/assets/68cd3b3510c084dec3e8d81f_2nd-market-logo-1200x600.png",
+      "description": "Plateforme de mise en relation entre investisseurs pour la revente de parts de SCPI sur le marché secondaire de gré à gré, avec décote, encadrée par notaire. 2nd Market n'est ni CGP, ni CIF, ni société de gestion.",
+      "slogan": "SCPI à décote : achetez ou revendez entre particuliers",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "426 Rue des Divaises",
+        "addressLocality": "Dives-sur-Mer",
+        "postalCode": "14160",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.2842,
+        "longitude": -0.0977
+      },
+      "telephone": "+33186481894",
+      "email": "contact@2ndmarket.fr",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contact@2ndmarket.fr",
+        "contactType": "customer service",
+        "availableLanguage": [
+          "fr",
+          "en"
+        ],
+        "areaServed": "FR"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/2nd-market-revente-scpi",
+        "https://www.facebook.com/profile.php?id=61576911579063",
+        "https://www.youtube.com/channel/UCX4g_ay_2RxJG2Ox7BhlI-w"
+      ],
+      "foundingDate": "2024",
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "Finance Innovation",
+          "url": "https://finance-innovation.org"
+        },
+        {
+          "@type": "Organization",
+          "name": "Normandy French Tech"
+        }
+      ],
+      "knowsAbout": [
+        "SCPI",
+        "Revente SCPI",
+        "Marché secondaire SCPI",
+        "Viager",
+        "Démembrement SCPI",
+        "Nue-propriété SCPI",
+        "Usufruit SCPI",
+        "Gré à gré immobilier"
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      },
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://2ndmarket.fr/#website",
+      "url": "https://2ndmarket.fr",
+      "name": "2nd Market",
+      "description": "Plateforme de revente de parts de SCPI et de viager entre investisseurs, sur le marché secondaire de gré à gré, encadrée par notaire.",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://2ndmarket.fr/#organization"
+      }
+    }
+  ]
+}

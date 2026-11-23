@@ -1,16 +1,45 @@
 ---
+// Custom 404 ("Page introuvable"), same look as https://2ndmarket.fr/404 (no footer there).
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { defaultLocale, t } from '../i18n/config';
+import Button from '../components/ui/Button.astro';
+import { PRODUCT, t } from '../i18n/config';
+import seo from '../data/seo/404.json';
 
-const tx = t(defaultLocale).notFound;
+const d = t().notFound;
 ---
 
-<BaseLayout lang={defaultLocale} path="/404" title={tx.title} description={tx.text} robots="noindex">
-  <section class="section">
-    <div class="container container--narrow">
-      <h1>{tx.title}</h1>
-      <p>{tx.text}</p>
-      <a class="btn" href="/">{tx.home}</a>
+<BaseLayout seo={seo} footer={false}>
+  <section class="not-found gutter">
+    <div class="art">
+      <img src="/assets/6809c2d390b5d3dba26cdf31_404.avif" alt={d.imageAlt} width="1366" height="1106" fetchpriority="high" />
+      <img class="wrench" src="/assets/404-wrench.svg" alt="" width="430" height="430" />
+    </div>
+    <div class="content">
+      <h1 class="h1">{d.title}</h1>
+      <p class="text-medium">{d.text}</p>
+    </div>
+    <div class="actions">
+      <Button href="/">{d.home}</Button>
+      <Button href={`${PRODUCT.app}/scpi`} variant="secondary">{d.listings}</Button>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-1-5);
+    min-height: calc(100svh - 8rem); /* centred in the viewport like the live page */
+    text-align: center;
+  }
+  .art { position: relative; width: 12rem; height: 9.71516rem; margin-left: 4rem; }
+  .art img { width: 100%; height: 100%; object-fit: contain; }
+  .art .wrench { position: absolute; top: -6%; right: 0; width: 8rem; height: 8rem; }
+  .content { display: flex; flex-direction: column; gap: var(--size-0-75); max-width: 48rem; }
+  .h1 { padding-bottom: 0.5rem; }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--size-0-5); padding-top: var(--size-1); }
+  @media (max-width: 991px) { .not-found { gap: var(--size-2); } }
+</style>

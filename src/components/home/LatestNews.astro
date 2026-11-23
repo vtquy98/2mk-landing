@@ -1,0 +1,39 @@
+---
+// Latest articles of the "actualites" collection (getActualites(): newest first, Webflow's same-day order), with the
+// cards of the actualites hub. Renders nothing when empty.
+import Eyebrow from './Eyebrow.astro';
+import ArticleGrid from '../actualites/ArticleGrid.astro';
+import { getActualites } from '../../lib/actualites';
+
+interface Props {
+  title: string;
+  eyebrow?: string; // pill above the title
+  count?: number;
+}
+const { title, eyebrow, count = 3 } = Astro.props;
+const posts = (await getActualites()).slice(0, count);
+---
+
+{
+  posts.length > 0 && (
+    <section class="news gutter">
+      <div class="container section">
+        {eyebrow && <div class="news__eyebrow" data-reveal><Eyebrow>{eyebrow}</Eyebrow></div>}
+        <h2 class="h2 news__title" data-reveal>{title}</h2>
+        <div class="news__grid"><ArticleGrid entries={posts} /></div>
+        <slot />
+      </div>
+    </section>
+  )
+}
+
+<script>
+  import '../ui/reveal';
+</script>
+
+<style>
+  .news__title { margin: 0; text-align: center; }
+  .news__eyebrow { display: flex; justify-content: center; margin-bottom: var(--size-1); }
+  .news__grid { padding-top: var(--size-2); }
+  @media (max-width: 767px) { .news__grid { padding-top: 1.5rem; } }
+</style>

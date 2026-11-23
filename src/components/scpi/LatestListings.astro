@@ -1,0 +1,128 @@
+---
+// "Annonces SCPI": the latest listings (collection scpi-listing), shown at the end of every /2nd-seo and /seo page.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Button from '../ui/Button.astro';
+import { PRODUCT } from '../../i18n/config';
+import Icon from './Icon.astro';
+import { listingIcons as icons } from './icons';
+
+// Fields of a listing card. The scpi-listing schema is owned by the home page; these are the names this card reads.
+interface ListingFields {
+  url: string; // the listing in the app
+  price: number; // asking price (€)
+  marketValue: number; // value of the shares at market price (€), shown struck through
+  discount: number; // % below market value
+  yield: number; // standard annual yield (%)
+  annualIncome: number; // € per year
+  effectiveYield: number; // yield on the asking price (%)
+}
+type Listing = CollectionEntry<'scpi-listing'>['data'] & Partial<ListingFields>;
+
+const listings = (await getCollection('scpi-listing'))
+  .map(e => e.data as Listing)
+  .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0))
+  .slice(0, 3);
+const fmt = (n?: number) => (n === undefined ? '' : n.toLocaleString('fr-FR', { maximumFractionDigits: 2 }));
+
+const meta = (l: Listing) => [
+  { icon: icons.building, value: fmt(l.marketValue), label: 'Valeur Marchande des Parts' },
+  { icon: icons.piggy, value: fmt(l.yield), label: 'Rendement Annuel Standard' },
+  { icon: icons.cash, value: fmt(l.annualIncome), label: 'Revenu Annuel (Cash)' },
+  { icon: icons.growth, value: fmt(l.effectiveYield), label: 'Rendement Effectif avec Réduction' },
+];
+---
+
+<section class="gutter">
+  <div class="container section--small listings">
+    <div class="head">
+      <h2 class="heading">Annonces SCPI</h2>
+      <Button href={`${PRODUCT.app}/scpi`} variant="secondary" size="small" class="more">
+        Voir plus d'annonces
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M17.25 8.25L21 12M21 12L17.25 15.75M21 12H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </Button>
+    </div>
+    <ul class="list" role="list">
+      {
+        listings.map(l => (
+          <li>
+            <a class="card" href={l.url}>
+              <div class="top">
+                <div class="logo">{l.image && <img src={l.image} alt={l.imageAlt ?? ''} width="85" height="48" loading="lazy" decoding="async" />}</div>
+                <div class="price">
+                  <p class="discount">
+                    <s>{fmt(l.marketValue)}</s>
+                    <span class="sep" aria-hidden="true" />
+                    {fmt(l.discount)} Réduction
+                  </p>
+                  <p class="amount">{fmt(l.price)}</p>
+                </div>
+              </div>
+              <h3 class="title">{l.title}</h3>
+              <ul class="meta" role="list">
+                {meta(l).map(m => (
+                  <li>
+                    <Icon icon={m.icon} />
+                    <span>
+                      <strong>{m.value}</strong>
+                      <small>{m.label}</small>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <span class="cta">Voir l'annonce</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .head { display: flex; gap: var(--size-1); justify-content: space-between; align-items: center; }
+  .heading { margin: 0; padding-bottom: var(--size-0-125); font-size: var(--size-3); animation: fade 0.8s var(--ease-out) both; }
+  .more { display: flex; gap: var(--size-0-5); align-items: center; }
+  .more:hover { background: var(--primary); color: var(--secondary-lightest); }
+  .more svg { width: var(--size-1-5); height: var(--size-1-5); }
+  .list { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: var(--size-1-5) 0 0; list-style: none; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--size-1-5);
+    height: 100%;
+    padding: var(--size-1-5);
+    border-radius: var(--radius-medium);
+    background: var(--white);
+    color: var(--color-text);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xxlarge); }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .logo { display: flex; align-items: center; justify-content: center; height: var(--size-3); aspect-ratio: 16 / 9; overflow: clip; border-radius: var(--size-0-75); }
+  .logo img { height: 100%; object-fit: contain; }
+  .price { display: flex; flex-direction: column; align-items: flex-end; gap: var(--size-0-5); }
+  .price p { margin: 0; }
+  .discount { display: flex; gap: var(--size-0-25); align-items: center; font-size: var(--size-0-75); font-weight: var(--weight-regular); line-height: var(--lh-1-5); color: var(--neutral-large); }
+  .sep { width: 1px; height: var(--size-1); background: var(--neutral-light); }
+  .amount { font-size: var(--size-1-5); font-weight: var(--weight-semibold); line-height: var(--lh-1-2); letter-spacing: var(--ls-4); }
+  .title { margin: 0; padding-top: var(--size-1); text-wrap: balance; font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); }
+  .meta { display: flex; flex-direction: column; gap: var(--size-1); margin: 0; padding: 0; list-style: none; }
+  .meta li { display: flex; gap: var(--size-0-5); align-items: center; }
+  .meta li > :global(svg) { flex: none; width: var(--size-2); color: var(--neutral-medium); }
+  .meta span { display: flex; flex-direction: column; gap: var(--size-0-125); }
+  .meta strong { font-weight: var(--weight-medium); }
+  .meta small { font-size: 0.875rem; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); color: var(--neutral-large); }
+  .cta {
+    padding: var(--size-0-5) var(--size-1-25);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-round);
+    color: var(--primary);
+    text-align: center;
+  }
+  @keyframes fade { from { opacity: 0; transform: translateY(0.5em); } }
+  @media (max-width: 991px) { .list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 767px) { .list { grid-template-columns: 1fr; } .card { padding: var(--size-1-25); } }
+</style>

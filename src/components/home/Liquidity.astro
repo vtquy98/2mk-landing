@@ -1,0 +1,40 @@
+---
+// Blue band: "Vendre des parts de SCPI ou un viager en gré à gré", app icon between dashed lines, ASPIM figure, CTA.
+import Button from '../ui/Button.astro';
+import Eyebrow from './Eyebrow.astro';
+import { PRODUCT } from '../../i18n/config';
+---
+
+<section class="liquidity gutter">
+  <img class="liquidity__bg" src="/assets/6a0ae6434725e32d8837a83e_benefit_background.avif" alt="" width="2848" height="3060" loading="lazy" decoding="async" />
+  <div class="container section liquidity__inner">
+    <div class="liquidity__heading" data-reveal>
+      <Eyebrow tone="glass">SCPI — Marché secondaire actif</Eyebrow>
+      <h2 class="h2 liquidity__title">Vendre des parts de SCPI ou un viager en gré à gré</h2>
+    </div>
+    <div class="liquidity__content">
+      <span class="liquidity__line" aria-hidden="true"></span>
+      <img class="liquidity__icon" src="/assets/6a055796372a42c76d245371_liquidity.avif" alt="Icône d'annonce 2nd Market" width="560" height="560" loading="lazy" decoding="async" />
+      <span class="liquidity__line" aria-hidden="true"></span>
+      <p class="text-medium liquidity__text">Au 31/12/2025, 2,79 Md€ de parts SCPI étaient en attente de retrait chez les sociétés de gestion (ASPIM). Le marché secondaire offre une voie de sortie quand la file d'attente s'allonge. Le viager et les actifs immobiliers peu liquides connaissent les mêmes frictions.</p>
+      <div class="liquidity__action"><Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../ui/reveal';
+</script>
+
+<style>
+  .liquidity { position: relative; margin: var(--size-0-5); overflow: clip; border-radius: var(--radius-main); color: var(--color-text-light); }
+  .liquidity__bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .liquidity__inner { position: relative; display: flex; flex-direction: column; gap: var(--size-2); align-items: center; }
+  .liquidity__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: center; max-width: 48rem; text-align: center; }
+  .liquidity__title { margin: 0; }
+  .liquidity__content { display: flex; flex-direction: column; gap: var(--size-1); align-items: center; }
+  .liquidity__line { height: var(--size-3); border: 0.5px dashed var(--color-text-light); opacity: 0.5; }
+  .liquidity__icon { width: var(--size-12); height: auto; rotate: 8deg; }
+  .liquidity__text { max-width: 35rem; margin: 0; text-align: center; }
+  .liquidity__action { padding-top: var(--size-2); }
+</style>
