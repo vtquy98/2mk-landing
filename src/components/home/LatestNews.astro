@@ -1,5 +1,6 @@
 ---
 // Latest articles of the "actualites" collection (most recent `date` first), as cards. Renders nothing when empty.
+import './reveal.css';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -17,7 +18,7 @@ const posts = (await getCollection('actualites'))
   posts.length > 0 && (
     <section class="news gutter">
       <div class="container section">
-        <h2 class="h2 news__title">{title}</h2>
+        <h2 class="h2 news__title reveal">{title}</h2>
         <ul class="news__grid" role="list">
           {posts.map(p => (
             <li>
@@ -72,3 +73,7 @@ const posts = (await getCollection('actualites'))
   @media (max-width: 767px) { .news__grid { padding-top: 1.5rem; } }
   @media (max-width: 479px) { .news__grid { grid-template-columns: 1fr; } }
 </style>
+
+<script>
+  import './reveal';
+</script>

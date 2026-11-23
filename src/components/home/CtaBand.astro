@@ -1,12 +1,13 @@
 ---
 // Dark rounded call-to-action block with the "2nd Market" wordmark in the background (simulators).
+import './reveal.css';
 import Button from '../ui/Button.astro';
 ---
 
 <section class="cta gutter">
   <div class="container section">
     <div class="cta__box">
-      <h2 class="h2 cta__title">Simulateurs gratuits : frais, rendement, fiscalité, viager</h2>
+      <h2 class="h2 cta__title reveal">Simulateurs gratuits : frais, rendement, fiscalité, viager</h2>
       <p class="text-medium cta__text">Estimez votre net vendeur ou acheteur en 30 secondes. Calculez le rendement effectif avec décote. Simulez la taxe foncière, l'IFI ou un viager.</p>
       <Button href="/simulateurs">Accéder aux simulateurs</Button>
       <img class="cta__mark" src="/assets/67443b2e9369c2292c34f558_2nd-Market.svg" alt="" width="799" height="125" loading="lazy" />
@@ -36,3 +37,7 @@ import Button from '../ui/Button.astro';
   @media (max-width: 991px) { .cta__box { width: 100%; padding: 4rem; } }
   @media (max-width: 767px) { .cta__box { padding: var(--size-2); } }
 </style>
+
+<script>
+  import './reveal';
+</script>

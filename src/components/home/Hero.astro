@@ -32,8 +32,8 @@ const press = [
         <span class="hero__badge-muted">Transactions sécurisées par </span>Notaire
       </Eyebrow>
       <h1 class="h1 hero__title">{title}</h1>
-      <p class="hero__lead">Gré à gré · notaire · 4-8 semaines vs 600+ jours</p>
-      <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button>
+      <slot name="lead"><p class="hero__lead">Gré à gré · notaire · 4-8 semaines vs 600+ jours</p></slot>
+      <slot name="actions"><Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button></slot>
       <div class="hero__press">
         <p class="hero__press-label">On parle de nous</p>
         <ul class="hero__logos" role="list">
@@ -114,7 +114,7 @@ const press = [
     backdrop-filter: blur(8px);
     text-align: center;
   }
-  .hero__stat-value { margin: 0; }
+  .hero__stat-value { margin-block: var(--size-0-5); }
   .hero__stat-label { margin: 0; color: var(--white); opacity: 0.6; text-wrap: balance; }
   @media (max-width: 767px) {
     .hero__stat { gap: var(--size-1-5); padding: var(--size-1); }

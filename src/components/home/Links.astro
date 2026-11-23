@@ -1,4 +1,5 @@
 ---
+import './reveal.css';
 // "Une plateforme": one card per product (SCPI, viager, taxe foncière), photo background, whole card is the link.
 interface Card {
   title: string;
@@ -22,7 +23,7 @@ const srcset = (c: Card) => [...c.variants.map(w => `${c.image.replace(/(\.\w+)$
 
 <section class="links gutter">
   <div class="container section">
-    <h2 class="h2 links__title">{title}</h2>
+    <h2 class="h2 links__title reveal">{title}</h2>
     <ul class="links__grid" role="list">
       {
         cards.map(c => (
@@ -77,3 +78,7 @@ const srcset = (c: Card) => [...c.variants.map(w => `${c.image.replace(/(\.\w+)$
     .links__card { padding: 2rem; }
   }
 </style>
+
+<script>
+  import './reveal';
+</script>

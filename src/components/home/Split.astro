@@ -1,5 +1,6 @@
 ---
 // Two-column text section: small label on the left, heading (+ slot "lead" right under it) and content (slot) on the right ("Qui sommes-nous ?", "Acheter SCPI").
+import './reveal.css';
 interface Props {
   kicker: string;
   title: string;
@@ -13,7 +14,7 @@ const { kicker, title, class: cls } = Astro.props;
     <p class="split__kicker">{kicker}</p>
     <div class="split__content">
       <div class="split__heading">
-        <h2 class="h2">{title}</h2>
+        <h2 class="h2 reveal">{title}</h2>
         <slot name="lead" />
       </div>
       <slot />
@@ -33,3 +34,7 @@ const { kicker, title, class: cls } = Astro.props;
     .split__content { gap: var(--size-1-5); }
   }
 </style>
+
+<script>
+  import './reveal';
+</script>

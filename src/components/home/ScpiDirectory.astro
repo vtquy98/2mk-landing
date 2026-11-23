@@ -1,6 +1,7 @@
 ---
 // "SCPI disponibles sur le marché secondaire": links to /2nd-seo pages (name + management company), in the order
 // recorded from the live home page (src/data/home/scpi-order.json). Renders nothing while the collection is empty.
+import './reveal.css';
 import { getCollection } from 'astro:content';
 import order from '../../data/home/scpi-order.json';
 
@@ -19,7 +20,7 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
   items.length > 0 && (
     <section class="directory gutter">
       <div class="container section">
-        <h2 class:list={[headingClass, 'directory__title']}>{title}</h2>
+        <h2 class:list={[headingClass, 'directory__title reveal']}>{title}</h2>
         <ul class="directory__grid" role="list">
           {items.map(s => (
             <li class="directory__item">
@@ -44,3 +45,7 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
   @media (max-width: 767px) { .directory__grid { grid-template-columns: repeat(4, 1fr); padding-top: 1.5rem; } }
   @media (max-width: 479px) { .directory__grid { grid-template-columns: 1fr 1fr; } }
 </style>
+
+<script>
+  import './reveal';
+</script>
