@@ -3,6 +3,7 @@
 // ≤ 767px the menu collapses behind the burger. Without JavaScript every link stays reachable:
 // the mega menu and the account menu open on hover/focus (CSS), the mobile menu is shown expanded.
 import { PRODUCT, t } from '../i18n/config';
+import { pagePath } from '../lib/routes';
 import Button from './ui/Button.astro';
 import Chevron from './shell/icons/chevron-down.svg';
 import AccountIcon from './shell/icons/account.svg';
@@ -15,7 +16,7 @@ import Dismemberment from './shell/icons/dismemberment.svg';
 import ViagerGuide from './shell/icons/viager-guide.svg';
 
 const d = t().nav;
-const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const path = pagePath(Astro.url);
 const current = (href: string) => (href === path ? 'page' : undefined);
 
 const links = [
@@ -427,7 +428,7 @@ const account = [
     }
     .site-header:has(.burger[aria-expanded='true']) .menu { visibility: visible; opacity: 1; transform: none; }
     /* No JavaScript: the menu is simply shown under the bar. */
-    :global(html:not(.js)) .menu { position: static; visibility: visible; opacity: 1; transform: none; }
+    :global(html:not(.js)) .menu { position: static; width: 100%; padding-inline: 0; visibility: visible; opacity: 1; transform: none; }
     :global(html:not(.js)) .bar { flex-wrap: wrap; height: auto; min-height: 4rem; }
     :global(html:not(.js)) .burger { display: none; }
 

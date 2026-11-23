@@ -9,6 +9,7 @@ import FloatingButton from '../components/FloatingButton.astro';
 import { defaultLocale, locales, PRODUCT, t } from '../i18n/config';
 import siteGraph from '../data/site-jsonld.json';
 import type { Seo } from '../lib/seo';
+import { pagePath } from '../lib/routes';
 
 interface Props {
   seo: Seo;
@@ -21,7 +22,7 @@ interface Props {
 const { seo, lang = defaultLocale, nav = true, footer = true, floatingButton = false } = Astro.props;
 const locale = locales[lang];
 const abs = (p?: string) => (p ? new URL(p, Astro.site).href : undefined);
-const canonical = seo.canonical ?? abs(Astro.url.pathname);
+const canonical = seo.canonical ?? abs(pagePath(Astro.url));
 const ogImage = abs(seo.ogImage);
 const twitterImage = abs(seo.twitterImage);
 ---

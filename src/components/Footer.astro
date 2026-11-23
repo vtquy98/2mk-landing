@@ -2,6 +2,7 @@
 // Site footer. On large screens it is "revealed": it sticks to the bottom of the viewport under the page
 // (BaseLayout's .page-body sits above it with rounded bottom corners), pure CSS.
 import { PRODUCT, t } from '../i18n/config';
+import { pagePath } from '../lib/routes';
 import { PRIVACY_URL } from '../scripts/lead';
 import FinanceInnovation from './shell/icons/finance-innovation.svg';
 import Docusign from './shell/icons/docusign.svg';
@@ -12,7 +13,7 @@ import Youtube from './shell/icons/youtube.svg';
 import Check from './shell/icons/check-circle.svg';
 
 const d = t().footer;
-const path = Astro.url.pathname.replace(/(.)\/$/, '$1');
+const path = pagePath(Astro.url);
 const current = (href: string) => (href === path ? 'page' : undefined);
 const newTab = { target: '_blank', rel: 'noopener' };
 
@@ -209,6 +210,8 @@ const year = new Date().getFullYear();
      Only when the whole footer fits in the viewport, otherwise its top could never be reached. */
   @media (min-width: 992px) and (min-height: 50rem) {
     .site-footer { position: sticky; bottom: 0; z-index: 1; min-height: 100vh; gap: 0; }
+    /* Keyboard: while a footer control has focus the footer is back in the flow, so the browser scrolls to it. */
+    .site-footer:focus-within { position: relative; }
   }
 
   .grid {

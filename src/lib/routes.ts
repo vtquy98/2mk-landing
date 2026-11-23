@@ -22,3 +22,6 @@ export async function sitemapUrls(): Promise<SitemapUrl[]> {
   );
   return [...statics, ...entries.flat()];
 }
+
+/** Path of the page being rendered, as the site serves it (build.format 'file' renders /faqs as /faqs.html). */
+export const pagePath = (url: URL) => url.pathname.replace(/(\/index)?\.html$/, '').replace(/(.)\/$/, '$1') || '/';
