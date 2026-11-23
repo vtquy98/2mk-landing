@@ -1,0 +1,40 @@
+---
+// Breadcrumb of the articles pages. The last item is the current page (no link). `tone="light"` on a dark header.
+interface Props {
+  items: { label: string; href?: string }[];
+  tone?: 'dark' | 'light';
+}
+const { items, tone = 'dark' } = Astro.props;
+---
+
+<nav class:list={['breadcrumb', `breadcrumb--${tone}`]} aria-label="Fil d'Ariane">
+  <ol>
+    {
+      items.map((item, i) => (
+        <li>
+          {i > 0 && (
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M6 3l5 5-5 5" />
+            </svg>
+          )}
+          {item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  ol { display: flex; justify-content: center; align-items: center; margin: 0; padding: 0; list-style: none; }
+  li { display: flex; flex: none; align-items: center; white-space: nowrap; }
+  li:last-child { flex: 0 1 auto; min-width: 0; }
+  svg { flex: none; width: var(--size-1); height: var(--size-1); margin-inline: var(--size-0-25); fill: none; stroke: currentColor; stroke-width: 1.5; }
+  a { color: var(--color-text); transition: color 0.3s; }
+  a:hover { color: var(--primary); }
+  span { overflow: hidden; text-overflow: ellipsis; color: var(--neutral-large); opacity: 0.6; }
+  .breadcrumb--light { color: var(--color-text-light); }
+  .breadcrumb--light a { color: var(--color-text-light); }
+  .breadcrumb--light a:hover { color: var(--primary); }
+  .breadcrumb--light span { color: inherit; }
+  @media (max-width: 767px) { .breadcrumb--light ol { flex-wrap: wrap; } }
+</style>

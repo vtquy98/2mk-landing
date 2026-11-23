@@ -17,5 +17,11 @@ export default defineCollection({
     seo: seoSchema,
     lastmod: z.string().optional(), // YYYY-MM-DD (Webflow sitemap), used by the sitemap
     // Collection-specific fields below.
+    imageWidth: z.number().optional(), // intrinsic size of `image` (width/height attributes)
+    imageHeight: z.number().optional(),
+    imageSrcset: z.string().optional(), // smaller variants of `image` ("… 500w, … 800w")
+    // Webflow sorted on the created-on time, which pages don't expose: articles published the same day keep the
+    // live order with this number (higher = newer). Leave it out for a new article.
+    sameDayOrder: z.number().optional(),
   }),
 });
