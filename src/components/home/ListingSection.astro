@@ -1,0 +1,105 @@
+---
+// "SCPI disponibles avec décote": carousel of SCPI ads (scroll-snap, prev/next buttons) + link to the app.
+// Usable without JavaScript (the track scrolls); the script only drives the arrows.
+import type { CollectionEntry } from 'astro:content';
+import Button from '../ui/Button.astro';
+import Eyebrow from './Eyebrow.astro';
+import ListingCard from './ListingCard.astro';
+import { PRODUCT } from '../../i18n/config';
+
+interface Props {
+  entries: CollectionEntry<'scpi-listing'>[];
+}
+const { entries } = Astro.props;
+---
+
+<section class="listing gutter" aria-labelledby="listing-heading">
+  <div class="container listing__inner">
+    <div class="listing__top">
+      <div class="listing__heading">
+        <Eyebrow>SCPI — Annonces disponibles</Eyebrow>
+        <h2 id="listing-heading" class="h2">SCPI disponibles avec décote</h2>
+      </div>
+      <div class="listing__arrows" hidden>
+        <button type="button" class="listing__arrow listing__arrow--prev" aria-label="Annonces précédentes" disabled>
+          <svg viewBox="0 0 29.541 22.323" aria-hidden="true"><path d="M18.195 21.3l9.311-10.148L18.195 1" fill="none" stroke="currentColor" stroke-width="3" /><path d="M0 11.162h27.506" stroke="currentColor" stroke-width="3" /></svg>
+        </button>
+        <button type="button" class="listing__arrow listing__arrow--next" aria-label="Annonces suivantes">
+          <svg viewBox="0 0 29.541 22.323" aria-hidden="true"><path d="M18.195 21.3l9.311-10.148L18.195 1" fill="none" stroke="currentColor" stroke-width="3" /><path d="M0 11.162h27.506" stroke="currentColor" stroke-width="3" /></svg>
+        </button>
+      </div>
+    </div>
+    <ul class="listing__track" role="list" tabindex="0" aria-label="Annonces SCPI">
+      {entries.map(entry => <li class="listing__slide"><ListingCard entry={entry} /></li>)}
+    </ul>
+    <div class="listing__actions">
+      <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces SCPI</Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('.listing')) {
+    const track = root.querySelector<HTMLElement>('.listing__track')!;
+    const arrows = root.querySelector<HTMLElement>('.listing__arrows')!;
+    const [prev, next] = arrows.querySelectorAll('button');
+    const step = () => (track.firstElementChild as HTMLElement | null)?.offsetWidth ?? track.clientWidth;
+    const update = () => {
+      prev.disabled = track.scrollLeft <= 1;
+      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      arrows.hidden = prev.disabled && next.disabled; // everything fits: no arrows
+    };
+    prev.addEventListener('click', () => track.scrollBy({ left: -step() }));
+    next.addEventListener('click', () => track.scrollBy({ left: step() }));
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(track);
+  }
+</script>
+
+<style>
+  .listing__inner { display: flex; flex-direction: column; gap: var(--size-2); padding-block: var(--section-main); }
+  .listing__top { display: flex; gap: var(--size-1); align-items: flex-end; justify-content: space-between; }
+  .listing__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: flex-start; }
+  .listing__heading h2 { margin: 0; max-width: 48rem; }
+  .listing__arrows { display: flex; flex: none; gap: 0.75em; }
+  .listing__arrows[hidden] { display: none; }
+  .listing__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--size-3);
+    height: var(--size-3);
+    padding: 0;
+    border: 1px solid var(--color-text);
+    border-radius: var(--radius-round);
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s, opacity 0.2s;
+  }
+  .listing__arrow:hover { background: var(--color-text); color: var(--color-text-light); }
+  .listing__arrow:disabled { opacity: 0.3; pointer-events: none; }
+  .listing__arrow svg { width: 30%; height: 55%; }
+  .listing__arrow--prev svg { transform: rotate(180deg); }
+  .listing__track {
+    --per-view: 3;
+    --gap: var(--size-1);
+    display: grid;
+    grid-auto-columns: calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+    grid-auto-flow: column;
+    gap: var(--gap);
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    list-style: none;
+  }
+  .listing__track::-webkit-scrollbar { display: none; }
+  .listing__slide { scroll-snap-align: start; }
+  .listing__actions { display: flex; justify-content: center; }
+  @media (max-width: 991px) { .listing__track { --per-view: 2; } }
+  @media (max-width: 767px) { .listing__track { --per-view: 1; } }
+</style>

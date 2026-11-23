@@ -1,0 +1,50 @@
+---
+// FAQ accordion (native <details>): items of src/data/home/faqs.json for one page.
+import Button from '../ui/Button.astro';
+import faqs from '../../data/home/faqs.json';
+
+interface Props {
+  list: keyof typeof faqs;
+  title: string;
+}
+const { list, title } = Astro.props;
+---
+
+<section class="faqs gutter">
+  <div class="container section">
+    <h2 class="h2 faqs__title">{title}</h2>
+    <div class="faqs__list">
+      {
+        faqs[list].map(item => (
+          <details class="faqs__item">
+            <summary class="faqs__question">
+              <h3 class="text-medium">{item.question}</h3>
+              <img src="/assets/67443713ca63f462193cc74e_CaretDown.svg" alt="" width="24" height="24" />
+            </summary>
+            <div class="faqs__answer" set:html={item.answer} />
+          </details>
+        ))
+      }
+    </div>
+    <div class="faqs__action"><Button href="/faqs">Voir plus de questions</Button></div>
+  </div>
+</section>
+
+<style>
+  .faqs__title { margin: 0; text-align: center; }
+  .faqs__list { display: flex; flex-direction: column; gap: var(--size-0-5); padding-top: var(--size-2); }
+  .faqs__item { padding: var(--size-0-5) var(--size-1); border-radius: 2rem; background: var(--white); }
+  .faqs__question { display: flex; gap: var(--size-1); align-items: center; justify-content: space-between; padding: var(--size-1) var(--size-1) var(--size-1) var(--size-0-5); cursor: pointer; list-style: none; }
+  .faqs__question::-webkit-details-marker { display: none; }
+  .faqs__question h3 { font-weight: var(--weight-medium); }
+  .faqs__question img { flex: none; width: var(--size-1-5); height: var(--size-1-5); transition: transform 0.3s var(--ease-out); }
+  .faqs__item[open] .faqs__question img { transform: rotate(180deg); }
+  .faqs__answer { margin-right: var(--size-1); padding: 0 0 var(--size-1) var(--size-0-5); }
+  .faqs__answer :global(p:last-child), .faqs__answer :global(ol:last-child), .faqs__answer :global(ul:last-child) { margin-bottom: 0; }
+  .faqs__answer :global(a) { text-decoration: underline; }
+  .faqs__action { display: flex; justify-content: center; padding-top: var(--size-2-5); }
+  @media (max-width: 767px) {
+    .faqs__list { padding-top: 1.5rem; }
+    .faqs__answer { margin-right: 0; }
+  }
+</style>

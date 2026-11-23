@@ -1,0 +1,35 @@
+---
+// Two-column text section: small label on the left, heading (+ slot "lead" right under it) and content (slot) on the right ("Qui sommes-nous ?", "Acheter SCPI").
+interface Props {
+  kicker: string;
+  title: string;
+  class?: string;
+}
+const { kicker, title, class: cls } = Astro.props;
+---
+
+<section class:list={['split gutter', cls]}>
+  <div class="container section split__grid">
+    <p class="split__kicker">{kicker}</p>
+    <div class="split__content">
+      <div class="split__heading">
+        <h2 class="h2">{title}</h2>
+        <slot name="lead" />
+      </div>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .split__grid { display: grid; grid-template-columns: 0.5fr 1.25fr; gap: var(--size-1); align-items: start; }
+  .split__kicker { margin: 0; color: var(--neutral-large); }
+  .split__content { display: flex; flex-direction: column; gap: var(--size-2-5); }
+  .split__heading { display: flex; flex-direction: column; gap: var(--size-0-5); }
+  .split__heading h2 { margin: 0; }
+  .split__content :global(p) { margin: 0; color: var(--neutral-large); text-wrap: pretty; }
+  @media (max-width: 767px) {
+    .split__grid { grid-template-columns: 1fr; }
+    .split__content { gap: var(--size-1-5); }
+  }
+</style>

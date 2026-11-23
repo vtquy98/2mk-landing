@@ -1,0 +1,35 @@
+---
+// Legacy listing pages (Webflow CMS "scpi-listing", not in the sitemap but indexable). On Webflow the template was
+// empty (head only); here it shows the ad's card and links to the live ads in the app.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import ListingCard from '../../components/home/ListingCard.astro';
+import { PRODUCT } from '../../i18n/config';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('scpi-listing', e => e.data.source === 'webflow');
+  return entries.map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props as { entry: CollectionEntry<'scpi-listing'> };
+---
+
+<BaseLayout seo={entry.data.seo}>
+  <section class="ad gutter">
+    <div class="container container--small section ad__inner">
+      <p class="ad__kicker">Annonce SCPI · {entry.data.scpi}</p>
+      <h1 class="h2">{entry.data.title}</h1>
+      <div class="ad__card"><ListingCard entry={entry} headingLevel="p" /></div>
+      <p class="ad__note">Les prix sont ceux demandés par le vendeur ; le prix final est négocié entre vendeur et acheteur, et la cession est signée devant notaire.</p>
+      <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ad__inner { display: flex; flex-direction: column; gap: var(--size-1-5); align-items: flex-start; }
+  .ad__inner h1 { margin: 0; }
+  .ad__kicker { margin: 0; color: var(--secondary); font-weight: var(--weight-medium); }
+  .ad__card { width: min(100%, 26rem); }
+  .ad__note { margin: 0; color: var(--color-text-muted); }
+</style>

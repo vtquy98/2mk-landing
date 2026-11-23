@@ -1,0 +1,54 @@
+{
+  "/": [
+    {
+      "question": "Que propose 2nd Market pour la taxe foncière ?",
+      "answer": "<p>Deux outils distincts : un <a href=\"/simulateurs/taxe-fonciere-2026\">simulateur de taxe foncière</a> gratuit pour estimer le montant de l'impôt, et un <a href=\"https://app.2ndmarket.fr/taxe-fonciere\">service de vérification de la taxe foncière</a> conçu avec Solucia. Trois formules, à partir de 9 €.</p>"
+    },
+    {
+      "question": "Comment se déroule une vente ?",
+      "answer": "<p>Le processus se déroule en 5 étapes :</p><ol><li><strong>Publication</strong> : déposez votre annonce gratuitement avec le nombre de parts, le prix souhaité et vos documents de propriété.</li><li><strong>Offres</strong> : des acheteurs vous envoient des offres. Vous négociez librement et acceptez celle qui vous convient.</li><li><strong>Avant-contrat</strong> : signé électroniquement. L'acheteur verse les fonds sur le compte séquestre du notaire.</li><li><strong>Vérifications</strong> : le notaire vérifie identités, fonds et documents. Il coordonne avec la société de gestion pour le transfert des parts.</li><li><strong>Finalisation</strong> : les parts sont transférées à l'acheteur, les fonds sont libérés au vendeur.</li></ol><p>Délai indicatif : 4 à 8 semaines après acceptation de l'offre, variable selon le dossier.</p><p>🔗 <a href=\"https://app.2ndmarket.fr/create\">Déposez votre annonce gratuitement</a></p>"
+    },
+    {
+      "question": "Dois-je repayer les 12 % de frais de souscription sur 2nd Market ?",
+      "answer": "<p>Non. Ces frais ne concernent que l'achat de parts neuves. Sur 2nd Market, vous rachetez des parts existantes : personne ne les repaye.</p><p>Pour l'acheteur, c'est une économie directe de 8 à 12% — en plus des décotes de 10 à 35 % observées.</p>"
+    },
+    {
+      "question": "2nd Market est-elle indépendante ?",
+      "answer": "<p><strong>Oui.</strong> Nous opérons uniquement sur le marché secondaire SCPI. Nous ne sommes ni société de gestion (SDG), ni conseiller en gestion de patrimoine (CGP), ni conseiller en investissements financiers (CIF).</p><p>Nous ne distribuons aucune SCPI et ne percevons <strong>aucune rétrocommission</strong> de la part des sociétés de gestion.</p><p>Cette indépendance assure que chaque transaction est traitée de manière neutre, transparente et sans conflit d'intérêts.</p><p>2nd Market est membre du label <a href=\"https://finance-innovation.org/\" target=\"_blank\" rel=\"noopener\">Finance Innovation</a>.</p>"
+    },
+    {
+      "question": "Pourquoi passer par un notaire ?",
+      "answer": "<p>Pour sécuriser la transaction : sur 2nd Market, chaque cession de parts de SCPI passe par un notaire, sans exception.</p><p>Le notaire vérifie la propriété des parts auprès de la société de gestion, contrôle l'identité et les fonds de l'acheteur, et séquestre l'argent jusqu'au transfert effectif. Rien ne l'impose légalement pour des parts de SCPI — c'est justement ce choix qui protège vendeur et acheteur d'un impayé ou d'un litige.</p><p>Avec 2nd Market, l'argent est versé directement sur le compte séquestre du notaire — jamais chez nous. Les fonds ne sont libérés qu'après toutes les vérifications légales.</p><p>C'est la garantie que les fonds sont disponibles, sécurisés, et que nous n'avons aucun intérêt à bloquer ou retarder la transaction.</p>"
+    },
+    {
+      "question": "Quel est le délai moyen pour vendre des parts SCPI ?",
+      "answer": "<p>À titre indicatif : 2 à 6 semaines pour recevoir une offre. 4 à 8 semaines pour finaliser la transaction. Ces délais dépendent du prix fixé et des conditions de marché. 2nd Market ne garantit ni la vente ni un délai précis.</p><p>Au 30 juin 2026, environ 1,9 Md€ de parts de SCPI étaient en attente de retrait, soit 2,2 % de la capitalisation du marché (source : <a href=\"https://www.aspim.fr/content/uploads/2026/08/ASPIM_CP-1S-2026_V7-def.pdf\" target=\"_blank\" rel=\"noopener\">ASPIM, chiffres du 1er semestre 2026</a>). Vous pouvez publier sur 2nd Market même si une demande de retrait est en cours : en cas de vente, vous annulez simplement votre demande auprès de la société de gestion.</p><p>🔗 <a href=\"/guide-scpi/revente-guide-pratique\">Détails sur le processus de vente SCPI</a></p>"
+    }
+  ],
+  "/observatoire-scpi": [
+    {
+      "question": "Comment vendre ses parts quand la SCPI a une file d'attente de retrait ?",
+      "answer": "<p>Une annonce peut être publiée sur 2nd Market même si une demande de retrait est en cours. Le vendeur fixe son prix ; en cas de vente, il annule sa demande de retrait auprès de la société de gestion.</p><p>Au 30 juin 2026, environ 1,9 Md€ de parts de SCPI étaient en attente de retrait (source : <a href=\"https://www.aspim.fr/content/uploads/2026/08/ASPIM_CP-1S-2026_V7-def.pdf\" target=\"_blank\" rel=\"noopener\">ASPIM, chiffres du 1er semestre 2026</a>).</p><p>🔗 <a href=\"/guide-scpi/revente-guide-pratique\">Détails sur le processus de vente</a></p>"
+    },
+    {
+      "question": "Pourquoi acheter des parts de SCPI sur le marché secondaire ?",
+      "answer": "<p>Sur le marché secondaire, l'acheteur rachète des parts existantes à un associé, à un prix négocié. Il ne paie pas les frais de souscription du marché primaire, souvent de 8 à 12 % du prix de part.</p><p>Il règle 5 % de droits d'enregistrement (art. 726 du CGI), la commission 2nd Market de 1,8 % TTC, 240 € TTC de frais d'avant-contrat et d'éventuels frais de la société de gestion (0 à 200 €).</p><p>Le marché secondaire donne aussi accès à des SCPI fermées à la souscription, lorsqu'un vendeur publie une annonce.</p><p>🔗 <a href=\"/simulateurs/frais-scpi\">Estimer les frais d'achat</a></p>"
+    },
+    {
+      "question": "Peut-on reprendre ces chiffres dans un article ?",
+      "answer": "<p>Oui, avec la source et la date des données, par exemple : « Source : Observatoire du marché secondaire des SCPI, 2nd Market, données au 19 novembre 2026 ».</p><p>Le détail par SCPI et la méthode sont disponibles sur demande à <a href=\"mailto:contact@2ndmarket.fr\">contact@2ndmarket.fr</a>.</p>"
+    },
+    {
+      "question": "À quelle fréquence l'Observatoire est-il mis à jour ?",
+      "answer": "<p>Chaque mois. La date des données figure en haut de page, au-dessus du titre.</p>"
+    },
+    {
+      "question": "Les montants affichés sont-ils des prix de vente ?",
+      "answer": "<p>Non. Ce sont les prix demandés par les vendeurs dans leurs annonces. Le prix final est négocié entre le vendeur et l'acheteur et peut être différent.</p><p>Ces montants ne sont ni un cours, ni un prix de référence, ni une indication de rendement futur.</p>"
+    },
+    {
+      "question": "D'où viennent les chiffres de l'Observatoire ?",
+      "answer": "<p>Des annonces publiées sur 2nd Market et actives à la date indiquée en haut de page. Les annonces sous compromis sont exclues. Les demandes d'achat sont les annonces de recherche publiées par des acheteurs sur la plateforme.</p><p>Les chiffres portent sur les seules annonces de 2nd Market : ils ne représentent pas l'ensemble du marché secondaire des SCPI.</p>"
+    }
+  ]
+}

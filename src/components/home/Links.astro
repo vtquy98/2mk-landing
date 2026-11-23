@@ -1,0 +1,80 @@
+---
+// "Une plateforme": one card per product (SCPI, viager, taxe foncière), photo background, whole card is the link.
+interface Card {
+  title: string;
+  href: string;
+  image: string; // /assets/… (the -p-500/-p-800/-p-1080 variants are used when they exist)
+  variants: number[];
+  width: number;
+  height: number;
+  alt: string;
+  cta: string;
+  html: string; // description (inline HTML: <strong>, <br>)
+  external?: boolean;
+}
+interface Props {
+  title: string;
+  cards: Card[];
+}
+const { title, cards } = Astro.props;
+const srcset = (c: Card) => [...c.variants.map(w => `${c.image.replace(/(\.\w+)$/, `-p-${w}$1`)} ${w}w`), `${c.image} ${c.width}w`].join(', ');
+---
+
+<section class="links gutter">
+  <div class="container section">
+    <h2 class="h2 links__title">{title}</h2>
+    <ul class:list={['links__grid', cards.length === 1 && 'links__grid--single']} role="list">
+      {
+        cards.map(c => (
+          <li>
+            <a class="links__card" href={c.href} {...(c.external ? { target: '_blank', rel: 'noopener' } : {})}>
+              <img class="links__img" src={c.image} srcset={srcset(c)} sizes="(max-width: 991px) 100vw, 33vw" alt={c.alt} width={c.width} height={c.height} loading="lazy" decoding="async" />
+              <h3 class="h3 links__name">{c.title}</h3>
+              <p class="links__text" set:html={c.html} />
+              <span class="links__cta">{c.cta}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .links__title { margin: 0; text-align: center; }
+  .links__grid { display: grid; list-style: none; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: 4rem 0 0; }
+  .links__grid--single { grid-template-columns: 1fr; }
+  .links__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-0-5);
+    align-items: flex-start;
+    height: 100%;
+    padding: var(--size-2-5);
+    overflow: clip;
+    border-radius: var(--radius-main);
+    color: var(--color-text-light);
+    transition: transform 0.4s;
+  }
+  .links__card:hover { transform: translateY(-6px); }
+  .links__card > :not(img) { position: relative; }
+  .links__img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .links__name { margin: 0; font-weight: var(--weight-medium); }
+  .links__text { flex: 1; margin: 0 0 var(--size-1); }
+  .links__cta {
+    padding: var(--size-0-75) var(--size-1);
+    border-radius: var(--radius-round);
+    background: var(--primary);
+    transition: background-color 0.4s;
+  }
+  .links__card:hover .links__cta { background: var(--primary-hover); }
+  @media (max-width: 991px) {
+    .links__grid { grid-template-columns: 1fr; padding-top: 2.5rem; }
+    .links__card { padding: 2.5rem; }
+  }
+  @media (max-width: 767px) {
+    .links__grid { padding-top: 2rem; }
+    .links__card { padding: 2rem; }
+  }
+</style>

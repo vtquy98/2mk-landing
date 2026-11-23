@@ -1,0 +1,48 @@
+---
+// "Qui sommes-nous ?": text (slot), label + security partners, link to the resale guide.
+import Button from '../ui/Button.astro';
+import Split from './Split.astro';
+import FinanceInnovation from './icons/finance-innovation.svg';
+import Docusign from './icons/docusign.svg';
+import Stripe from './icons/stripe.svg';
+import Qonto from './icons/qonto.svg';
+
+const partners = [
+  { name: 'DocuSign', href: 'https://www.docusign.com/', Logo: Docusign },
+  { name: 'Stripe', href: 'https://stripe.com/', Logo: Stripe },
+  { name: 'Qonto', href: 'https://qonto.com/', Logo: Qonto },
+];
+---
+
+<Split kicker="Qui sommes-nous ?" title="Revente SCPI : marché secondaire encadré par notaire" class="about">
+  <p slot="lead" class="text-medium"><slot /></p>
+  <div class="about__partners">
+    <div class="about__group">
+      <span>Labelisé</span>
+      <a href="https://finance-innovation.org/" target="_blank" rel="noopener" aria-label="Finance Innovation"><FinanceInnovation aria-hidden="true" /></a>
+    </div>
+    <div class="about__group">
+      <span>Sécurisé par:</span>
+      <ul class="about__logos" role="list">
+        {partners.map(({ name, href, Logo }) => <li><a href={href} target="_blank" rel="noopener" aria-label={name}><Logo aria-hidden="true" /></a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="about__action"><Button href="/guide-scpi/revente">En savoir plus</Button></div>
+</Split>
+
+<style>
+  :global(.about) { background: url('/assets/6746bb924b51a1c9b868cb0c_about-bg.avif') 50% / cover no-repeat; }
+  .about__partners { display: flex; flex-wrap: wrap; gap: var(--size-1-5); align-items: center; color: var(--neutral-large); }
+  .about__group { display: flex; flex-wrap: wrap; gap: var(--size-0-75); align-items: center; }
+  .about__logos { display: flex; list-style: none; flex-wrap: wrap; gap: var(--size-1); margin: 0; padding: 0; }
+  .about__group a { display: block; transition: transform 0.4s; }
+  .about__group a:hover { transform: translateY(-0.25rem); }
+  .about__group :global(svg) { display: block; width: auto; height: 2rem; }
+  .about__action { padding-top: var(--size-1); }
+  @media (max-width: 767px) { .about__action { padding-top: 0.75rem; } }
+  @media (max-width: 479px) {
+    .about__partners { gap: var(--size-2); }
+    .about__group { flex-direction: column; align-items: flex-start; }
+  }
+</style>
