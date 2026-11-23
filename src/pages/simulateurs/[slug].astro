@@ -1,0 +1,86 @@
+---
+// /simulateurs/<slug>: one simulator. The body (src/content/simulateurs/<slug>.md) holds the calculator
+// (<div class="simulator">, HTML + script written by the content team) and its guide (<div class="guide">).
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SimHeader from '../../components/simulateurs/SimHeader.astro';
+import LeadForm from '../../components/simulateurs/LeadForm.astro';
+import StickyCta from '../../components/simulateurs/StickyCta.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('simulateurs')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = entry.id;
+// Pages whose simulator collects emails its own way: no sticky "Résultats par email" bar.
+const ownCapture = /viager|calculateur-demembrement|scpi-primaire-vs-secondaire|tri-scpi-marche-secondaire|capital-revenu-mensuel-scpi/i.test(slug);
+---
+
+<BaseLayout seo={entry.data.seo}>
+  <SimHeader narrow crumbs={[{ label: 'Accueil', href: '/' }, { label: 'Simulateurs', href: '/simulateurs' }, { label: entry.data.name }]}>
+    {entry.data.title}
+  </SimHeader>
+  <section class="gutter">
+    <div class="container section--small">
+      <article class="simulator-page" data-simulator>
+        <Content />
+      </article>
+      <LeadForm slug={slug} />
+    </div>
+  </section>
+  {!ownCapture && <StickyCta />}
+</BaseLayout>
+
+<style>
+  .simulator-page { display: grid; gap: var(--size-6); grid-template-columns: minmax(0, 1fr); }
+  .simulator-page > :global(.simulator) {
+    min-width: 0;
+    overflow: auto;
+    padding: var(--size-2);
+    border-radius: var(--radius-main);
+    background: var(--white);
+    box-shadow: var(--shadow-xxlarge);
+  }
+  .simulator-page > :global(.guide) { width: 60%; min-width: 0; margin-inline: auto; }
+  @media (max-width: 991px) {
+    .simulator-page { gap: var(--size-4); }
+    .simulator-page > :global(.guide) { width: 100%; }
+  }
+  @media (max-width: 767px) { .simulator-page > :global(.simulator) { padding: 1.5rem; } }
+  @media (max-width: 479px) { .simulator-page > :global(.simulator) { padding: var(--size-1); } }
+
+  /* Rich-text defaults of the guide (Webflow .w-richtext) */
+  .simulator-page :global(:is(ul, ol)) { overflow: hidden; }
+  .simulator-page :global(figure) { max-width: 100%; margin: 0 0 var(--size-1); }
+</style>
+
+<style is:global>
+  /* Mobile safety net for the embedded calculators (was the template's "correctif mobile-first v3.4").
+     Global on purpose, with the original low specificity: a calculator's own styles still win over it.
+     Only loaded on simulator pages. */
+  .tf-sim, [class^='s2m-'], [class^='sim-'], [id^='s2m-'] { max-width: 100%; }
+  :where(.tf-sim, [class^='s2m-']) :where(img, svg) { max-width: 100%; height: auto; }
+  @media (max-width: 600px) {
+    /* 16 px inputs (no iOS zoom on focus) and 44 px touch targets */
+    .tf-sim input, .tf-sim select, .tf-sim button,
+    [class^='s2m-'] input, [class^='s2m-'] select, [class^='s2m-'] button,
+    [id^='s2m-'] input, [id^='s2m-'] select, [id^='s2m-'] button { font-size: 16px !important; min-height: 44px; }
+    .tf-sim input[type='checkbox'], .tf-sim input[type='radio'],
+    [class^='s2m-'] input[type='checkbox'], [class^='s2m-'] input[type='radio'],
+    [id^='s2m-'] input[type='checkbox'], [id^='s2m-'] input[type='radio'] { flex: 0 0 auto; width: 20px; height: 20px; min-height: 0; }
+    /* One-column grids */
+    .tf-grid, .tf-rates, .tf-reform-grid,
+    [class^='s2m-'][class*='grid'], [class^='s2m-'][class*='row'], [class^='sim-'][class*='grid'] {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+    .tf-grid > *, .tf-rates > *, .tf-reform-grid > *, [class^='s2m-'][class*='grid'] > *, [class^='sim-'][class*='grid'] > * { min-width: 0; }
+    .tf-tabs { flex-wrap: wrap; }
+    .tf-tab { min-width: 46%; }
+    /* Wide tables scroll instead of widening the page */
+    .tf-compare, .tf-reform-detail, [class^='s2m-'] table, [id^='s2m-'] table { display: block; max-width: 100%; overflow-x: auto; }
+    .s2m-formula { white-space: normal !important; overflow-wrap: anywhere; }
+  }
+</style>

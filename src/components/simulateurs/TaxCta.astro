@@ -1,0 +1,74 @@
+---
+// "Votre taxe foncière est-elle bien calculée ?" banner on top of the simulators hub.
+import { PRODUCT } from '../../i18n/config';
+---
+
+<aside class="tax-cta">
+  <div class="tax-cta__content">
+    <img
+      src="/assets/6abde08f0baefae6e8d2544b_form.avif"
+      srcset="/assets/6abde08f0baefae6e8d2544b_form-p-500.avif 500w, /assets/6abde08f0baefae6e8d2544b_form.avif 528w"
+      sizes="(max-width: 479px) 6rem, (max-width: 991px) 10rem, 8rem"
+      alt="Fiche d'évaluation 6675-M de la taxe foncière"
+      width="528"
+      height="669"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="tax-cta__text">
+      <h2 class="h4">Votre taxe foncière est-elle bien calculée ?</h2>
+      <p>Elle dépend de votre fiche 6675-M. Solucia peut l'analyser.</p>
+      <p class="tax-cta__note">Dès 9 € · Aucune démarche sans votre signature</p>
+    </div>
+  </div>
+  <div class="tax-cta__buttons">
+    <a href={`${PRODUCT.app}/taxe-fonciere/#tarifs`} target="_blank" rel="noopener">Vérifier ma fiche 6675-M</a>
+    <a href={`${PRODUCT.app}/taxe-fonciere`} target="_blank" rel="noopener" class="tax-cta__secondary">Estimer ma taxe foncière</a>
+  </div>
+</aside>
+
+<style>
+  .tax-cta {
+    /* Tax-service colors, no token yet (candidates for global.css). */
+    --tax: #752432;
+    --tax-bg: #efece6;
+    --tax-border: #1b1716;
+    display: flex;
+    gap: var(--size-1-5);
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--size-1-5);
+    padding: var(--size-1-5) var(--size-2) var(--size-1-5) var(--size-1-5);
+    border: 1px dashed var(--tax-border);
+    border-radius: var(--radius-medium);
+    background: var(--tax-bg);
+  }
+  .tax-cta__content { display: flex; gap: var(--size-2); align-items: center; }
+  .tax-cta img { flex: none; width: var(--size-8); height: auto; }
+  .tax-cta__text { display: flex; flex-direction: column; gap: var(--size-0-5); }
+  .tax-cta h2 { margin: 0; }
+  .tax-cta p { margin: 0; }
+  .tax-cta__note { font-size: 0.875rem; font-style: italic; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); }
+  .tax-cta__buttons { display: flex; flex-direction: column; gap: var(--size-0-75); }
+  .tax-cta__buttons a {
+    max-width: 14rem;
+    padding: var(--size-0-75) var(--size-1-25);
+    border: 1px solid var(--tax);
+    border-radius: var(--radius-small);
+    background: var(--tax);
+    color: var(--white);
+    text-align: center;
+  }
+  .tax-cta__buttons .tax-cta__secondary { background: color-mix(in srgb, var(--tax) 10%, transparent); color: var(--tax); }
+  @media (max-width: 991px) {
+    .tax-cta { flex-direction: column; }
+    .tax-cta img { width: var(--size-10); }
+    .tax-cta__text { gap: var(--size-0-25); }
+    .tax-cta__buttons { flex-direction: row; width: 100%; }
+    .tax-cta__buttons a { flex: 1; max-width: 100%; }
+  }
+  @media (max-width: 479px) {
+    .tax-cta__content { align-items: flex-start; }
+    .tax-cta img { width: var(--size-6); }
+  }
+</style>
