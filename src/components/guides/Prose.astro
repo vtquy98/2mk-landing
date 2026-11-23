@@ -1,0 +1,43 @@
+---
+// Rich text of a guide or landing page (Markdown imported from Webflow, with the content team's HTML embeds).
+// Reproduces what Webflow's rich text and base CSS gave that content; the embeds bring their own scoped styles.
+// Element rules use :where() so they weigh like Webflow's bare element rules and never beat an embed's own styles.
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+---
+
+<div class:list={['prose', cls]}><slot /></div>
+
+<style>
+  .prose { min-width: 0; }
+  .prose::after { content: ''; display: table; clear: both; }
+  :global(.prose :is(ul, ol)) { overflow: hidden; }
+  :where(.prose) :global(figure) { margin: 0 0 10px; }
+  :where(.prose) :global(figcaption) { margin-top: 5px; text-align: center; }
+  :where(.prose) :global(table) { border-collapse: collapse; border-spacing: 0; }
+  :where(.prose) :global(:is(td, th)) { padding: 0; }
+  :where(.prose) :global(:is(sub, sup)) { position: relative; font-size: 75%; line-height: 0; vertical-align: baseline; }
+  :where(.prose) :global(sup) { top: -0.5em; }
+  :where(.prose) :global(sub) { bottom: -0.25em; }
+  :where(.prose) :global(button) { border: 0; cursor: pointer; }
+  :where(.prose) :global(hr) { box-sizing: content-box; height: 0; }
+  :where(.prose) :global(iframe) { max-width: 100%; }
+  /*
+   * Webflow rich-text figure rules, at their original weight (one class): every figure is at most 60% wide on the live
+   * site, embeds included. Class names below are part of the imported content.
+   */
+  :global(.prose figure) { position: relative; max-width: 60%; }
+  :global(.prose figure img) { width: 100%; }
+  :global(.prose figure.w-richtext-figure-type-image) { display: table; }
+  :global(.prose figure.w-richtext-figure-type-image > div) { display: inline-block; }
+  :global(.prose figure.w-richtext-figure-type-image > figcaption) { display: table-caption; caption-side: bottom; }
+  :global(.prose figure.w-richtext-align-center) { clear: both; margin-inline: auto; }
+  :global(.prose figure.w-richtext-align-center > div) { max-width: 100%; }
+  :global(.prose figure.w-richtext-align-normal) { clear: both; }
+  :global(.prose figure.w-richtext-align-fullwidth) { display: block; clear: both; width: 100%; max-width: 100%; margin-inline: auto; text-align: center; }
+  :global(.prose figure.w-richtext-align-fullwidth > figcaption) { display: block; }
+  :global(.prose figure.w-richtext-align-floatleft) { float: left; clear: none; margin-right: 15px; }
+  :global(.prose figure.w-richtext-align-floatright) { float: right; clear: none; margin-left: 15px; }
+  /* Success/error messages of the alert forms embedded in some articles: shown by the alert script only. */
+  :global(.prose :is(.w-form-done, .w-form-fail)) { display: none; }
+</style>

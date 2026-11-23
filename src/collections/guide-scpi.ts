@@ -17,5 +17,11 @@ export default defineCollection({
     seo: seoSchema,
     lastmod: z.string().optional(), // YYYY-MM-DD (Webflow sitemap), used by the sitemap
     // Collection-specific fields below.
+    imageWidth: z.number().int().optional(),
+    imageHeight: z.number().int().optional(),
+    imageSrcset: z.string().optional(), // local -p-<w> variants, as on Webflow
+    // Hub /guides-scpi-viager-demembrement: tab (= category: SCPI, Viager, Démembrement, Autres), card tag, rank.
+    tag: z.string(), // "Guide", "Tutoriel", "Article"
+    order: z.number().int(), // position on the hub, lower first
   }),
 });

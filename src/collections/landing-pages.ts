@@ -16,6 +16,11 @@ export default defineCollection({
     category: z.string().optional(),
     seo: seoSchema,
     lastmod: z.string().optional(), // YYYY-MM-DD (Webflow sitemap), used by the sitemap
-    // Collection-specific fields below.
+    // Collection-specific fields below. `title` is the short name (breadcrumb, cards), `heading` the page's H1.
+    heading: z.string(),
+    imageWidth: z.number().int().optional(),
+    imageHeight: z.number().int().optional(),
+    imageSrcset: z.string().optional(), // local -p-<w> variants, as on Webflow
+    order: z.number().int().optional(), // position in the /scpi-essentiel list (sorted by date desc): breaks same-day ties
   }),
 });

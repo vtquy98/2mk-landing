@@ -1,0 +1,66 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/guides/Breadcrumb.astro';
+import Prose from '../../components/guides/Prose.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('guide-scpi')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'guide-scpi'> };
+const { data } = entry;
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={data.seo}>
+  <header class="gutter">
+    <div class="container header">
+      <div class="heading">
+        <Breadcrumb items={[{ href: '/', label: 'Accueil' }, { href: '/guides-scpi-viager-demembrement', label: 'Guides' }, { label: data.title }]} />
+        <h1 class="h2 reveal">{data.title}</h1>
+      </div>
+      {
+        data.image && (
+          <img
+            class="image reveal"
+            src={data.image}
+            srcset={data.imageSrcset}
+            sizes={data.imageSrcset && '(max-width: 991px) 100vw, 40vw'}
+            alt={data.imageAlt ?? ''}
+            width={data.imageWidth}
+            height={data.imageHeight}
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        )
+      }
+    </div>
+  </header>
+  <div class="gutter">
+    <article class="container body">
+      <div class="text fade"><Prose><Content /></Prose></div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .header, .body { padding-block: var(--section-small); }
+  .header { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-6); align-items: center; }
+  .heading { display: flex; flex-direction: column; gap: var(--size-1-5); }
+  .image { width: 100%; height: auto; aspect-ratio: 5 / 4; border-radius: var(--radius-main); }
+  .text { width: 70%; margin-inline: auto; overflow: clip; }
+  .reveal { animation: reveal 0.8s var(--ease-out) both; }
+  /* Body: opacity only, a transform would trap the embeds' position: fixed elements. */
+  .fade { animation: fade 0.8s 0.2s var(--ease-out) both; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(1rem); } }
+  @keyframes fade { from { opacity: 0; } }
+  @media (max-width: 991px) {
+    .header { grid-template-columns: 1fr; gap: var(--size-1-5); }
+    .text { width: 100%; }
+  }
+  @media (max-width: 479px) {
+    .header, .body { padding-block: var(--size-1) var(--size-1-5); }
+  }
+</style>

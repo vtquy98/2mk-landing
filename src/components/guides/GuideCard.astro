@@ -1,0 +1,54 @@
+---
+// Card of a guide on the hub: image | tag, title, excerpt, "Lire la suite".
+import type { CollectionEntry } from 'astro:content';
+import ReadMore from './ReadMore.astro';
+
+interface Props { entry: CollectionEntry<'guide-scpi'> }
+const { entry } = Astro.props;
+const { data } = entry;
+---
+
+<a class="card" href={`/guide-scpi/${entry.id}`}>
+  <div class="media">
+    {
+      data.image && (
+        <img
+          src={data.image}
+          srcset={data.imageSrcset}
+          sizes={data.imageSrcset && '(max-width: 479px) 100vw, (max-width: 991px) 50vw, 25vw'}
+          alt={data.imageAlt ?? ''}
+          width={data.imageWidth}
+          height={data.imageHeight}
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
+  </div>
+  <div class="content">
+    <div class="text">
+      <span class="tag">{data.tag}</span>
+      <h3>{data.title}</h3>
+      {data.excerpt && <p class="clamp-2">{data.excerpt}</p>}
+    </div>
+    <ReadMore />
+  </div>
+</a>
+
+<style>
+  .card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-1-5); height: 100%; padding: var(--size-0-5);
+    border-radius: var(--radius-main); background: var(--white); color: var(--color-text);
+    box-shadow: 0 20px 50px color-mix(in srgb, var(--neutral-strong) 3%, transparent);
+    transition: transform 0.4s, border-radius 0.4s, box-shadow 0.4s;
+  }
+  .card:hover { border-radius: 2rem; box-shadow: none; transform: scale(1.02); }
+  .media { border-radius: var(--size-1-5); overflow: clip; }
+  img { display: block; width: 100%; height: 100%; aspect-ratio: 5 / 4; }
+  .content { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--size-1-5); padding: var(--size-0-5) var(--size-1) var(--size-0-5) var(--size-0-5); }
+  .text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--size-0-5); }
+  .tag { padding: var(--size-0-25) var(--size-0-75); border-radius: var(--radius-round); background: var(--secondary-lightest); color: var(--secondary); font-weight: var(--weight-regular); text-transform: uppercase; }
+  h3 { margin: var(--size-0-25) 0 var(--size-0-5); font-size: var(--text-medium-size); font-weight: var(--weight-medium); line-height: var(--lh-1-4); letter-spacing: var(--ls-4); }
+  p { margin: 0; color: var(--neutral-large); }
+  @media (max-width: 991px) { .card { grid-template-columns: 1fr; } }
+</style>
