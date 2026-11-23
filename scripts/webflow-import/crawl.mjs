@@ -10,6 +10,20 @@ const UA = { 'user-agent': 'Mozilla/5.0 (compatible; 2mk-landing-import)' };
 // Old URLs linked from content or known to redirect, probed so their 301 lands in public/_redirects.
 const EXTRA = [
   '/404',
+  // Hidden CMS detail pages (faqs, information-pages), not in the sitemap but live.
+  '/faqs/comment-fonctionne-le-simulateur-de-viager',
+  '/faqs/comment-revendre-des-parts-scpi-en-indivision-apres-une-succession',
+  '/faqs/comment-se-deroule-une-vente',
+  '/faqs/delai-jouissance-scpi',
+  '/faqs/difference-bouquet-rente',
+  '/faqs/lacheteur-doit-il-payer-les-memes-frais-quen-achetant-des-parts-neuves-aupres-de-la-societe-de-gestion',
+  '/faqs/paie-plus',
+  '/faqs/puis-je-vendre-des-parts-scpi-achetees-via-une-assurance-ou-une-banque-sur-2nd-market',
+  '/faqs/quelle-difference-entre-demande-de-retrait-et-vente-de-gre-a-gre-sur-2nd-market',
+  '/faqs/quelle-difference-entre-vendre-des-scpi-en-direct-et-via-un-contrat-dassurance-vie',
+  '/faqs/quels-sont-les-avantages-du-demembrement',
+  '/faqs/quest-ce-que-le-viager',
+  '/information-pages/documents-requis-scpi',
   '/simulateurs/simulateur-de-viager-libre-ou-occupe',
   '/guide-scpi/combien-investir-scpi',
   '/guide-scpi/taux-distribution-affichage',
