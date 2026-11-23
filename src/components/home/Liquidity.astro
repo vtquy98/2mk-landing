@@ -3,13 +3,12 @@
 import Button from '../ui/Button.astro';
 import Eyebrow from './Eyebrow.astro';
 import { PRODUCT } from '../../i18n/config';
-import './reveal.css';
 ---
 
 <section class="liquidity gutter">
   <img class="liquidity__bg" src="/assets/6a0ae6434725e32d8837a83e_benefit_background.avif" alt="" width="2848" height="3060" loading="lazy" decoding="async" />
   <div class="container section liquidity__inner">
-    <div class="liquidity__heading reveal">
+    <div class="liquidity__heading" data-reveal>
       <Eyebrow tone="glass">SCPI — Marché secondaire actif</Eyebrow>
       <h2 class="h2 liquidity__title">Vendre des parts de SCPI ou un viager en gré à gré</h2>
     </div>
@@ -24,7 +23,7 @@ import './reveal.css';
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>

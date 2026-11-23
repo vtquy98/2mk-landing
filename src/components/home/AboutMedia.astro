@@ -6,7 +6,6 @@ import FinanceInnovation from './icons/finance-innovation.svg';
 import Stripe from './icons/stripe.svg';
 import Docusign from './icons/docusign.svg';
 import Qonto from './icons/qonto.svg';
-import './reveal.css';
 
 const partners = [
   { name: 'Stripe', href: 'https://stripe.com/', Logo: Stripe },
@@ -17,7 +16,7 @@ const partners = [
 
 <section class="about gutter" aria-labelledby="about-heading">
   <div class="container section about__inner">
-    <img class="about__img reveal" src="/assets/6a0443e19beb74440eb2a28c_about_image.avif" alt="Conseiller et cliente examinant un dossier" width="1245" height="1740" loading="lazy" decoding="async" />
+    <img class="about__img" data-reveal src="/assets/6a0443e19beb74440eb2a28c_about_image.avif" alt="Conseiller et cliente examinant un dossier" width="1245" height="1740" loading="lazy" decoding="async" />
     <div class="about__text">
       <Eyebrow>SCPI — Marché secondaire</Eyebrow>
       <h2 id="about-heading" class="h2 about__title">Vendre des parts de SCPI ou un viager en gré à gré</h2>
@@ -50,7 +49,7 @@ const partners = [
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>

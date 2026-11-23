@@ -4,7 +4,6 @@
 // `show` picks default cards by id; `cards` replaces them (with `title`, the section gets an h2 and cards use h3).
 import Button from '../ui/Button.astro';
 import { PRODUCT } from '../../i18n/config';
-import './reveal.css';
 
 type Card = {
   title: string;
@@ -82,7 +81,7 @@ const src = (c: Card, w?: number) => `/assets/${c.image}${w ? `-p-${w}` : ''}.av
       <ul class="features__list" role="list">
         {
           cards.map(c => (
-            <li class="feature reveal">
+            <li class="feature" data-reveal>
               <img class="feature__img" src={src(c)} srcset={[...c.variants.map(w => `${src(c, w)} ${w}w`), `${src(c)} 2000w`].join(', ')} sizes="(max-width: 479px) 100vw, (max-width: 991px) 50vw, 40vw" alt={c.alt} width="2000" height="1521" loading="lazy" decoding="async" />
               {c.badge && <span class="feature__badge">{c.badge}</span>}
               <div class="feature__content">
@@ -105,7 +104,7 @@ const src = (c: Card, w?: number) => `/assets/${c.image}${w ? `-p-${w}` : ''}.av
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>
@@ -139,10 +138,10 @@ const src = (c: Card, w?: number) => `/assets/${c.image}${w ? `-p-${w}` : ''}.av
     position: relative;
     z-index: 2;
     padding: var(--size-0-25) var(--size-0-75);
-    border: 1px solid #8bffe01a; /* "positive" greens: no token yet */
+    border: 1px solid color-mix(in srgb, var(--positive-neon) 10%, transparent);
     border-radius: var(--radius-round);
-    background: #68ffd233;
-    color: #5aff96;
+    background: color-mix(in srgb, var(--positive-neon) 20%, transparent);
+    color: var(--positive-neon);
     font-weight: var(--weight-medium);
     backdrop-filter: blur(30px);
   }

@@ -1,6 +1,5 @@
 ---
 // "Comment ça marche": 5 steps as cards that stack while scrolling (position: sticky), required documents aside.
-import './reveal.css';
 import Button from '../ui/Button.astro';
 import DocId from './icons/doc-id.svg';
 import DocProperty from './icons/doc-property.svg';
@@ -18,7 +17,7 @@ const documents = [
 
 <section id="step" class="steps gutter">
   <div class="container section">
-    <h2 class="h2 steps__title reveal">Comment ça marche</h2>
+    <h2 class="h2 steps__title" data-reveal>Comment ça marche</h2>
     <div class="steps__layout">
       <ol class="steps__list" role="list">
         <li class="steps__item">
@@ -120,5 +119,5 @@ const documents = [
 </style>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>

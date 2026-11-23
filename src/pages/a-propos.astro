@@ -3,14 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/static/PageHeader.astro';
 import Row from '../components/a-propos/Row.astro';
 import Team from '../components/a-propos/Team.astro';
-import Cta from '../components/a-propos/Cta.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
 import Docusign from '../components/a-propos/icons/docusign.svg';
 import Stripe from '../components/a-propos/icons/stripe.svg';
 import Qonto from '../components/a-propos/icons/qonto.svg';
 import Bolt from '../components/a-propos/icons/bolt.svg';
 import Cube from '../components/a-propos/icons/cube.svg';
 import Shield from '../components/a-propos/icons/shield.svg';
-import '../components/static/reveal.css';
 import { PRODUCT } from '../i18n/config';
 import seo from '../data/seo/a-propos.json';
 
@@ -206,7 +205,13 @@ const values = [
     </div>
   </section>
 
-  <Cta />
+  <CtaCard
+    title="Prêt à vendre ou acheter ?"
+    text="Créez votre annonce, trouvez des acheteurs. C'est aussi simple que ça ! Rejoignez-nous dès aujourd'hui et découvrez comment 2nd Market peut simplifier la vente ou l’achat de vos actifs immobiliers."
+    href={`${PRODUCT.app}/scpi`}
+    label="Voir les annonces"
+    padded={false}
+  />
 
   <section class="gutter">
     <div class="container section--small">
@@ -271,3 +276,7 @@ const values = [
     .partners { flex-direction: column; align-items: flex-start; }
   }
 </style>
+
+<script>
+  import '../components/ui/reveal';
+</script>

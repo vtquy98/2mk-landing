@@ -3,7 +3,6 @@
 import Button from '../ui/Button.astro';
 import Eyebrow from './Eyebrow.astro';
 import ArrowRight from './icons/arrow-right.svg';
-import './reveal.css';
 
 const items = [
   { title: 'Simulateur de frais SCPI', text: 'Estimez votre net vendeur après commission et frais de notaire.', href: '/simulateurs/frais-scpi', image: '6a0d52f771743ad8fff71e97_Simulator-1', alt: 'Calculatrice affichant SCPI, simulateurs SCPI' },
@@ -15,7 +14,7 @@ const items = [
 <section class="simulators gutter" aria-labelledby="simulators-heading">
   <img class="simulators__bg" src="/assets/6a0e79ca167aeb2da787fae9_simulator-bg.avif" alt="" width="2160" height="1605" loading="lazy" decoding="async" />
   <div class="container section simulators__inner">
-    <div class="simulators__heading reveal">
+    <div class="simulators__heading" data-reveal>
       <Eyebrow>SCPI — Marché secondaire actif</Eyebrow>
       <h2 id="simulators-heading" class="h2 simulators__title">Simulateurs gratuits: estimez votre opération en 30 secondes</h2>
       <p class="simulators__description">Calculs transparents, sans inscription préalable. Les résultats sont indicatifs et ne remplacent pas un calcul personnalisé réalisé avec votre notaire ou votre CGP.</p>
@@ -43,7 +42,7 @@ const items = [
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>
