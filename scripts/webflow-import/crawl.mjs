@@ -53,6 +53,8 @@ const EXTRA = [
 
 const sitemap = await (await fetch(`${SITE}/sitemap.xml`, { headers: UA })).text();
 writeFileSync(join(CACHE, 'sitemap.xml'), sitemap);
+// Webflow's site manifest holds every 301 rule of the site.
+writeFileSync(join(CACHE, 'manifest.json'), await (await fetch(`${SITE}/manifest.json`, { headers: UA })).text());
 const paths = [...new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => new URL(m[1]).pathname.replace(/\/$/, '') || '/').concat(EXTRA))];
 
 const pool = async (items, n, fn) => { const q = [...items]; await Promise.all(Array.from({ length: n }, async () => { while (q.length) await fn(q.shift()); })); };
