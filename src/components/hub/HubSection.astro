@@ -1,0 +1,15 @@
+---
+// Content section under HubHeader (Webflow "padding-global > container-large padding-section-small").
+---
+
+<section class="gutter">
+  <div class="container section--small hub-section">
+    <slot />
+  </div>
+</section>
+
+<style>
+  @media (max-width: 479px) {
+    .hub-section { padding-block: var(--size-1) var(--size-1-5); }
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+// /demembrement: hub of the "Démembrements" articles, with a reading guide before the list and a FAQ after it
+// (FAQPage JSON-LD is in the SEO data).
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HubHeader from '../components/hub/HubHeader.astro';
+import HubSection from '../components/hub/HubSection.astro';
+import PostList from '../components/hub/PostList.astro';
+import seo from '../data/seo/demembrement.json';
+
+// Webflow list: actualités of category "Démembrements", newest first.
+const posts = (await getCollection('actualites', e => /^démembrement/i.test(e.data.category ?? ''))).sort(
+  (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0),
+);
+
+const start = [
+  {
+    title: 'Comprendre',
+    intro: 'Usufruit, nue-propriété, durée.',
+    links: [
+      ['/actualites/introduction', "Qu'est-ce que le démembrement de propriété"],
+      ['/actualites/propriete-scpi', 'Démembrement et SCPI'],
+      ['/actualites/duree', 'La durée du démembrement'],
+      ['/guide-scpi/demembrement-guide-fiscalite', 'Guide complet : usufruit, nue-propriété, fiscalité'],
+    ],
+  },
+  {
+    title: 'Chiffrer',
+    intro: 'Barème fiscal et clés de répartition.',
+    links: [
+      ['/actualites/bareme-fiscal-valorisation', "Barème de l'article 669 CGI"],
+      ['/simulateurs/calculateur-demembrement', "Calculer la valeur de l'usufruit et de la nue-propriété"],
+      ['/guide-scpi/decote-nue-propriete-usufruit', 'Lire une décote en nue-propriété ou en usufruit'],
+      ['/actualites/nue-propriete-scpi-marche-secondaire', 'Annonces en nue-propriété sur le marché secondaire'],
+    ],
+  },
+  {
+    title: 'Revendre avant le terme',
+    intro: 'Parts démembrées : cession de gré à gré.',
+    links: [
+      ['/actualites/revente-usufruit-scpi', 'Revendre un usufruit de SCPI avant le terme'],
+      ['/guide-scpi/revendre-nue-propriete', 'Revendre une nue-propriété avant le terme'],
+      ['/guide-scpi/vendre-usufruit-temporaire', "Vendre l'usufruit temporaire de parts en pleine propriété"],
+      ['/guide-scpi/revendre-usufruit', 'Méthode de prix pour un usufruit'],
+    ],
+  },
+  {
+    title: 'Fiscalité et transmission',
+    intro: 'IFI, succession, donation.',
+    links: [
+      ['/actualites/ifi-et-demembrement', 'IFI et démembrement'],
+      ['/simulateurs/ifi-demembrement', 'Simulateur IFI en démembrement'],
+      ['/guide-scpi/scpi-demembrement-succession', 'Démembrement et succession'],
+      ['/guide-scpi/donation-partage', 'Donation-partage de parts de SCPI'],
+    ],
+  },
+];
+
+// Same questions/answers as the FAQPage JSON-LD in src/data/seo/demembrement.json.
+const faq = [
+  [
+    "Qu'est-ce que le démembrement de parts de SCPI ?",
+    "La pleine propriété d'une part est divisée entre un usufruitier, qui perçoit les revenus distribués pendant la durée fixée, et un nu-propriétaire, qui récupère la pleine propriété au terme sans frais ni formalité. Le démembrement est temporaire, sur une durée convenue, ou viager, jusqu'au décès de l'usufruitier.",
+  ],
+  [
+    'Comment la valeur se répartit-elle entre usufruit et nue-propriété ?',
+    "Sur le plan fiscal, l'article 669 du Code général des impôts fixe la répartition. Pour un usufruit temporaire, l'usufruit vaut 23 % de la pleine propriété par période de dix ans. Pour un usufruit viager, la part de l'usufruit dépend de l'âge de l'usufruitier, de 90 % avant 21 ans à 10 % à partir de 91 ans. Les sociétés de gestion publient par ailleurs leurs propres clés de répartition pour les souscriptions démembrées.",
+  ],
+  [
+    'Peut-on revendre une nue-propriété ou un usufruit avant le terme ?',
+    "Oui. Le droit démembré se cède de gré à gré, à un prix négocié avec un acheteur, sans attendre le terme. Les sociétés de gestion n'organisent pas, de fait, de marché pour ces parts. Les frais et droits applicables à la cession figurent dans les guides de revente avant terme.",
+  ],
+];
+---
+
+<BaseLayout seo={seo}>
+  <HubHeader title="Démembrement SCPI : articles, barème 669 et simulateurs" crumb="Démembrement" />
+
+  <HubSection>
+    <div class="narrow">
+      <div class="lead">
+        <p>
+          <strong>Le démembrement sépare la propriété d'une part de SCPI en deux droits : l'usufruit, qui perçoit les revenus, et la nue-propriété, qui reçoit la pleine propriété au terme.</strong>{' '}
+          La répartition fiscale entre les deux suit le barème de l'article 669 du Code général des impôts.
+        </p>
+        <p>Les sociétés de gestion n'organisent pas, de fait, de marché pour les parts démembrées. Une nue-propriété ou un usufruit se cède donc de gré à gré, à un prix négocié, avant le terme.</p>
+        <p>Les articles de cette page couvrent la mécanique, les clés de répartition, la revente avant terme et la fiscalité, dont l'IFI.</p>
+        <p class="source">Source : article 669 du Code général des impôts.</p>
+      </div>
+
+      <h2 class="heading">Par où commencer</h2>
+      <div class="start">
+        {
+          start.map(group => (
+            <div class="group">
+              <h3>{group.title}</h3>
+              <p class="intro">{group.intro}</p>
+              <ul>
+                {group.links.map(([href, label]) => (
+                  <li>
+                    <a href={href}>{label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <h2 class="heading heading--all">Tous les articles sur le démembrement</h2>
+    </div>
+
+    <PostList entries={posts} headingLevel="h3" />
+
+    <div class="narrow faq">
+      <h2 class="heading">Questions fréquentes</h2>
+      {
+        faq.map(([q, a]) => (
+          <details>
+            <summary>{q}</summary>
+            <p>{a}</p>
+          </details>
+        ))
+      }
+      <div class="legal">
+        <p>Sources : article 669 du Code général des impôts ; bulletins et notes d'information des sociétés de gestion.</p>
+        <p>2nd Market n'est ni conseiller en gestion de patrimoine, ni société de gestion, et ne fournit aucun conseil en investissement, fiscal ou comptable.</p>
+      </div>
+    </div>
+  </HubSection>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 70rem; margin-inline: auto; line-height: 1.6; }
+  .narrow p { margin: 0 0 0.6rem; }
+  .lead {
+    margin-bottom: var(--size-2);
+    padding: var(--size-1) var(--size-1-25);
+    border: 1px solid var(--neutral-lightest);
+    border-left: 4px solid var(--neutral-light);
+    border-radius: 0.625rem;
+    background: var(--neutral-bg);
+  }
+  .lead strong { color: var(--neutral-large); font-weight: var(--weight-semibold); }
+  .lead p:nth-last-child(2) { margin: 0; }
+  .lead .source { margin: var(--size-0-5) 0 0; font-size: 0.8rem; color: var(--color-text-muted); }
+  .heading { margin: 0 0 var(--size-1); font-size: 1.5rem; font-weight: var(--weight-bold); line-height: var(--lh-1-3); color: var(--neutral-large); }
+  .heading--all { margin: var(--size-0-5) 0 var(--size-2-5); font-size: 1.3rem; }
+  .start { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin-bottom: var(--size-2); }
+  .group { padding: var(--size-1) var(--size-1-25); border: 1px solid var(--neutral-lightest); border-radius: var(--size-0-75); background: var(--white); }
+  .group h3 { margin: 0 0 0.35rem; font-size: 1.08rem; font-weight: var(--weight-bold); line-height: var(--lh-1-3); color: var(--neutral-large); }
+  .group .intro { margin: 0 0 var(--size-0-5); font-size: 0.92rem; color: var(--color-text-muted); }
+  .group ul { margin: 0; padding-left: 1.05rem; }
+  .group li { margin: 0 0 0.35rem; font-size: 0.95rem; }
+  .group a, .legal a { color: var(--neutral-large); font-weight: var(--weight-semibold); text-decoration: underline; text-underline-offset: 2px; }
+  .group a:hover { color: var(--neutral-light); }
+
+  .faq { margin-top: var(--size-2-5); margin-bottom: var(--size-2); }
+  details { margin: 0 0 var(--size-0-5); padding: 0.2rem 1.1rem; border: 1px solid var(--neutral-lightest); border-radius: 0.625rem; background: var(--neutral-bg); }
+  summary { display: flex; justify-content: space-between; gap: var(--size-1); padding: var(--size-0-75) 0; color: var(--neutral-large); font-weight: var(--weight-semibold); cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: var(--neutral-light); font-weight: var(--weight-bold); }
+  details[open] > summary::after { content: '–'; }
+  details p { margin: 0; padding: 0 0 0.9rem; font-size: 0.95rem; }
+  .legal { margin-top: var(--size-1-5); padding: var(--size-1) var(--size-1-25); border-top: 1px solid var(--neutral-lightest); font-size: 0.8rem; color: var(--color-text-muted); }
+  .legal p:last-child { margin: 0; }
+
+  @media (max-width: 991px) {
+    .start { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 767px) {
+    .lead { padding: 0.9rem var(--size-1); }
+    .group { padding: var(--size-1); }
+    details { padding-inline: 0.9rem; }
+    .heading { font-size: 1.3rem; }
+  }
+  @media (max-width: 479px) {
+    .start { grid-template-columns: 1fr; }
+  }
+</style>
