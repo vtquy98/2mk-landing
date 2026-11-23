@@ -1,0 +1,46 @@
+---
+// Text + photo row of the "À propos" story. Photo left or right on desktop; text always first on mobile.
+interface Props {
+  title: string;
+  image: { src: string; srcset: string; alt: string; width: number; height: number };
+  imageFirst?: boolean;
+  eager?: boolean; // first row: above the fold, no reveal, loaded eagerly
+}
+const { title, image, imageFirst = false, eager = false } = Astro.props;
+---
+
+<div class:list={['row', { 'row--image-first': imageFirst }]}>
+  <div class="text">
+    <h2 class="h2">{title}</h2>
+    <div class="description"><slot /></div>
+    <slot name="extra" />
+  </div>
+  <img
+    class="photo"
+    src={image.src}
+    srcset={image.srcset}
+    sizes="(max-width: 991px) 90vw, 40vw"
+    alt={image.alt}
+    width={image.width}
+    height={image.height}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    data-reveal={eager ? undefined : 'right'}
+  />
+</div>
+
+<style>
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--size-6); align-items: center; }
+  .row--image-first .photo { order: -1; }
+  .text { display: flex; flex-direction: column; gap: var(--size-0-75); }
+  .h2 { padding-bottom: var(--size-0-125); }
+  .description { color: var(--neutral-large); }
+  .description :global(a) { color: var(--primary); }
+  .photo { width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: var(--radius-main); }
+
+  @media (max-width: 991px) {
+    .row { grid-template-columns: 1fr; gap: var(--size-2); }
+    .row--image-first .photo { order: 0; }
+  }
+  @media (max-width: 479px) { .photo { border-radius: var(--radius-medium); } }
+</style>
