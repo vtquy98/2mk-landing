@@ -1,0 +1,56 @@
+---
+// The site's pill button. Renders an <a> when `href` is set, a <button> otherwise.
+import ArrowIcon from './ArrowIcon.astro';
+
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'blur' | 'link';
+  size?: 'small';
+  arrow?: boolean; // animated chevrons after the label
+  type?: 'button' | 'submit';
+  class?: string;
+  [attr: string]: unknown;
+}
+const { href, variant = 'primary', size, arrow = false, type = 'button', class: cls, ...attrs } = Astro.props;
+const external = href?.startsWith('http') && !href.includes('2ndmarket.fr');
+const classes = ['button', `button--${variant}`, size && `button--${size}`, arrow && 'button--arrow', cls];
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes} {...(external ? { rel: 'noopener' } : {})} {...attrs}>
+      <slot />
+      {arrow && <ArrowIcon />}
+    </a>
+  ) : (
+    <button type={type} class:list={classes} {...attrs}>
+      <slot />
+      {arrow && <ArrowIcon />}
+    </button>
+  )
+}
+
+<style>
+  .button {
+    display: inline-block;
+    padding: var(--size-0-75) var(--size-1-25) var(--size-0-75) var(--size-1);
+    border: 0;
+    border-radius: var(--radius-round);
+    background: var(--primary);
+    color: var(--color-text-light);
+    font: inherit;
+    cursor: pointer;
+    transition: color 0.4s, background-color 0.4s;
+  }
+  .button:hover { background: var(--primary-hover); }
+  .button--arrow { display: flex; gap: var(--size-0-5); align-items: center; justify-content: center; padding-right: var(--size-0-75); color: var(--white); }
+  .button--secondary { border: 1px solid var(--primary); background: transparent; color: var(--primary); }
+  .button--secondary.button--small.button--arrow:hover { background: var(--primary); color: var(--secondary-lightest); }
+  .button--tertiary { border: 1px solid #ffffff1a; background: var(--white); color: var(--color-text); }
+  .button--blur { border: 1px solid #fff3; background: #fff3; color: var(--color-text-light); backdrop-filter: blur(40px); }
+  .button--blur:hover { background: #ffffff4d; }
+  .button--link { padding: 0.25rem 0; background: transparent; color: var(--primary); line-height: 1em; }
+  .button--link:hover { background: transparent; }
+  .button--small { padding: var(--size-0-5) var(--size-1-25); }
+  @media (max-width: 767px) { .button--tertiary.button--small, .button--blur.button--small { padding-inline: 1rem; } }
+</style>

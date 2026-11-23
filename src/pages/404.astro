@@ -1,16 +1,9 @@
 ---
+// TODO(shell): custom 404 ("Page introuvable"), same look as https://2ndmarket.fr/404.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { defaultLocale, t } from '../i18n/config';
-
-const tx = t(defaultLocale).notFound;
+import seo from '../data/seo/404.json';
 ---
 
-<BaseLayout lang={defaultLocale} path="/404" title={tx.title} description={tx.text} robots="noindex">
-  <section class="section">
-    <div class="container container--narrow">
-      <h1>{tx.title}</h1>
-      <p>{tx.text}</p>
-      <a class="btn" href="/">{tx.home}</a>
-    </div>
-  </section>
+<BaseLayout seo={seo}>
+  <h1>{seo.title}</h1>
 </BaseLayout>

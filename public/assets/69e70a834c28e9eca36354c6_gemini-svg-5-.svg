@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#104A65" flood-opacity="0.08" />
+    </filter>
+    
+    <marker id="arrowOK" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0B5D3E" />
+    </marker>
+    <marker id="arrowKO" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B71C1C" />
+    </marker>
+    <marker id="arrowWait" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C75300" />
+    </marker>
+    <marker id="arrowNeutral" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#104A65" />
+    </marker>
+  </defs>
+
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    /* Configuration de l'animation en boucle (durée totale : 16s) */
+    .anim {
+      animation-duration: 16s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      transform-origin: center;
+    }
+    
+    .anim-1 { animation-name: fade1; }
+    .anim-2 { animation-name: fade2; }
+    .anim-3 { animation-name: fade3; }
+    .anim-4 { animation-name: fade4; }
+    .anim-5 { animation-name: fade5; }
+
+    /* Séquençage des étapes */
+    @keyframes fade1 {
+      0%, 2% { opacity: 0; transform: translateY(15px); }
+      6%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade2 {
+      0%, 16% { opacity: 0; transform: translateY(15px); }
+      20%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade3 {
+      0%, 34% { opacity: 0; transform: translateY(15px); }
+      38%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade4 {
+      0%, 52% { opacity: 0; transform: translateY(15px); }
+      56%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade5 {
+      0%, 70% { opacity: 0; transform: translateY(15px); }
+      74%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
+
+  <rect width="1000" height="800" fill="#F9FAFB" />
+
+  <text x="500" y="55" fill="#104A65" font-size="32" font-weight="800" text-anchor="middle" letter-spacing="-0.5">Mécanisme d'un Autocall</text>
+  <text x="500" y="80" fill="#4A4A4A" font-size="16" text-anchor="middle">Arbre de décision et les 3 scénarios possibles</text>
+
+  <g class="anim anim-1">
+    <rect x="300" y="110" width="400" height="90" rx="12" fill="#104A65" filter="url(#shadow)"/>
+    <text x="500" y="145" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle" text-transform="uppercase" letter-spacing="0.5">Vérification Annuelle</text>
+    <text x="500" y="175" fill="#E8F4F8" font-size="16" font-weight="600" text-anchor="middle">L'indice est-il ≥ au Seuil de Rappel ?</text>
+  </g>
+
+  <g class="anim anim-2">
+    <path d="M 300 155 L 200 155 L 200 240" fill="none" stroke="#0B5D3E" stroke-width="4" stroke-dasharray="6,4" marker-end="url(#arrowOK)"/>
+    <rect x="210" y="130" width="45" height="25" rx="4" fill="#E8F5E9" />
+    <text x="232" y="148" fill="#0B5D3E" font-size="14" font-weight="bold" text-anchor="middle">OUI</text>
+
+    <rect x="40" y="250" width="320" height="130" rx="12" fill="#E8F5E9" stroke="#0B5D3E" stroke-width="3" filter="url(#shadow)"/>
+    <circle cx="200" cy="285" r="16" fill="#0B5D3E"/>
+    <path d="M 193 285 L 198 290 L 207 279" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="200" y="325" fill="#0B5D3E" font-size="18" font-weight="800" text-anchor="middle">Scénario 1 : Rappel Anticipé</text>
+    <text x="200" y="345" fill="#4A4A4A" font-size="14" text-anchor="middle">Le produit s'arrête prématurément</text>
+    <text x="200" y="365" fill="#0B5D3E" font-size="15" font-weight="bold" text-anchor="middle">Capital récupéré + Coupons versés</text>
+  </g>
+
+  <g class="anim anim-3">
+    <path d="M 500 200 L 500 410" fill="none" stroke="#C75300" stroke-width="4" marker-end="url(#arrowWait)"/>
+    <rect x="510" y="230" width="50" height="25" rx="4" fill="#FFF4E6" />
+    <text x="535" y="248" fill="#C75300" font-size="14" font-weight="bold" text-anchor="middle">NON</text>
+    
+    <rect x="400" y="295" width="200" height="30" rx="15" fill="#ffffff" stroke="#C75300" stroke-width="1"/>
+    <text x="500" y="315" fill="#C75300" font-size="14" font-weight="600" text-anchor="middle">Le produit continue...</text>
+  </g>
+
+  <g class="anim anim-4">
+    <rect x="300" y="420" width="400" height="90" rx="12" fill="#104A65" filter="url(#shadow)"/>
+    <text x="500" y="455" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle" text-transform="uppercase" letter-spacing="0.5">Échéance Finale (Terme)</text>
+    <text x="500" y="485" fill="#E8F4F8" font-size="16" font-weight="600" text-anchor="middle">L'indice est-il ≥ à la Barrière ?</text>
+  </g>
+
+  <g class="anim anim-5">
+    <path d="M 300 465 L 200 465 L 200 560" fill="none" stroke="#104A65" stroke-width="4" marker-end="url(#arrowNeutral)"/>
+    <rect x="210" y="440" width="45" height="25" rx="4" fill="#E8F4F8" />
+    <text x="232" y="458" fill="#104A65" font-size="14" font-weight="bold" text-anchor="middle">OUI</text>
+
+    <rect x="40" y="570" width="320" height="130" rx="12" fill="#ffffff" stroke="#104A65" stroke-width="3" filter="url(#shadow)"/>
+    <circle cx="200" cy="605" r="16" fill="#104A65"/>
+    <path d="M 193 605 L 198 610 L 207 599" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="200" y="645" fill="#104A65" font-size="18" font-weight="800" text-anchor="middle">Scénario 2 : Capital Protégé</text>
+    <text x="200" y="665" fill="#4A4A4A" font-size="14" text-anchor="middle">La barrière n'est pas franchie</text>
+    <text x="200" y="685" fill="#104A65" font-size="15" font-weight="bold" text-anchor="middle">Récupération de 100% du capital</text>
+
+    <path d="M 700 465 L 800 465 L 800 560" fill="none" stroke="#B71C1C" stroke-width="4" stroke-dasharray="6,4" marker-end="url(#arrowKO)"/>
+    <rect x="745" y="440" width="50" height="25" rx="4" fill="#FFEBEE" />
+    <text x="770" y="458" fill="#B71C1C" font-size="14" font-weight="bold" text-anchor="middle">NON</text>
+
+    <rect x="640" y="570" width="320" height="130" rx="12" fill="#FFEBEE" stroke="#B71C1C" stroke-width="3" filter="url(#shadow)"/>
+    <circle cx="800" cy="605" r="16" fill="#B71C1C"/>
+    <path d="M 793 598 L 807 612 M 807 598 L 793 612" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="800" y="645" fill="#B71C1C" font-size="18" font-weight="800" text-anchor="middle">Scénario 3 : Perte en Capital</text>
+    <text x="800" y="665" fill="#4A4A4A" font-size="14" text-anchor="middle">La barrière a été franchie</text>
+    <text x="800" y="685" fill="#B71C1C" font-size="15" font-weight="bold" text-anchor="middle">Perte au prorata de la baisse</text>
+  </g>
+</svg>

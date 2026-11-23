@@ -1,0 +1,1 @@
+(function(){if(window.__tmFigFix)return;window.__tmFigFix=true;var s=document.createElement('style');s.textContent='.w-richtext figure[class*="tm-"] div{color:inherit;font-size:inherit}';(document.head||document.documentElement).appendChild(s);})();

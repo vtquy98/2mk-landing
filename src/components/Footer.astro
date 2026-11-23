@@ -1,14 +1,4 @@
 ---
-import { locales, PRODUCT, t } from '../i18n/config';
-
-interface Props { lang: string }
-const { lang } = Astro.props;
-const tx = t(lang).footer;
+// TODO(shell): fixed "reveal" footer (brand, links, contact, newsletter form, partners, socials, big wordmark).
 ---
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <span>© {new Date().getFullYear()} {PRODUCT.name}. {tx.rights}</span>
-    <a href={`${locales[lang].base}/privacy`}>{tx.privacy}</a>
-  </div>
-</footer>
+<footer class="footer"></footer>

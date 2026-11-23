@@ -1,0 +1,126 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#104A65" flood-opacity="0.08" />
+    </filter>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#104A65" />
+    </marker>
+    <marker id="arrowOK" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0B5D3E" />
+    </marker>
+    <marker id="arrowKO" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B71C1C" />
+    </marker>
+  </defs>
+
+  <style>
+    /* Styles globaux inspirés du CSS fourni */
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    /* Configuration de l'animation en boucle (durée totale : 15s) */
+    .anim {
+      animation-duration: 15s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      transform-origin: center;
+    }
+    
+    .anim-1 { animation-name: fade1; }
+    .anim-2 { animation-name: fade2; }
+    .anim-3 { animation-name: fade3; }
+    .anim-4 { animation-name: fade4; }
+    .anim-5 { animation-name: fade5; }
+
+    /* Séquençage des étapes */
+    @keyframes fade1 {
+      0%, 2% { opacity: 0; transform: translateY(15px); }
+      6%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade2 {
+      0%, 14% { opacity: 0; transform: translateY(15px); }
+      18%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade3 {
+      0%, 30% { opacity: 0; transform: translateY(15px); }
+      34%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade4 {
+      0%, 46% { opacity: 0; transform: translateY(15px); }
+      50%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade5 {
+      0%, 62% { opacity: 0; transform: translateY(15px); }
+      66%, 92% { opacity: 1; transform: translateY(0); }
+      96%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
+
+  <rect width="1000" height="800" fill="#F9FAFB" />
+
+  <text x="500" y="55" fill="#104A65" font-size="32" font-weight="800" text-anchor="middle" letter-spacing="-0.5">Mécanisme d'un Produit Structuré</text>
+  <text x="500" y="80" fill="#4A4A4A" font-size="16" text-anchor="middle">Anatomie de l'investissement et scénarios à l'échéance</text>
+
+  <g class="anim anim-1">
+    <rect x="350" y="110" width="300" height="80" rx="12" fill="#ffffff" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+    <text x="500" y="142" fill="#4A4A4A" font-size="15" font-weight="600" text-anchor="middle" text-transform="uppercase" letter-spacing="1">Investissement Initial</text>
+    <text x="500" y="174" fill="#104A65" font-size="28" font-weight="bold" text-anchor="middle">10 000 €</text>
+  </g>
+
+  <g class="anim anim-2">
+    <path d="M500,190 L500,220 L300,220 L300,245" fill="none" stroke="#104A65" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M500,190 L500,220 L700,220 L700,245" fill="none" stroke="#104A65" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="150" y="250" width="300" height="110" rx="12" fill="#E8F4F8" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+    <text x="300" y="285" fill="#104A65" font-size="16" font-weight="700" text-anchor="middle">Obligations Sécurisées</text>
+    <text x="300" y="320" fill="#104A65" font-size="26" font-weight="bold" text-anchor="middle">8 500 €</text>
+    <text x="300" y="342" fill="#4A4A4A" font-size="14" text-anchor="middle">Protection du capital (Coffre-fort)</text>
+
+    <rect x="550" y="250" width="300" height="110" rx="12" fill="#FFF4E6" stroke="#C75300" stroke-width="2" filter="url(#shadow)"/>
+    <text x="700" y="285" fill="#C75300" font-size="16" font-weight="700" text-anchor="middle">Contrats Financiers</text>
+    <text x="700" y="320" fill="#C75300" font-size="26" font-weight="bold" text-anchor="middle">1 500 €</text>
+    <text x="700" y="342" fill="#4A4A4A" font-size="14" text-anchor="middle">Pari sur la Bourse (Rendement)</text>
+  </g>
+
+  <g class="anim anim-3">
+    <path d="M300,360 L300,390 L500,390 L500,415" fill="none" stroke="#104A65" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M700,360 L700,390 L500,390" fill="none" stroke="#C75300" stroke-width="3"/>
+
+    <rect x="300" y="420" width="400" height="90" rx="12" fill="#104A65" filter="url(#shadow)"/>
+    <text x="500" y="455" fill="#ffffff" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="0.5">La Condition (Barrière)</text>
+    <text x="500" y="485" fill="#E8F4F8" font-size="15" text-anchor="middle">Ex: L'indice de référence ne baisse pas</text>
+    <text x="500" y="503" fill="#E8F4F8" font-size="15" text-anchor="middle">de plus de 40% à l'échéance</text>
+  </g>
+
+  <g class="anim anim-4">
+    <path d="M500,510 L500,540 L300,540 L300,575" fill="none" stroke="#0B5D3E" stroke-width="3" stroke-dasharray="8,5" marker-end="url(#arrowOK)"/>
+    
+    <rect x="125" y="580" width="350" height="130" rx="12" fill="#E8F5E9" stroke="#0B5D3E" stroke-width="3" filter="url(#shadow)"/>
+    <circle cx="300" cy="615" r="18" fill="#0B5D3E"/>
+    <path d="M292,615 L298,621 L309,608" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="300" y="655" fill="#0B5D3E" font-size="18" font-weight="800" text-anchor="middle">Scénario Favorable</text>
+    <text x="300" y="675" fill="#4A4A4A" font-size="14" text-anchor="middle">La condition est respectée</text>
+    <text x="300" y="695" fill="#0B5D3E" font-size="16" font-weight="bold" text-anchor="middle">Capital + 6% / an = 14 800 €</text>
+  </g>
+
+  <g class="anim anim-5">
+    <path d="M500,510 L500,540 L700,540 L700,575" fill="none" stroke="#B71C1C" stroke-width="3" stroke-dasharray="8,5" marker-end="url(#arrowKO)"/>
+    
+    <rect x="525" y="580" width="350" height="130" rx="12" fill="#FFEBEE" stroke="#B71C1C" stroke-width="3" filter="url(#shadow)"/>
+    <circle cx="700" cy="615" r="18" fill="#B71C1C"/>
+    <path d="M692,607 L708,623 M708,607 L692,623" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <text x="700" y="655" fill="#B71C1C" font-size="18" font-weight="800" text-anchor="middle">Scénario Défavorable</text>
+    <text x="700" y="675" fill="#4A4A4A" font-size="14" text-anchor="middle">La barrière est franchie (ex: -45%)</text>
+    <text x="700" y="695" fill="#B71C1C" font-size="16" font-weight="bold" text-anchor="middle">Perte de capital (au prorata de la baisse)</text>
+  </g>
+</svg>

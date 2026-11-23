@@ -1,0 +1,16 @@
+{
+  "title": "Démembrement de parts de SCPI : usufruit et nue-propriété",
+  "description": "Usufruit, nue-propriété, barème de l'article 669 CGI, revente avant terme et IFI : guides et simulateurs 2nd Market sur le démembrement de parts de SCPI",
+  "canonical": "https://2ndmarket.fr/demembrement",
+  "robots": "max-image-preview:large",
+  "ogTitle": "Démembrement de parts de SCPI : usufruit et nue-propriété",
+  "ogDescription": "Usufruit, nue-propriété, barème de l'article 669 CGI, revente avant terme et IFI : guides et simulateurs 2nd Market sur le démembrement de parts de SCPI",
+  "ogImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "ogType": "website",
+  "twitterTitle": "Démembrement de parts de SCPI : usufruit et nue-propriété",
+  "twitterDescription": "Usufruit, nue-propriété, barème de l'article 669 CGI, revente avant terme et IFI : guides et simulateurs 2nd Market sur le démembrement de parts de SCPI",
+  "twitterImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "jsonLd": [
+    "{\"@context\": \"https://schema.org\",\"@type\": \"FAQPage\",\"mainEntity\": [{\"@type\": \"Question\",\"name\": \"Qu'est-ce que le démembrement de parts de SCPI ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"La pleine propriété d'une part est divisée entre un usufruitier, qui perçoit les revenus distribués pendant la durée fixée, et un nu-propriétaire, qui récupère la pleine propriété au terme sans frais ni formalité. Le démembrement est temporaire, sur une durée convenue, ou viager, jusqu'au décès de l'usufruitier.\"}},{\"@type\": \"Question\",\"name\": \"Comment la valeur se répartit-elle entre usufruit et nue-propriété ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"Sur le plan fiscal, l'article 669 du Code général des impôts fixe la répartition. Pour un usufruit temporaire, l'usufruit vaut 23 % de la pleine propriété par période de dix ans. Pour un usufruit viager, la part de l'usufruit dépend de l'âge de l'usufruitier, de 90 % avant 21 ans à 10 % à partir de 91 ans. Les sociétés de gestion publient par ailleurs leurs propres clés de répartition pour les souscriptions démembrées.\"}},{\"@type\": \"Question\",\"name\": \"Peut-on revendre une nue-propriété ou un usufruit avant le terme ?\",\"acceptedAnswer\": {\"@type\": \"Answer\",\"text\": \"Oui. Le droit démembré se cède de gré à gré, à un prix négocié avec un acheteur, sans attendre le terme. Les sociétés de gestion n'organisent pas, de fait, de marché pour ces parts. Les frais et droits applicables à la cession figurent dans les guides de revente avant terme.\"}}]}"
+  ]
+}

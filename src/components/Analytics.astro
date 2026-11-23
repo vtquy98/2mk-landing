@@ -1,0 +1,64 @@
+---
+// Consent-first analytics, production host only (previews and local dev send nothing).
+// Google consent mode defaults to "denied"; CookieYes updates it. GTM, Clarity and Google Preferred Sources load
+// after the first interaction (or 5 s) so they never block rendering. GA4 goes through the Google tag gateway
+// path served by Cloudflare on 2ndmarket.fr.
+const CONFIG = {
+  hosts: ['2ndmarket.fr', 'www.2ndmarket.fr'],
+  ga4: 'G-M5M0BMLL65',
+  tagGateway: '/xa5e8du3i6ydNjczZDlkZGNiNDIzMmU1NmFjZGJhY2Ri/JpszWrjp_7Q5k-qEFQ9llpCB25E',
+  gtm: 'GTM-TL9LGZX2',
+  clarity: 'q1yfbo75g4',
+  cookieYes: 'https://cdn-cookieyes.com/client_data/8b2a6546636b3020fb78d993/script.js',
+  preferredSources: 'https://news.google.com/swg/js/v1/publisher.js',
+  delaySeconds: 5,
+};
+---
+
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+<link rel="dns-prefetch" href="https://www.clarity.ms" />
+<link rel="dns-prefetch" href="https://cdn-cookieyes.com" />
+<script is:inline define:vars={{ c: CONFIG }}>
+  if (c.hosts.includes(location.hostname)) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+      functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted', wait_for_update: 500,
+    });
+    gtag('set', 'url_passthrough', true);
+    gtag('set', 'ads_data_redaction', true);
+    window.google_tags_first_party = (window.google_tags_first_party || []).concat([c.ga4]);
+    gtag('js', new Date());
+    gtag('config', c.ga4);
+
+    const add = (src, id) => { const s = document.createElement('script'); s.src = src; s.async = true; if (id) s.id = id; document.head.appendChild(s); return s; };
+    add(c.tagGateway);
+
+    let tags = false;
+    const startTags = () => {
+      if (tags) return;
+      tags = true;
+      dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+      add(`https://www.googletagmanager.com/gtm.js?id=${c.gtm}`);
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      add(`https://www.clarity.ms/tag/${c.clarity}`);
+    };
+    let loaded = false;
+    const events = ['mousemove', 'scroll', 'keydown', 'touchstart', 'click'];
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      events.forEach(e => removeEventListener(e, load));
+      // GTM/Clarity start once CookieYes is ready; fallbacks so an ad-blocked banner never silently drops analytics.
+      document.addEventListener('cookieyes_banner_load', startTags);
+      const cy = add(c.cookieYes, 'cookieyes');
+      cy.onload = () => setTimeout(startTags, 2000);
+      cy.onerror = startTags;
+      // Google Preferred Sources sets no cookie until the visitor clicks, so it is not consent-gated.
+      add(c.preferredSources, 'gps-publisher');
+    };
+    events.forEach(e => addEventListener(e, load, { passive: true }));
+    setTimeout(load, c.delaySeconds * 1000);
+  }
+</script>

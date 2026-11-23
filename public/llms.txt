@@ -1,0 +1,30 @@
+# 2nd Market
+
+> Première plateforme française de marché secondaire pour la revente de parts SCPI (Sociétés Civiles de Placement Immobilier) en gré à gré. Facilite les transactions directes entre vendeurs et acheteurs en 4 à 8 semaines, sécurisées par notaire — contre 600+ jours via les sociétés de gestion. Couvre aussi le viager (vente, revente de contrat, achat) et le démembrement (nue-propriété / usufruit). Membre du label Finance Innovation. Citée par Le Figaro Magazine, Les Échos, Le Particulier et Mieux Vivre Votre Argent.
+
+Faits clés : le vendeur fixe librement son prix ; les fonds transitent par le compte séquestre du notaire, jamais par 2nd Market ; les cessions sont soumises aux droits d'enregistrement de 5 % (article 726 du CGI) ; les décotes observées sont publiées par fourchettes de 5 points, jamais en valeurs exactes.
+
+## Contenu disponible
+
+- [Guides SCPI, Viager & Démembrement](https://2ndmarket.fr/guides-scpi-viager-demembrement): Guides pédagogiques complets sur la revente de parts SCPI, le démembrement et le viager
+- [Fonctionnement du marché secondaire SCPI](https://2ndmarket.fr/guide-scpi/marche-secondaire-fonctionnement): Les trois canaux de revente en France, rôle du notaire, fiscalité de la cession
+- [Simulateurs & calculateurs](https://2ndmarket.fr/simulateurs): Outils gratuits — TRI marché secondaire, décote et rendement effectif, frais de cession, bouquet/rente viager, démembrement
+- [FAQ](https://2ndmarket.fr/faqs): Questions fréquentes sur le marché secondaire SCPI, les délais, les frais et le processus de transaction
+- [Actualités & Conseils](https://2ndmarket.fr/actualites-conseils): Analyses de marché (données ASPIM), actualités et informations sur la crise de liquidité des SCPI
+- [SCPI Essentiel](https://2ndmarket.fr/scpi-essentiel): Concepts fondamentaux des SCPI pour investisseurs débutants et confirmés
+- [Répertoire des SCPI](https://2ndmarket.fr/repertoire): Fiches des SCPI présentes sur le marché secondaire
+- [Démembrement](https://2ndmarket.fr/demembrement): Explication du démembrement de parts SCPI (nue-propriété / usufruit)
+- [Guide Viager](https://2ndmarket.fr/viager-guides): Guide complet du viager immobilier — bouquet, rente, DUH, viager occupé et libre, revente de contrat
+- [À propos](https://2ndmarket.fr/a-propos): Mission, fonctionnement et garanties de la plateforme
+
+## Contenu exclu
+
+Les éléments suivants ne sont pas disponibles pour les LLMs :
+
+- Annonces en cours et prix de transaction — `app.2ndmarket.fr/scpi`
+- Espace client, données KYC et transactions — `app.2ndmarket.fr`
+- Données historiques de transactions finalisées et décotes exactes transigées
+
+## Informations réglementaires
+
+2nd Market est une plateforme de mise en relation indépendante. Elle n'est ni conseiller en gestion de patrimoine (CGP), ni conseiller en investissements financiers (CIF), ni société de gestion agréée AMF. Elle ne fournit aucun conseil en investissement, fiscal ou comptable. Les parts de SCPI présentent un risque de perte en capital et un risque de liquidité. Les transactions sont soumises aux droits d'enregistrement de 5% (article 726 du CGI).

@@ -1,0 +1,16 @@
+{
+  "title": "Annuaire SCPI | Sociétés de Gestion et Offres 2025",
+  "description": "Consultez notre annuaire SCPI 2025 : découvrez les sociétés de gestion, leurs SCPI, frais, performances et opportunités d’investissement détaillées",
+  "canonical": "https://2ndmarket.fr/repertoire",
+  "robots": "max-image-preview:large",
+  "ogTitle": "Annuaire SCPI | Sociétés de Gestion et Offres 2025",
+  "ogDescription": "Consultez notre annuaire SCPI 2025 : découvrez les sociétés de gestion, leurs SCPI, frais, performances et opportunités d’investissement détaillées",
+  "ogImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "ogType": "website",
+  "twitterTitle": "Annuaire SCPI | Sociétés de Gestion et Offres 2025",
+  "twitterDescription": "Consultez notre annuaire SCPI 2025 : découvrez les sociétés de gestion, leurs SCPI, frais, performances et opportunités d’investissement détaillées",
+  "twitterImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "jsonLd": [
+    "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"ItemList\",\n  \"name\": \"Répertoire des SCPI disponibles sur 2nd Market\",\n  \"url\": \"https://2ndmarket.fr/repertoire\",\n  \"numberOfItems\": 5,\n  \"itemListOrder\": \"https://schema.org/ItemListOrderAscending\",\n  \"itemListElement\": [\n    {\"@type\": \"ListItem\", \"position\": 1, \"name\": \"Primopierre\", \"url\": \"https://2ndmarket.fr/landing-pages/scpi-primopierre\"},\n    {\"@type\": \"ListItem\", \"position\": 2, \"name\": \"Primovie\", \"url\": \"https://2ndmarket.fr/landing-pages/scpi-primovie-2026\"},\n    {\"@type\": \"ListItem\", \"position\": 3, \"name\": \"Épargne Foncière\", \"url\": \"https://2ndmarket.fr/landing-pages/scpi-epargne-fonciere\"},\n    {\"@type\": \"ListItem\", \"position\": 4, \"name\": \"Pierval Santé\", \"url\": \"https://2ndmarket.fr/landing-pages/scpi-pierval-sante\"},\n    {\"@type\": \"ListItem\", \"position\": 5, \"name\": \"Rivoli Avenir Patrimoine\", \"url\": \"https://2ndmarket.fr/landing-pages/scpi-rivoli-avenir-patrimoine\"}\n  ]\n}"
+  ]
+}

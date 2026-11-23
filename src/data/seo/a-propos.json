@@ -1,0 +1,16 @@
+{
+  "title": "À Propos de 2nd Market | Revente SCPI et Viager entre particuliers",
+  "description": "2nd Market : plateforme de revente de parts SCPI et de viager de gré à gré, encadrée par notaire. Labellisée Finance Innovation. Fondée par Christophe Neves et Thuyly Abecassis.",
+  "canonical": "https://2ndmarket.fr/a-propos",
+  "robots": "max-image-preview:large",
+  "ogTitle": "À Propos de 2nd Market | Revente SCPI et Viager entre particuliers",
+  "ogDescription": "2nd Market : plateforme de revente de parts SCPI et de viager de gré à gré, encadrée par notaire. Labellisée Finance Innovation. Fondée par Christophe Neves et Thuyly Abecassis.",
+  "ogImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "ogType": "website",
+  "twitterTitle": "À Propos de 2nd Market | Revente SCPI et Viager entre particuliers",
+  "twitterDescription": "2nd Market : plateforme de revente de parts SCPI et de viager de gré à gré, encadrée par notaire. Labellisée Finance Innovation. Fondée par Christophe Neves et Thuyly Abecassis.",
+  "twitterImage": "/assets/69801fdeeca506a252d4fa70_full-logo-4_1.jpg",
+  "jsonLd": [
+    "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"@id\": \"https://2ndmarket.fr/a-propos#breadcrumb\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Accueil\",\n          \"item\": \"https://2ndmarket.fr\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"À Propos\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"AboutPage\",\n      \"@id\": \"https://2ndmarket.fr/a-propos#webpage\",\n      \"url\": \"https://2ndmarket.fr/a-propos\",\n      \"name\": \"À Propos de 2nd Market — Plateforme de revente SCPI entre particuliers\",\n      \"description\": \"2nd Market est une plateforme de marché secondaire permettant la revente de parts de SCPI de gré à gré, avec décote, encadrée par notaire. Labellisée Finance Innovation.\",\n      \"isPartOf\": { \"@id\": \"https://2ndmarket.fr/#website\" },\n      \"about\": { \"@id\": \"https://2ndmarket.fr/#organization\" },\n      \"breadcrumb\": { \"@id\": \"https://2ndmarket.fr/a-propos#breadcrumb\" },\n      \"mainEntity\": { \"@id\": \"https://2ndmarket.fr/#organization\" }\n    }\n  ]\n}"
+  ]
+}

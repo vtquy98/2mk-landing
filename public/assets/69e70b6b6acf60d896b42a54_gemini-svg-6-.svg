@@ -1,0 +1,142 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#104A65" flood-opacity="0.08" />
+    </filter>
+    <filter id="shadow-heavy" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#104A65" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    /* Configuration de l'animation en boucle (durée totale : 16s) */
+    .anim {
+      animation-duration: 16s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      animation-fill-mode: forwards;
+      transform-origin: center;
+    }
+    
+    .anim-1 { animation-name: fade1; }
+    .anim-2 { animation-name: fade2; }
+    .anim-3 { animation-name: fade3; }
+    .anim-4 { animation-name: fade4; }
+
+    /* Séquençage des étapes */
+    @keyframes fade1 {
+      0%, 2% { opacity: 0; transform: translateY(15px); }
+      6%, 94% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade2 {
+      0%, 20% { opacity: 0; transform: translateY(15px); }
+      24%, 94% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade3 {
+      0%, 45% { opacity: 0; transform: translateY(15px); }
+      49%, 94% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+    @keyframes fade4 {
+      0%, 65% { opacity: 0; transform: translateY(15px); }
+      69%, 94% { opacity: 1; transform: translateY(0); }
+      97%, 100% { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
+
+  <rect width="1000" height="800" fill="#F9FAFB" />
+
+  <text x="500" y="55" fill="#104A65" font-size="32" font-weight="800" text-anchor="middle" letter-spacing="-0.5">Décrypter le DIC (Document d'Informations Clés)</text>
+  <text x="500" y="80" fill="#4A4A4A" font-size="16" text-anchor="middle">Les 4 étapes pour analyser un produit structuré avant de signer</text>
+
+  <g class="anim anim-1">
+    <rect x="350" y="115" width="300" height="100" rx="12" fill="#ffffff" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+    <path d="M 370 135 L 400 135 M 370 155 L 420 155 M 370 175 L 410 175" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round"/>
+    <text x="520" y="145" fill="#104A65" font-size="18" font-weight="800" text-anchor="middle">Format Standardisé</text>
+    <text x="520" y="170" fill="#4A4A4A" font-size="15" text-anchor="middle">Maximum 3 pages</text>
+    <text x="520" y="192" fill="#4A4A4A" font-size="15" text-anchor="middle">6 rubriques obligatoires</text>
+  </g>
+
+  <line x1="100" y1="245" x2="900" y2="245" stroke="#D1D5DB" stroke-width="2" stroke-dasharray="6,6" opacity="0.5"/>
+
+  <text x="500" y="280" fill="#104A65" font-size="22" font-weight="700" text-anchor="middle" class="anim anim-2">1. Les 4 Scénarios de Performance</text>
+  
+  <g class="anim anim-2">
+    <rect x="100" y="310" width="185" height="140" rx="10" fill="#E8F5E9" stroke="#0B5D3E" stroke-width="2" filter="url(#shadow)"/>
+    <text x="192.5" y="340" fill="#0B5D3E" font-size="14" font-weight="800" text-transform="uppercase" text-anchor="middle">Favorable</text>
+    <text x="192.5" y="375" fill="#0B5D3E" font-size="28" font-weight="900" text-anchor="middle">~ 8%</text>
+    <text x="192.5" y="405" fill="#4A4A4A" font-size="13" text-anchor="middle">Souvent mis en avant</text>
+    <text x="192.5" y="425" fill="#4A4A4A" font-size="13" text-anchor="middle">par le commercial</text>
+
+    <rect x="305" y="300" width="185" height="160" rx="10" fill="#104A65" filter="url(#shadow-heavy)"/>
+    <rect x="305" y="285" width="185" height="25" rx="5" fill="#F97316"/>
+    <text x="397.5" y="302" fill="#ffffff" font-size="11" font-weight="800" text-transform="uppercase" text-anchor="middle" letter-spacing="0.5">À regarder en priorité</text>
+    <text x="397.5" y="345" fill="#ffffff" font-size="16" font-weight="800" text-transform="uppercase" text-anchor="middle">Médian</text>
+    <text x="397.5" y="385" fill="#E8F4F8" font-size="34" font-weight="900" text-anchor="middle">~ 3.5%</text>
+    <text x="397.5" y="420" fill="#ffffff" font-size="13" text-anchor="middle">Le résultat le</text>
+    <text x="397.5" y="440" fill="#ffffff" font-size="13" font-weight="600" text-anchor="middle">plus probable</text>
+
+    <rect x="510" y="310" width="185" height="140" rx="10" fill="#FFF4E6" stroke="#C75300" stroke-width="2" filter="url(#shadow)"/>
+    <text x="602.5" y="340" fill="#C75300" font-size="14" font-weight="800" text-transform="uppercase" text-anchor="middle">Défavorable</text>
+    <text x="602.5" y="375" fill="#C75300" font-size="28" font-weight="900" text-anchor="middle"><tspan font-size="20">Baisse modérée</tspan></text>
+    <text x="602.5" y="405" fill="#4A4A4A" font-size="13" text-anchor="middle">Rendement nul</text>
+    <text x="602.5" y="425" fill="#4A4A4A" font-size="13" text-anchor="middle">ou légèrement négatif</text>
+
+    <rect x="715" y="310" width="185" height="140" rx="10" fill="#FFEBEE" stroke="#B71C1C" stroke-width="2" filter="url(#shadow)"/>
+    <text x="807.5" y="340" fill="#B71C1C" font-size="14" font-weight="800" text-transform="uppercase" text-anchor="middle">Stress</text>
+    <text x="807.5" y="375" fill="#B71C1C" font-size="28" font-weight="900" text-anchor="middle">- 30%</text>
+    <text x="807.5" y="405" fill="#4A4A4A" font-size="13" text-anchor="middle">Crise sévère : la perte</text>
+    <text x="807.5" y="425" fill="#4A4A4A" font-size="13" text-anchor="middle">maximale plausible</text>
+  </g>
+
+  <line x1="100" y1="495" x2="900" y2="495" stroke="#D1D5DB" stroke-width="2" stroke-dasharray="6,6" opacity="0.5"/>
+
+  <g class="anim anim-3">
+    <rect x="100" y="530" width="380" height="170" rx="12" fill="#ffffff" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+    <text x="290" y="565" fill="#104A65" font-size="20" font-weight="700" text-anchor="middle">2. Le Coût Réel (RIY)</text>
+    <text x="290" y="590" fill="#4A4A4A" font-size="14" text-anchor="middle">"Reduction in Yield" / Réduction du rendement</text>
+    
+    <rect x="140" y="620" width="300" height="30" rx="15" fill="#E8F5E9"/>
+    <rect x="360" y="620" width="80" height="30" rx="15" fill="#C75300"/>
+    <rect x="350" y="620" width="20" height="30" fill="#C75300"/> <text x="240" y="675" fill="#0B5D3E" font-size="14" font-weight="bold" text-anchor="middle">Rendement net</text>
+    <text x="400" y="675" fill="#C75300" font-size="14" font-weight="bold" text-anchor="middle">Frais (RIY)</text>
+  </g>
+
+  <g class="anim anim-4">
+    <rect x="520" y="530" width="380" height="170" rx="12" fill="#ffffff" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+    <text x="710" y="565" fill="#104A65" font-size="20" font-weight="700" text-anchor="middle">3. L'Échelle de Risque (SRI)</text>
+    <text x="710" y="590" fill="#4A4A4A" font-size="14" text-anchor="middle">Risque de marché &amp; solidité de l'émetteur</text>
+
+    <g transform="translate(560, 620)">
+      <rect x="0" y="0" width="32" height="30" rx="4" fill="#0B5D3E"/>
+      <text x="16" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">1</text>
+      
+      <rect x="37" y="0" width="32" height="30" rx="4" fill="#4CAF50"/>
+      <text x="53" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">2</text>
+      
+      <rect x="74" y="0" width="32" height="30" rx="4" fill="#8BC34A"/>
+      <text x="90" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">3</text>
+      
+      <rect x="111" y="-5" width="40" height="40" rx="6" fill="#F97316" stroke="#104A65" stroke-width="2" filter="url(#shadow)"/>
+      <text x="131" y="22" fill="#ffffff" font-size="18" font-weight="900" text-anchor="middle">4</text>
+      <path d="M 131 40 L 126 50 L 136 50 Z" fill="#104A65"/>
+      <text x="131" y="65" fill="#104A65" font-size="13" font-weight="700" text-anchor="middle">Niveau</text>
+      <text x="131" y="80" fill="#104A65" font-size="13" font-weight="700" text-anchor="middle">typique</text>
+
+      <rect x="156" y="0" width="32" height="30" rx="4" fill="#FF9800"/>
+      <text x="172" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">5</text>
+      
+      <rect x="193" y="0" width="32" height="30" rx="4" fill="#F44336"/>
+      <text x="209" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">6</text>
+      
+      <rect x="230" y="0" width="32" height="30" rx="4" fill="#B71C1C"/>
+      <text x="246" y="20" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">7</text>
+    </g>
+  </g>
+</svg>
