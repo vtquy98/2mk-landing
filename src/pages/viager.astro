@@ -11,7 +11,7 @@ import FeatureCards from '../components/home/FeatureCards.astro';
 import Links from '../components/home/Links.astro';
 import Testimonials from '../components/home/Testimonials.astro';
 import Faqs from '../components/home/Faqs.astro';
-import CtaBand from '../components/home/CtaBand.astro';
+import CtaCard from '../components/ui/CtaCard.astro';
 import LatestNews from '../components/home/LatestNews.astro';
 import ScpiDirectory from '../components/home/ScpiDirectory.astro';
 import { PRODUCT } from '../i18n/config';
@@ -54,7 +54,12 @@ const listings = (await getCollection('scpi-listing', e => e.data.source === 'we
   />
   <Testimonials />
   <Faqs list="/" title="Questions fréquentes sur la revente SCPI" />
-  <CtaBand />
+  <CtaCard
+    title="Simulateurs gratuits : frais, rendement, fiscalité, viager"
+    text="Estimez votre net vendeur ou acheteur en 30 secondes. Calculez le rendement effectif avec décote. Simulez la taxe foncière, l'IFI ou un viager."
+    href="/simulateurs"
+    label="Accéder aux simulateurs"
+  />
   <LatestNews title="Actualités SCPI et viager">
     <div class="center"><Button href="/actualites-conseils">Tous les articles</Button></div>
   </LatestNews>

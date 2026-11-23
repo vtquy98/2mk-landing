@@ -1,7 +1,6 @@
 ---
 // "SCPI disponibles sur le marché secondaire": links to /2nd-seo pages (name + management company), in the order
 // recorded from the live home page (src/data/home/scpi-order.json). Renders nothing while the collection is empty.
-import './reveal.css';
 import Eyebrow from './Eyebrow.astro';
 import { getCollection } from 'astro:content';
 import order from '../../data/home/scpi-order.json';
@@ -12,9 +11,7 @@ interface Props {
   headingClass?: string;
 }
 const { title, eyebrow, headingClass = 'h5' } = Astro.props;
-// `manager` / `managerPage` are added to the 2nd-seo schema by its importer.
-type Scpi = { title: string; manager?: string; managerPage?: { id: string } };
-const byId = new Map((await getCollection('2nd-seo')).map(e => [e.id, e.data as Scpi]));
+const byId = new Map((await getCollection('2nd-seo')).map(e => [e.id, e.data]));
 const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : []));
 ---
 
@@ -22,8 +19,8 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
   items.length > 0 && (
     <section class="directory gutter">
       <div class="container section">
-        {eyebrow && <div class="directory__eyebrow reveal"><Eyebrow>{eyebrow}</Eyebrow></div>}
-        <h2 class:list={[headingClass, 'directory__title reveal']}>{title}</h2>
+        {eyebrow && <div class="directory__eyebrow" data-reveal><Eyebrow>{eyebrow}</Eyebrow></div>}
+        <h2 class:list={[headingClass, 'directory__title']} data-reveal>{title}</h2>
         <ul class="directory__grid" role="list">
           {items.map(s => (
             <li class="directory__item">
@@ -51,5 +48,5 @@ const items = order.flatMap(id => (byId.has(id) ? [{ id, ...byId.get(id)! }] : [
 </style>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>

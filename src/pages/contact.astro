@@ -4,7 +4,6 @@ import PageHeader from '../components/static/PageHeader.astro';
 import LeadForm from '../components/static/LeadForm.astro';
 import Field from '../components/static/Field.astro';
 import RadioGroup from '../components/static/RadioGroup.astro';
-import '../components/static/reveal.css';
 import seo from '../data/seo/contact.json';
 ---
 
@@ -39,3 +38,7 @@ import seo from '../data/seo/contact.json';
   @media (max-width: 767px) { .card { padding: 2rem; } }
   @media (max-width: 479px) { .section--small { padding-block: var(--size-1) var(--size-1-5); } }
 </style>
+
+<script>
+  import '../components/ui/reveal';
+</script>

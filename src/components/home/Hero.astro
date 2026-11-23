@@ -28,7 +28,7 @@ const press = [
   <div class="container hero__inner">
     <div class="hero__content">
       <Eyebrow tone="glass" class="hero__badge">
-        <ShieldCheck slot="icon" class="eyebrow__icon" aria-hidden="true" />
+        <ShieldCheck slot="icon" class="eyebrow__icon hero__shield" aria-hidden="true" />
         <span class="hero__badge-muted">Transactions sécurisées par </span>Notaire
       </Eyebrow>
       <h1 class="h1 hero__title">{title}</h1>
@@ -90,6 +90,7 @@ const press = [
   .hero__content { display: flex; flex-direction: column; gap: var(--size-1-5); align-items: center; text-align: center; }
   .hero :global(.hero__badge) { box-shadow: var(--shadow-large); font-size: 0.875rem; line-height: var(--lh-1-5); letter-spacing: var(--ls-2); }
   .hero__badge-muted { opacity: 0.5; }
+  .hero :global(.hero__shield) { color: var(--positive-bright); }
   .hero__title { max-width: 48rem; text-wrap: balance; }
   .hero__lead { max-width: 35rem; margin: 0; opacity: 0.8; text-wrap: balance; }
   .hero__press { display: flex; flex-direction: column; gap: var(--size-1); width: min(100%, 23rem); margin-top: var(--size-0-5); }

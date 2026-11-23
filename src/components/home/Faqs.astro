@@ -1,6 +1,5 @@
 ---
 // FAQ accordion (native <details>): items of src/data/home/faqs.json for one page.
-import './reveal.css';
 import Button from '../ui/Button.astro';
 import faqs from '../../data/home/faqs.json';
 
@@ -13,7 +12,7 @@ const { list, title } = Astro.props;
 
 <section class="faqs gutter">
   <div class="container section">
-    <h2 class="h2 faqs__title reveal">{title}</h2>
+    <h2 class="h2 faqs__title" data-reveal>{title}</h2>
     <div class="faqs__list">
       {
         faqs[list].map(item => (
@@ -51,5 +50,5 @@ const { list, title } = Astro.props;
 </style>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>

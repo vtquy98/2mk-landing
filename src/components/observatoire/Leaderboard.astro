@@ -4,7 +4,6 @@
 import Button from '../ui/Button.astro';
 import Eyebrow from '../home/Eyebrow.astro';
 import { PRODUCT } from '../../i18n/config';
-import '../home/reveal.css';
 
 type Logo = { logo: string; logoAlt: string; logoWidth: number; logoHeight: number };
 type Row = { name: string; parts: string; right: string };
@@ -22,7 +21,7 @@ const { summary, top, diversity, newcomers, offers, offersTotal, wanted } = Astr
 
 <section class="board gutter" aria-labelledby="board-heading">
   <div class="container container--medium section board__inner">
-    <div class="board__heading reveal">
+    <div class="board__heading" data-reveal>
       <Eyebrow>Observatoire</Eyebrow>
       <h2 id="board-heading" class="h2 board__title">Parts de SCPI proposées à la cession</h2>
       <p class="text-medium board__text" set:html={summary} />
@@ -102,7 +101,7 @@ const { summary, top, diversity, newcomers, offers, offersTotal, wanted } = Astr
 </section>
 
 <script>
-  import '../home/reveal';
+  import '../ui/reveal';
 </script>
 
 <style>

@@ -30,6 +30,12 @@
   --white: #fff;
   --link: #2548b8;
   --focus: #4d65ff;
+  /* Positive / "available" greens (discount badge, "Bientôt" badge, live-data dot) */
+  --positive: #007b5e;
+  --positive-light: #e2ffec;
+  --positive-border: #cef4dc;
+  --positive-bright: #43ed80;
+  --positive-neon: #5aff96;
 
   /* Content palette (articles, guides and fiches written by the content team) */
   --content-text: #334155;

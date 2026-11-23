@@ -1,5 +1,4 @@
 ---
-import './reveal.css';
 // "Témoignages": one testimonial at a time (scroll-snap), prev/next buttons loop around.
 const items = [
   {
@@ -23,7 +22,7 @@ const arrow = 'M6.75 8.25L3 12M3 12L6.75 15.75M3 12H21';
 <section class="testimonials">
   <div class="gutter">
     <div class="container testimonials__inner">
-      <h2 class="h2 testimonials__title reveal">Témoignages</h2>
+      <h2 class="h2 testimonials__title" data-reveal>Témoignages</h2>
       <div class="testimonials__slider">
         <ul class="testimonials__track" role="list" tabindex="0" aria-label="Témoignages">
           {
@@ -124,5 +123,5 @@ const arrow = 'M6.75 8.25L3 12M3 12L6.75 15.75M3 12H21';
 </style>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>

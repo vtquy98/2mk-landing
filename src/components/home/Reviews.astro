@@ -2,7 +2,6 @@
 // "Avis sur 2nd Market": one review card at a time (scroll-snap), dot navigation, autoplay that stops on hover/focus
 // and for reduced motion. Without JavaScript the track simply scrolls.
 import Eyebrow from './Eyebrow.astro';
-import './reveal.css';
 
 const items = [
   {
@@ -37,7 +36,7 @@ const items = [
 
 <section class="reviews gutter" aria-labelledby="reviews-heading">
   <div class="container container--medium section reviews__inner">
-    <div class="reviews__heading reveal">
+    <div class="reviews__heading" data-reveal>
       <Eyebrow>SCPI — Marché secondaire actif</Eyebrow>
       <h2 id="reviews-heading" class="h2 reviews__title">Avis sur 2nd Market</h2>
     </div>
@@ -68,7 +67,7 @@ const items = [
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 
   for (const slider of document.querySelectorAll<HTMLElement>('.reviews__slider')) {
     const track = slider.querySelector<HTMLElement>('.reviews__track')!;

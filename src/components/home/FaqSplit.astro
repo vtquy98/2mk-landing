@@ -4,7 +4,6 @@
 import Button from '../ui/Button.astro';
 import Eyebrow from './Eyebrow.astro';
 import faqs from '../../data/home/faqs.json';
-import './reveal.css';
 
 interface Props {
   list: keyof typeof faqs;
@@ -23,7 +22,7 @@ const {
 <section class="faq gutter" aria-labelledby="faq-heading">
   <div class="container container--medium section faq__inner">
     <div class="faq__aside">
-      <div class="faq__heading reveal">
+      <div class="faq__heading" data-reveal>
         <Eyebrow>{eyebrow}</Eyebrow>
         <h2 id="faq-heading" class="h2 faq__title">{title}</h2>
         <p class="faq__description">{description}</p>
@@ -47,7 +46,7 @@ const {
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>

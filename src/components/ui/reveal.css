@@ -1,0 +1,15 @@
+/*
+ * Scroll reveal (was Webflow IX2 "slide in" on scroll into view: 100px, 1s, ease-out-quart).
+ * Mark elements with data-reveal (slides up), data-reveal="left" | "right", and load ./reveal.ts once in the component:
+ *   <script>import '../ui/reveal';</script>
+ * The script hides them (.is-pending) and shows each once when it enters the viewport: without JS or with reduced
+ * motion nothing is ever hidden, and a revealed element stays visible (screenshots, scrolling back up).
+ */
+[data-reveal].is-pending {
+  opacity: 0;
+  translate: 0 6rem;
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), translate 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+[data-reveal='left'].is-pending { translate: -6rem 0; }
+[data-reveal='right'].is-pending { translate: 6rem 0; }
+[data-reveal].is-pending.is-in { opacity: 1; translate: none; }

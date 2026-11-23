@@ -3,7 +3,6 @@
 // of documents usually asked for by the notary. Shared by /home-new and /viager.
 import Eyebrow from './Eyebrow.astro';
 import { PRODUCT } from '../../i18n/config';
-import './reveal.css';
 
 const steps = [
   `<a href="${PRODUCT.app}">Créez votre compte</a> gratuitement (pièce d'identité requise)`,
@@ -28,7 +27,7 @@ const video = '/assets/6a0e7287fd084f011fa30c41_simulator-bg';
     </video>
   </div>
   <div class="container container--medium section how__inner">
-    <div class="how__heading reveal">
+    <div class="how__heading" data-reveal>
       <Eyebrow tone="glass">SCPI — Marché secondaire actif</Eyebrow>
       <h2 id="how-heading" class="h2 how__title">Revendez en 4 étapes</h2>
     </div>
@@ -66,7 +65,7 @@ const video = '/assets/6a0e7287fd084f011fa30c41_simulator-bg';
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
   // Background video: no motion for people who asked for less.
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll<HTMLVideoElement>('.how__video').forEach(v => v.pause());
 </script>

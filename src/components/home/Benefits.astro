@@ -1,7 +1,6 @@
 ---
 // Centered heading + white rows (illustration, title, text): "Pourquoi acheter…", "Une cession sécurisée…".
 import Eyebrow from './Eyebrow.astro';
-import './reveal.css';
 
 interface Props {
   eyebrow?: string;
@@ -14,7 +13,7 @@ const { eyebrow, title, description, items } = Astro.props;
 
 <section class="benefits gutter">
   <div class="container section benefits__inner">
-    <div class="benefits__heading reveal">
+    <div class="benefits__heading" data-reveal>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 class="h2 benefits__title">{title}</h2>
       {description && <p class="benefits__description">{description}</p>}
@@ -22,7 +21,7 @@ const { eyebrow, title, description, items } = Astro.props;
     <ul class="benefits__list" role="list">
       {
         items.map(item => (
-          <li class="benefit reveal">
+          <li class="benefit" data-reveal>
             <div class="benefit__head">
               <div class="benefit__icon"><img src={item.image} alt="" width="360" height="360" loading="lazy" decoding="async" /></div>
               <h3 class="h5 benefit__title">{item.title}</h3>
@@ -36,7 +35,7 @@ const { eyebrow, title, description, items } = Astro.props;
 </section>
 
 <script>
-  import './reveal';
+  import '../ui/reveal';
 </script>
 
 <style>
