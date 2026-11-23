@@ -96,7 +96,7 @@ export function cleanFragment($, root) {
 
 /** Rewrites every Webflow CDN URL in a string (HTML, CSS, JSON-LD…). */
 // Webflow's own runtime (JS/CSS) is never downloaded: the site doesn't use it.
-export const rewriteUrls = s => s.replace(CDN, m => { const u = trimUrl(m); return u.includes('/plugins/Basic/') || u.endsWith('/...') || /\.(js|css)$/i.test(u.split('?')[0]) ? m : assetPath(u) + m.slice(u.length); });
+export const rewriteUrls = s => s.replace(/href="(\/politique-confidentialite|\/scpi)"/g, (_, p) => `href="${DEAD_LINKS[p]}"`).replace(CDN, m => { const u = trimUrl(m); return u.includes('/plugins/Basic/') || u.endsWith('/...') || /\.(js|css)$/i.test(u.split('?')[0]) ? m : assetPath(u) + m.slice(u.length); });
 
 const TM = { tmmin: 'min', tmmax: 'max', tmstep: 'step', tmim: 'inputmode' };
 const tmDecode = s => s.replace(/_([0-9a-f]{2})_/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
