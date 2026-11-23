@@ -1,11 +1,12 @@
 ---
-// Dark rounded page header of the hub pages (/faqs, /demembrement, /viager-guides, /scpi-essentiel):
-// breadcrumb "Accueil > <crumb>" and the page's H1. (Webflow's watermark image was never visible: not rebuilt.)
+// Dark rounded page header of the hub pages (/faqs, /demembrement, /viager-guides, /scpi-essentiel, /faqs/<slug>…):
+// breadcrumb "Accueil > [parent >] <crumb>" and the page's H1. (Webflow's watermark image was never visible: not rebuilt.)
 interface Props {
   title: string; // the H1
   crumb: string; // last breadcrumb item
+  parent?: { label: string; href: string }; // optional middle breadcrumb item
 }
-const { title, crumb } = Astro.props;
+const { title, crumb, parent } = Astro.props;
 ---
 
 <header class="hub-header">
@@ -14,6 +15,7 @@ const { title, crumb } = Astro.props;
       <nav aria-label="Fil d'Ariane">
         <ol class="crumbs">
           <li><a href="/">Accueil</a></li>
+          {parent && <li><a href={parent.href}>{parent.label}</a></li>}
           <li aria-current="page">{crumb}</li>
         </ol>
       </nav>

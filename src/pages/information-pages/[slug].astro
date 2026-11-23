@@ -1,0 +1,32 @@
+---
+// /information-pages/<slug> (collection "information-pages"). Hidden pages: not in the sitemap, as on Webflow, but
+// indexable. Webflow rendered only their <head> (empty body); here the title is the H1 with the summary, or the
+// body when one is written.
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HubHeader from '../../components/hub/HubHeader.astro';
+import HubSection from '../../components/hub/HubSection.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('information-pages')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'information-pages'> };
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={entry.data.seo}>
+  <HubHeader title={entry.data.title} crumb={entry.data.title} />
+  <HubSection>
+    <article class="content">
+      {entry.body?.trim() ? <Content /> : <p class="text-medium">{entry.data.excerpt}</p>}
+    </article>
+  </HubSection>
+</BaseLayout>
+
+<style>
+  .content { width: 60%; margin-inline: auto; }
+  @media (max-width: 991px) {
+    .content { width: 100%; }
+  }
+</style>

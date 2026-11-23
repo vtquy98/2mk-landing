@@ -1,17 +1,15 @@
 ---
 // /demembrement: hub of the "Démembrements" articles, with a reading guide before the list and a FAQ after it
 // (FAQPage JSON-LD is in the SEO data).
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HubHeader from '../components/hub/HubHeader.astro';
 import HubSection from '../components/hub/HubSection.astro';
 import PostList from '../components/hub/PostList.astro';
+import { getActualites } from '../lib/actualites';
 import seo from '../data/seo/demembrement.json';
 
 // Webflow list: actualités of category "Démembrements", newest first.
-const posts = (await getCollection('actualites', e => /^démembrement/i.test(e.data.category ?? ''))).sort(
-  (a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0),
-);
+const posts = (await getActualites()).filter(e => /^démembrement/i.test(e.data.category ?? ''));
 
 const start = [
   {

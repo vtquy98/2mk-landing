@@ -7,6 +7,8 @@ import landingPages from './collections/landing-pages';
 import simulateurs from './collections/simulateurs';
 import legal from './collections/legal';
 import scpiListing from './collections/scpi-listing';
+import faqs from './collections/faqs';
+import informationPages from './collections/information-pages';
 
 // Collection name = URL prefix of its pages.
 export const collections = {
@@ -18,4 +20,6 @@ export const collections = {
   simulateurs,
   legal,
   'scpi-listing': scpiListing,
+  faqs,
+  'information-pages': informationPages,
 };
