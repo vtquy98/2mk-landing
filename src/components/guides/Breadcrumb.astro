@@ -1,0 +1,41 @@
+---
+// Breadcrumb of the guide, landing-page and hub headers. The last item is the current page (not a link).
+interface Props {
+  items: { href?: string; label: string }[];
+  center?: boolean;
+  onDark?: boolean; // light text on the hub's dark header
+}
+const { items, center = false, onDark = false } = Astro.props;
+---
+
+<nav aria-label="Fil d'Ariane" class:list={['breadcrumb', { 'breadcrumb--center': center, 'breadcrumb--dark': onDark }]}>
+  <ol>
+    {
+      items.map((item, i) => (
+        <li>
+          {i > 0 && (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          )}
+          {item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  ol { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+  li { display: flex; align-items: center; min-width: 0; }
+  .breadcrumb--center ol { justify-content: center; }
+  svg { flex: none; margin-inline: var(--size-0-25); }
+  a { color: var(--color-text); transition: color 0.3s; white-space: nowrap; }
+  a:hover { color: var(--primary); }
+  span { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical; color: var(--neutral-large); opacity: 0.6; }
+  .breadcrumb--dark { color: var(--white); }
+  .breadcrumb--dark a { color: var(--secondary-lightest); }
+  .breadcrumb--dark a:hover { color: var(--primary); }
+  .breadcrumb--dark span { color: var(--white); }
+  @media (max-width: 767px) { .breadcrumb--center ol { flex-wrap: wrap; } }
+</style>

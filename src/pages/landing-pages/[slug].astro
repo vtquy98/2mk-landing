@@ -1,0 +1,92 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/guides/Breadcrumb.astro';
+import Prose from '../../components/guides/Prose.astro';
+import LandingAside from '../../components/guides/LandingAside.astro';
+import LandingNews from '../../components/guides/LandingNews.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('landing-pages')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'landing-pages'> };
+const { data } = entry;
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={data.seo}>
+  <header class="gutter">
+    <div class="container header">
+      <div class="heading">
+        <Breadcrumb center items={[{ href: '/', label: 'Accueil' }, { href: '/scpi-essentiel', label: 'SCPI Essentiel' }, { label: data.title }]} />
+        <h1 class="h1 reveal">{data.heading}</h1>
+        {data.excerpt && <p class="reveal">{data.excerpt}</p>}
+      </div>
+      {
+        data.image && (
+          <img
+            class="image reveal"
+            src={data.image}
+            srcset={data.imageSrcset}
+            sizes={data.imageSrcset && '(max-width: 479px) 100vw, 80vw'}
+            alt={data.imageAlt ?? ''}
+            width={data.imageWidth}
+            height={data.imageHeight}
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        )
+      }
+    </div>
+  </header>
+  <div class="gutter">
+    <div class="container body">
+      <article class="text landing-text fade"><Prose><Content /></Prose></article>
+      <LandingAside />
+    </div>
+  </div>
+  <LandingNews />
+</BaseLayout>
+
+<style>
+  .header { display: flex; flex-direction: column; align-items: center; gap: var(--size-4); padding-block: var(--section-small); }
+  .heading { display: flex; flex-direction: column; align-items: center; gap: var(--size-1-5); text-align: center; }
+  .heading p { margin: 0; }
+  .image { width: 80%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--radius-main); }
+  .body { display: flex; align-items: flex-start; gap: var(--size-6); padding-block: var(--section-main); }
+  .text { width: 70%; min-width: 0; }
+  .reveal { animation: reveal 0.8s var(--ease-out) both; }
+  /* Body: opacity only, a transform would trap the embeds' position: fixed elements. */
+  .fade { animation: fade 0.8s 0.2s var(--ease-out) both; }
+  @keyframes reveal { from { opacity: 0; transform: translateY(1rem); } }
+  @keyframes fade { from { opacity: 0; } }
+
+  /*
+   * Data-sheet embeds of the content team (div.s2m-<scpi>-2026): shared type scale, set once for every landing page
+   * (was a Webflow template head code). Its slate text color belongs to the embeds' own palette, not to the site tokens.
+   */
+  .text { --embed-text: #334155; }
+  /* Same weight as the former `.lp-body div[…][…] h2` rules (global class, no scoping attribute). */
+  :global(.landing-text div[class^='s2m-'][class$='-2026']) { color: var(--embed-text); font-size: 1rem; line-height: 1.65; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] :is(h2, h3, h4)) { color: var(--neutral-large); letter-spacing: normal; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] h2) { font-size: 1.35rem; font-weight: var(--weight-bold); line-height: 1.25; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] h3) { font-size: 1.08rem; font-weight: var(--weight-semibold); line-height: 1.3; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] h4) { font-size: 1rem; font-weight: var(--weight-semibold); line-height: 1.3; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] :is(p, li)) { font-size: 1rem; line-height: 1.65; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] :is(.s2m-note, .s2m-legal p)) { font-size: 0.85rem; line-height: 1.5; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] summary) { color: var(--neutral-large); font-size: 1rem; line-height: 1.4; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] h2.s2m-main-h2) { display: none; }
+  :global(.landing-text div[class^='s2m-'][class$='-2026'] h2.s2m-main-h2 + *) { margin-top: 0; }
+  @media (min-width: 640px) { :global(.landing-text div[class^='s2m-'][class$='-2026'] h2) { font-size: 1.5rem; } }
+
+  @media (max-width: 767px) {
+    .body { flex-direction: column; gap: var(--size-9); }
+    .text { width: 100%; }
+  }
+  @media (max-width: 479px) {
+    .header { padding-block: var(--size-1) var(--size-1-5); }
+    .image { width: 100%; }
+  }
+</style>
