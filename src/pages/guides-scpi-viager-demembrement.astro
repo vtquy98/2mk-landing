@@ -282,11 +282,11 @@ const tabs = TABS.map((label, i) => ({ id: `guides-${i}`, label, entries: guides
   /* Guides */
   .guides {
     /* Palette of the content team's blocks (same as the article embeds), not site tokens. */
-    --hub-text: #334155;
-    --hub-muted: #64748b;
-    --hub-accent: #5bb5d5;
-    --hub-surface: #f4f7f9;
-    --hub-border: #e2e8f0;
+    --hub-text: var(--content-text);
+    --hub-muted: var(--content-muted);
+    --hub-accent: var(--sky);
+    --hub-surface: var(--content-surface);
+    --hub-border: var(--content-border);
     padding-block: var(--section-small);
   }
   .intro, .faq { max-width: 1120px; margin: 0 auto 2.4rem; color: var(--hub-text); line-height: 1.6; }

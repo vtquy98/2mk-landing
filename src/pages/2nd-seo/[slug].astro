@@ -96,7 +96,7 @@ const stats = [
   @media (max-width: 479px) { .main { gap: var(--size-1-25); } }
 
   /* ---- Rich text (CMS field "description"): Webflow rich text + the content team's .seo-description rules ---- */
-  .description { font-size: 1rem; line-height: 1.65; color: #334155; }
+  .description { font-size: 1rem; line-height: 1.65; color: var(--content-text); }
   .description > :global(:first-child), .description :global(.s2m-fiche-scpi-2026 > :first-child) { margin-top: 0; }
   .description :global(h2) { margin: 2rem 0 0.75rem; font-size: 1.35rem; font-weight: var(--weight-bold); line-height: 1.25; letter-spacing: normal; color: var(--neutral-large); }
   .description :global(h3) { margin: 1.5rem 0 0.5rem; font-size: 1.08rem; font-weight: var(--weight-semibold); line-height: 1.3; letter-spacing: normal; color: var(--neutral-large); }
@@ -104,22 +104,22 @@ const stats = [
   .description :global(p) { margin: 0 0 1rem; font-size: 1rem; line-height: 1.65; }
   .description :global(:is(ul, ol)) { margin: 0 0 1.25rem; padding-left: 1.25rem; overflow: hidden; }
   .description :global(li) { margin: 0 0 0.35rem; font-size: 1rem; line-height: 1.65; }
-  .description :global(strong) { font-weight: var(--weight-semibold); color: #0f2b3a; }
+  .description :global(strong) { font-weight: var(--weight-semibold); color: var(--content-heading); }
   .description :global(a) { color: var(--neutral-large); text-decoration: underline; text-underline-offset: 2px; }
   @media (min-width: 640px) { .description :global(h2) { font-size: 1.5rem; } }
 
   /* ---- 2026 fact sheet (rich text wrapped in .s2m-fiche-scpi-2026 by the content team) ---- */
   .description :global(.s2m-fiche-scpi-2026) {
-    --ink: #1a1a1a;
-    --ink-soft: #4a4a4a;
-    --rule: #d1d5db;
-    --tint: #e8f4f8;
+    --ink: var(--content-ink);
+    --ink-soft: var(--content-ink-soft);
+    --rule: var(--content-rule);
+    --tint: var(--content-tint);
     max-width: 100%;
     font-size: 1rem;
     line-height: 1.7;
     color: var(--ink);
   }
-  .description :global(.s2m-fiche-scpi-2026 .s2m-intro) { margin: 0 0 1.5em; font-size: 1.0625rem; line-height: 1.7; color: #334155; }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-intro) { margin: 0 0 1.5em; font-size: 1.0625rem; line-height: 1.7; color: var(--content-text); }
   .description :global(.s2m-fiche-scpi-2026 h2) { margin: 2em 0 0.75em; padding-bottom: 8px; border-bottom: 2px solid var(--tint); font-size: 1.5rem; font-weight: var(--weight-semibold); line-height: 1.3; }
   .description :global(.s2m-fiche-scpi-2026 h3) { margin: 1.6em 0 0.6em; font-size: 1.1rem; font-weight: var(--weight-semibold); line-height: 1.35; color: var(--ink); }
   .description :global(.s2m-fiche-scpi-2026 p) { margin: 0 0 1em; font-size: 1rem; line-height: 1.7; color: var(--ink); }
@@ -131,14 +131,14 @@ const stats = [
   .description :global(.s2m-fiche-scpi-2026 table) { width: 100%; margin: 0; border-collapse: collapse; background: var(--white); font-size: 0.9375rem; line-height: 1.5; }
   .description :global(.s2m-fiche-scpi-2026 caption) { padding: 0 0 8px; caption-side: top; text-align: left; font-size: 0.8125rem; color: var(--ink-soft); }
   .description :global(.s2m-fiche-scpi-2026 :is(th, td)) { padding: 10px 14px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
-  .description :global(.s2m-fiche-scpi-2026 th) { width: 46%; background: #f7fafc; font-weight: var(--weight-semibold); color: var(--neutral-large); }
+  .description :global(.s2m-fiche-scpi-2026 th) { width: 46%; background: var(--content-surface-alt); font-weight: var(--weight-semibold); color: var(--neutral-large); }
   .description :global(.s2m-fiche-scpi-2026 thead th) { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.5px; }
   .description :global(.s2m-fiche-scpi-2026 td) { color: var(--ink); }
-  .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info) { margin: 1.25em 0; padding: 16px 20px; border-left: 4px solid #0b5d7d; border-radius: 4px; background: var(--tint); }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info) { margin: 1.25em 0; padding: 16px 20px; border-left: 4px solid var(--content-accent); border-radius: 4px; background: var(--tint); }
   .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info p) { margin: 0 0 0.4em; }
   .description :global(.s2m-fiche-scpi-2026 .s2m-encadre-info p:last-child) { margin: 0; }
   .description :global(.s2m-fiche-scpi-2026 .s2m-note) { font-size: 0.875rem; color: var(--ink-soft); }
-  .description :global(.s2m-fiche-scpi-2026 .s2m-disclaimer) { margin: 2.5em 0 1.5em; padding: 20px; border: 1px solid var(--rule); border-radius: 6px; background: #f5f5f5; }
+  .description :global(.s2m-fiche-scpi-2026 .s2m-disclaimer) { margin: 2.5em 0 1.5em; padding: 20px; border: 1px solid var(--rule); border-radius: 6px; background: var(--content-surface-grey); }
   .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources)) { font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }
   .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources) h2) { margin: 0 0 0.4em; padding: 0; border: 0; font-size: 0.9375rem; font-weight: var(--weight-semibold); color: var(--ink); }
   .description :global(.s2m-fiche-scpi-2026 :is(.s2m-disclaimer, .s2m-sources) p) { margin: 0; font-size: 0.875rem; line-height: 1.6; color: var(--ink-soft); }

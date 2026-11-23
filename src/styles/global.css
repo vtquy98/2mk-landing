@@ -31,6 +31,34 @@
   --link: #2548b8;
   --focus: #4d65ff;
 
+  /* Content palette (articles, guides and fiches written by the content team) */
+  --content-text: #334155;
+  --content-muted: #64748b;
+  --content-heading: #0f2b3a;
+  --content-ink: #1a1a1a;
+  --content-ink-soft: #4a4a4a;
+  --content-border: #e2e8f0;
+  --content-rule: #d1d5db;
+  --content-surface: #f4f7f9;
+  --content-surface-alt: #f7fafc;
+  --content-surface-grey: #f5f5f5;
+  --content-tint: #e8f4f8;
+  --content-accent: #0b5d7d;
+  /* Tax services (taxe foncière / habitation) */
+  --tax: #752432;
+  --tax-light: #f7ebed;
+  --tax-border: #e8cdd2;
+  --tax-cta-bg: #efece6;
+  --tax-cta-ink: #1b1716;
+  /* Feedback */
+  --success-alt: #059669;
+  --success-alt-light: #d1fae5;
+  --success-bright: #01d765;
+  /* White overlays on dark/photo backgrounds */
+  --white-10: #ffffff1a;
+  --white-20: #fff3;
+  --white-30: #ffffff4d;
+
   /* Semantic colors */
   --color-bg: var(--neutral-bg);
   --color-bg-dark: var(--neutral-strong);

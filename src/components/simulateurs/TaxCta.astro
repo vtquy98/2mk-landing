@@ -30,9 +30,9 @@ import { PRODUCT } from '../../i18n/config';
 <style>
   .tax-cta {
     /* Tax-service colors, no token yet (candidates for global.css). */
-    --tax: #752432;
-    --tax-bg: #efece6;
-    --tax-border: #1b1716;
+    --tax: var(--tax);
+    --tax-bg: var(--tax-cta-bg);
+    --tax-border: var(--tax-cta-ink);
     display: flex;
     gap: var(--size-1-5);
     align-items: center;

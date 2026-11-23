@@ -67,7 +67,7 @@ const { Content } = await render(entry);
    * Data-sheet embeds of the content team (div.s2m-<scpi>-2026): shared type scale, set once for every landing page
    * (was a Webflow template head code). Its slate text color belongs to the embeds' own palette, not to the site tokens.
    */
-  .text { --embed-text: #334155; }
+  .text { --embed-text: var(--content-text); }
   /* Same weight as the former `.lp-body div[…][…] h2` rules (global class, no scoping attribute). */
   :global(.landing-text div[class^='s2m-'][class$='-2026']) { color: var(--embed-text); font-size: 1rem; line-height: 1.65; }
   :global(.landing-text div[class^='s2m-'][class$='-2026'] :is(h2, h3, h4)) { color: var(--neutral-large); letter-spacing: normal; }
