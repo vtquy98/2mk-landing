@@ -21,7 +21,6 @@ export default async function () {
     const $ = loadPage(path);
     const seo = extractSeo($); // before the bodies lose their JSON-LD blocks
     const rehydrateMap = readRehydrateMap($);
-    decodeExtraTmClasses($);
     cleanFragment($, '.main-wrapper');
     const calc = $('.calculator.w-richtext').first();
     const article = $('.calculator-text.w-richtext').not('.w-dyn-bind-empty').first();
@@ -78,20 +77,6 @@ function hubCards() {
   return cards;
 }
 
-/** "tmdata-<key>-<v>" -> data-<key>, "tmlist-<v>" -> list (the Webflow tm decoder handled them; lib.mjs doesn't). */
-function decodeExtraTmClasses($) {
-  const decode = s => s.replace(/_([0-9a-f]{2})_/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
-  $('.main-wrapper [class*="tm"]').each((_, el) => {
-    const keep = [];
-    for (const c of $(el).attr('class').split(/\s+/)) {
-      let m;
-      if ((m = /^tmdata-([a-z]+)-(.*)$/.exec(c))) $(el).attr(`data-${m[1]}`, decode(m[2]));
-      else if ((m = /^tmlist-(.*)$/.exec(c))) $(el).attr('list', decode(m[1]));
-      else keep.push(c);
-    }
-    $(el).attr('class', keep.join(' '));
-  });
-}
 
 /** The MAP object of the Webflow rehydrate script on this page. */
 function readRehydrateMap($) {

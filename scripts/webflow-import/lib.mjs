@@ -102,6 +102,8 @@ function decodeTmClasses($, el) {
     else if ((m = /^tmval-(.*)$/.exec(c))) $(el).attr('value', tmDecode(m[1]));
     else if ((m = /^tmph-(.*)$/.exec(c))) $(el).attr('placeholder', tmDecode(m[1]));
     else if ((m = /^(tmmin|tmmax|tmstep|tmim)-(.*)$/.exec(c))) $(el).attr(TM[m[1]], tmDecode(m[2]));
+    else if ((m = /^tmdata-([a-z]+)-(.*)$/.exec(c))) $(el).attr(`data-${m[1]}`, tmDecode(m[2]));
+    else if ((m = /^tmlist-(.*)$/.exec(c))) $(el).attr('list', tmDecode(m[1]));
     else if (c === 'tmchk') $(el).attr('checked', '');
     else if (c === 'tmsel') $(el).attr('selected', '');
     else if (c === 'tmreq') $(el).attr('required', '');
