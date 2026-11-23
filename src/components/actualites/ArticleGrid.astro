@@ -1,0 +1,16 @@
+---
+// Grid of article cards: 3 columns, 1 on small phones.
+import ArticleCard from './ArticleCard.astro';
+import type { Actualite } from '../../lib/actualites';
+
+const { entries } = Astro.props as { entries: Actualite[] };
+---
+
+<ul class="grid">
+  {entries.map(entry => <li><ArticleCard entry={entry} /></li>)}
+</ul>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 479px) { .grid { grid-template-columns: 1fr; } }
+</style>

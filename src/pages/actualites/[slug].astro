@@ -1,0 +1,102 @@
+---
+// Article page: /actualites/<slug>. Content in src/content/actualites/<slug>.md (schema: src/collections/actualites.ts).
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/actualites/Breadcrumb.astro';
+import CategoryTag from '../../components/actualites/CategoryTag.astro';
+import ArticleGrid from '../../components/actualites/ArticleGrid.astro';
+import { getActualites, relatedTo, type Actualite } from '../../lib/actualites';
+
+export async function getStaticPaths() {
+  const all = await getActualites();
+  return all.map(entry => ({ params: { slug: entry.id }, props: { entry, related: relatedTo(entry, all) } }));
+}
+
+const { entry, related } = Astro.props as { entry: Actualite; related: Actualite[] };
+const { title, category, image, imageAlt, imageWidth, imageHeight, imageSrcset, seo } = entry.data;
+const { Content } = await render(entry);
+---
+
+<BaseLayout seo={seo}>
+  <header class="gutter">
+    <div class="container section--small header">
+      <div class="heading">
+        <Breadcrumb items={[{ label: 'Accueil', href: '/' }, { label: 'Actualités', href: '/actualites-conseils' }, { label: title }]} />
+        {category && <div class="reveal"><CategoryTag label={category} /></div>}
+        <div class="reveal"><h1>{title}</h1></div>
+      </div>
+      {
+        image && (
+          <img
+            class="cover"
+            src={image}
+            srcset={imageSrcset}
+            sizes={imageSrcset ? '(max-width: 1279px) 90vw, 1150px' : undefined}
+            alt={imageAlt ?? ''}
+            width={imageWidth}
+            height={imageHeight}
+            fetchpriority="high"
+            decoding="async"
+          />
+        )
+      }
+    </div>
+  </header>
+
+  <div class="gutter">
+    <div class="container section--small">
+      <article class="body">
+        <Content />
+      </article>
+    </div>
+  </div>
+
+  {
+    related.length > 0 && (
+      <section class="gutter" aria-labelledby="related-title">
+        <div class="container section--small">
+          <h2 id="related-title" class="related-title">Découvrez également</h2>
+          <ArticleGrid entries={related} />
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .header { display: flex; flex-direction: column; align-items: center; gap: var(--size-4); }
+  .heading { display: flex; flex-direction: column; align-items: center; gap: var(--size-1-5); width: 100%; text-align: center; }
+  .heading :global(.breadcrumb) { width: 100%; }
+  /* Webflow's IX2 entrance: category and title slide up from under their line. */
+  .reveal { padding-bottom: var(--size-0-125); overflow: clip; }
+  .reveal > :global(*) { animation: rise 0.8s var(--ease-out) both; }
+  @keyframes rise { from { transform: translateY(100%); opacity: 0; } }
+  h1 { width: 90%; margin-inline: auto; font-size: var(--size-4); }
+  .cover { width: 90%; aspect-ratio: 16 / 9; border-radius: var(--radius-main); }
+  .related-title { margin-block: var(--size-0-5) var(--size-2-5); font-size: var(--size-3); text-align: center; }
+  @media (max-width: 991px) { .header { gap: var(--size-1-5); } }
+
+  /* Article body: Markdown + the content team's embeds (which carry their own scoped CSS). Same base as Webflow's rich text. */
+  .body { width: 70%; margin-inline: auto; }
+  @media (max-width: 767px) { .body { width: 100%; } }
+  .body > :global(:not(div):first-child),
+  .body > :global(div:first-child > :first-child) { margin-top: 0 !important; }
+  .body > :global(:last-child),
+  .body :global(ol li:last-child),
+  .body :global(ul li:last-child) { margin-bottom: 0 !important; }
+  .body :global(:is(ol, ul)) { overflow: hidden; }
+  .body :global(figure) { margin: 0 0 10px; }
+  .body :global(figcaption) { margin-top: 5px; text-align: center; }
+  .body :global(table) { border-collapse: collapse; border-spacing: 0; }
+  .body :global(:is(td, th)) { padding: 0; }
+  .body :global(:is(button, input, select, textarea)) { margin: 0; }
+  .body :global(input) { line-height: normal; }
+  .body :global(:is(input[type='checkbox'], input[type='radio'])) { padding: 0; }
+  .body :global(:is(button, [type='button'], [type='reset'])) { border: 0; cursor: pointer; }
+  .body :global(fieldset) { margin: 0; padding: 0; border: 0; }
+  .body :global(legend) { padding: 0; border: 0; }
+  .body :global(sub), .body :global(sup) { position: relative; font-size: 75%; line-height: 0; vertical-align: baseline; }
+  .body :global(sup) { top: -0.5em; }
+  .body :global(sub) { bottom: -0.25em; }
+  .body :global(iframe) { max-width: 100%; }
+</style>

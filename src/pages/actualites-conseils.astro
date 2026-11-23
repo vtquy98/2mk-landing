@@ -1,0 +1,230 @@
+---
+// Hub of the articles: intro, links by theme, then every article by category (tabs).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/actualites/Breadcrumb.astro';
+import ArticleGrid from '../components/actualites/ArticleGrid.astro';
+import { getActualites } from '../lib/actualites';
+import seo from '../data/seo/actualites-conseils.json';
+
+const all = await getActualites();
+// Same tabs as the live page ("Autres" articles were not listed there either).
+const tabs = [
+  { id: 'scpi', label: 'SCPI', category: 'SCPI' },
+  { id: 'viager', label: 'Viager', category: 'Viagers' },
+  { id: 'demembrement', label: 'Démembrement', category: 'Démembrements' },
+].map(t => ({ ...t, entries: all.filter(e => e.data.category === t.category) }));
+
+const themes = [
+  {
+    title: 'Marché des SCPI',
+    intro: 'Collecte, parts en attente, classements.',
+    links: [
+      ['/actualites/delais-revente-scpi', 'Parts en attente au 30/09/2026, SCPI par SCPI'],
+      ['/landing-pages/guide-scpi-bloquees-liste-solutions', 'SCPI avec parts en attente : liste et voies de sortie'],
+      ['/actualites/collecte-scpi-2026-classement-evolution', 'Collecte SCPI du T1 2025 au T3 2026'],
+      ['/actualites/attente-retrait-scpi-liquidite', 'Files de retrait : classement par pourcentage'],
+      ['/actualites/attente-retrait-scpi-liquidite', 'Parts en attente : classement par montants'],
+      ['/actualites/classement-meilleures-scpi', 'Classement des SCPI 2026'],
+    ],
+  },
+  {
+    title: 'Revente, SCPI par SCPI',
+    intro: 'Délais, retrait, frais et décotes observées.',
+    links: [
+      ['/actualites/revente-scpi-primovie-primopierre', 'Primovie et Primopierre'],
+      ['/actualites/scpi-perial-o2-grand-paris-marche-secondaire-2026', 'Perial O₂ et Perial Grand Paris'],
+      ['/actualites/revente-scpi-transitions-europe-liquidite-delais-decote', 'Transitions Europe'],
+      ['/actualites/revente-scpi-iroko-zen-liquidite-delais-decote-frais', 'Iroko Zen'],
+      ['/actualites/revente-corum-origin-delais-decote', 'CORUM Origin'],
+      ['/actualites/vendre-parts-scpi-epargne-fonciere', 'Épargne Foncière'],
+    ],
+  },
+  {
+    title: 'Fiscalité et Budget 2027',
+    intro: 'Barèmes, IFI, projet de loi de finances.',
+    links: [
+      ['/actualites/budget-2026-viager-fiscalite-simulateur-rente', 'Budget 2027 et SCPI (PLF en examen)'],
+      ['/actualites/budget-2026-viager-fiscalite-simulateur-rente', 'Budget 2027 et viager'],
+      ['/actualites/tmi-2026-bareme-tranches-scpi', 'Barème TMI 2026 et revenus de SCPI'],
+      ['/actualites/valeur-ifi-scpi-2025-declaration-2026', 'Valeur IFI des SCPI à déclarer en 2026'],
+      ['/actualites/prime-flat-tax-scpi-2026', 'Prime et flat tax à 31,4 %'],
+      ['/actualites/guide-taxe-fonciere-2026-reforme-calculateur-gratuit', 'Taxe foncière 2026'],
+    ],
+  },
+  {
+    title: 'Marché secondaire',
+    intro: 'Annonces, décotes, rendement effectif.',
+    links: [
+      ['/actualites/marche-secondaire-scpi-2026', 'Panorama des annonces'],
+      ['/actualites/nue-propriete-scpi-marche-secondaire', 'Nue-propriété sur le marché secondaire'],
+      ['/actualites/prix-de-souscription-valeur-retrait-decote', 'Prix de souscription, valeur de retrait, décote'],
+      ['/guide-scpi/revente-vs-retrait-societe-gestion', 'Revente ou retrait : la différence'],
+      ['/guide-scpi/marche-secondaire-fonctionnement', 'Fonctionnement du marché secondaire'],
+    ],
+  },
+  {
+    title: 'Démembrement et viager',
+    intro: 'Usufruit, nue-propriété, rente.',
+    links: [
+      ['/actualites/revente-usufruit-scpi', 'Revendre un usufruit avant le terme'],
+      ['/actualites/bareme-fiscal-valorisation', "Barème de l'article 669 CGI"],
+      ['/actualites/ifi-et-demembrement', 'IFI et démembrement'],
+      ['/demembrement', 'Tous les articles démembrement'],
+      ['/viager-guides', 'Guide viager'],
+    ],
+  },
+  {
+    title: 'Presse',
+    intro: '2nd Market dans les médias.',
+    links: [
+      ['/actualites/2nd-market-challenges-septembre-2026', 'Challenges'],
+      ['/actualites/agefi-marche-secondaire-scpi', "L'Agefi"],
+      ['/actualites/le-nouvel-economiste-avril-2026', 'Le Nouvel Economiste'],
+      ['/actualites/le-monde', 'Le Monde'],
+      ['/actualites/scpi-2025-le-particulier', 'Le Particulier'],
+    ],
+  },
+];
+---
+
+<BaseLayout seo={seo}>
+  <header class="hero">
+    <div class="gutter">
+      <div class="container section--small hero-content">
+        <Breadcrumb tone="light" items={[{ label: 'Accueil', href: '/' }, { label: 'Actualités' }]} />
+        <div class="reveal"><h1>Actualités SCPI et marché secondaire</h1></div>
+      </div>
+    </div>
+    <img class="pattern" src="/assets/67443b2e9369c2292c34f558_2nd-Market.svg" alt="" width="799" height="125" loading="lazy" decoding="async" />
+  </header>
+
+  <div class="gutter">
+    <div class="container section--small">
+      <div class="intro">
+        <div class="lead">
+          <p>
+            <strong>Les actualités 2nd Market suivent le marché des SCPI à partir des données publiées : statistiques ASPIM / IEIF, bulletins trimestriels des sociétés de gestion, textes fiscaux.</strong>
+            Chaque analyse cite sa source.
+          </p>
+          <p>Trois familles d'articles : les chiffres du marché (collecte, parts en attente, classements), les notes de revente SCPI par SCPI, et la fiscalité de l'année en cours. S'y ajoute la revue de presse.</p>
+          <p>Au 30 septembre 2026, les parts de SCPI en attente de retrait représentent 2 Md€, soit 2,6 % d'une capitalisation de 80 Md€ (2,2 % au 30 juin). La collecte nette du 3e trimestre 2026 atteint 922 M€.</p>
+          <p>2nd Market met en relation vendeurs et acheteurs de parts de SCPI de gré à gré, avec une cession signée devant notaire. 2nd Market n'est ni conseiller en gestion de patrimoine, ni CIF, ni société de gestion.</p>
+          <p class="source">Source : ASPIM / IEIF, statistiques du 3e trimestre 2026 publiées le 04/11/2026. Page mise à jour le 17/11/2026.</p>
+        </div>
+
+        <h2 class="intro-title">Lire par thème</h2>
+        <div class="themes">
+          {
+            themes.map(theme => (
+              <div class="theme">
+                <h3>{theme.title}</h3>
+                <p>{theme.intro}</p>
+                <ul>
+                  {theme.links.map(([href, label]) => (
+                    <li>
+                      <a href={href}>{label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+        <h2 class="all-title" id="articles-title">Tous les articles, par catégorie</h2>
+      </div>
+
+      <div class="tabs" data-tabs>
+        <nav class="tab-menu" aria-labelledby="articles-title">
+          {tabs.map((tab, i) => <a class:list={['tab', { 'is-current': i === 0 }]} href={`#${tab.id}`} id={`tab-${tab.id}`}>{tab.label}</a>)}
+        </nav>
+        {
+          tabs.map(tab => (
+            <section class="panel" id={tab.id} aria-labelledby={`tab-${tab.id}`}>
+              <ArticleGrid entries={tab.entries} />
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Progressive enhancement: without JS every category is listed one after the other and the menu jumps to it.
+  for (const root of document.querySelectorAll<HTMLElement>('[data-tabs]')) {
+    const menu = root.querySelector<HTMLElement>('.tab-menu')!;
+    const tabs = [...menu.querySelectorAll<HTMLAnchorElement>('.tab')];
+    const panels = tabs.map(t => document.getElementById(t.hash.slice(1))!);
+    menu.setAttribute('role', 'tablist');
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('role', 'tabpanel');
+    });
+    const select = (i: number, focus = false) => {
+      tabs.forEach((tab, j) => {
+        const on = i === j;
+        tab.classList.toggle('is-current', on);
+        tab.setAttribute('aria-selected', String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        select(i);
+        history.replaceState(null, '', tab.hash);
+      });
+      tab.addEventListener('keydown', e => {
+        const k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (k === undefined) return;
+        e.preventDefault();
+        select((k + tabs.length) % tabs.length, true);
+      });
+    });
+    select(Math.max(0, tabs.findIndex(t => t.hash === location.hash)));
+  }
+</script>
+
+<style>
+  .hero { position: relative; margin-inline: var(--size-0-5); border-radius: var(--radius-large); background: var(--neutral-large); overflow: clip; }
+  .hero-content { position: relative; z-index: 1; text-align: center; }
+  .reveal { padding-top: var(--size-1-5); padding-bottom: var(--size-0-125); overflow: clip; }
+  .reveal h1 { animation: rise 0.8s var(--ease-out) both; }
+  @keyframes rise { from { transform: translateY(100%); opacity: 0; } }
+  h1 { color: var(--color-text-light); font-size: var(--size-4); text-wrap: balance; }
+  .pattern { position: absolute; inset: auto 0 -20%; width: 80%; margin-inline: auto; opacity: 0.5; }
+  @media (max-width: 767px) { .reveal { padding-top: var(--size-1-25); } }
+
+  /* Intro + "Lire par thème" (was a custom embed on Webflow). */
+  .intro { max-width: 70rem; margin: 0 auto 2.4rem; color: var(--color-text); line-height: 1.6; }
+  .lead { margin-bottom: 2rem; padding: 1.05rem 1.25rem; border: 1px solid var(--neutral-lightest); border-left: 4px solid var(--neutral-light); border-radius: 10px; background: color-mix(in srgb, var(--neutral-lightest) 30%, var(--white)); }
+  .lead p { margin: 0 0 0.6rem; }
+  .lead p:nth-last-child(2) { margin: 0; }
+  .lead strong { color: var(--neutral-large); font-weight: var(--weight-semibold); }
+  .lead .source { margin: 0.6rem 0 0; color: var(--neutral-light); font-size: 0.8rem; }
+  .intro-title, .all-title { margin: 0 0 1rem; color: var(--neutral-large); font-size: 1.5rem; font-weight: var(--weight-bold); line-height: var(--lh-1-3); }
+  .all-title { margin: 0.4rem 0 0; font-size: 1.3rem; }
+  .themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin-bottom: 2.2rem; }
+  .theme { padding: 1.1rem 1.2rem; border: 1px solid var(--neutral-lightest); border-radius: 12px; background: var(--white); }
+  .theme h3 { margin: 0 0 0.35rem; color: var(--neutral-large); font-size: 1.08rem; font-weight: var(--weight-bold); line-height: var(--lh-1-3); letter-spacing: inherit; }
+  .theme p { margin: 0 0 0.6rem; color: var(--color-text-muted); font-size: 0.92rem; }
+  .theme ul { margin: 0; padding-left: 1.05rem; }
+  .theme li { margin: 0 0 0.35rem; font-size: 0.95rem; }
+  .theme a { color: var(--neutral-large); font-weight: var(--weight-semibold); text-decoration: underline; text-underline-offset: 2px; }
+  .theme a:hover { color: var(--neutral-light); }
+  @media (max-width: 979px) { .themes { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 639px) { .themes { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .lead { padding: 0.9rem 1rem; } .theme { padding: 1rem; } .intro-title { font-size: 1.3rem; } }
+
+  /* Category tabs */
+  .tabs { display: flex; flex-direction: column; align-items: center; gap: var(--size-2); }
+  .tab-menu { position: sticky; top: 8rem; z-index: 2; display: flex; align-items: center; gap: var(--size-0-25); padding: var(--size-0-25); border-radius: var(--radius-round); background: color-mix(in srgb, var(--white) 60%, transparent); backdrop-filter: blur(10px); }
+  .tab { padding: var(--size-0-5) var(--size-1); border: 1px solid transparent; border-radius: var(--radius-round); color: var(--color-text); transition: color 0.3s, background-color 0.4s; }
+  .tab:hover { background: color-mix(in srgb, var(--white) 50%, transparent); }
+  .tab.is-current { border-color: var(--color-bg-dark); background: var(--white); }
+  .panel { width: 100%; scroll-margin-top: 12rem; }
+  @media (max-width: 479px) { .tab-menu { width: 100%; overflow: auto; } }
+</style>
