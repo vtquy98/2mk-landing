@@ -17,5 +17,8 @@ export default defineCollection({
     seo: seoSchema,
     lastmod: z.string().optional(), // YYYY-MM-DD (Webflow sitemap), used by the sitemap
     // Collection-specific fields below.
+    name: z.string(), // short name: breadcrumb and hub card heading (the H1 is `title`)
+    highlights: z.array(z.string()).default([]), // the 3 lines of the hub card
+    order: z.number().optional(), // position on the hub (ascending)
   }),
 });
