@@ -9,9 +9,10 @@ import HandUp from './icons/hand-up.svg';
 
 interface Props {
   entry: CollectionEntry<'scpi-listing'>;
-  headingLevel?: 'h2' | 'h3' | 'p'; // 'p' when the page heading already says it
+  headingLevel?: 'h2' | 'h3';
+  standalone?: boolean; // on the ad's own page: the page heading is the title, no link to itself
 }
-const { entry, headingLevel: Heading = 'h3' } = Astro.props;
+const { entry, headingLevel: Heading = 'h3', standalone = false } = Astro.props;
 const d = entry.data;
 const href = d.url ?? `/scpi-listing/${entry.id}`;
 
@@ -31,7 +32,7 @@ const figures = [
       {d.image && <img class="card__logo" src={d.image} alt={d.imageAlt ?? ''} width="100" height="40" loading="lazy" decoding="async" />}
       {discount && <span class="card__badge">Décote {discount}%</span>}
     </div>
-    <Heading class="card__title">{d.title}</Heading>
+    {!standalone && <Heading class="card__title">{d.title}</Heading>}
   </div>
   <dl class="card__figures">
     {
@@ -49,7 +50,7 @@ const figures = [
       <span class="card__price">{fmt(d.totalPrice)} €</span>
       {discount && d.marketPrice && <s class="card__original">{fmt(d.marketPrice)} €</s>}
     </p>
-    <Button href={href} variant="secondary" size="small" class="card__cta" aria-label={`Voir l'annonce : ${d.title}`}>Voir l'annonce</Button>
+    {!standalone && <Button href={href} variant="secondary" size="small" class="card__cta" aria-label={`Voir l'annonce : ${d.title}`}>Voir l'annonce</Button>}
   </div>
 </article>
 

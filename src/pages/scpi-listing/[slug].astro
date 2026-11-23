@@ -14,12 +14,12 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: CollectionEntry<'scpi-listing'> };
 ---
 
-<BaseLayout seo={entry.data.seo}>
+<BaseLayout seo={entry.data.seo} floatingButton={false}>
   <section class="ad gutter">
     <div class="container container--small section ad__inner">
       <p class="ad__kicker">Annonce SCPI · {entry.data.scpi}</p>
       <h1 class="h2">{entry.data.title}</h1>
-      <div class="ad__card"><ListingCard entry={entry} headingLevel="p" /></div>
+      <div class="ad__card"><ListingCard entry={entry} standalone /></div>
       <p class="ad__note">Les prix sont ceux demandés par le vendeur ; le prix final est négocié entre vendeur et acheteur, et la cession est signée devant notaire.</p>
       <Button href={`${PRODUCT.app}/scpi`}>Voir les annonces disponibles</Button>
     </div>

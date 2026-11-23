@@ -59,7 +59,7 @@ const { entries } = Astro.props;
 <style>
   .listing__inner { display: flex; flex-direction: column; gap: var(--size-2); padding-block: var(--section-main); }
   .listing__top { display: flex; gap: var(--size-1); align-items: flex-end; justify-content: space-between; }
-  .listing__heading { display: flex; flex-direction: column; gap: var(--size-1); align-items: flex-start; }
+  .listing__heading { min-width: 0; display: flex; flex-direction: column; gap: var(--size-1); align-items: flex-start; }
   .listing__heading h2 { margin: 0; max-width: 48rem; }
   .listing__arrows { display: flex; flex: none; gap: 0.75em; }
   .listing__arrows[hidden] { display: none; }

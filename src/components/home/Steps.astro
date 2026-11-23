@@ -110,7 +110,9 @@ const documents = [
   }
   @media (max-width: 479px) {
     .steps__layout { flex-direction: column; }
-    .steps__item { flex-direction: column; justify-content: center; align-items: stretch; height: var(--size-16); border-radius: 2rem; }
+    .steps__item { flex-direction: column; gap: var(--size-0-75); justify-content: center; align-items: stretch; height: auto; min-height: 14rem; padding: var(--size-0-5) var(--size-0-5) var(--size-1-5); border-radius: 2rem; }
+    .steps__item img { width: 3rem; height: 3rem; }
+    .steps__item > div { gap: var(--size-0-75); }
     .steps__item .steps__heading { font-size: var(--h3-size); }
     .steps__docs { width: 100%; margin-bottom: 2rem; }
   }

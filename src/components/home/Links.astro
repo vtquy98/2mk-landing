@@ -23,7 +23,7 @@ const srcset = (c: Card) => [...c.variants.map(w => `${c.image.replace(/(\.\w+)$
 <section class="links gutter">
   <div class="container section">
     <h2 class="h2 links__title">{title}</h2>
-    <ul class:list={['links__grid', cards.length === 1 && 'links__grid--single']} role="list">
+    <ul class="links__grid" role="list">
       {
         cards.map(c => (
           <li>
@@ -43,7 +43,6 @@ const srcset = (c: Card) => [...c.variants.map(w => `${c.image.replace(/(\.\w+)$
 <style>
   .links__title { margin: 0; text-align: center; }
   .links__grid { display: grid; list-style: none; grid-template-columns: repeat(3, 1fr); gap: var(--size-1); margin: 0; padding: 4rem 0 0; }
-  .links__grid--single { grid-template-columns: 1fr; }
   .links__card {
     position: relative;
     display: flex;

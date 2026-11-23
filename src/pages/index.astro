@@ -19,7 +19,7 @@ import seo from '../data/seo/index.json';
 const ads = (await getCollection('scpi-listing', e => e.data.source === 'app')).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} floatingButton>
   <Hero
     title="Achetez - Vendez des parts de SCPI au prix que vous négociez"
     stats={[
