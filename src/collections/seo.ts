@@ -17,5 +17,8 @@ export default defineCollection({
     seo: seoSchema,
     lastmod: z.string().optional(), // YYYY-MM-DD (Webflow sitemap), used by the sitemap
     // Collection-specific fields below.
+    imageWidth: z.number().optional(), // intrinsic size of `image` (the company logo)
+    imageHeight: z.number().optional(),
+    managedScpis: z.string().optional(), // "SCPI gérées" line of the header
   }),
 });
